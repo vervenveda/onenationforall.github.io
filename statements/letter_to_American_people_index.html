@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Letter to the American People</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --navy-deep:#020618;
+      --navy-royal:#123b7a;
+      --navy-soft:#1b2a4a;
+      --parchment:#f5f3eb;
+      --parchment-soft:#ece5d4;
+      --accent-gold:#d9b878;
+      --border-soft:rgba(255,255,255,0.15);
+      --radius:7px;
+      --shadow:0 18px 40px rgba(0,0,0,0.50);
+    }
+
+    *{box-sizing:border-box;}
+
+    html,body{
+      margin:0;
+      padding:0;
+      font-family:'Montserrat',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      background:
+        radial-gradient(circle at top, var(--navy-royal) 0%, var(--navy-deep) 55%, #02030a 100%);
+      color:var(--parchment);
+    }
+
+    .jp-letter-shell{
+      width:100%;
+      padding:7px 7px 7px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .jp-letter-inner{
+      max-width:777px;
+      width:100%;
+      padding:11px 11px 11px;
+      border-radius:7px;
+      background:radial-gradient(circle at top, var(--navy-soft) 0%, #050712 72%);
+      border:1px solid var(--border-soft);
+      box-shadow:var(--shadow);
+      text-align:center;
+    }
+
+    .jp-letter-kicker{
+      font-size:12px;
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+      color:rgba(245,243,235,0.78);
+      margin-bottom:6px;
+    }
+
+    .jp-letter-title{
+      font-family:'Cinzel',serif;
+      font-size:21px;
+      letter-spacing:0.2em;
+      text-transform:uppercase;
+      margin:0 0 12px;
+      color:var(--parchment-soft);
+    }
+
+    .jp-letter-body{
+      font-size:14px;
+      line-height:1.8;
+      color:rgba(245,243,235,0.9);
+      margin:0 auto 16px;
+      max-width:720px;
+      text-align:left;
+    }
+
+    .jp-letter-body p{
+      margin:0 0 10px;
+    }
+
+    .jp-letter-body p:last-child{
+      margin-bottom:0;
+    }
+
+    .jp-letter-signoff{
+      margin-top:18px;
+      font-size:14px;
+      line-height:1.6;
+      text-align:center;
+    }
+
+    .jp-letter-name{
+      font-family:'Cinzel',serif;
+      font-size:16px;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+    }
+
+    .jp-letter-role{
+      font-size:11px;
+      letter-spacing:0.16em;
+      text-transform:uppercase;
+      color:rgba(245,243,235,0.78);
+    }
+
+    .jp-letter-tagline{
+      margin-top:6px;
+      font-size:11px;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      color:var(--accent-gold);
+    }
+
+    ul{
+      padding-left:18px;
+    }
+
+    li{
+      margin-bottom:10px;
+    }
+
+    @media (max-width:600px){
+      .jp-letter-inner{
+        padding:21px 18px 21px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="jp-letter-shell">
+    <div class="jp-letter-inner">
+      <div class="jp-letter-kicker">From the Desk of a Citizen Candidate</div>
+      <h1 class="jp-letter-title">A Letter to the American People</h1>
+
+      <div class="jp-letter-body">
+        <p>
+          I am running for public office because I believe our country deserves leadership that answers first to the people, not to parties, donors, or permanent insiders. Too many families feel like strangers in their own communities and nation. We are overworked, under-heard, and exhausted by politics that talk <em>about</em> us but rarely <em>with</em> us.
+        </p>
+        <p>
+          My promise is simple. I will approach public office as a <strong>guardian of the Republic</strong>, protecting your voice, your safety, and your children’s future with clean hands and a clear conscience. Every policy I support will be measured against a few sacred questions. 
+          Does this protect the vulnerable? 
+          Does it honor truth? 
+          Does it strengthen families and communities instead of corporations and corruption?
+        </p>
+        <p>
+          I do not come to you as a perfect person or a polished politician, but as a mother, neighbor, business owner, artist, and servant who is willing to stand in the gap. If you choose to vote for me, you are not just voting for a politician. You are sending a message that <strong>the American people, are not for sale</strong>.
+        </p>
+
+        <h3 style="color:#d9b878; font-family:'Cinzel',serif; font-size:1.1em; margin:15px 0 7px; letter-spacing:0.11em;"></h3>
+        <ul>
+          <li>I'm not backed by any party, corporation, or political Lobby Group.</li>
+          <li>I believe that if all third parties and disheartened voters unite, we can break through the political two-party glass ceiling. I believe in protecting your voice, your faith, your family, your right to free speech, clean water, clean air, and healthy foods. Your decisions regarding your body belong to you alone.</li>
+          <li>My campaign is powered by <em>people</em>, not billionaire donors with self-serving interests.</li>
+          <li>I will never take a bribe, sell your data, or use fear to divide us.</li>
+          <li>I’m a mother, creator, and servant who will fight for the everyday American.</li>
+        </ul>
+      </div>
+
+      <div class="jp-letter-signoff">
+        <div class="jp-letter-name">Jennifer Kay Pearl  aka Artist Jenny Pearl</div>
+        <div class="jp-letter-role">Citizen Candidate<br> Ran as a NPA in the 2026 Florida Gubernatorial Election<br> & <br>Shooting for the 2028 United States Presidential Race</div>
+        <div class="jp-letter-tagline">For the People, Not the Powerful <br. We deserve better leadership.</div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
