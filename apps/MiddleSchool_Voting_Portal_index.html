@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Middle School Voting Portal – Voti the Owl</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <style>
+    /* ---------- layout & theme (keeps your original style) ---------- */
+    body { font-family: 'Segoe UI', 'Arial Rounded MT Bold', Arial, sans-serif; margin:0; min-height:100vh; 
+           background:linear-gradient(120deg,#033052 65%,#033052); color:#222; }
+    header{ display:flex; gap:8px; align-items:center; justify-content:center; padding:10px 8px; background:rgba(255,255,255,.6); box-shadow:0 1px 8px rgba(0,0,0,.04); position:sticky; top:0; z-index:10;}
+    .nav-btn{ background:#304392; color:#fff; border:none; padding:.55rem .9rem; border-radius:10px; font-weight:700; cursor:pointer;}
+    .nav-btn.ghost{ background:transparent; color:#304392; border:2px solid #304392; }
+    .center { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 70vh; padding:20px 8px;}
+    .card { background: #fff; border-radius: 1.7rem; box-shadow: 0 4px 24px #b0b8d3b0; padding: 2rem; width: 96%; max-width: 720px; margin: 2.5rem auto; }
+    .title { font-size: 2.1rem; font-weight: bold; color: #304392; margin-bottom: .7rem; text-align:center;}
+    .owl { font-size: 3.5rem; text-align:center; }
+    label { display: block; margin: 1rem 0 .3rem; font-weight: 600; }
+    input, select, textarea, button { font-size: 1rem; padding: .5rem .7rem; border-radius: .7rem; border: 1px solid #a9b5d6; margin-bottom: .7rem; width:100%; box-sizing:border-box; }
+    textarea { min-height: 60px; resize: vertical; }
+    button { cursor: pointer; background: #304392; color: #fff; border: none; font-weight: bold; transition: 0.1s; border-radius:10px; }
+    button:hover { background: #176ab4; }
+    .pres-list, .choice-list { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom:.6rem;}
+    .pres-card, .choice-card { border: 2px solid #e1e7ff; border-radius: 1.3rem; padding: 1rem; background: #f9faff; width: 220px; text-align: center; box-shadow: 0 1px 8px #c2d1f7a0; cursor:pointer; }
+    .pres-card.selected, .choice-card.selected { background:#d8f6f4; border:2px solid #36b3a2; }
+    .pres-emoji, .choice-emoji { font-size: 2.2rem; margin-bottom:.25rem;}
+    .chart-bar { height:24px; background:linear-gradient(90deg,#36b3a2 70%,#ffba6b); color:#223; border-radius:13px; margin-bottom:7px; display:flex; align-items:center; font-weight:600; padding:0 8px; }
+    .sticker { background:#ffe01f; border-radius:999px; display:inline-block; padding:.8rem 2rem; font-size:1.2rem; font-weight:bold; color:#47349a; margin:1.4rem 0 1rem 0; box-shadow:0 2px 14px #ffecb3; }
+    .small { font-size: .97rem; color: #444; }
+    .bubble { background:#eef3fc; border-radius:1.1rem; padding:.7rem 1rem; margin:.7rem 0; font-size:1.03rem; color:#224; }
+    .review { background:#f7f4ff; border-radius:1.1rem; padding:1.2rem 1rem; margin:1rem 0; font-size:1.08rem; color:#2d2463; border:2px solid #d7cdfa;}
+    .confetti { animation: confetti 1.6s linear infinite; }
+    @keyframes confetti {
+      0% { text-shadow: 0 0 0 #f2a,0 0 0 #2cf,0 0 0 #fa2; }
+      33% { text-shadow: 2px 2px 12px #f2a, -2px 2px 8px #2cf, 2px -2px 8px #fa2; }
+      66% { text-shadow: -2px -2px 10px #f2a, 2px -2px 10px #2cf, -2px 2px 6px #fa2; }
+      100% { text-shadow: 0 0 0 #f2a,0 0 0 #2cf,0 0 0 #fa2; }
+    }
+    .tools { display:flex; gap:8px; justify-content:center; margin-top:10px; flex-wrap:wrap; }
+    .modal { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,.45); z-index:50; }
+    .modal-card { width:92%; max-width:520px; background:#fff; padding:18px; border-radius:14px; box-shadow:0 12px 40px rgba(0,0,0,.3); }
+    .tiny { font-size:.9rem; color:#555; }
+    @media (max-width:540px) { .card {padding:1rem; max-width:98vw;} .pres-card, .choice-card{ width:98%; } }
+  </style>
+</head>
+<body>
+  <header>
+    <button class="nav-btn" onclick="goTo(0)">Welcome</button>
+    <button class="nav-btn ghost" onclick="goTo(2)">Register</button>
+    <button class="nav-btn" onclick="goTo(3)">Student Council Vote</button>
+    <button class="nav-btn" onclick="goTo(6)">Issues</button>
+    <button class="nav-btn" onclick="goTo(9)">Results</button>
+    <div style="flex:1"></div>
+    <button class="nav-btn" onclick="openQuiz()">Take Civics Quiz</button>
+  </header>
+
+  <div id="app"></div>
+
+  <!-- Civics quiz modal (optional) -->
+  <div id="quizModal" style="display:none" class="modal" onclick="if(event.target===this) closeQuiz()">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Civics quiz">
+      <h3 style="margin-top:0">Quick Civics Quiz</h3>
+      <div id="quizContent"></div>
+      <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:12px;">
+        <button onclick="closeQuiz()" class="nav-btn ghost">Close</button>
+        <button onclick="submitQuiz()" class="nav-btn">Submit</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+/* =========================
+   Data & initial state (keeps your original objects)
+   ========================= */
+const councilCandidates = [
+  { name:"Samira Santos", emoji:"🦊", slogan:"New ideas, more fun!", platform:"More spirit days; expand art club; safe spaces." , issues:["arts","fieldtrips"] },
+  { name:"Jordan Patel", emoji:"🐯", slogan:"Strong for student voice!", platform:"Better tech in class; monthly music events; student council suggestions." , issues:["tech","music"] },
+  { name:"Avery Jones", emoji:"🐢", slogan:"Kindness is cool!", platform:"Anti-bullying programs; more field trips; healthy snacks." , issues:["kindness","food"] }
+];
+const fieldTripChoices = [
+  { name:"Science Museum", emoji:"🔬", pro:"Hands-on experiments", con:"Far bus ride" },
+  { name:"Zoo", emoji:"🦁", pro:"See animals", con:"Crowded in spring" },
+  { name:"State Park", emoji:"🏞️", pro:"Outdoor adventure", con:"Weather changes" }
+];
+const mascots = [
+  { name:"Hawks", emoji:"🦅" },
+  { name:"Foxes", emoji:"🦊" },
+  { name:"Dragons", emoji:"🐉" }
+];
+const favClasses = ["Art", "Music", "Tech", "Math", "Science", "PE", "Reading"];
+
+/* lightweight civics quiz (3 Qs) */
+const civicsQuiz = [
+  { q: "What does it mean to 'vote'?", choices: ["Pick a leader or make a choice","To take a test","To go to a party"], a:0 },
+  { q: "Why do we have rules and school elections?", choices:["So adults can control kids","To organize and share ideas fairly","Because there is no other way"], a:1 },
+  { q: "Who can run for student council at your school?", choices:["Any student qualified by school rules","Only teachers","Only parents"], a:0 }
+];
+
+/* App state */
+let appState = {
+  page: 0,
+  reg: { name: "", grade: "", birth: "" },
+  votes: {
+    president: null,
+    fieldTrip: null,
+    mascot: null,
+    iceCream: "",
+    fruitsVeg: "",
+    recess: "",
+    nap: "",
+    favClass: "",
+    addOne: ""
+  },
+  // demo session-only aggregated results (kept in-memory per session)
+  results: {
+    president: [0,0,0],
+    fieldTrip: [0,0,0],
+    mascot: [0,0,0],
+    iceCream: [0,0,0],
+    fruitsVeg: [0,0,0],
+    recess: [0,0,0],
+    nap: [0,0,0],
+    favClass: Array(favClasses.length).fill(0)
+  }
+};
+
+/* persist to session */
+function saveState(){ sessionStorage.setItem("msVoteApp", JSON.stringify(appState)); }
+function loadState(){ const s = sessionStorage.getItem("msVoteApp"); if(s) appState = JSON.parse(s); }
+function resetState(){ sessionStorage.removeItem("msVoteApp"); appState.page = 0; appState.reg={name:"",grade:"",birth:""}; render(); }
+
+/* ====== helpers ====== */
+function $(id){ return document.getElementById(id); }
+function goTo(p){ appState.page = p; saveState(); render(); }
+
+/* ====== render logic (keeps your original flows with enhancements) ====== */
+function render(){
+  let html = "";
+  switch(appState.page){
+    case 0: // welcome
+      html = `
+      <div class="center"><div class="card">
+        <div class="owl">🦉</div>
+        <div class="title">Welcome to Voting Day!</div>
+        <div class="bubble">Hi, I’m <b>Voti the Owl</b>.<br>Did you know? <b>Voting is how groups make decisions together.</b></div>
+        <div class="small">You can register, learn about candidates, vote for the council, and share classroom results with your teacher.</div>
+        <div class="tools">
+          <button onclick="goTo(2)">Register</button>
+          <button onclick="openQuiz()">Take Civics Quiz</button>
+          <button onclick="goTo(3)">Start Student Council Vote</button>
+        </div>
+      </div></div>`;
+      break;
+
+    case 2: // register
+      html = `
+      <div class="center"><div class="card">
+        <div class="owl">🦉</div>
+        <div class="title">Register to Vote</div>
+        <div class="small">This card stays local to your device (session only).</div>
+        <label>Name</label><input id="regName" maxlength="30" value="${escapeHtml(appState.reg.name||'')}" />
+        <label>Grade</label>
+        <select id="regGrade">
+          <option value="">Select grade</option>
+          ${[6,7,8].map(g=>`<option value="${g}" ${appState.reg.grade==g?"selected":""}>${g}</option>`).join("")}
+        </select>
+        <label>Birthdate</label><input id="regBirth" type="date" value="${appState.reg.birth||''}" />
+        <div style="display:flex; gap:8px; margin-top:8px;">
+          <button onclick="submitReg()">Save & Next</button>
+          <button class="nav-btn ghost" onclick="resetState()">Reset</button>
+        </div>
+      </div></div>`;
+      break;
+
+    case 3: // president / council
+      html = `
+      <div class="center"><div class="card">
+        <div class="owl">🦉</div>
+        <div class="title">Student Council President</div>
+        <div class="small">Click a candidate to learn more. Pick your favorite!</div>
+        <div class="pres-list">
+          ${councilCandidates.map((c,i)=>`
+            <div class="pres-card ${appState.votes.president==i?'selected':''}" onclick="selectPresident(${i})" title="${escapeHtml(c.platform)}">
+              <div class="pres-emoji">${c.emoji}</div>
+              <div style="font-weight:700">${escapeHtml(c.name)}</div>
+              <div style="font-style:italic; margin:.25rem 0">${escapeHtml(c.slogan)}</div>
+              <div class="bubble tiny">${escapeHtml(c.platform)}</div>
+            </div>
+          `).join('')}
+        </div>
+        <div style="display:flex; gap:8px; justify-content:center;">
+          <button onclick="goTo(4)" ${appState.votes.president===null?'disabled':''}>Next: Field Trip</button>
+          <button class="nav-btn ghost" onclick="openCandidateInfo()">Candidate Info</button>
+        </div>
+      </div></div>`;
+      break;
+
+    case 4: // field trip
+      html = `
+      <div class="center"><div class="card">
+        <div class="owl">🦉</div>
+        <div class="title">Field Trip Vote</div>
+        <div class="small">Which field trip would you pick?</div>
+        <div class="choice-list">
+          ${fieldTripChoices.map((c,i)=>`
+            <div class="choice-card ${appState.votes.fieldTrip==i?'selected':''}" onclick="selectFieldTrip(${i})">
+              <div class="choice-emoji">${c.emoji}</div>
+              <div style="font-weight:700">${escapeHtml(c.name)}</div>
+              <div class="bubble tiny"><b>Pro:</b> ${escapeHtml(c.pro)}<br><b>Con:</b> ${escapeHtml(c.con)}</div>
+            </div>
+          `).join('')}
+        </div>
+        <div style="display:flex; gap:8px; justify-content:center;">
+          <button onclick="goTo(5)" ${appState.votes.fieldTrip===null?'disabled':''}>Next: Mascot</button>
+          <button class="nav-btn ghost" onclick="goTo(3)">Back</button>
+        </div>
+      </div></div>`;
+      break;
+
+    case 5: // mascot
+      html = `
+      <div class="center"><div class="card">
+        <div class="owl">🦉</div>
+        <div class="title">School Mascot</div>
+        <div class="small">Vote for a mascot!</div>
+        <div class="choice-list">
+          ${mascots.map((m,i)=>`
+            <div class="choice-card ${appState.votes.mascot==i?'selected':''}" onclick="selectMascot(${i})">
+              <div class="choice-emoji">${m.emoji}</div>
+              <div style="font-weight:700">${escapeHtml(m.name)}</div>
+            </div>
+          `).join('')}
+        </div>
+        <div style="display:flex; gap:8px; justify-content:center;">
+          <button onclick="goTo(6)" ${appState.votes.mascot===null?'disabled':''}>Next: Issues</button>
+          <button class="nav-btn ghost" onclick="goTo(4)">Back</button>
+        </div>
+      </div></div>`;
+      break;
+
+    case 6: // issues / policies (school)
+      html = `
+      <div class="center"><div class="card">
+        <div class="owl">🦉</div>
+        <div class="title">What Do You Think?</div>
+        <div class="small">Vote Yes / No / Not Sure on each school issue:</div>
+        <div style="margin:.6rem 0">
+          <label>Should ice cream be served twice a week?</label>
+          <select id="iceCream" onchange="updateIssue('iceCream')">
+            <option value="">Select</option>
+            <option value="yes" ${appState.votes.iceCream==='yes'?'selected':''}>Yes</option>
+            <option value="no" ${appState.votes.iceCream==='no'?'selected':''}>No</option>
+            <option value="unsure" ${appState.votes.iceCream==='unsure'?'selected':''}>Not Sure</option>
+          </select>
+        </div>
+        <div style="margin:.6rem 0">
+          <label>Are there enough fruits & veggies in lunch?</label>
+          <select id="fruitsVeg" onchange="updateIssue('fruitsVeg')">
+            <option value="">Select</option>
+            <option value="yes" ${appState.votes.fruitsVeg==='yes'?'selected':''}>Yes</option>
+            <option value="no" ${appState.votes.fruitsVeg==='no'?'selected':''}>No</option>
+            <option value="unsure" ${appState.votes.fruitsVeg==='unsure'?'selected':''}>Not Sure</option>
+          </select>
+        </div>
+        <div style="margin:.6rem 0">
+          <label>Should recess be longer?</label>
+          <select id="recess" onchange="updateIssue('recess')">
+            <option value="">Select</option>
+            <option value="yes" ${appState.votes.recess==='yes'?'selected':''}>Yes</option>
+            <option value="no" ${appState.votes.recess==='no'?'selected':''}>No</option>
+            <option value="unsure" ${appState.votes.recess==='unsure'?'selected':''}>Not Sure</option>
+          </select>
+        </div>
+        <div style="margin:.6rem 0">
+          <label>Should nap time be allowed for lower grades?</label>
+          <select id="nap" onchange="updateIssue('nap')">
+            <option value="">Select</option>
+            <option value="yes" ${appState.votes.nap==='yes'?'selected':''}>Yes</option>
+            <option value="no" ${appState.votes.nap==='no'?'selected':''}>No</option>
+            <option value="unsure" ${appState.votes.nap==='unsure'?'selected':''}>Not Sure</option>
+          </select>
+        </div>
+        <div style="display:flex; gap:8px; justify-content:center; margin-top:8px;">
+          <button onclick="goTo(7)" ${["iceCream","fruitsVeg","recess","nap"].some(k=>!appState.votes[k])?'disabled':''}>Next: Favorite Class</button>
+          <button class="nav-btn ghost" onclick="goTo(5)">Back</button>
+        </div>
+      </div></div>`;
+      break;
+
+    case 7: // favorite class
+      html = `
+      <div class="center"><div class="card">
+        <div class="owl">🦉</div>
+        <div class="title">Favorite Class</div>
+        <div class="small">Pick your favorite class:</div>
+        <div class="choice-list">
+          ${favClasses.map((cls)=>`
+            <div class="choice-card ${appState.votes.favClass==cls?'selected':''}" onclick="voteClass('${cls}')">
+              <div style="font-weight:700">${escapeHtml(cls)}</div>
+            </div>
+          `).join('')}
+        </div>
+        <div style="display:flex; gap:8px; justify-content:center;">
+          <button onclick="goTo(8)" ${!appState.votes.favClass?'disabled':''}>Next: Add One Thing</button>
+          <button class="nav-btn ghost" onclick="goTo(6)">Back</button>
+        </div>
+      </div></div>`;
+      break;
+
+    case 8: // add one thing
+      html = `
+      <div class="center"><div class="card">
+        <div class="owl">🦉</div>
+        <div class="title">What Would You Add?</div>
+        <div class="small">If you could add one thing to our school, what would it be?</div>
+        <textarea id="addOne">${escapeHtml(appState.votes.addOne||'')}</textarea>
+        <div style="display:flex; gap:8px; justify-content:center; margin-top:8px;">
+          <button onclick="saveAddOne()">Review & Submit</button>
+          <button class="nav-btn ghost" onclick="goTo(7)">Back</button>
+        </div>
+      </div></div>`;
+      break;
+
+    case 9: // review -> submit -> results
+      html = `
+      <div class="center"><div class="card">
+        <div class="owl">🦉</div>
+        <div class="title">Review Your Ballot</div>
+        <div class="review">
+          <b>Student Council President:</b> ${councilCandidates[appState.votes.president].emoji} ${escapeHtml(councilCandidates[appState.votes.president].name)}<br>
+          <b>Field Trip:</b> ${fieldTripChoices[appState.votes.fieldTrip].emoji} ${escapeHtml(fieldTripChoices[appState.votes.fieldTrip].name)}<br>
+          <b>Mascot:</b> ${mascots[appState.votes.mascot].emoji} ${escapeHtml(mascots[appState.votes.mascot].name)}<br>
+          <b>Ice Cream 2x/wk?</b> <span style="color:#7c35f4">${prettyVote(appState.votes.iceCream)}</span><br>
+          <b>Fruits & Veggies?</b> <span style="color:#7c35f4">${prettyVote(appState.votes.fruitsVeg)}</span><br>
+          <b>Recess Longer?</b> <span style="color:#7c35f4">${prettyVote(appState.votes.recess)}</span><br>
+          <b>Nap Time?</b> <span style="color:#7c35f4">${prettyVote(appState.votes.nap)}</span><br>
+          <b>Favorite Class:</b> <span style="color:#3ab7b2">${escapeHtml(appState.votes.favClass)}</span><br>
+          <b>If you could add one thing:</b> <span style="color:#3c388f">${escapeHtml(appState.votes.addOne||"-")}</span>
+        </div>
+        <div style="display:flex; gap:8px; justify-content:center;">
+          <button onclick="submitBallot()">Submit My Vote</button>
+          <button class="nav-btn ghost" onclick="goTo(8)">Back</button>
+        </div>
+      </div></div>`;
+      break;
+
+    case 10: // results & teacher tools (we tally locally for the session)
+      // tally
+      tallyResults();
+
+      html = `
+      <div class="center"><div class="card">
+        <div class="owl confetti">🎉🦉🎉</div>
+        <div class="title">Results — Classroom Snapshot</div>
+        <div class="bubble" style="background:#f7fce8;color:#2b5234;">Your voice was heard! Teacher tools below help export results.</div>
+
+        <div><b>Student Council President:</b></div>
+        ${barChart(councilCandidates.map(c=>escapeHtml(c.emoji+" "+c.name)), appState.results.president)}
+        <div style="margin-top:8px"><b>Field Trip:</b></div>
+        ${barChart(fieldTripChoices.map(c=>escapeHtml(c.emoji+" "+c.name)), appState.results.fieldTrip)}
+        <div style="margin-top:8px"><b>Mascot:</b></div>
+        ${barChart(mascots.map(m=>escapeHtml(m.emoji+" "+m.name)), appState.results.mascot)}
+
+        <div style="margin-top:8px"><b>School Issues — Quick Tally</b></div>
+        ${barChart(["Yes","No","Not Sure"], appState.results.iceCream)}
+        ${barChart(["Yes","No","Not Sure"], appState.results.fruitsVeg)}
+        ${barChart(["Yes","No","Not Sure"], appState.results.recess)}
+        ${barChart(["Yes","No","Not Sure"], appState.results.nap)}
+
+        <div style="margin-top:12px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+          <button onclick="downloadCSV()">Export CSV</button>
+          <button class="nav-btn ghost" onclick="openTeacherNote()">Print Teacher Note</button>
+          <button onclick="goTo(10)" class="nav-btn ghost">Reflect</button>
+          <button onclick="restart()" class="nav-btn">Vote Again</button>
+        </div>
+      </div></div>`;
+      break;
+
+    case 11: // reflect
+      html = `
+      <div class="center"><div class="card">
+        <div class="owl">🦉</div>
+        <div class="title">Reflect</div>
+        <div class="small">What was the hardest question? Why? <br><i>Your reflection is private to this session.</i></div>
+        <textarea id="reflectBox" placeholder="Type your thoughts here..."></textarea>
+        <div style="display:flex; gap:8px; justify-content:center; margin-top:8px;">
+          <button onclick="restart()">Done — Vote Again</button>
+          <button class="nav-btn ghost" onclick="goTo(10)">Back to Results</button>
+        </div>
+      </div></div>`;
+      break;
+  }
+
+  document.getElementById('app').innerHTML = html;
+}
+
+/* ====== small utilities ====== */
+function prettyVote(v){ if(v==='yes') return 'Yes 👍'; if(v==='no') return 'No 👎'; if(v==='unsure') return 'Not Sure 🤔'; return '-'; }
+function escapeHtml(str){ return String(str||'').replace(/[&<>"']/g, s=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[s])); }
+
+/* ====== selection handlers ====== */
+function submitReg(){
+  const name = $('regName').value.trim();
+  const grade = $('regGrade').value;
+  const birth = $('regBirth').value;
+  if(!name || !grade || !birth){ alert('Please fill in all fields.'); return; }
+  appState.reg = { name, grade, birth };
+  saveState(); goTo(3);
+}
+function selectPresident(i){ appState.votes.president = i; saveState(); render(); }
+function selectFieldTrip(i){ appState.votes.fieldTrip = i; saveState(); render(); }
+function selectMascot(i){ appState.votes.mascot = i; saveState(); render(); }
+function updateIssue(key){ appState.votes[key] = $(key).value; saveState(); render(); }
+function voteClass(cls){ appState.votes.favClass = cls; saveState(); render(); }
+function saveAddOne(){ appState.votes.addOne = $('addOne') ? $('addOne').value.trim() : appState.votes.addOne; saveState(); goTo(9); }
+function submitBallot(){ goTo(10); }
+
+/* ====== results tally (session-local) ====== */
+function tallyResults(){
+  // only tally once per session by checking a flag; simple approach: reset earlier tallies before counting
+  // clear previous tally arrays
+  appState.results.president = [0,0,0];
+  appState.results.fieldTrip = [0,0,0];
+  appState.results.mascot = [0,0,0];
+  appState.results.iceCream = [0,0,0];
+  appState.results.fruitsVeg = [0,0,0];
+  appState.results.recess = [0,0,0];
+  appState.results.nap = [0,0,0];
+  appState.results.favClass = Array(favClasses.length).fill(0);
+
+  // For demo sessions, we pretend a single ballot (the current one) counts into results.
+  // In a real classroom run, teacher would aggregate multiple students via exports/collect.
+  if(typeof appState.votes.president === 'number') appState.results.president[appState.votes.president || 0] += 1;
+  if(typeof appState.votes.fieldTrip === 'number') appState.results.fieldTrip[appState.votes.fieldTrip || 0] += 1;
+  if(typeof appState.votes.mascot === 'number') appState.results.mascot[appState.votes.mascot || 0] += 1;
+
+  const mapChoice = (v)=> ({yes:0,no:1,unsure:2}[v] ?? -1);
+  const ic = mapChoice(appState.votes.iceCream); if(ic>=0) appState.results.iceCream[ic] += 1;
+  const fv = mapChoice(appState.votes.fruitsVeg); if(fv>=0) appState.results.fruitsVeg[fv] += 1;
+  const rc = mapChoice(appState.votes.recess); if(rc>=0) appState.results.recess[rc] += 1;
+  const np = mapChoice(appState.votes.nap); if(np>=0) appState.results.nap[np] += 1;
+
+  const fi = favClasses.indexOf(appState.votes.favClass);
+  if(fi>=0) appState.results.favClass[fi] += 1;
+
+  saveState();
+}
+
+/* small svg-like bar chart builder */
+function barChart(labels, data){
+  const total = data.reduce((a,b)=>a+b,0) || 1;
+  return labels.map((lbl,i)=>`<div class="chart-bar" style="width:${Math.max(80, 80 + Math.round(220*(data[i]/total)))}px">${escapeHtml(lbl)}: ${data[i]}</div>`).join('');
+}
+
+/* ====== CSV export for teacher ----- */
+function downloadCSV(){
+  // Construct simple CSV of results + current voter card
+  const rows = [];
+  rows.push(['class','value']);
+  rows.push(['Student Name', appState.reg.name || '']);
+  rows.push(['Grade', appState.reg.grade || '']);
+  rows.push(['Birthdate', appState.reg.birth || '']);
+  rows.push([]);
+  rows.push(['Category','Option','Count']);
+
+  // president
+  councilCandidates.forEach((c,i)=> rows.push(['Student Council', `${c.emoji} ${c.name}`, appState.results.president[i] || 0]));
+  rows.push([]);
+  fieldTripChoices.forEach((f,i)=> rows.push(['Field Trip', `${f.emoji} ${f.name}`, appState.results.fieldTrip[i] || 0]));
+  rows.push([]);
+  mascots.forEach((m,i)=> rows.push(['Mascot', `${m.emoji} ${m.name}`, appState.results.mascot[i] || 0]));
+  rows.push([]);
+  rows.push(['Issue: Ice Cream (Yes/No/Not Sure)', 'Yes', appState.results.iceCream[0] || 0]);
+  rows.push(['','No', appState.results.iceCream[1] || 0]);
+  rows.push(['','Not Sure', appState.results.iceCream[2] || 0]);
+  rows.push([]);
+  rows.push(['Favorite Classes']);
+  favClasses.forEach((cls,i)=> rows.push(['Favorite Class', cls, appState.results.favClass[i] || 0]));
+
+  const csv = rows.map(r => r.map(c => `"${String(c||'').replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url;
+  a.download = `voti_classroom_snapshot_${new Date().toISOString().slice(0,10)}.csv`;
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+}
+
+/* ====== civics quiz modal handlers ====== */
+function openQuiz(){
+  const modal = $('quizModal'); modal.style.display='flex';
+  const content = document.getElementById('quizContent');
+  content.innerHTML = civicsQuiz.map((q,idx)=>`
+    <div style="margin-bottom:10px;">
+      <div style="font-weight:700">${idx+1}. ${escapeHtml(q.q)}</div>
+      ${q.choices.map((c,i)=>`<label style="display:block; margin-top:4px;"><input type="radio" name="quiz${idx}" value="${i}"> ${escapeHtml(c)}</label>`).join('')}
+    </div>
+  `).join('') + `<div class="tiny">This short quiz is optional — it's designed to spark conversation before voting.</div>`;
+}
+function closeQuiz(){ $('quizModal').style.display='none'; }
+function submitQuiz(){
+  let score=0;
+  for(let i=0;i<civicsQuiz.length;i++){
+    const sel = document.querySelector(`input[name="quiz${i}"]:checked`);
+    if(sel && Number(sel.value) === civicsQuiz[i].a) score++;
+  }
+  alert(`You scored ${score} / ${civicsQuiz.length}. Great job — talk about any question you missed!`);
+  closeQuiz();
+}
+
+/* candidate info modal (simple alert for now) */
+function openCandidateInfo(){
+  const lines = councilCandidates.map(c=>`${c.emoji} ${c.name}\n${c.platform}`).join('\n\n');
+  alert(lines);
+}
+
+/* teacher printable note */
+function openTeacherNote(){
+  const note = `
+Voti the Owl — Teacher Note & Lesson Plan
+
+Session: Mock Voting (Middle School)
+Steps:
+1. Students register in the app (local session).
+2. Take the optional Civics Quiz (5–10 minutes).
+3. Review candidates and platforms.
+4. Vote for Student Council, Field Trip, Mascot, and answer school issues.
+5. Export CSV: Use the 'Export CSV' button to download classroom results.
+6. Discuss: Which issues matter most? What compromises might be needed?
+
+Discussion prompts:
+- Why does voting matter?
+- How do candidates show they care about issues?
+- How would you persuade classmates to support your idea?
+
+Reflection:
+Ask students to write one paragraph about what they learned.
+
+— Voti the Owl (Teacher guide generated by the app)
+  `;
+  const w = window.open('','printWindow','width=800,height=600');
+  w.document.write(`<pre style="font-family:inherit; font-size:14px; padding:20px;">${escapeHtml(note)}</pre>`);
+  w.document.close();
+  w.focus();
+  setTimeout(()=>w.print(),350);
+}
+
+/* quiz/candidate/teacher utilities done */
+
+/* extra helpers for flow */
+function voteClass(cls){ appState.votes.favClass = cls; saveState(); render(); }
+function saveState(){ sessionStorage.setItem('msVoteApp', JSON.stringify(appState)); }
+function loadState(){ const s = sessionStorage.getItem('msVoteApp'); if(s) appState = JSON.parse(s); }
+function restart(){ // clear votes but keep registration so teacher can re-run easily
+  appState.votes = { president: null, fieldTrip: null, mascot: null, iceCream: "", fruitsVeg: "", recess: "", nap: "", favClass: "", addOne: "" };
+  saveState(); goTo(0);
+}
+
+/* small wrapper to ensure we only tally once per final submit in this demo */
+let _submitted=false;
+function submitBallot(){ if(!_submitted){ _submitted=true; /* keep current ballot in results */ } goTo(10); }
+
+/* SUPPORT: mapping & saving */
+function selectPresident(i){ appState.votes.president = i; saveState(); render(); }
+function selectFieldTrip(i){ appState.votes.fieldTrip = i; saveState(); render(); }
+function selectMascot(i){ appState.votes.mascot = i; saveState(); render(); }
+function updateIssue(k){ appState.votes[k] = $(k).value; saveState(); render(); }
+function saveAddOne(){ const el = document.getElementById('addOne'); if(el) appState.votes.addOne = el.value.trim(); saveState(); goTo(9); }
+function voteClass(cls){ appState.votes.favClass = cls; saveState(); render(); }
+
+/* init */
+window.onload = function(){ loadState(); render(); };
+</script>
+</body>
+</html>
