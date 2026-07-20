@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Florida Connect – Citizen & Visitor Hub</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#033052; --card:#ffffff; --ink:#17213b; --accent:#47b7ac; --gold:#e8b34a;
+      --soft:#eaf2f8; --radius:14px; --shadow:0 7px 24px rgba(60,90,150,0.08);
+    }
+    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Montserrat',sans-serif}
+    .container{max-width:900px;margin:38px auto 44px;padding:20px;border-radius:var(--radius);box-shadow:var(--shadow);background:var(--soft)}
+    header{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:22px}
+    .titleblock{display:flex;flex-direction:column}
+    h1{font-family:'Cinzel',serif;font-size:2.1rem;color:var(--accent);margin:0 0 4px}
+    .tagline{font-size:1.05rem;opacity:.7}
+    .cta-row{display:flex;gap:8px;flex-wrap:wrap}
+    .pill{background:#ffffffd9;border:1px solid #dfe7ef;border-radius:999px;padding:8px 12px;font-size:.95rem;box-shadow:0 2px 8px #0000000d}
+    .pill a{color:var(--ink);text-decoration:none}
+    .pill a:hover{text-decoration:underline}
+    .topbtn{background:var(--accent);color:#fff;border:none;border-radius:9px;padding:9px 14px;cursor:pointer;box-shadow:0 3px 10px #2aa89a33}
+    .topbtn:hover{filter:brightness(1.05)}
+    .searchbar{margin:12px 0 18px;display:flex;gap:10px;max-width:520px}
+    .searchbar input{flex:1;padding:10px;border-radius:8px;border:1px solid #b5c0cf}
+    .searchbar button{padding:10px 14px;border-radius:8px;border:none;background:var(--accent);color:#fff;cursor:pointer}
+    .nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0 26px}
+    .nav button{background:var(--card);color:var(--ink);border:none;border-radius:8px;padding:9px 16px;font-size:1rem;cursor:pointer;transition:.13s;box-shadow:0 2px 8px #e8b34a22}
+    .nav button.active,.nav button:hover{background:var(--accent);color:#fff}
+    .section{display:none;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 16px;margin-bottom:24px}
+    .section.active{display:block;animation:fadein .4s}
+    @keyframes fadein{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+    h2{color:var(--gold);margin:0 0 14px;font-size:1.2rem}
+    .card{border:1.5px solid var(--accent);border-radius:10px;background:var(--soft);box-shadow:0 2px 6px #4ad5b922;margin-bottom:18px;padding:16px}
+    .resource-list{list-style:none;padding:0;margin:0}
+    .resource-list li{margin-bottom:12px}
+    .resource-list a{color:#0d5192;text-decoration:none}
+    .resource-list a:hover{text-decoration:underline}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .feedback-box textarea{width:100%;min-height:54px;padding:7px;border-radius:7px;border:1px solid #aaa;background:#fff}
+    .feedback-box button{margin-top:7px;background:var(--gold);color:#fff;border:none;border-radius:6px;padding:7px 16px;cursor:pointer}
+    .footnote{text-align:center;color:#888;margin-top:18px;font-size:.97rem}
+    @media (max-width:700px){ .grid{grid-template-columns:1fr} header{flex-direction:column;align-items:flex-start} }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="titleblock">
+      <h1>Florida Connect</h1>
+      <div class="tagline">All of Florida at Your Fingertips — For Citizens & Visitors</div>
+      <div class="cta-row">
+        <span class="pill"><a href="https://www.JenniferPearlFlorida2026.com" target="_blank" rel="noopener noreferrer">🌐 JenniferPearlFlorida2026.com</a></span>
+        
+      </div>
+    </div>
+    <button class="topbtn" id="copyShare">Share This Hub</button>
+  </header>
+
+  <div class="searchbar">
+    <input type="text" id="searchInput" placeholder="Search parks, events, services, or city names..." autocomplete="off">
+    <button onclick="search()">🔎 Search</button>
+  </div>
+
+  <nav class="nav">
+    <button class="active" onclick="showSection(0)">🏛️ Government</button>
+    <button onclick="showSection(1)">🏞️ Parks & Nature</button>
+    <button onclick="showSection(2)">🌆 City Life</button>
+    <button onclick="showSection(3)">🌊 Tourist Portal</button>
+    <button onclick="showSection(4)">⚡ Emergencies</button>
+    <button onclick="showSection(5)">📝 Civic Feedback</button>
+  </nav>
+
+  <!-- GOV -->
+  <section class="section active">
+    <h2>Florida Government Directory & Voter Tools</h2>
+    <div class="card">
+      <strong>Quick Links:</strong>
+      <ul class="resource-list">
+        <li>🗳️ <b>Voter Registration:</b> <a href="https://registertovoteflorida.gov/" target="_blank" rel="noopener noreferrer">registertovoteflorida.gov</a></li>
+        <li>👩‍💻 <b>State Agencies:</b> <a href="https://www.myflorida.com/" target="_blank" rel="noopener noreferrer">myflorida.com</a></li>
+        <li>📜 <b>Bill Tracker:</b> <a href="https://www.flsenate.gov/Session/Bills/2026" target="_blank" rel="noopener noreferrer">Senate Bills (2026)</a></li>
+        
+        <li>🌐 <b>Campaign Site:</b> <a href="https://www.JenniferPearlFlorida2026.com" target="_blank" rel="noopener noreferrer">JenniferPearlFlorida2026.com</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <strong>Capital — Tallahassee</strong>
+      <ul class="resource-list">
+        <li>🏛️ <b>City of Tallahassee:</b> <a href="https://www.talgov.com" target="_blank" rel="noopener noreferrer">talgov.com</a></li>
+        <li>🧭 <b>Visit Tallahassee:</b> <a href="https://visittallahassee.com" target="_blank" rel="noopener noreferrer">visittallahassee.com</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <strong>Major City Directories</strong>
+      <div class="grid">
+        <ul class="resource-list">
+          <li>🌴 <b>Miami (city):</b> <a href="https://www.miamigov.com" target="_blank" rel="noopener noreferrer">miamigov.com</a></li>
+          <li>🟣 <b>Orlando:</b> <a href="https://www.orlando.gov" target="_blank" rel="noopener noreferrer">orlando.gov</a></li>
+          <li>🌊 <b>Tampa:</b> <a href="https://www.tampa.gov" target="_blank" rel="noopener noreferrer">tampa.gov</a></li>
+          <li>⛲ <b>Jacksonville:</b> <a href="https://www.coj.net" target="_blank" rel="noopener noreferrer">coj.net</a></li>
+          <li>☀️ <b>St. Petersburg:</b> <a href="https://www.stpete.org" target="_blank" rel="noopener noreferrer">stpete.org</a></li>
+        </ul>
+        <ul class="resource-list">
+          <li>🌴 <b>Fort Lauderdale:</b> <a href="https://www.fortlauderdale.gov" target="_blank" rel="noopener noreferrer">fortlauderdale.gov</a></li>
+          <li>🎓 <b>Gainesville:</b> <a href="https://www.gainesvillefl.gov" target="_blank" rel="noopener noreferrer">gainesvillefl.gov</a></li>
+          <li>🌺 <b>Sarasota:</b> <a href="https://www.sarasotafl.gov" target="_blank" rel="noopener noreferrer">sarasotafl.gov</a></li>
+          <li>⚓ <b>Pensacola:</b> <a href="https://www.cityofpensacola.com" target="_blank" rel="noopener noreferrer">cityofpensacola.com</a></li>
+          <li>🗺️ <b>Visit Florida (state tourism):</b> <a href="https://www.visitflorida.com" target="_blank" rel="noopener noreferrer">visitflorida.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARKS -->
+  <section class="section">
+    <h2>Explore Parks & Nature</h2>
+    <div class="card">
+      <ul class="resource-list">
+        <li>🌴 <b>Florida State Parks:</b> <a href="https://www.floridastateparks.org/" target="_blank" rel="noopener noreferrer">floridastateparks.org</a></li>
+        <li>🐬 <b>Springs & Wildlife:</b> <a href="https://www.floridasprings.org/" target="_blank" rel="noopener noreferrer">floridasprings.org</a></li>
+        <li>🚴 <b>Pinellas Trail:</b> <a href="https://www.pinellascounty.org/trailgd/" target="_blank" rel="noopener noreferrer">Pinellas Trail Guide</a></li>
+        <li>🌊 <b>Beaches & Tides:</b> <a href="https://www.tideschart.com/United-States/Florida/" target="_blank" rel="noopener noreferrer">Tide Charts</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CITY LIFE -->
+  <section class="section">
+    <h2>City Life & Community Events</h2>
+    <div class="card">
+      <ul class="resource-list">
+        <li>🎭 <b>Events Calendar:</b> <a href="https://www.visitflorida.com/events/" target="_blank" rel="noopener noreferrer">visitflorida.com/events</a></li>
+        <li>🎨 <b>Art & Culture:</b> <a href="https://creativepinellas.org/" target="_blank" rel="noopener noreferrer">Creative Pinellas</a></li>
+        <li>🌽 <b>Farmers Markets:</b> <a href="https://www.floridafarmersmarket.com/" target="_blank" rel="noopener noreferrer">floridafarmersmarket.com</a></li>
+        <li>🏐 <b>Recreation Finder:</b> <a href="https://www.floridarecreationfinder.com/" target="_blank" rel="noopener noreferrer">Recreation Finder</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TOURIST -->
+  <section class="section">
+    <h2>Tourist & Traveler Portal</h2>
+    <div class="card">
+      <ul class="resource-list">
+        <li>🏝️ <b>Top Attractions:</b> <a href="https://www.tripadvisor.com/Attractions-g28930-Activities-Florida.html" target="_blank" rel="noopener noreferrer">TripAdvisor Florida</a></li>
+        <li>🏰 <b>Theme Parks:</b> <a href="https://www.disneyworld.com/" target="_blank" rel="noopener noreferrer">Disney World</a> · <a href="https://www.universalorlando.com/" target="_blank" rel="noopener noreferrer">Universal Orlando</a></li>
+        <li>🛳️ <b>Ferry & Cruise Info:</b> <a href="https://www.portcanaveral.com/Cruise" target="_blank" rel="noopener noreferrer">Port Canaveral Cruises</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- EMERGENCIES -->
+  <section class="section">
+    <h2>Alerts & Emergencies</h2>
+    <div class="card">
+      <ul class="resource-list">
+        <li>🌪️ <b>Weather Alerts:</b> <a href="https://www.weather.gov/" target="_blank" rel="noopener noreferrer">National Weather Service</a></li>
+        <li>🚨 <b>FL Disaster Resources:</b> <a href="https://www.floridadisaster.org/" target="_blank" rel="noopener noreferrer">FloridaDisaster.org</a></li>
+        <li>☎️ <b>Emergency Hotlines:</b> <a href="tel:911">Call 911</a> | <a href="tel:211">211 Community Helpline</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section class="section">
+    <h2>Civic Feedback & Ideas</h2>
+    <div class="card feedback-box">
+      <p><b>What can we do to serve you better?</b><br>Submit ideas, concerns, or resources to share with your community:</p>
+      <textarea id="feedbackTxt" placeholder="Your feedback, ideas, or resources..."></textarea>
+      <button onclick="saveFeedback()">Save Feedback (Private · This Device)</button>
+      <div id="feedbackStatus"></div>
+      <hr>
+      <b>Recent Feedback (Private — Only on This Device):</b>
+      <ul id="feedbackList"></ul>
+    </div>
+  </section>
+
+  <div class="footnote">© 2026 Florida Connect — Sovereign, Sandboxed, Offline | Built with 💛 for Floridians.</div>
+</div>
+
+<script>
+  const sections = document.querySelectorAll('.section');
+  const navBtns = document.querySelectorAll('.nav button');
+
+  function showSection(idx){
+    sections.forEach((s,i)=>s.classList.toggle('active',i===idx));
+    navBtns.forEach((b,i)=>b.classList.toggle('active',i===idx));
+    localStorage.setItem('flconnect_tab', idx);
+  }
+  window.showSection = showSection;
+
+  // Restore last tab
+  (function(){
+    const last = Number(localStorage.getItem('flconnect_tab'));
+    if(!Number.isNaN(last) && sections[last]) showSection(last);
+  })();
+
+  // --- Search: quick intent router (names/keywords → section) ---
+  function search(){
+    const v = document.getElementById('searchInput').value.toLowerCase().trim();
+    if(!v){ showSection(0); return; }
+    const routes = [
+      {kw:['gov','vote','bill','rep','tallahassee','leon'], sec:0},
+      {kw:['park','nature','beach','springs','trail','tide'], sec:1},
+      {kw:['event','city','art','market','culture'], sec:2},
+      {kw:['tour','attract','theme','disney','universal','cruise'], sec:3},
+      {kw:['emerg','weather','disaster','hurricane'], sec:4},
+      // city names map anywhere → Government (directories) or City Life
+      {kw:['miami','orlando','tampa','jacksonville','st. petersburg','st petersburg','fort lauderdale','gainesville','sarasota','pensacola'], sec:0}
+    ];
+    for(const r of routes){
+      if(r.kw.some(k=>v.includes(k))){ showSection(r.sec); return; }
+    }
+    alert("No matches found — try ‘park’, ‘event’, ‘vote’, or a city name (e.g., ‘Tallahassee’, ‘Miami’).");
+  }
+  window.search = search;
+
+  // --- Share button copies campaign site URL ---
+  document.getElementById('copyShare').addEventListener('click', async ()=>{
+    const url = 'https://www.JenniferPearlFlorida2026.com';
+    try { await navigator.clipboard.writeText(url); alert('Link copied: ' + url); }
+    catch { prompt('Copy this link:', url); }
+  });
+
+  // --- Civic Feedback (local-only) ---
+  function loadFeedback(){ try{ return JSON.parse(localStorage.getItem('flconnect_feedback')||'[]'); }catch{ return []; } }
+  function renderFeedback(){
+    const arr = loadFeedback();
+    const ul = document.getElementById('feedbackList');
+    ul.innerHTML = arr.length ? arr.map(f=>`<li>${f.t} <span style="font-size:.95em;color:#9aa">(${f.d})</span></li>`).join('') : "<li>No feedback yet.</li>";
+  }
+  function saveFeedback(){
+    const txt = document.getElementById('feedbackTxt').value.trim();
+    if(!txt){ document.getElementById('feedbackStatus').textContent="Please enter feedback."; return; }
+    const arr = loadFeedback();
+    arr.unshift({t:txt,d:new Date().toLocaleString()});
+    if(arr.length>10) arr.length=10;
+    localStorage.setItem('flconnect_feedback', JSON.stringify(arr));
+    document.getElementById('feedbackTxt').value="";
+    document.getElementById('feedbackStatus').textContent="Thank you! Saved on your device.";
+    renderFeedback();
+  }
+  window.saveFeedback = saveFeedback;
+  renderFeedback();
+</script>
+</body>
+</html>
