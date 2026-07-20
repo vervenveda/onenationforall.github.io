@@ -1,4 +1,9 @@
-Welcome to the
+Here’s a USA Voter Ready Hub that helps friends and family in any state or territory
+jump straight to official election resources,
+registration, election office contacts, and trusted nonpartisan directories.
+
+It’s fast, clean, and designed as a link-only public service tool.
+
 Kids Voting Portal!
 
 Here, you’ll get to experience what it’s like to vote and make your voice heard, just like in real elections.
