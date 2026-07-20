@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Florida Voter Ready Hub — Jennifer K. Pearl</title>
+  <meta name="description" content="A fast, official-resource hub to help Floridians check status, find polling place, and get election info." />
+  <style>
+    :root{
+      --bg:#f6f8fc;
+      --card:#ffffff;
+      --ink:#0b1b2b;
+      --mut:#4b5b70;
+      --line:#e6ecf5;
+      --brand:#0b63ce;
+      --brand2:#0a3f7a;
+      --good:#0e7a4b;
+      --shadow:0 10px 28px rgba(11,27,43,.10);
+      --r-lg:22px;
+      --r-md:14px;
+      --r-sm:10px;
+      --pad:18px;
+      --max:980px;
+      --font: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 800px at 15% 10%, rgba(11,99,206,.12), transparent 60%),
+        radial-gradient(900px 600px at 85% 20%, rgba(14,122,75,.10), transparent 60%),
+        var(--bg);
+    }
+
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px 14px 44px}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; padding:10px 0 18px;
+    }
+    .brand{
+      display:flex; flex-direction:column; gap:2px;
+      line-height:1.15;
+    }
+    .brand .name{font-weight:800; letter-spacing:.2px}
+    .brand .tag{color:var(--mut); font-size:13px}
+    .pillrow{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end}
+    .pill{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.7);
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:13px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .pill:active{transform:translateY(1px)}
+    .hero{
+      background:linear-gradient(135deg, rgba(11,99,206,.12), rgba(10,63,122,.06));
+      border:1px solid var(--line);
+      border-radius:var(--r-lg);
+      padding:20px 18px;
+      box-shadow:var(--shadow);
+    }
+    .hero h1{margin:0 0 8px; font-size:26px; letter-spacing:.2px}
+    .hero p{margin:0; color:var(--mut); font-size:15px; line-height:1.45}
+    .ctaRow{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#fff;
+      text-decoration:none;
+      font-weight:700;
+      font-size:14px;
+      min-height:44px;
+      box-shadow:0 6px 16px rgba(11,27,43,.08);
+    }
+    .btn.primary{
+      background:linear-gradient(180deg, var(--brand), var(--brand2));
+      border-color:rgba(255,255,255,.18);
+      color:#fff;
+    }
+    .btn.good{
+      background:linear-gradient(180deg, rgba(14,122,75,.95), rgba(14,122,75,.78));
+      border-color:rgba(255,255,255,.18);
+      color:#fff;
+    }
+    .btn.soft{
+      background:rgba(255,255,255,.7);
+    }
+    .btn:active{transform:translateY(1px)}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12, 1fr);
+      gap:12px;
+      margin-top:14px;
+    }
+    .card{
+      grid-column:span 12;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--r-lg);
+      padding:var(--pad);
+      box-shadow:var(--shadow);
+    }
+    .card h2{margin:0 0 10px; font-size:18px}
+    .card p{margin:0; color:var(--mut); line-height:1.5}
+
+    .links{
+      display:grid;
+      grid-template-columns:repeat(12, 1fr);
+      gap:10px;
+      margin-top:12px;
+    }
+    .linkCard{
+      grid-column:span 12;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+      background:linear-gradient(180deg, rgba(246,248,252,.9), #fff);
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .linkCard .title{
+      font-weight:800; letter-spacing:.2px;
+      display:flex; align-items:center; gap:10px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background:rgba(11,99,206,.85);
+      box-shadow:0 0 0 4px rgba(11,99,206,.12);
+      flex:0 0 auto;
+    }
+    .linkCard .desc{color:var(--mut); font-size:14px; line-height:1.35}
+    .linkCard .actions{display:flex; gap:10px; flex-wrap:wrap}
+    .mini{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#fff;
+      text-decoration:none;
+      font-weight:800;
+      font-size:13px;
+      min-height:40px;
+    }
+    .mini.primary{background:rgba(11,99,206,.10); border-color:rgba(11,99,206,.22)}
+    .mini.good{background:rgba(14,122,75,.10); border-color:rgba(14,122,75,.22)}
+
+    details{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+      background:#fff;
+    }
+    details + details{margin-top:10px}
+    summary{
+      cursor:pointer;
+      font-weight:900;
+      list-style:none;
+    }
+    summary::-webkit-details-marker{display:none}
+    .faqBody{margin-top:10px; color:var(--mut); line-height:1.45; font-size:14px}
+
+    .footer{
+      margin-top:14px;
+      color:var(--mut);
+      font-size:12px;
+      line-height:1.5;
+      text-align:center;
+    }
+    .divider{height:1px; background:var(--line); margin:14px 0}
+
+    @media (min-width: 780px){
+      .hero h1{font-size:32px}
+      .linkCard{grid-column:span 6}
+      .card.splitA{grid-column:span 7}
+      .card.splitB{grid-column:span 5}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand" aria-label="Campaign header">
+        <div class="name" id="campaignName">Jennifer K. Pearl</div>
+        <div class="tag" id="campaignTag">Florida • 2026 • One Nation For All</div>
+      </div>
+      <div class="pillrow">
+        <div class="pill" id="langToggle" role="button" tabindex="0" aria-label="Toggle language">EN / ES</div>
+        <div class="pill" id="copyShare" role="button" tabindex="0" aria-label="Copy share text">Copy Share Text</div>
+        <div class="pill" id="printBtn" role="button" tabindex="0" aria-label="Print this page">Print</div>
+      </div>
+    </div>
+
+    <section class="hero" aria-label="Voter Ready Hub hero">
+      <h1 id="hTitle">Florida Voter Ready Hub</h1>
+      <p id="hSub">
+        A fast, clean hub that routes you to the official Florida elections tools for your exact status, polling place, and election information.
+      </p>
+
+      <div class="ctaRow" role="group" aria-label="Primary actions">
+        <a class="btn primary" id="btnCheck" target="_blank" rel="noopener">Check Voter Status</a>
+        <a class="btn soft" id="btnRegister" target="_blank" rel="noopener">Register / Update</a>
+        <a class="btn soft" id="btnPrecinct" target="_blank" rel="noopener">Find Polling Place</a>
+        <a class="btn good" id="btnPetition" target="_blank" rel="noopener">Help Put Jennifer on the Ballot</a>
+      </div>
+    </section>
+
+    <div class="grid" aria-label="Content grid">
+      <section class="card splitA" aria-label="Official resources">
+        <h2 id="secOfficialTitle">Official Florida Voter Tools</h2>
+        <p id="secOfficialDesc">
+          These links point to the Florida Department of State (Division of Elections) and official county Supervisor of Elections pages.
+        </p>
+
+        <div class="links" aria-label="Official links">
+          <div class="linkCard">
+            <div class="title"><span class="dot"></span><span id="lc1t">Voter Information Lookup</span></div>
+            <div class="desc" id="lc1d">Check registration status, party affiliation (if applicable), and voter record details.</div>
+            <div class="actions">
+              <a class="mini primary" id="lkStatus" target="_blank" rel="noopener">Open Lookup</a>
+            </div>
+          </div>
+
+          <div class="linkCard">
+            <div class="title"><span class="dot"></span><span id="lc2t">Register / Update</span></div>
+            <div class="desc" id="lc2d">Use Florida’s official online system to register or update your voter information.</div>
+            <div class="actions">
+              <a class="mini primary" id="lkRegister" target="_blank" rel="noopener">Open Registration</a>
+            </div>
+          </div>
+
+          <div class="linkCard">
+            <div class="title"><span class="dot"></span><span id="lc3t">Find Your Precinct & Polling Place</span></div>
+            <div class="desc" id="lc3d">Use the official precinct lookup (county links) to find where you vote on Election Day.</div>
+            <div class="actions">
+              <a class="mini primary" id="lkPrecinct" target="_blank" rel="noopener">Open Precinct Finder</a>
+            </div>
+          </div>
+
+          <div class="linkCard">
+            <div class="title"><span class="dot"></span><span id="lc4t">Vote-by-Mail Info & Status</span></div>
+            <div class="desc" id="lc4d">Learn about vote-by-mail and use county links to request/track your ballot status.</div>
+            <div class="actions">
+              <a class="mini primary" id="lkVBMInfo" target="_blank" rel="noopener">Vote-by-Mail Info</a>
+              <a class="mini" id="lkVBMStatus" target="_blank" rel="noopener">Request / Track (County)</a>
+            </div>
+          </div>
+
+          <div class="linkCard">
+            <div class="title"><span class="dot"></span><span id="lc5t">Early Voting & Secure Ballot Intake Stations</span></div>
+            <div class="desc" id="lc5d">Find early voting guidance and secure ballot intake information (county-specific locations are posted later).</div>
+            <div class="actions">
+              <a class="mini primary" id="lkEarly" target="_blank" rel="noopener">Open Early Voting</a>
+            </div>
+          </div>
+
+          <div class="linkCard">
+            <div class="title"><span class="dot"></span><span id="lc6t">Election Dates Calendar</span></div>
+            <div class="desc" id="lc6d">Use the state calendar for statewide election timelines (and always confirm local/municipal dates).</div>
+            <div class="actions">
+              <a class="mini primary" id="lkDates" target="_blank" rel="noopener">Open Dates</a>
+            </div>
+          </div>
+
+          <div class="linkCard">
+            <div class="title"><span class="dot"></span><span id="lc7t">Find Your County Supervisor of Elections</span></div>
+            <div class="desc" id="lc7d">Your county office is the source of truth for locations, hours, and local election details.</div>
+            <div class="actions">
+              <a class="mini primary" id="lkSOE" target="_blank" rel="noopener">Find My County</a>
+            </div>
+          </div>
+
+          <div class="linkCard">
+            <div class="title"><span class="dot"></span><span id="lc8t">Military & Overseas Voting (FVAP)</span></div>
+            <div class="desc" id="lc8d">If you’re military or overseas, use FVAP for absentee voting guidance.</div>
+            <div class="actions">
+              <a class="mini primary" id="lkFVAP" target="_blank" rel="noopener">Open FVAP</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="secShareTitle">Share This Hub</h2>
+        <p id="secShareDesc">Copy a ready-to-post message and share this resource with friends & family.</p>
+        <div class="ctaRow">
+          <a class="btn soft" id="shareX" target="_blank" rel="noopener">Share on X</a>
+          <a class="btn soft" id="shareFB" target="_blank" rel="noopener">Share on Facebook</a>
+          <a class="btn soft" id="shareEmail" target="_blank" rel="noopener">Share via Email</a>
+        </div>
+      </section>
+
+      <aside class="card splitB" aria-label="Campaign box">
+        <h2 id="secCampaignTitle">Campaign Actions</h2>
+        <p id="secCampaignDesc">
+          If you like a campaign that leads with practical help for voters, join us.
+        </p>
+
+        <div class="ctaRow" style="margin-top:12px">
+          <a class="btn good" id="btnVolunteer" target="_blank" rel="noopener">Volunteer</a>
+          <a class="btn primary" id="btnDonate" target="_blank" rel="noopener">Donate</a>
+          <a class="btn soft" id="btnHome" target="_blank" rel="noopener">Campaign Home</a>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 id="secFAQTitle">Quick FAQ</h2>
+
+        <details>
+          <summary id="faq1q">Where do I check my registration and status?</summary>
+          <div class="faqBody" id="faq1a">
+            Use the official Florida voter information lookup page (button above).
+          </div>
+        </details>
+
+        <details>
+          <summary id="faq2q">Where do I find my polling place?</summary>
+          <div class="faqBody" id="faq2a">
+            Use the official precinct lookup (county links) to find your Election Day location.
+          </div>
+        </details>
+
+        <details>
+          <summary id="faq3q">Where do I get vote-by-mail and early voting info?</summary>
+          <div class="faqBody" id="faq3a">
+            Vote-by-mail and early voting locations/timelines are posted on official state + county pages. Use the links above.
+          </div>
+        </details>
+
+        <details>
+          <summary id="faq4q">Where do I find official deadlines?</summary>
+          <div class="faqBody" id="faq4a">
+            Use the state election dates calendar and your county Supervisor of Elections site for local specifics.
+          </div>
+        </details>
+
+        <div class="divider"></div>
+
+        <p class="footer" id="finePrint">
+          Public-service hub linking to official elections resources. Always confirm details with your County Supervisor of Elections.
+          <br />Last updated: <span id="lastUpdated"></span>
+        </p>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    // =========================
+    // CONFIG — update these!
+    // =========================
+    const CONFIG = {
+      campaignName: "Jennifer K. Pearl",
+      campaignTag: "Florida • 2026 • One Nation For All",
+      campaignHome: "https://www.JenniferPearlFlorida2026.com",
+      volunteerUrl: "https://www.JenniferPearlFlorida2026.com/volunteer",   // replace with your volunteer form
+      donateUrl: "https://www.JenniferPearlFlorida2026.com/donate",       // replace with your donation page
+      petitionUrl: "https://docs.google.com/document/d/e/2PACX-1vQ3wjoBJWS1JuFh6UZbxQG_MAgugFvXEnfT_pRMIIPsuS-7f0RF6EuBBNhPCgJi9Vff-QRdq2ujPRsu/pub",     // replace with your DS-DE 104 petition download page/PDF
+      hubPublicUrl: "https://www.vervenveda.com/voters",    // replace with the URL where THIS hub will live
+      contactEmail: "JenniferPearlFlorida2026@proton.me",
+
+      // Official links (Florida Department of State / Division of Elections)
+      official: {
+        voterLookup: "https://registration.dos.fl.gov/",
+        voterInfoGuide: "https://dos.fl.gov/elections/for-voters/check-your-voter-status-and-polling-place/",
+        precinctLookup: "https://dos.fl.gov/elections/for-voters/check-your-voter-status-and-polling-place/voter-precinct-lookup/",
+        registerOnline: "https://registertovoteflorida.gov/",
+        voteByMailInfo: "https://dos.fl.gov/elections/for-voters/voting/vote-by-mail/",
+        vbmStatusCountyLinks: "https://dos.fl.gov/elections/for-voters/check-your-voter-status-and-polling-place/vote-by-mail-ballot-information-and-status-lookup/",
+        earlyVoting: "https://dos.fl.gov/elections/for-voters/voting/early-voting-and-secure-ballot-intake-stations/",
+        electionDates: "https://dos.fl.gov/elections/for-voters/election-dates/",
+        supervisors: "https://dos.elections.myflorida.com/supervisors/",
+        fvapFlorida: "https://www.fvap.gov/florida"
+      }
+    };
+
+    // =========================
+    // I18N
+    // =========================
+    const STR = {
+      en: {
+        hTitle: "Florida Voter Ready Hub",
+        hSub: "A fast, clean hub that routes you to the official Florida elections tools for your exact status, polling place, and election information.",
+        btnCheck: "Check Voter Status",
+        btnRegister: "Register / Update",
+        btnPrecinct: "Find Polling Place",
+        btnPetition: "Help Put Jennifer on the Ballot",
+        secOfficialTitle: "Official Florida Voter Tools",
+        secOfficialDesc: "These links point to the Florida Department of State (Division of Elections) and official county Supervisor of Elections pages.",
+        lc1t: "Voter Information Lookup",
+        lc1d: "Check registration status, party affiliation (if applicable), and voter record details.",
+        lc2t: "Register / Update",
+        lc2d: "Use Florida’s official online system to register or update your voter information.",
+        lc3t: "Find Your Precinct & Polling Place",
+        lc3d: "Use the official precinct lookup (county links) to find where you vote on Election Day.",
+        lc4t: "Vote-by-Mail Info & Status",
+        lc4d: "Learn about vote-by-mail and use county links to request/track your ballot status.",
+        lc5t: "Early Voting & Secure Ballot Intake Stations",
+        lc5d: "Find early voting guidance and secure ballot intake information (county-specific locations are posted later).",
+        lc6t: "Election Dates Calendar",
+        lc6d: "Use the state calendar for statewide election timelines (and always confirm local/municipal dates).",
+        lc7t: "Find Your County Supervisor of Elections",
+        lc7d: "Your county office is the source of truth for locations, hours, and local election details.",
+        lc8t: "Military & Overseas Voting (FVAP)",
+        lc8d: "If you’re military or overseas, use FVAP for absentee voting guidance.",
+        secShareTitle: "Share This Hub",
+        secShareDesc: "Copy a ready-to-post message and share this resource with friends & family.",
+        secCampaignTitle: "Campaign Actions",
+        secCampaignDesc: "If you like a campaign that leads with practical help for voters, join us.",
+        faqTitle: "Quick FAQ",
+        faq1q: "Where do I check my registration and status?",
+        faq1a: "Use the official Florida voter information lookup page (button above).",
+        faq2q: "Where do I find my polling place?",
+        faq2a: "Use the official precinct lookup (county links) to find your Election Day location.",
+        faq3q: "Where do I get vote-by-mail and early voting info?",
+        faq3a: "Vote-by-mail and early voting locations/timelines are posted on official state + county pages. Use the links above.",
+        faq4q: "Where do I find official deadlines?",
+        faq4a: "Use the state election dates calendar and your county Supervisor of Elections site for local specifics.",
+        finePrint: "Public-service hub linking to official elections resources. Always confirm details with your County Supervisor of Elections.",
+        shareText:
+          "Florida friends: here’s a quick “Voter Ready” hub with official links to check your registration, find your polling place, and get election info. Share it: "
+      },
+      es: {
+        hTitle: "Centro de Recursos para Votantes de Florida",
+        hSub: "Un centro rápido y claro que te dirige a las herramientas oficiales de elecciones de Florida para tu estado, lugar de votación e información electoral.",
+        btnCheck: "Ver mi estatus",
+        btnRegister: "Registrarme / Actualizar",
+        btnPrecinct: "Buscar mi lugar",
+        btnPetition: "Ayuda a poner a Jennifer en la boleta",
+        secOfficialTitle: "Herramientas Oficiales para Votantes",
+        secOfficialDesc: "Estos enlaces llevan al Departamento de Estado de Florida (División de Elecciones) y a las páginas oficiales de cada condado.",
+        lc1t: "Consulta de Información del Votante",
+        lc1d: "Verifica tu registro e información del votante.",
+        lc2t: "Registrarse / Actualizar",
+        lc2d: "Usa el sistema oficial de Florida para registrarte o actualizar tus datos.",
+        lc3t: "Encuentra tu Precinto y Lugar de Votación",
+        lc3d: "Usa la búsqueda oficial por condado para encontrar dónde votar el día de elección.",
+        lc4t: "Voto por Correo: Info y Estado",
+        lc4d: "Aprende sobre voto por correo y usa enlaces por condado para solicitar/rastrear tu boleta.",
+        lc5t: "Votación Temprana y Estaciones Seguras",
+        lc5d: "Guía de votación temprana y estaciones seguras (ubicaciones por condado se publican más tarde).",
+        lc6t: "Calendario de Fechas Electorales",
+        lc6d: "Consulta el calendario estatal y confirma fechas locales/municipales en tu condado.",
+        lc7t: "Encuentra tu Supervisor de Elecciones",
+        lc7d: "Tu oficina del condado es la fuente oficial para detalles locales.",
+        lc8t: "Militares y Votantes en el Exterior (FVAP)",
+        lc8d: "Si estás en el exterior o en servicio militar, usa FVAP para guía de voto ausente.",
+        secShareTitle: "Comparte este Centro",
+        secShareDesc: "Copia un mensaje listo para publicar y compártelo con amigos y familia.",
+        secCampaignTitle: "Acciones de Campaña",
+        secCampaignDesc: "Si quieres una campaña que ayude con recursos reales, únete.",
+        faqTitle: "Preguntas Rápidas",
+        faq1q: "¿Dónde verifico mi estatus de registro?",
+        faq1a: "Usa la página oficial de consulta del votante (botón arriba).",
+        faq2q: "¿Dónde encuentro mi lugar de votación?",
+        faq2a: "Usa la búsqueda oficial de precintos por condado.",
+        faq3q: "¿Dónde encuentro info de voto por correo y votación temprana?",
+        faq3a: "La información se publica en las páginas oficiales del estado y del condado. Usa los enlaces de arriba.",
+        faq4q: "¿Dónde veo fechas y plazos oficiales?",
+        faq4a: "Consulta el calendario estatal y confirma detalles en la página de tu condado.",
+        finePrint: "Centro de servicio público con enlaces a recursos oficiales. Confirma detalles con el Supervisor de Elecciones de tu condado.",
+        shareText:
+          "Amigos de Florida: aquí tienen un centro “Listos para Votar” con enlaces oficiales para verificar registro, encontrar lugar de votación e información electoral. Compártelo: "
+      }
+    };
+
+    // =========================
+    // DOM helpers
+    // =========================
+    const $ = (id)=>document.getElementById(id);
+    const setText = (id, v)=>{ const el=$(id); if(el) el.textContent=v; };
+    const setHref = (id, v)=>{ const el=$(id); if(el) el.href=v; };
+
+    // =========================
+    // Init links + campaign
+    // =========================
+    function init(){
+      setText("campaignName", CONFIG.campaignName);
+      setText("campaignTag", CONFIG.campaignTag);
+
+      // Top CTAs
+      setHref("btnCheck", CONFIG.official.voterLookup);
+      setHref("btnRegister", CONFIG.official.registerOnline);
+      setHref("btnPrecinct", CONFIG.official.precinctLookup);
+      setHref("btnPetition", CONFIG.petitionUrl);
+
+      // Campaign buttons
+      setHref("btnVolunteer", CONFIG.volunteerUrl);
+      setHref("btnDonate", CONFIG.donateUrl);
+      setHref("btnHome", CONFIG.campaignHome);
+
+      // Link cards
+      setHref("lkStatus", CONFIG.official.voterLookup);
+      setHref("lkRegister", CONFIG.official.registerOnline);
+      setHref("lkPrecinct", CONFIG.official.precinctLookup);
+      setHref("lkVBMInfo", CONFIG.official.voteByMailInfo);
+      setHref("lkVBMStatus", CONFIG.official.vbmStatusCountyLinks);
+      setHref("lkEarly", CONFIG.official.earlyVoting);
+      setHref("lkDates", CONFIG.official.electionDates);
+      setHref("lkSOE", CONFIG.official.supervisors);
+      setHref("lkFVAP", CONFIG.official.fvapFlorida);
+
+      // Footer timestamp
+      const d = new Date();
+      $("lastUpdated").textContent = d.toLocaleDateString(undefined, {year:"numeric", month:"long", day:"numeric"});
+
+      // Language
+      const saved = localStorage.getItem("voterHubLang") || "en";
+      applyLang(saved);
+
+      // Share links
+      buildShareLinks(saved);
+
+      // Events
+      wireEvents();
+    }
+
+    function applyLang(lang){
+      const dict = STR[lang] || STR.en;
+      const keys = Object.keys(dict);
+      for(const k of keys){
+        if(k === "shareText") continue;
+        if($(k)) $(k).textContent = dict[k];
+      }
+
+      // These IDs differ slightly
+      setText("secFAQTitle", dict.faqTitle);
+      setText("finePrint", dict.finePrint);
+
+      localStorage.setItem("voterHubLang", lang);
+      buildShareLinks(lang);
+    }
+
+    function buildShareLinks(lang){
+      const dict = STR[lang] || STR.en;
+      const url = CONFIG.hubPublicUrl;
+      const shareText = dict.shareText + url;
+
+      // X
+      setHref("shareX", "https://twitter.com/intent/tweet?text=" + encodeURIComponent(shareText));
+      // FB (uses URL)
+      setHref("shareFB", "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url));
+      // Email
+      setHref("shareEmail", "mailto:?subject=" + encodeURIComponent("Florida Voter Ready Hub") + "&body=" + encodeURIComponent(shareText));
+
+      // Copy button uses this too
+      $("copyShare").dataset.share = shareText;
+    }
+
+    function wireEvents(){
+      const toggle = ()=> {
+        const cur = localStorage.getItem("voterHubLang") || "en";
+        applyLang(cur === "en" ? "es" : "en");
+      };
+
+      $("langToggle").addEventListener("click", toggle);
+      $("langToggle").addEventListener("keydown", (e)=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); toggle(); } });
+
+      $("printBtn").addEventListener("click", ()=>window.print());
+
+      $("copyShare").addEventListener("click", async ()=>{
+        const txt = $("copyShare").dataset.share || (STR.en.shareText + CONFIG.hubPublicUrl);
+        try{
+          await navigator.clipboard.writeText(txt);
+          flashPill("copyShare", "Copied!");
+        }catch(err){
+          // Fallback
+          const ta = document.createElement("textarea");
+          ta.value = txt;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+          flashPill("copyShare", "Copied!");
+        }
+      });
+    }
+
+    function flashPill(id, msg){
+      const el = $(id);
+      const prev = el.textContent;
+      el.textContent = msg;
+      setTimeout(()=> el.textContent = prev, 900);
+    }
+
+    init();
+  </script>
+</body>
+</html>
