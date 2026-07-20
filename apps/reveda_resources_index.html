@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ReVeda Resource Library</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #0b1020;
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: #1e2534;
+    }
+    .library-wrap {
+      max-width: 950px;
+      margin: 45px auto 0;
+      padding: 30px 4vw 44px;
+    }
+    .library-title {
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: 2.1em;
+      letter-spacing: 1.2px;
+      color: #d9b878;
+      margin-bottom: 7px;
+    }
+    .library-desc {
+      color: #e9dab6;
+      font-size: 1.09em;
+      margin-bottom: 27px;
+      text-align: center;
+      max-width: 666px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .library-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 13px;
+      justify-content: center;
+      margin-bottom: 27px;
+    }
+    .filter-btn {
+      background: #fffdf6;
+      color: #7a5a28;
+      border: none;
+      border-radius: 14px;
+      padding: 7px 18px 7px 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1em;
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      box-shadow: 0 1px 6px #b8925233;
+      transition: background 0.18s, color 0.18s;
+      margin-bottom: 6px;
+    }
+    .filter-btn.active {
+      background: #d9b878;
+      color: #0b1020;
+      box-shadow: 0 3px 13px #d9b87860;
+    }
+    .library-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+      gap: 18px;
+      margin-bottom: 11px;
+    }
+    .resource-card {
+      background: #fffdf6;
+      border-radius: 18px;
+      box-shadow: 0 5px 22px #d9b87815;
+      padding: 22px 17px 19px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-left: 6px solid #d9b878;
+      min-height: 188px;
+    }
+    .resource-title {
+      font-size: 1.17em;
+      font-family: 'Cinzel', serif;
+      color: #ad7c28;
+      font-weight: bold;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+    .resource-type {
+      display: inline-block;
+      font-size: 0.91em;
+      color: #fff;
+      background: #b89252;
+      border-radius: 7px;
+      padding: 1.5px 9px 2.5px 9px;
+      margin-bottom: 7px;
+      font-weight: 500;
+      margin-right: 8px;
+    }
+    .resource-desc {
+      color: #2e251a;
+      font-size: 1.01em;
+      margin-bottom: 11px;
+    }
+    .resource-tags {
+      margin-bottom: 7px;
+    }
+    .resource-tag {
+      display: inline-block;
+      color: #85692e;
+      font-size: 0.93em;
+      background: #f0e9dc;
+      border-radius: 7px;
+      padding: 1.5px 8px 2.5px 8px;
+      margin-right: 5px;
+      margin-bottom: 4px;
+    }
+    .resource-link {
+      color: #fff;
+      background: #7a5a28;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.03em;
+      border-radius: 8px;
+      padding: 5px 13px;
+      display: inline-block;
+      transition: background 0.16s, color 0.16s;
+      margin-top: 5px;
+      letter-spacing: 0.6px;
+    }
+    .resource-link:hover {
+      background: #d9b878;
+      color: #0b1020;
+    }
+    @media (max-width: 600px) {
+      .library-grid { grid-template-columns: 1fr; }
+      .library-title { font-size: 1.37em; }
+      .library-desc { font-size: 0.99em; }
+    }
+  </style>
+</head>
+<body>
+<div class="library-wrap">
+  <div class="library-title">Resource Library</div>
+  <div class="library-desc">
+    Curated guides, legal toolkits, books, podcasts, and organizations to empower activists, students, and communities. Filter by topic and click any card for instant access.
+  </div>
+  <div class="library-filters" id="libraryFilters"></div>
+  <div class="library-grid" id="libraryGrid"></div>
+</div>
+<script>
+const resources = [
+  {
+    title: "ACLU Know Your Rights",
+    desc: "Quick legal guides for protestors, immigrants, students, and more. Downloadable PDFs for US states.",
+    tags: ["Legal", "Civil Rights"],
+    type: "Guide",
+    link: "https://www.aclu.org/know-your-rights"
+  },
+  {
+    title: "ProPublica: Voter Suppression Tracker",
+    desc: "Investigative database of voting access issues, by the Pulitzer-winning nonprofit newsroom.",
+    tags: ["Voting", "Legal"],
+    type: "Database",
+    link: "https://projects.propublica.org/voting-rights/"
+  },
+  {
+    title: "National Lawyers Guild Legal Observers",
+    desc: "How to become a legal observer at protests and direct action events. Volunteer network info.",
+    tags: ["Legal", "Community"],
+    type: "Toolkit",
+    link: "https://www.nlg.org/legalobservers/"
+  },
+  {
+    title: "Color Of Change",
+    desc: "The largest online racial justice org in the US. Tools, campaigns, and media resources.",
+    tags: ["Racial Justice", "Media"],
+    type: "Organization",
+    link: "https://colorofchange.org/"
+  },
+  {
+    title: "Sunrise Movement",
+    desc: "Youth-led climate justice action. Organizing guides, actions, and education materials.",
+    tags: ["Climate", "Youth"],
+    type: "Org/Guide",
+    link: "https://www.sunrisemovement.org/"
+  },
+  {
+    title: "Southern Poverty Law Center Teaching Tolerance",
+    desc: "Anti-bias curriculum, classroom toolkits, and justice book lists for educators and families.",
+    tags: ["Education", "Anti-Bias", "Books"],
+    type: "Toolkit",
+    link: "https://www.learningforjustice.org/"
+  },
+  {
+    title: "The Bail Project",
+    desc: "Nonprofit bail fund and legal resources for pretrial justice and criminal system reform.",
+    tags: ["Legal", "Justice"],
+    type: "Organization",
+    link: "https://bailproject.org/"
+  },
+  {
+    title: "Black Girls Code",
+    desc: "Changing the face of tech. National nonprofit offering coding camps and digital skills for girls of color.",
+    tags: ["Youth", "Tech", "Education"],
+    type: "Organization",
+    link: "https://www.blackgirlscode.com/"
+  },
+  {
+    title: "Pod Save The People",
+    desc: "Weekly podcast on culture, politics, and social justice. Hosted by DeRay Mckesson.",
+    tags: ["Podcast", "Media"],
+    type: "Podcast",
+    link: "https://crooked.com/podcast-series/pod-save-the-people/"
+  },
+  {
+    title: "350.org Climate Campaigns",
+    desc: "Global grassroots movement for climate solutions. Local chapters, digital actions, and resources.",
+    tags: ["Climate", "Community"],
+    type: "Organization",
+    link: "https://350.org/"
+  },
+  {
+    title: "Transgender Law Center",
+    desc: "Legal resources, policy guides, and advocacy for trans and gender-nonconforming people.",
+    tags: ["Legal", "LGBTQ+"],
+    type: "Organization",
+    link: "https://transgenderlawcenter.org/"
+  },
+  {
+    title: "Unicorn Riot",
+    desc: "Independent nonprofit media collective. Documentaries and reporting on protest, police, and social movements.",
+    tags: ["Media", "Community"],
+    type: "Media Org",
+    link: "https://unicornriot.ninja/"
+  },
+  {
+    title: "The Okra Project",
+    desc: "Collective bringing home-cooked meals to Black trans people in crisis. Community-driven resource.",
+    tags: ["Community", "LGBTQ+"],
+    type: "Nonprofit",
+    link: "https://www.theokraproject.com/"
+  },
+  {
+    title: "Be A Hero",
+    desc: "Disability and healthcare activism, campaigns, and grassroots fundraising.",
+    tags: ["Health", "Disability"],
+    type: "Org/Toolkit",
+    link: "https://beaherofund.com/"
+  },
+  {
+    title: "The Trevor Project",
+    desc: "Crisis intervention and suicide prevention for LGBTQ+ youth. Free 24/7 support.",
+    tags: ["Youth", "LGBTQ+", "Health"],
+    type: "Support",
+    link: "https://www.thetrevorproject.org/"
+  },
+  {
+    title: "Vote.org",
+    desc: "The fastest, simplest way to check registration, find your polling place, and get election reminders.",
+    tags: ["Voting", "Civic"],
+    type: "Guide",
+    link: "https://www.vote.org/"
+  },
+  {
+    title: "Amplifier Art Library",
+    desc: "Downloadable protest posters and art for social justice movements around the world.",
+    tags: ["Art", "Activism"],
+    type: "Art Resource",
+    link: "https://amplifier.org/art/"
+  }
+];
+
+// 1. Get unique categories (tags)
+const allTags = Array.from(new Set(resources.flatMap(r => r.tags))).sort();
+const filters = ["All"].concat(allTags);
+
+const filtersEl = document.getElementById('libraryFilters');
+const gridEl = document.getElementById('libraryGrid');
+let currentFilter = "All";
+
+function renderFilters() {
+  filtersEl.innerHTML = "";
+  filters.forEach(tag => {
+    const btn = document.createElement('button');
+    btn.className = "filter-btn" + (tag === currentFilter ? " active" : "");
+    btn.textContent = tag;
+    btn.onclick = () => {
+      currentFilter = tag;
+      renderGrid();
+      renderFilters();
+    };
+    filtersEl.appendChild(btn);
+  });
+}
+
+function renderGrid() {
+  gridEl.innerHTML = "";
+  const shown = currentFilter === "All"
+    ? resources
+    : resources.filter(r => r.tags.includes(currentFilter));
+  if (shown.length === 0) {
+    gridEl.innerHTML = "<div style='color:#a98a57; font-size:1.13em;'>No resources yet in this category. Try another filter!</div>";
+    return;
+  }
+  shown.forEach(r => {
+    const card = document.createElement('div');
+    card.className = "resource-card";
+    card.innerHTML = `
+      <div class="resource-title">${r.title}</div>
+      <span class="resource-type">${r.type}</span>
+      <div class="resource-desc">${r.desc}</div>
+      <div class="resource-tags">${r.tags.map(t => `<span class="resource-tag">${t}</span>`).join(" ")}</div>
+      <a class="resource-link" href="${r.link}" target="_blank" rel="noopener">Open Resource</a>
+    `;
+    gridEl.appendChild(card);
+  });
+}
+
+renderFilters();
+renderGrid();
+</script>
+</body>
+</html>
