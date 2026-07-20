@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Voter Resource Portal</title>
+<style>
+  body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f5f5f5; color:#333; }
+  header { background:#004080; color:white; padding:1rem; text-align:center; }
+  h1 { margin:0; font-size:2rem; }
+  nav { background:#0066cc; padding:0.5rem; text-align:center; }
+  nav a { color:white; margin:0 0.75rem; text-decoration:none; font-weight:bold; }
+  section { padding:1rem; max-width: 1200px; margin: auto; }
+  h2 { color:#004080; }
+  ul { list-style:none; padding:0; }
+  li { margin:0.5rem 0; }
+  a.button { display:inline-block; background:#0080ff; color:white; padding:0.5rem 1rem; border-radius:5px; text-decoration:none; margin-top:0.5rem; }
+  form { background:white; padding:1rem; border-radius:5px; margin-top:1rem; }
+  input, textarea, select { width:100%; padding:0.5rem; margin-top:0.5rem; border-radius:3px; border:1px solid #ccc; }
+  button { padding:0.5rem 1rem; background:#004080; color:white; border:none; border-radius:5px; margin-top:0.5rem; cursor:pointer; }
+  footer { text-align:center; padding:1rem; background:#004080; color:white; margin-top:2rem; }
+  #communityFeed { background:white; padding:1rem; border-radius:5px; margin-top:1rem; max-height:300px; overflow-y:auto; }
+  #map { width:100%; height:500px; margin-top:1rem; border-radius:5px; border:1px solid #ccc; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Global Voter Resource Portal</h1>
+</header>
+<nav>
+  <a href="#resources">Resources</a>
+  <a href="#registration">Registration & Polling</a>
+  <a href="#concerns">Share Concerns</a>
+  <a href="#mapSection">Interactive Map</a>
+</nav>
+
+<section id="resources">
+  <h2>Global Voting & Election Resources</h2>
+  <label for="regionFilter">Filter by Region:</label>
+  <select id="regionFilter">
+    <option value="all">All Regions</option>
+    <option value="Global">Global</option>
+    <option value="US">United States</option>
+    <option value="Europe">Europe</option>
+    <option value="Asia">Asia</option>
+  </select>
+  <ul id="resourceList">
+    <!-- Resources will populate via JS -->
+  </ul>
+</section>
+
+<section id="registration">
+  <h2>Registration, Polling Place, and Ballot Info</h2>
+  <ul>
+    <li><a href="https://www.vote.org/" target="_blank">Vote.org</a></li>
+    <li><a href="https://www.vote411.org/" target="_blank">VOTE411</a></li>
+    <li><a href="https://www.eac.gov/voters/voter-toolkit" target="_blank">U.S. EAC Voter Toolkit</a></li>
+    <li><a href="https://ivoter.com/" target="_blank">iVoter</a></li>
+    <li><a href="https://www.geocod.io/" target="_blank">Geocod.io</a></li>
+    <li><a href="https://www.electionguide.org/" target="_blank">IFES Election Guide</a></li>
+  </ul>
+</section>
+
+<section id="concerns">
+  <h2>Share Your Concerns About Voting</h2>
+  <form id="concernForm">
+    <label for="name">Name (optional)</label>
+    <input type="text" id="name" placeholder="Your Name">
+    <label for="country">Country</label>
+    <input type="text" id="country" placeholder="Your Country" required>
+    <label for="concern">Your Concern / Experience</label>
+    <textarea id="concern" rows="5" placeholder="Describe your voting concern or experience" required></textarea>
+    <button type="submit">Submit Concern</button>
+  </form>
+  <div id="feedback" style="margin-top:1rem;color:green;"></div>
+  <h3>Community Feed</h3>
+  <div id="communityFeed"></div>
+</section>
+
+<section id="mapSection">
+  <h2>Interactive Voting Map</h2>
+  <div id="map">Map loading...</div>
+</section>
+
+<footer>
+  <p>&copy; Verve N Veda 2025 Global Voter Resource Portal</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
+<script>
+// Resources by Region
+const resources = [
+  { name:'IDEA Voter Turnout Database', url:'https://www.idea.int/data-tools/data/voter-turnout-database', region:'Global' },
+  { name:'IFES Election Guide', url:'https://www.electionguide.org/', region:'Global' },
+  { name:'ACE Electoral Knowledge Network', url:'https://www.aceproject.org/', region:'Global' },
+  { name:'ElectionResources.org', url:'https://www.electionresources.org/', region:'Global' },
+  { name:'GNDEM', url:'https://www.gndem.org/', region:'Global' },
+  { name:'ENEMO', url:'https://www.enemo.org/', region:'Europe' },
+  { name:'ANFREL', url:'https://www.anfrel.org/', region:'Asia' },
+  { name:'Westminster Foundation for Democracy', url:'https://www.wfd.org/elections', region:'Global' },
+  { name:'geoBoundaries', url:'https://www.geoboundaries.org/', region:'Global' },
+  { name:'CLEA / Georeferenced Electoral Districts', url:'https://electiondataarchive.org/data-and-documentation/georeferenced-electoral-districts-datasets/', region:'Global' }
+];
+
+function populateResources(filter='all'){
+  const list = document.getElementById('resourceList');
+  list.innerHTML='';
+  resources.forEach(r=>{
+    if(filter==='all'||r.region===filter){
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href=r.url; a.target='_blank'; a.textContent=r.name;
+      li.appendChild(a);
+      list.appendChild(li);
+    }
+  });
+}
+
+document.getElementById('regionFilter').addEventListener('change', (e)=>{
+  populateResources(e.target.value);
+});
+populateResources();
+
+// Concern form & community feed
+function loadCommunityFeed(){
+  const feed = document.getElementById('communityFeed');
+  let concerns = JSON.parse(localStorage.getItem('voterConcerns') || '[]');
+  feed.innerHTML='';
+  concerns.slice().reverse().forEach(c=>{
+    const div = document.createElement('div');
+    div.style.borderBottom='1px solid #ccc'; div.style.padding='0.5rem';
+    div.innerHTML=`<strong>${c.name}</strong> (${c.country})<br>${c.concern}<br><small>${new Date(c.date).toLocaleString()}</small>`;
+    feed.appendChild(div);
+  });
+}
+
+document.getElementById('concernForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name=document.getElementById('name').value.trim()||'Anonymous';
+  const country=document.getElementById('country').value.trim();
+  const concern=document.getElementById('concern').value.trim();
+  if(!country||!concern){alert('Please fill in all required fields.');return;}
+  let concerns=JSON.parse(localStorage.getItem('voterConcerns')||'[]');
+  concerns.push({name,country,concern,date:new Date().toISOString()});
+  localStorage.setItem('voterConcerns',JSON.stringify(concerns));
+  document.getElementById('feedback').innerText='Thank you! Your concern has been recorded.';
+  this.reset();
+  loadCommunityFeed();
+});
+loadCommunityFeed();
+
+// Interactive Map using Leaflet
+const map = L.map('map').setView([37.8, -96], 4); // USA default
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+// Placeholder GeoJSON for demo (replace with full GeoBoundaries / CLEA GeoJSON per country)
+const sampleDistricts = {
+  "type": "FeatureCollection",
+  "features": [
+    {"type": "Feature", "properties": {"name": "California 1", "rep": "Rep. A"},"geometry": {"type": "Polygon", "coordinates": [[[-122.5,38],[-121,38],[-121,37],[-122.5,37],[-122.5,38]]] }},
+    {"type": "Feature", "properties": {"name": "Texas 1", "rep": "Rep. B"},"geometry": {"type": "Polygon", "coordinates": [[[-101,32],[-99,32],[-99,31],[-101,31],[-101,32]]] }}
+  ]
+};
+
+function onEachFeature(feature, layer){
+  if(feature.properties && feature.properties.name){
+    layer.bindPopup(`<strong>${feature.properties.name}</strong><br>Representative: ${feature.properties.rep}<br><a href='mailto:rep@example.com'>Contact Rep</a>`);
+  }
+}
+
+L.geoJSON(sampleDistricts, { onEachFeature:onEachFeature, style:{color:'#004080', weight:2, fillOpacity:0.1} }).addTo(map);
+</script>
+</body>
+</html>
