@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Voter Concerns Compass – Jennifer Pearl 2028</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+  <style>
+    :root {
+      --navy-deep:#003052;
+      --navy-soft:#003052;
+      --navy-royal:#003052;
+      --parchment:#f5f3eb;
+      --parchment-soft:#ece5d4;
+      --accent-gold:#d9b878;
+      --accent-gold-deep:#b18739;
+      --shadow-soft:0 24px 44px rgba(0,0,0,0.45);
+      --radius-card:18px;
+    }
+
+    * { box-sizing:border-box; }
+
+    body {
+      margin:0;
+      padding:24px 24px 44px;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:radial-gradient(circle at top,var(--navy-royal) 0%,var(--navy-deep) 55%,#02030a 100%);
+      color:var(--parchment);
+      display:flex;
+      justify-content:center;
+    }
+
+    #voter-concerns-compass {
+      width:100%;
+      max-width:1111px;
+    }
+
+    .vcc-shell {
+      border-radius:33px;
+      padding:33px 33px 33px;
+      background:rgba(4,9,22,0.96);
+      border:1px solid rgba(255,255,255,0.14);
+      box-shadow:var(--shadow-soft);
+      text-align:center;
+    }
+
+    .vcc-title {
+      font-family:"Cinzel","Times New Roman",serif;
+      font-size:33px;
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+      margin:0 0 11px;
+    }
+
+    .vcc-subtitle {
+      font-size:24px;
+      color:rgba(245,243,235,0.8);
+      max-width:640px;
+      margin:0 auto 14px;
+      line-height:1.7;
+    }
+
+    .vcc-tagline {
+      font-size:11px;
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+      color:var(--accent-gold);
+      margin-bottom:18px;
+    }
+
+    .vcc-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+      gap:14px;
+      margin-top:10px;
+    }
+
+    .vcc-btn {
+      border-radius:var(--radius-card);
+      padding:11px 12px 12px;
+      border:1px solid rgba(255,255,255,0.16);
+      background:linear-gradient(135deg,rgba(18,59,122,0.9),rgba(2,6,24,0.98));
+      color:var(--parchment);
+      text-align:left;
+      cursor:pointer;
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      transition:transform .16s,box-shadow .16s,border-color .16s;
+    }
+
+    .vcc-btn:hover {
+      transform:translateY(-2px);
+      box-shadow:0 12px 30px rgba(0,0,0,0.6);
+      border-color:rgba(217,184,120,0.7);
+    }
+
+    .vcc-btn-label {
+      font-size:14px;
+      font-weight:600;
+    }
+
+    .vcc-btn-tag {
+      font-size:11px;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      color:rgba(245,243,235,0.8);
+    }
+
+    .vcc-note {
+      margin-top:14px;
+      font-size:11px;
+      color:rgba(245,243,235,0.7);
+    }
+
+    /* Modal */
+
+    .vcc-modal-overlay {
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.7);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      z-index:9999;
+    }
+
+    .vcc-modal-overlay.active {
+      display:flex;
+    }
+
+    .vcc-modal {
+      max-width:640px;
+      width:100%;
+      background:radial-gradient(circle at top,var(--navy-soft) 0%,#050712 72%);
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,0.16);
+      box-shadow:var(--shadow-soft);
+      padding:18px 18px 20px;
+      color:var(--parchment);
+      text-align:left;
+      position:relative;
+      max-height:80vh;
+      overflow-y:auto;
+    }
+
+    .vcc-modal-title {
+      font-family:"Cinzel","Times New Roman",serif;
+      font-size:18px;
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      margin:0 0 6px;
+    }
+
+    .vcc-modal-subtitle {
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:0.16em;
+      color:var(--accent-gold);
+      margin-bottom:10px;
+    }
+
+    .vcc-modal-body p {
+      font-size:13px;
+      line-height:1.7;
+      margin:0 0 8px;
+      color:rgba(245,243,235,0.92);
+    }
+
+    .vcc-modal-body p:last-child {
+      margin-bottom:0;
+    }
+
+    .vcc-modal-close {
+      position:absolute;
+      top:10px;
+      right:12px;
+      border:none;
+      background:transparent;
+      color:var(--parchment);
+      font-size:20px;
+      cursor:pointer;
+      line-height:1;
+    }
+
+    @media (max-width:600px){
+      .vcc-shell {
+        padding:20px 14px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<section id="voter-concerns-compass">
+  <div class="vcc-shell">
+    <h2 class="vcc-title">Voter Concerns Compass</h2>
+    <p class="vcc-subtitle">
+      These are the major National concerns,  <br> Americans are naming in this election season. <br><br>
+      Each one matters deeply. <br> Tap a political issue to read how the
+      <strong>Jennifer Pearl 2028</strong> campaign approaches it,<br> with integrity,
+      moral clarity, humanitarian care, empathy, and a scriptural view of human worth.
+    </p>
+    <div class="vcc-tagline">By Popular Write-In · For the People, Not the Powerful</div>
+
+    <div class="vcc-grid" aria-label="Key voter concerns">
+      <!-- Buttons wired by data-issue-id -->
+      <button class="vcc-btn" data-issue-id="economy">
+        <span class="vcc-btn-label">Economy &amp; Cost of Living</span>
+        <span class="vcc-btn-tag">Stability for everyday families</span>
+      </button>
+      <button class="vcc-btn" data-issue-id="jobs">
+        <span class="vcc-btn-label">Jobs &amp; Small Business</span>
+        <span class="vcc-btn-tag">Work with dignity</span>
+      </button>
+      <button class="vcc-btn" data-issue-id="healthcare">
+        <span class="vcc-btn-label">Healthcare &amp; Medical Costs</span>
+        <span class="vcc-btn-tag">Caring for bodies &amp; lives</span>
+      </button>
+      <button class="vcc-btn" data-issue-id="mental-health">
+        <span class="vcc-btn-label">Mental Health &amp; Addiction</span>
+        <span class="vcc-btn-tag">No one disposable</span>
+      </button>
+      <button class="vcc-btn" data-issue-id="education">
+        <span class="vcc-btn-label">Education &amp; Children</span>
+        <span class="vcc-btn-tag">Truth, safety, opportunity</span>
+      </button>
+      <button class="vcc-btn" data-issue-id="housing">
+        <span class="vcc-btn-label">Housing &amp; Homelessness</span>
+        <span class="vcc-btn-tag">A roof as a basic mercy</span>
+      </button>
+      <button class="vcc-btn" data-issue-id="crime">
+        <span class="vcc-btn-label">Crime &amp; Community Safety</span>
+        <span class="vcc-btn-tag">Protection with compassion</span>
+      </button>
+      <button class="vcc-btn" data-issue-id="justice">
+        <span class="vcc-btn-label">Policing &amp; Justice System</span>
+        <span class="vcc-btn-tag">Accountable authority</span>
+      </button>
+      <button class="vcc-btn" data-issue-id="immigration">
+        <span class="vcc-btn-label">Immigration &amp; Border Policy</span>
+        <span class="vcc-btn-tag">Law &amp; mercy together</span>
+      </button>
+      <button class="vcc-btn" data-issue-id="democracy">
+        <span class="vcc-btn-label">Democracy &amp; Government Integrity</span>
+        <span class="vcc-btn-tag">Clean hands in public office</span>
+      </button>
+      <button class="vcc-btn" data-issue-id="civil-rights">
+        <span class="vcc-btn-label">Civil Rights &amp; Equality</span>
+        <span class="vcc-btn-tag">Every person made in God’s image</span>
+      </button>
+      <button class="vcc-btn" data-issue-id="life">
+        <span class="vcc-btn-label">Abortion &amp; The Value of Life</span>
+        <span class="vcc-btn-tag">Protecting the vulnerable</span>
+      </button>
+      <button class="vcc-btn" data-issue-id="guns">
+        <span class="vcc-btn-label">Gun Violence &amp; Responsibility</span>
+        <span class="vcc-btn-tag">Rights with reverence for life</span>
+      </button>
+      <button class="vcc-btn" data-issue-id="climate">
+        <span class="vcc-btn-label">Climate, Land &amp; Stewardship</span>
+        <span class="vcc-btn-tag">Guardians of creation</span>
+      </button>
+      <button class="vcc-btn" data-issue-id="seniors">
+        <span class="vcc-btn-label">Seniors, Social Security &amp; Medicare</span>
+        <span class="vcc-btn-tag">Honor gray hair</span>
+      </button>
+      <button class="vcc-btn" data-issue-id="veterans">
+        <span class="vcc-btn-label">Veterans &amp; Military Families</span>
+        <span class="vcc-btn-tag">Those who carried the weight</span>
+      </button>
+      <button class="vcc-btn" data-issue-id="foreign-policy">
+        <span class="vcc-btn-label">Foreign Policy, War &amp; Peace</span>
+        <span class="vcc-btn-tag">Peacemaking with courage</span>
+      </button>
+      <button class="vcc-btn" data-issue-id="tech">
+        <span class="vcc-btn-label">Technology, AI &amp; Privacy</span>
+        <span class="vcc-btn-tag">Human beings above algorithms</span>
+      </button>
+      <button class="vcc-btn" data-issue-id="faith">
+        <span class="vcc-btn-label">Faith, Conscience &amp; Freedom</span>
+        <span class="vcc-btn-tag">Room for every sincere seeker</span>
+      </button>
+      <button class="vcc-btn" data-issue-id="families">
+        <span class="vcc-btn-label">Families, Caregivers &amp; Social Support</span>
+        <span class="vcc-btn-tag">Strength at the dinner table</span>
+      </button>
+    </div>
+
+    <div class="vcc-note">
+      These summaries are not full policy papers. They are the <strong>moral backbone</strong> that will guide detailed plans and legislation.
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="vcc-modal-overlay" id="vccModal" aria-hidden="true">
+  <div class="vcc-modal" role="dialog" aria-modal="true" aria-labelledby="vccModalTitle">
+    <button class="vcc-modal-close" type="button" aria-label="Close">&times;</button>
+    <h3 id="vccModalTitle" class="vcc-modal-title"></h3>
+    <div class="vcc-modal-subtitle">Integral · Moral · Humanitarian · Scriptural · Empathetic</div>
+    <div id="vccModalBody" class="vcc-modal-body"></div>
+  </div>
+</div>
+
+<script>
+  // Data: core moral / humanitarian / scriptural framing for each concern
+  const VOTER_ISSUES = [
+    {
+      id:"economy",
+      title:"Economy & Cost of Living",
+      body: `
+        <p>We believe a just economy is one where families can afford food, housing, healthcare, and basic stability without constant fear. Scripture calls leaders to “defend the cause of the poor and needy,” not to protect rigged systems.</p>
+        <p>Our lens: fight waste, corruption, and corporate capture; strengthen the real economy of workers, caregivers, and small businesses. Economic policy is not an abstract graph — it is the daily life of the people God loves.</p>
+        <p>Every budget choice should answer one question: does this lift burdens from the shoulders of ordinary people, or place heavier yokes upon them?</p>
+      `
+    },
+    {
+      id:"jobs",
+      title:"Jobs & Small Business",
+      body: `
+        <p>Work is meant to be dignified, not dehumanizing. We stand for an economy where honest labor is honored, and small businesses are not crushed by monopolies and red tape designed by the powerful for the powerful.</p>
+        <p>Our commitment is to policies that protect fair wages, safe working conditions, and entrepreneurship — especially for those historically shut out of opportunity.</p>
+        <p>A job should not simply extract energy; it should help people provide, create, and contribute to the common good.</p>
+      `
+    },
+    {
+      id:"healthcare",
+      title:"Healthcare & Medical Costs",
+      body: `
+        <p>Every person is a living soul, not a line item. From a scriptural and humanitarian view, leaving people to choose between medicine and rent is a moral failure, not a budget necessity.</p>
+        <p>We support reforms that make essential care and life-preserving medicines truly affordable, reduce predatory billing and medical debt, and honor healthcare workers.</p>
+        <p>When we care for the sick and wounded, we walk in the footsteps of the Healer. A nation that neglects the ill neglects its own heart.</p>
+      `
+    },
+    {
+      id:"mental-health",
+      title:"Mental Health & Addiction",
+      body: `
+        <p>No one is disposable because of trauma, illness, or addiction. We reject shame-based approaches that hide suffering rather than heal it.</p>
+        <p>We support accessible counseling, treatment, and community recovery, especially for youth, veterans, and those impacted by poverty and violence.</p>
+        <p>Scripturally, we are called to bind up the brokenhearted. Policy must stop treating mental suffering as invisible and start treating it as a central place for mercy and repair.</p>
+      `
+    },
+    {
+      id:"education",
+      title:"Education & Children",
+      body: `
+        <p>Children are entrusted to us. Education should form truth-loving, thoughtful, creative human beings — not just test scores or worker units for someone else’s profit.</p>
+        <p>We support safe schools, honest history, strong reading and math foundations, and room for families and communities to be heard in curriculum decisions.</p>
+        <p>Every child, regardless of zip code, deserves teachers who are supported, classrooms that are safe, and an education that points toward wisdom, not just credentials.</p>
+      `
+    },
+    {
+      id:"housing",
+      title:"Housing & Homelessness",
+      body: `
+        <p>A stable home is one of the simplest and most powerful protections for families. Allowing chronic homelessness and predatory housing markets is incompatible with any serious moral vision.</p>
+        <p>We support policies that increase truly affordable housing, challenge speculative practices that treat homes as chips in a casino, and pair shelter with mental health and addiction support where needed.</p>
+        <p>Everyone made in the image of God deserves the chance to sleep under a roof, not under a bridge.</p>
+      `
+    },
+    {
+      id:"crime",
+      title:"Crime & Community Safety",
+      body: `
+        <p>People need to feel safe walking in their neighborhoods. Victims of violence deserve justice, not indifference. At the same time, punishment without hope of restoration multiplies harm.</p>
+        <p>We support approaches that combine firm accountability with prevention: addressing poverty, trauma, and hopelessness that often feed crime.</p>
+        <p>Real safety comes when communities are strong, opportunities are real, and the law protects the vulnerable rather than simply warehousing the broken.</p>
+      `
+    },
+    {
+      id:"justice",
+      title:"Policing & Justice System",
+      body: `
+        <p>Authority is a sacred trust. When police and courts act with integrity, they reflect God’s concern for justice. When they abuse power or act without accountability, they become a source of fear.</p>
+        <p>We support training, transparency, body cameras, clear use-of-force standards, and fair sentencing, as well as support for officers who serve honorably.</p>
+        <p>Justice should neither be bought by the wealthy nor denied to the poor. Equal weights and measures belong in courtrooms and precincts too.</p>
+      `
+    },
+    {
+      id:"immigration",
+      title:"Immigration & Border Policy",
+      body: `
+        <p>We are called to both uphold just laws and remember the stranger. A humane border policy must protect national security and public order without forgetting that every migrant is a human being with a story.</p>
+        <p>We support secure, orderly processes, clear pathways, and an end to policies that weaponize families and children as political props.</p>
+        <p>Law and mercy are not enemies; wise leadership holds them together with courage and compassion.</p>
+      `
+    },
+    {
+      id:"democracy",
+      title:"Democracy & Government Integrity",
+      body: `
+        <p>Democracy is a covenant of trust between the people and their leaders. When money, manipulation, and corruption rule, that covenant is broken.</p>
+        <p>We stand for clean elections, transparent finances, independent oversight, and clear conflict-of-interest boundaries. Public servants must truly be servants, not owners of the state.</p>
+        <p>Truth-telling, humility, and service are scriptural marks of leadership. Our campaign will measure success by faithfulness to those marks, not by the size of our donor list.</p>
+      `
+    },
+    {
+      id:"civil-rights",
+      title:"Civil Rights & Equality",
+      body: `
+        <p>We affirm that every person is made in the image of God. Racism, bigotry, and discrimination are sins against that image and against our stated national ideals.</p>
+        <p>We support enforcement of civil rights protections, equal access to opportunity, and honest reckoning with the past so that we can walk more justly in the present.</p>
+        <p>Defending the dignity of every neighbor is not “extra” politics — it is basic obedience to the call to love our neighbor as ourselves.</p>
+      `
+    },
+    {
+      id:"life",
+      title:"Abortion & The Value of Life",
+      body: `
+        <p>We hold that human life is sacred from its earliest beginnings and that the lives of women facing crisis pregnancies are sacred as well.</p>
+        <p>Our commitment is to reduce abortions by expanding support: healthcare, housing, childcare, adoption pathways, and community support so that fewer women ever feel cornered into an impossible choice.</p>
+        <p>We seek policies that protect the vulnerable, honor conscience, and create a culture where both mother and child are welcomed and supported.</p>
+      `
+    },
+    {
+      id:"guns",
+      title:"Gun Violence & Responsible Ownership",
+      body: `
+        <p>The right to self-defense and lawful ownership exists, but so does the command not to shed innocent blood. We must hold both truths together.</p>
+        <p>We support background checks, safe storage, and measures that keep weapons out of the hands of those who clearly intend harm, while respecting law-abiding owners.</p>
+        <p>Our goal is not to divide neighbors, but to protect children, worshippers, and everyday people from preventable tragedy.</p>
+      `
+    },
+    {
+      id:"climate",
+      title:"Climate, Land & Stewardship",
+      body: `
+        <p>The earth is not a disposable backdrop; it is a creation entrusted to our care. Floods, fires, and poisoned water are not just “environmental issues” — they are assaults on homes and futures.</p>
+        <p>We support responsible energy transitions, conservation, and disaster preparedness that protect both jobs and the places we love.</p>
+        <p>Good stewardship means leaving our children a livable world, not a bill for our neglect.</p>
+      `
+    },
+    {
+      id:"seniors",
+      title:"Seniors, Social Security & Medicare",
+      body: `
+        <p>Scripture honors gray hair as a crown. A nation that discards its elders violates both wisdom and decency.</p>
+        <p>We support protecting Social Security and Medicare from reckless cuts, closing loopholes that endanger their solvency, and improving care quality for seniors and disabled neighbors.</p>
+        <p>Those who worked, raised families, and built this country deserve security and respect in their later years.</p>
+      `
+    },
+    {
+      id:"veterans",
+      title:"Veterans & Military Families",
+      body: `
+        <p>Those who have carried the weight of war should not return to neglect, homelessness, or untreated wounds of body and soul.</p>
+        <p>We support timely healthcare, mental health services, job pathways, and family support for veterans and their loved ones.</p>
+        <p>Honoring service means more than words on a holiday — it means policies that walk with veterans for the rest of their lives.</p>
+      `
+    },
+    {
+      id:"foreign-policy",
+      title:"Foreign Policy, War & Peace",
+      body: `
+        <p>Our first calling is to seek peace when it is possible and justice when it is threatened. War should always be the last, most carefully weighed resort.</p>
+        <p>We support diplomacy, alliances that uphold human dignity, and clear moral limits on the use of force, especially when civilians are at risk.</p>
+        <p>Every decision about conflict must remember that behind every headline are families, children, and futures God cares about as much as our own.</p>
+      `
+    },
+    {
+      id:"tech",
+      title:"Technology, AI & Privacy",
+      body: `
+        <p>Human beings must never be reduced to data points for profit. Technology should serve people, not quietly rule them.</p>
+        <p>We support strong privacy protections, transparency about algorithms, and guardrails around AI and surveillance so that freedom of thought and conscience remain real.</p>
+        <p>Innovation is good when it lifts humanity; it is dangerous when it quietly erodes human dignity and agency.</p>
+      `
+    },
+    {
+      id:"faith",
+      title:"Faith, Conscience & Freedom",
+      body: `
+        <p>People must be free to seek God, to doubt, to worship, or not to worship — without coercion from the state.</p>
+        <p>We support protecting houses of worship, safeguarding conscience rights, and ensuring that no faith is weaponized as a tool of domination over others.</p>
+        <p>True religious freedom is not about privilege for one group; it is about space for every sincere seeker and neighbor to live honestly before God and each other.</p>
+      `
+    },
+    {
+      id:"families",
+      title:"Families, Caregivers & Social Support",
+      body: `
+        <p>Strong families — in all their diverse shapes — are places where love, responsibility, and resilience are learned first.</p>
+        <p>We support policies that help caregivers, single parents, grandparents raising grandchildren, and those balancing children with work: childcare, leave, flexible work, and community support.</p>
+        <p>When we strengthen the table where people share meals and burdens, we strengthen the whole nation.</p>
+      `
+    }
+  ];
+
+  const modalOverlay = document.getElementById('vccModal');
+  const modalTitleEl = document.getElementById('vccModalTitle');
+  const modalBodyEl = document.getElementById('vccModalBody');
+  const closeBtn = modalOverlay.querySelector('.vcc-modal-close');
+
+  function openIssueModal(issueId){
+    const issue = VOTER_ISSUES.find(i => i.id === issueId);
+    if(!issue) return;
+    modalTitleEl.textContent = issue.title;
+    modalBodyEl.innerHTML = issue.body;
+    modalOverlay.classList.add('active');
+    modalOverlay.setAttribute('aria-hidden','false');
+  }
+
+  function closeIssueModal(){
+    modalOverlay.classList.remove('active');
+    modalOverlay.setAttribute('aria-hidden','true');
+  }
+
+  document.querySelectorAll('.vcc-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-issue-id');
+      openIssueModal(id);
+    });
+  });
+
+  closeBtn.addEventListener('click', closeIssueModal);
+
+  modalOverlay.addEventListener('click', (e) => {
+    if(e.target === modalOverlay){
+      closeIssueModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && modalOverlay.classList.contains('active')){
+      closeIssueModal();
+    }
+  });
+</script>
+
+</body>
+</html>
