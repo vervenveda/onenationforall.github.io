@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>High School Voting Portal – Voti the Owl</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <style>
+    body { font-family: 'Segoe UI', 'Arial Rounded MT Bold', Arial, sans-serif; margin:0; min-height:100vh; background:linear-gradient(120deg,#033052 65%,#033052); }
+    header{ display:flex; gap:8px; align-items:center; justify-content:center; padding:10px; background:rgba(255,255,255,.6); position:sticky; top:0; z-index:5; }
+    .nav-btn{ background:#244063; color:#fff; border:none; padding:.5rem .8rem; border-radius:10px; font-weight:700; cursor:pointer; }
+    .nav-btn.ghost{ background:transparent; color:#244063; border:2px solid #244063; }
+    .center { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 70vh; padding:20px 8px;}
+    .card { background: #fff; border-radius: 1.7rem; box-shadow: 0 4px 32px rgba(176,184,211,0.7); padding: 2rem; width: 98%; max-width: 700px; margin: 2.5rem auto; }
+    .title { font-size: 2.2rem; font-weight: bold; color: #244063; margin-bottom: .7rem; }
+    .owl { font-size: 3.2rem; }
+    label { display: block; margin: 1.1rem 0 .3rem; font-weight: 600; }
+    input, select, textarea, button { font-size: 1rem; padding: .5rem .7rem; border-radius: .7rem; border: 1px solid #b6b6cc; margin-bottom: .7rem; width:100%; box-sizing:border-box; }
+    textarea { min-height: 60px; resize: vertical; }
+    button { cursor: pointer; background: #244063; color: #fff; border: none; font-weight: bold; transition: 0.1s; border-radius:10px; }
+    button:hover { background: #4395c4; }
+    .office-list, .issue-list, .choice-list, .rep-list { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom:.6rem;}
+    .cand-card, .choice-card, .rep-card { border: 2px solid #e1e7ff; border-radius: 1.2rem; padding: 1rem; background: #f9faff; width: 170px; text-align: center; box-shadow: 0 1px 8px rgba(194,209,247,0.6); cursor:pointer;}
+    .cand-card.selected, .choice-card.selected, .rep-card.selected { background:#d8f6f4; border:2px solid #4395c4; }
+    .cand-emoji, .choice-emoji { font-size: 2.0rem; margin-bottom:.25rem;}
+    .chart-bar { height:24px; background:linear-gradient(90deg,#4395c4 70%,#fff97e); color:#223; border-radius:13px; margin-bottom:7px; display:flex; align-items:center; font-weight:600; padding:0 8px; }
+    .sticker { background:#fff97e; border-radius:999px; display:inline-block; padding:.8rem 2rem; font-size:1.2rem; font-weight:bold; color:#244063; margin:1.4rem 0 1rem 0; box-shadow:0 2px 14px #fffde1; }
+    .small { font-size: .97rem; color: #555; }
+    .bubble { background:#e7f2fc; border-radius:1.1rem; padding:.7rem 1rem; margin:.8rem 0; font-size:1.08rem; color:#222; }
+    .review { background:#f7f4ff; border-radius:1.1rem; padding:1.2rem 1rem; margin:1.1rem 0; font-size:1.08rem; color:#2d2463; border:2px solid #d7cdfa;}
+    .confetti { animation: confetti 1.6s linear infinite; }
+    @keyframes confetti { 0%{text-shadow:0 0 0 #f2a,0 0 0 #2cf} 33%{text-shadow:2px 2px 12px #f2a,-2px 2px 8px #2cf} 66%{text-shadow:-2px -2px 10px #f2a,2px -2px 10px #2cf} 100%{text-shadow:0 0 0 #f2a,0 0 0 #2cf} }
+    .info-paragraph { background: #f0f6fa; border-left: 5px solid #4395c4; padding: 1rem 1.3rem; border-radius: 1rem; margin-bottom: 1.5rem; font-size: 1.04rem; }
+    @media (max-width:540px) { .card {padding:1rem; max-width:99vw;} .cand-card, .rep-card{ width:98%; } }
+  </style>
+</head>
+<body>
+  <header>
+    <button class="nav-btn" onclick="goTo(0)">Welcome</button>
+    <button class="nav-btn ghost" onclick="goTo(1)">Register</button>
+    <button class="nav-btn" onclick="goTo(2)">Offices</button>
+    <button class="nav-btn" onclick="goTo(3)">Class Reps</button>
+    <button class="nav-btn" onclick="goTo(4)">Issues</button>
+    <div style="flex:1"></div>
+    <button class="nav-btn" onclick="resetApp()">Reset</button>
+  </header>
+
+  <div id="app"></div>
+
+<script>
+/* ---------- data ---------- */
+const offices = [
+  { office:"President", em:"👑", candidates:[
+    {name:"Jamie Taylor",emoji:"🧑‍🎓",bio:"Mental health support, later start times, and real student voice."},
+    {name:"Dakota Chen",emoji:"🧑‍💻",bio:"Clean energy, better Wi-Fi, and monthly student town halls."},
+    {name:"Skylar Morgan",emoji:"🎨",bio:"Anti-bullying, creative arts, and social justice programs."}
+  ]},
+  { office:"Vice President", em:"🎤", candidates:[
+    {name:"Riley Patel",emoji:"🎧",bio:"Peer mentoring, flexible study blocks, student-run podcasts."},
+    {name:"Morgan Brooks",emoji:"⚽",bio:"Sports funding, healthy lunches, safer schools."}
+  ]},
+  { office:"Treasurer", em:"💸", candidates:[
+    {name:"Casey Lee",emoji:"💡",bio:"Transparent budgeting, fundraising, scholarships."},
+    {name:"Avery Nguyen",emoji:"🌿",bio:"Eco-friendly fundraisers, better vending machines."}
+  ]},
+  { office:"Secretary", em:"📝", candidates:[
+    {name:"Quinn Rivera",emoji:"🗒️",bio:"Meeting minutes online, event reminders, digital bulletins."},
+    {name:"Taylor Kim",emoji:"📅",bio:"Club communication, activity calendars."}
+  ]},
+  { office:"Activities Director", em:"🎪", candidates:[
+    {name:"Jordan White",emoji:"🎤",bio:"Diverse school dances, talent shows, spirit weeks."},
+    {name:"Faith Gomez",emoji:"🎹",bio:"More clubs, open mic nights, field days."}
+  ]}
+];
+
+const classReps = [
+  {name:"Alex Zhang",emoji:"🌟"},
+  {name:"Harper Evans",emoji:"🏅"},
+  {name:"Mia Johnson",emoji:"🎵"},
+  {name:"Noah Smith",emoji:"⚡"}
+];
+
+const issues = [
+  {q:"Should the school add more counselors and mental health days?", key:"mental", opts:["Yes","No","Not Sure"]},
+  {q:"Should the school day start later for teens?", key:"start", opts:["Yes","No","Not Sure"]},
+  {q:"Is there too much homework? Should there be homework-free weekends?", key:"hw", opts:["Yes","No","Not Sure"]},
+  {q:"Should the dress code be more flexible?", key:"dress", opts:["Yes","No","Not Sure"]},
+  {q:"Should students help design school lunch menus?", key:"lunch", opts:["Yes","No","Not Sure"]},
+  {q:"Should the school have a climate action week?", key:"climate", opts:["Yes","No","Not Sure"]},
+  {q:"Should all clubs and sports have equal funding?", key:"equity", opts:["Yes","No","Not Sure"]},
+  {q:"Should phones be allowed at lunch?", key:"phone", opts:["Yes","No","Not Sure"]},
+  {q:"Should students have a free period/study hall?", key:"freep", opts:["Yes","No","Not Sure"]},
+  {q:"Should there be a new student job/internship board?", key:"jobs", opts:["Yes","No","Not Sure"]},
+  {q:"Should there be more electives (art, music, coding, business)?", key:"electives", opts:["Yes","No","Not Sure"]},
+  {q:"Should juniors/seniors be allowed off-campus lunch?", key:"openlunch", opts:["Yes","No","Not Sure"]},
+  {q:"Should service hours be required for graduation?", key:"service", opts:["Yes","No","Not Sure"]},
+  {q:"Should there be more anti-bullying and restorative justice programs?", key:"bully", opts:["Yes","No","Not Sure"]},
+  {q:"If you could change one thing about our school, what would it be?", key:"suggest", open:true}
+];
+
+/* ---------- app state ---------- */
+let appState = {
+  page: 0,
+  reg: { name:"", grade:"", id:"", affirm:false },
+  votes: {
+    offices: Array(offices.length).fill(null),
+    reps: [],
+    issues: Array(issues.length).fill("") // string for each; open ones are free text
+  },
+  results: {
+    offices: offices.map(o=>Array(o.candidates.length).fill(0)),
+    reps: Array(classReps.length).fill(0),
+    issues: issues.map(q=> q.open ? [] : [0,0,0])
+  },
+  _tallied: false  // prevents double-tally
+};
+
+function saveState(){ sessionStorage.setItem('hsVoteApp', JSON.stringify(appState)); }
+function loadState(){ const s = sessionStorage.getItem('hsVoteApp'); if(s) appState = JSON.parse(s); }
+function resetApp(){ sessionStorage.removeItem('hsVoteApp'); appState = { ...appState, page:0 }; location.reload(); }
+
+function $(id){ return document.getElementById(id); }
+
+/* ---------- render ---------- */
+function render(){
+  let html = '';
+  switch(appState.page){
+    case 0:
+      html = `
+      <div class="center"><div class="card">
+        <div class="owl">🦉</div>
+        <div class="title">High School Voting Portal</div>
+        <div class="info-paragraph">
+          <b>Welcome!</b> Vote for student leaders, weigh in on school issues, and practice civic participation.
+          Votes stay private and local — try as many times as you like.
+        </div>
+        <div style="display:flex; gap:10px; justify-content:center;">
+          <button onclick="goTo(1)">Register</button>
+          <button class="nav-btn ghost" onclick="goTo(2)">Start Ballot</button>
+        </div>
+      </div></div>`;
+      break;
+
+    case 1:
+      html = `
+      <div class="center"><div class="card">
+        <div class="owl">🦉</div>
+        <div class="title">Voter Registration</div>
+        <label>Full Name</label><input id="regName" maxlength="30" value="${escapeHtml(appState.reg.name)}" />
+        <label>Grade</label>
+        <select id="regGrade">
+          <option value="">Select grade</option>
+          ${[9,10,11,12].map(g=>`<option value="${g}" ${appState.reg.grade==g?'selected':''}>${g}</option>`).join('')}
+        </select>
+        <label>Student ID (optional)</label><input id="regID" maxlength="12" value="${escapeHtml(appState.reg.id)}" />
+        <div style="margin:.6rem 0;">
+          <input type="checkbox" id="regAffirm" ${appState.reg.affirm?'checked':''}/> <label for="regAffirm" style="display:inline;font-weight:400">I am a student at this school</label>
+        </div>
+        <div style="display:flex;gap:8px; justify-content:center;">
+          <button onclick="submitReg()">Next</button>
+          <button class="nav-btn ghost" onclick="goTo(0)">Back</button>
+        </div>
+      </div></div>`;
+      break;
+
+    case 2:
+      html = `
+      <div class="center"><div class="card">
+        <div class="owl">🦉</div>
+        <div class="title">${escapeHtml(offices[officePage()].em + ' ' + offices[officePage()].office)}</div>
+        <div class="office-list">
+          ${offices[officePage()].candidates.map((cand,ci)=>`
+            <div class="cand-card ${appState.votes.offices[officePage()]===ci?'selected':''}" onclick="selectOffice(${ci})">
+              <div class="cand-emoji">${cand.emoji}</div>
+              <div style="font-weight:700">${escapeHtml(cand.name)}</div>
+              <div class="bubble">${escapeHtml(cand.bio)}</div>
+            </div>
+          `).join('')}
+        </div>
+        <div style="display:flex; gap:8px; justify-content:center;">
+          <button onclick="nextOffice()" ${appState.votes.offices[officePage()]===null?'disabled':''}>Next</button>
+          <button class="nav-btn ghost" onclick="goTo(1)">Back</button>
+        </div>
+      </div></div>`;
+      break;
+
+    case 3:
+      html = `
+      <div class="center"><div class="card">
+        <div class="owl">🦉</div>
+        <div class="title">Class Representatives</div>
+        <div class="small">Pick up to 2 reps</div>
+        <div class="rep-list">
+          ${classReps.map((r,i)=>`
+            <div class="rep-card ${appState.votes.reps.includes(i)?'selected':''}" onclick="toggleRep(${i})">
+              <div class="cand-emoji">${r.emoji}</div>
+              <div style="font-weight:700">${escapeHtml(r.name)}</div>
+            </div>
+          `).join('')}
+        </div>
+        <div style="display:flex; gap:8px; justify-content:center;">
+          <button onclick="goTo(4)" ${appState.votes.reps.length===0?'disabled':''}>Next</button>
+          <button class="nav-btn ghost" onclick="goTo(2)">Back</button>
+        </div>
+      </div></div>`;
+      break;
+
+    case 4:
+      html = `
+      <div class="center"><div class="card">
+        <div class="owl">🦉</div>
+        <div class="title">School Issues</div>
+        <div class="issue-list">
+          ${issues.map((iss,i)=> iss.open
+            ? `<label>${escapeHtml(iss.q)}<br><textarea id="issue_${i}">${escapeHtml(appState.votes.issues[i])}</textarea></label>`
+            : `<label>${escapeHtml(iss.q)}<br>
+                <select id="issue_${i}" onchange="voteIssue(${i})">
+                  <option value="">Select</option>
+                  ${iss.opts.map(opt=>`<option value="${escapeHtml(opt)}" ${appState.votes.issues[i]===opt?'selected':''}>${escapeHtml(opt)}</option>`).join('')}
+                </select>
+               </label>`
+          ).join('')}
+        </div>
+        <div style="display:flex; gap:8px; justify-content:center;">
+          <button onclick="goTo(5)" ${issues.some((iss,i)=>!iss.open && !appState.votes.issues[i])?'disabled':''}>Review</button>
+          <button class="nav-btn ghost" onclick="goTo(3)">Back</button>
+        </div>
+      </div></div>`;
+      break;
+
+    case 5:
+      html = `
+      <div class="center"><div class="card">
+        <div class="owl">🦉</div>
+        <div class="title">Review Your Ballot</div>
+        <div class="review">
+          <b>Student Offices:</b><br>
+          ${offices.map((o,oi)=>`${escapeHtml(o.office)}: <span style="color:#244063">${(o.candidates[appState.votes.offices[oi]]?.emoji||'') + ' ' + (o.candidates[appState.votes.offices[oi]]?.name||'-')}</span><br>`).join('')}
+          <b>Class Reps:</b> ${appState.votes.reps.map(i=>escapeHtml(classReps[i].emoji + ' ' + classReps[i].name)).join(', ') || '-'}<br>
+          <b>Issues:</b><br>
+          ${issues.map((iss,i)=> iss.open ? `${escapeHtml(iss.q)}<br><i style="color:#4495b3">${escapeHtml(appState.votes.issues[i]||'-')}</i><br>` : `${escapeHtml(iss.q)} <span style="color:#4495b3">${escapeHtml(appState.votes.issues[i]||'-')}</span><br>`).join('')}
+        </div>
+        <div style="display:flex; gap:8px; justify-content:center;">
+          <button onclick="submitBallot()">Submit My Vote</button>
+          <button class="nav-btn ghost" onclick="goTo(4)">Back</button>
+        </div>
+      </div></div>`;
+      break;
+
+    case 6:
+      // single tally guard
+      if(!appState._tallied){
+        // tally offices
+        offices.forEach((o,oi)=>{ const pick = appState.votes.offices[oi]; if(typeof pick === 'number') appState.results.offices[oi][pick] += 1; });
+        // reps
+        appState.votes.reps.forEach(i=> appState.results.reps[i] += 1);
+        // issues
+        issues.forEach((iss,i)=>{
+          if(!iss.open && appState.votes.issues[i]){
+            const idx = iss.opts.indexOf(appState.votes.issues[i]);
+            if(idx>=0) appState.results.issues[i][idx] += 1;
+          }
+        });
+        appState._tallied = true;
+        saveState();
+      }
+
+      html = `
+      <div class="center"><div class="card">
+        <div class="owl confetti">🎉🦉🎉</div>
+        <div class="title">Results</div>
+        <div class="bubble" style="background:#f6fdea;color:#284f25;">Classroom snapshot — session only (private).</div>
+
+        <b>Student Offices:</b>
+        ${offices.map((o,oi)=> barChart(o.candidates.map(c=>c.emoji+' '+c.name), appState.results.offices[oi])).join('')}
+
+        <b>Class Reps:</b>
+        ${barChart(classReps.map(r=>r.emoji+' '+r.name), appState.results.reps)}
+
+        <b>Issues:</b>
+        ${issues.map((iss,i)=> !iss.open ? (`<div style="margin-top:8px"><b>${escapeHtml(iss.q)}</b></div>` + barChart(iss.opts, appState.results.issues[i])) : '').join('')}
+
+        <div style="display:flex; gap:8px; justify-content:center; margin-top:12px; flex-wrap:wrap;">
+          <button onclick="downloadCSV()">Export CSV</button>
+          <button class="nav-btn ghost" onclick="openTeacherNote()">Print Teacher Note</button>
+          <button onclick="goTo(7)">Reflect</button>
+          <button class="nav-btn" onclick="restart()">Vote Again</button>
+        </div>
+      </div></div>`;
+      break;
+
+    case 7:
+      html = `
+      <div class="center"><div class="card">
+        <div class="owl">🦉</div>
+        <div class="title">Reflection</div>
+        <div class="small">What was the most important issue to you and why? <br><i>(This text is not saved to the server.)</i></div>
+        <textarea id="reflectBox"></textarea>
+        <div style="display:flex; gap:8px; justify-content:center;">
+          <button onclick="restart()">Finish & Vote Again</button>
+          <button class="nav-btn ghost" onclick="goTo(6)">Back to Results</button>
+        </div>
+      </div></div>`;
+      break;
+  }
+  document.getElementById('app').innerHTML = html;
+}
+
+/* helpers */
+function goTo(p){ appState.page = p; saveState(); render(); }
+function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function officePage(){ return Math.min(appState.page - 2, offices.length - 1); }
+
+/* actions */
+function submitReg(){
+  const name = $('regName').value.trim();
+  const grade = $('regGrade').value;
+  const id = $('regID').value.trim();
+  const affirm = $('regAffirm').checked;
+  if(!name || !grade || !affirm){ alert('Please fill name, grade and affirm you are a student.'); return; }
+  appState.reg = { name, grade, id, affirm };
+  saveState(); goTo(2);
+}
+
+function selectOffice(ci){
+  const idx = officePage();
+  appState.votes.offices[idx] = ci;
+  saveState(); render();
+}
+
+function nextOffice(){
+  if(officePage() < offices.length - 1) {
+    appState.page++;
+    saveState();
+    render();
+  } else {
+    // finished offices
+    appState.page = 3;
+    saveState();
+    render();
+  }
+}
+
+function toggleRep(i){
+  if(appState.votes.reps.includes(i)) appState.votes.reps = appState.votes.reps.filter(x=>x!==i);
+  else if(appState.votes.reps.length < 2) appState.votes.reps.push(i);
+  saveState(); render();
+}
+
+function voteIssue(i){
+  const el = $('issue_' + i);
+  if(el) appState.votes.issues[i] = el.value;
+  saveState();
+}
+
+function goTo(o){ appState.page = o; saveState(); render(); } // overwritten above intentionally for nav
+
+function submitBallot(){
+  // simple validations already enforced by UI, now proceed to results
+  appState._tallied = false; // allow this ballot to be tallied
+  saveState(); appState.page = 6; render();
+}
+
+function restart(){
+  // reset votes & tallies for a fresh classroom run, keep registration
+  appState.votes = { offices: Array(offices.length).fill(null), reps: [], issues: Array(issues.length).fill('') };
+  appState.results = { offices: offices.map(o=>Array(o.candidates.length).fill(0)), reps: Array(classReps.length).fill(0), issues: issues.map(q=> q.open ? [] : [0,0,0]) };
+  appState._tallied = false;
+  saveState(); goTo(0);
+}
+
+/* ---------- Teacher tools (CSV export & printable note) ---------- */
+function downloadCSV(){
+  // Build rows: registration, office tallies, reps, issues
+  const rows = [];
+  rows.push(['Voter Name', appState.reg.name || '']);
+  rows.push(['Grade', appState.reg.grade || '']);
+  rows.push(['Student ID', appState.reg.id || '']);
+  rows.push([]);
+  rows.push(['Category','Option','Count']);
+
+  // offices
+  offices.forEach((o,oi)=>{
+    o.candidates.forEach((c,ci)=>{
+      rows.push([o.office, `${c.emoji} ${c.name}`, appState.results.offices[oi][ci] || 0]);
+    });
+  });
+
+  rows.push([]);
+  classReps.forEach((r,i)=> rows.push(['Class Rep', `${r.emoji} ${r.name}`, appState.results.reps[i] || 0]));
+  rows.push([]);
+
+  // issues
+  issues.forEach((iss,i)=>{
+    if(iss.open){
+      rows.push([`Open Response: ${iss.q}`, appState.votes.issues[i] || '']);
+    } else {
+      iss.opts.forEach((opt,oi)=> rows.push([iss.q, opt, appState.results.issues[i][oi] || 0]));
+    }
+  });
+
+  const csv = rows.map(r => r.map(c => `"${String(c||'').replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url;
+  a.download = `voti_highschool_snapshot_${new Date().toISOString().slice(0,10)}.csv`;
+  document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+}
+
+function openTeacherNote(){
+  const note = `
+Voti the Owl — Teacher Note & Lesson Plan
+
+Session: High School Mock Election
+Registration: ${appState.reg.name || '-'} | Grade: ${appState.reg.grade || '-'} | ID: ${appState.reg.id || '-'}
+
+Steps:
+1. Students register on the portal.
+2. Vote for each office, choose class reps, and answer issues.
+3. Use 'Export CSV' to download classroom results (teacher can merge multiple student exports).
+4. Discussion prompts:
+   - Which issues mattered most and why?
+   - How do candidate platforms connect to real student needs?
+   - What would you change in the process?
+
+Suggested time: 30–45 minutes
+Outcomes: Students practice civic participation, critical thinking, and public speaking.
+
+-- Generated by the portal
+  `;
+  const w = window.open('','_blank','width=800,height=600');
+  w.document.write(`<pre style="font-family:inherit; font-size:14px; padding:20px;">${escapeHtml(note)}</pre>`);
+  w.document.close();
+  setTimeout(()=> w.print(), 350);
+}
+
+/* simple bar chart helper */
+function barChart(labels, data) {
+  const total = data.reduce((a,b)=>a+b,0) || 1;
+  return labels.map((lbl,i)=> `<div class="chart-bar" style="width:${35+Math.round(220*(data[i]/total))}px">${escapeHtml(lbl)}: ${data[i]}</div>`).join('');
+}
+
+/* persist/load */
+window.onload = function(){ loadState(); render(); };
+</script>
+</body>
+</html>
