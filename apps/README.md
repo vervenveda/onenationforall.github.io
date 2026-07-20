@@ -30,4 +30,32 @@ Along the way, Voti the Owl will guide you with tips and facts about elections a
 
 ​
 
-Visit our Educational Site
+🌞 VOTE FOR JENNIFER PEARL 🌞
+
+President 2028
+
+​
+
+Let’s build a future that works for all of us, 
+
+one signature, one neighbor, one policy at a time!
+
+​
+
+Why I’m running:
+
+​
+
+Affordable healthcare for every American
+
+Protection from government overreach
+
+Strong schools
+
+A powerful workforce
+
+Support for small businesses & community corporations
+
+Clean water, safe neighborhoods, and resilient coasts
+
+Transparent and Accountable Government
