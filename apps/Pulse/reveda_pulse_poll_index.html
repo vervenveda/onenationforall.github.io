@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ReVeda Pulse Poll</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<style>
+  body {
+    background: #0b1020;
+    font-family: Arial, sans-serif;
+    color: #faf8f4;
+    margin: 0;
+  }
+
+  .pulse-wrap {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 1.7em 3vw 1em;
+  }
+
+  .pulse-title {
+    font-size: 2em;
+    letter-spacing: 2px;
+    color: #ffe17b;
+    text-align: center;
+    margin-bottom: 8px;
+    text-shadow: 0 1px 12px #322b2388;
+  }
+
+  .pulse-sub {
+    text-align: center;
+    color: #f5e9c0;
+    font-size: 1.06em;
+    margin-bottom: 26px;
+  }
+
+  .poll-q {
+    font-size: 1.16em;
+    font-weight: bold;
+    margin-bottom: 0.7em;
+    color: #ffe17b;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  .poll-opts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7em;
+    margin-bottom: 1.2em;
+  }
+
+  .poll-opts label {
+    background: #1b2133;
+    color: #ffe17b;
+    border-radius: 9px;
+    padding: 0.83em 1em;
+    cursor: pointer;
+    border: 1.5px solid #e0c58633;
+    transition: background 0.14s;
+  }
+
+  .poll-opts input[type="radio"] { display: none; }
+
+  .poll-opts input[type="radio"]:checked + span {
+    color: #2e251a;
+    background: linear-gradient(90deg,#ffe17b 65%,#e8d5a4 100%);
+    border-color: #ffe17b;
+    display: block;
+    padding: 0.83em 1em;
+    border-radius: 9px;
+  }
+
+  .poll-btn {
+    background: linear-gradient(90deg,#ffe17b,#d9b878 90%);
+    color: #2e251a;
+    border: none;
+    border-radius: 11px;
+    padding: 0.75em 1.3em;
+    font-size: 1em;
+    letter-spacing: 1.3px;
+    font-weight: bold;
+    margin: 0 auto 1em;
+    display: block;
+    cursor: pointer;
+    box-shadow: 0 3px 12px #b8925225;
+  }
+
+  .poll-progress {
+    text-align: center;
+    margin-bottom: 0.9em;
+    color: #ffe17b;
+    font-size: 1em;
+  }
+
+  .poll-chart {
+    width: 100%;
+    margin: 16px 0;
+    background: #211a0b;
+    border-radius: 11px;
+    padding: 1.2em;
+    color: #ffe17b;
+    box-shadow: 0 2px 14px #f5e9c020;
+  }
+
+  .chart-bar {
+    background: linear-gradient(90deg,#ffe17b 75%,#d9b878 100%);
+    border-radius: 7px;
+    height: 22px;
+    margin-bottom: 6px;
+    color: #322b23;
+    line-height: 22px;
+    padding-left: 12px;
+    transition: width 0.7s;
+  }
+
+  .pulse-footer {
+    margin: 38px 0 0 0;
+    color: #ffe17b;
+    text-align: center;
+    font-size: 1em;
+    opacity: 0.88;
+    letter-spacing: 0.7px;
+  }
+
+  /* ADMIN BUTTON */
+  #adminBtn {
+    position: fixed;
+    top: 13px;
+    right: 13px;
+    background: #cc0000;
+    color: #fff;
+    border: none;
+    padding: 7px 11px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8em;
+  }
+
+  /* ADMIN PANEL */
+  #adminPanel {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    max-width: 500px;
+    background: #111829;
+    transform: translate(-50%, -50%);
+    border-radius: 12px;
+    padding: 1.2em;
+    box-shadow: 0 0 22px #00000090;
+    color: #ffe17b;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 9999;
+  }
+
+  #adminPanel h2 {
+    margin-top: 0;
+    text-align: center;
+  }
+
+  .admin-btn {
+    background: #ffe17b;
+    color: #222;
+    border: none;
+    padding: 8px 14px;
+    margin: 8px 0;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+</style>
+</head>
+
+<body>
+
+<button id="adminBtn">Admin</button>
+
+<div id="adminPanel">
+  <h2>Admin Panel</h2>
+  <div id="adminContent"></div>
+  <button class="admin-btn" onclick="exportJSON()">Download JSON</button>
+  <button class="admin-btn" onclick="resetPoll(true)">Reset Poll</button>
+  <button class="admin-btn" onclick="closeAdmin()">Close</button>
+</div>
+
+<div class="pulse-wrap">
+  <div class="pulse-title">ReVeda Pulse Poll</div>
+  <div class="pulse-sub">
+    Your voice matters.  
+    <br><span style="color:#d9b878;">All answers are anonymous and stored locally.</span>
+  </div>
+
+  <div id="pollBox"></div>
+  <div id="chartBox" style="display:none;"></div>
+
+  <div class="pulse-footer">© 2025 ReVeda Revolution</div>
+</div>
+
+<script>
+const pollQuestions = [
+  {q:"Which economic issue concerns you most right now?",a:["Inflation","Wages/Jobs","Corporate Power","Poverty/Basic Needs"]},
+  {q:"What should Congress prioritize in healthcare?",a:["Affordable coverage","Prescription drug reform","Mental health access","Universal care"]},
+  {q:"How do you feel about student debt?",a:["Erase all","Reduce some","Status quo","No forgiveness"]},
+  {q:"How urgent is climate action?",a:["Top priority","Important but not urgent","Low priority","A hoax"]},
+  {q:"What is your top concern for education?",a:["Safe schools","Teacher pay/support","Honest curriculum","Smaller classes"]},
+  {q:"How do you feel about police reform?",a:["Major reform needed","Minor tweaks","No change needed","Defund police"]},
+  {q:"What’s most broken in our democracy?",a:["Money in politics","Voter rights/access","Corruption/lobbying","Nothing is broken"]},
+  {q:"Immigration policy should…",a:["Make it easier to immigrate","Toughen border rules","Prioritize refugees","Stay as is"]},
+  {q:"Which best describes your media trust?",a:["Mostly trust local news","Trust independent","Distrust all","Trust mainstream"]},
+  {q:"What’s your stance on reproductive rights?",a:["Pro-choice","Pro-life","Mixed/unsure","Let states decide"]},
+  {q:"How do you view gun laws?",a:["Stricter","Status quo","Looser","Ban all guns"]},
+  {q:"How do you feel about universal basic income?",a:["Support","Unsure","Oppose","Already too generous"]},
+  {q:"Should the minimum wage be…",a:["$15+","$12-$14","Stay as is","Abolished"]},
+  {q:"Biggest barrier to justice?",a:["Systemic racism","Class inequality","Over-criminalization","It’s fair"]},
+  {q:"How should US handle global conflicts?",a:["Diplomacy first","Military strength","Isolationism","Case-by-case"]},
+  {q:"Your ideal energy future?",a:["100% renewable","Mixed sources","Fossil fuels","Nuclear"]},
+  {q:"What gives you hope for the future?",a:["Youth activism","Community","Faith","Science/Tech"]},
+  {q:"Who most inspires you?",a:["A family member","A public figure","An activist","A mentor"]},
+  {q:"Which matters most to you now?",a:["Freedom","Security","Equality","Tradition"]},
+  {q:"Should healthcare include mental health as standard?",a:["Yes","No","Undecided"]},
+  {q:"How would you fix housing?",a:["Build more","Rent controls","Subsidies","Let market decide"]},
+  {q:"Which voting reform is most needed?",a:["Ranked-choice","Open primaries","No change","Mail-in/early"]},
+  {q:"Greatest threat to privacy?",a:["Tech companies","Gov’t surveillance","Social media","Not worried"]},
+  {q:"Top social justice issue?",a:["Racial equity","Gender rights","LGBTQ+ rights","Disability access"]},
+  {q:"Greatest barrier for youth?",a:["Cost of education","Mental health","Job access","Violence"]},
+  {q:"Where do you get your news?",a:["Social media","TV/radio","Independent media","Word of mouth"]},
+  {q:"What’s your #1 wish for America?",a:["Unity","Justice","Prosperity","Healing"]},
+  // Add more or customize freely!
+];
+let curQ = 0;
+let pollResults = Array(pollQuestions.length).fill().map(q =>
+  Array(pollQuestions[q]?.a.length||4).fill(0)
+);
+let userAnswers = [];
+// Try localStorage for persistence
+try {
+  let saved = JSON.parse(localStorage.getItem("revedaPollV1")||"null");
+  if(saved && saved.answers && saved.results){
+    userAnswers = saved.answers; pollResults = saved.results;
+    curQ = userAnswers.length;
+  }
+} catch{}
+
+function showQuestion(){
+  const box = document.getElementById('pollBox');
+  if(curQ >= pollQuestions.length) return showResults();
+  const {q,a} = pollQuestions[curQ];
+  let html = `<div class="poll-progress">Question ${curQ+1} of ${pollQuestions.length}</div>
+    <div class="poll-q">${q}</div><form id="pollForm"><div class="poll-opts">`;
+  a.forEach((opt, i) => {
+    html += `<label>
+      <input type="radio" name="ans" value="${i}"><span>${opt}</span>
+    </label>`;
+  });
+  html += `</div>
+    <button class="poll-btn" type="submit">Submit</button>
+    </form>`;
+  box.innerHTML = html;
+  document.getElementById('pollForm').onsubmit = function(e){
+    e.preventDefault();
+    const idx = Array.from(box.querySelectorAll('input[name="ans"]')).findIndex(x=>x.checked);
+    if(idx<0) return;
+    pollResults[curQ][idx]++;
+    userAnswers.push(idx);
+    curQ++;
+    savePoll();
+    showQuestion();
+  };
+  document.getElementById('chartBox').style.display = 'none';
+}
+function showResults(){
+  const box = document.getElementById('pollBox');
+  box.innerHTML = `<div class="poll-q" style="color:#ffe17b;">Thank you for sharing your voice!</div>
+    <button class="poll-btn" onclick="resetPoll()">Restart Poll</button>`;
+  document.getElementById('chartBox').style.display = 'block';
+  renderChart();
+}
+function renderChart(){
+  const chart = document.getElementById('chartBox');
+  let html = `<div class="poll-chart"><div style="font-weight:bold;margin-bottom:7px;">Pulse Results So Far</div>`;
+  pollQuestions.forEach(({q,a}, i) => {
+    let total = pollResults[i].reduce((s,x)=>s+x,0)||1;
+    html += `<div style="margin-bottom:4px;"><b style="color:#ffe17b;">${q}</b></div><div class="chart-bar-wrap">`;
+    a.forEach((ans, j) => {
+      let pct = Math.round(100*pollResults[i][j]/total);
+      html += `<div class="chart-bar" style="width:${pct}%;"><span>${ans} — ${pct}%</span></div>`;
+    });
+    html += '</div>';
+  });
+  html += '</div>';
+  chart.innerHTML = html;
+}
+function resetPoll(){
+  curQ = 0;
+  userAnswers = [];
+  pollResults = pollQuestions.map(q=>Array(q.a.length).fill(0));
+  savePoll();
+  showQuestion();
+}
+function savePoll(){
+  localStorage.setItem("revedaPollV1", JSON.stringify({
+    answers: userAnswers, results: pollResults
+  }));
+}
+showQuestion();
+</script>
+</body>
+</html>
