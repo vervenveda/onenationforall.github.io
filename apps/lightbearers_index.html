@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lightbearers Carousel (Text Only)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@666&family=Montserrat:wght@444;777&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #11151d;
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: #1e2534;
+    }
+    .carousel-shell {
+      max-width: 666px;
+      margin: 44px auto 0;
+      background: #fff;
+      border-radius: 7px;
+      box-shadow: 0 7px 44px #11151d33;
+      padding: 33px 14px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      min-height: 333px;
+    }
+    .carousel-title {
+      font-family: 'Cinzel', serif;
+      text-transform: uppercase;
+      color: #7a5a28;
+      font-size: 1.22em;
+      margin-bottom: 14px;
+      letter-spacing: 1.3px;
+      text-align: center;
+    }
+    .lb-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.13em;
+      color: #85692e;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 7px;
+      letter-spacing: 1.1px;
+    }
+    .lb-name a {
+      color: #7a5a28;
+      text-decoration: underline;
+      transition: color 0.18s;
+    }
+    .lb-name a:hover { color: #c69e3a; }
+    .lb-tagline {
+      color: #7c643a;
+      font-size: 1em;
+      margin-bottom: 7px;
+      text-align: center;
+      font-weight: 444;
+      letter-spacing: 0.3px;
+    }
+    .lb-quote {
+      color: #2e251a;
+      font-size: 1.04em;
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 14px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .carousel-arrows {
+      display: flex;
+      gap: 33px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 14px;
+    }
+    .carousel-btn {
+      background: #d9b878;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 33px;
+      height: 33px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 1.5px 7px #b8925222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: filter 0.13s;
+    }
+    .carousel-btn:hover { filter: brightness(1.15); }
+    .lb-counter {
+      font-size: 0.97em;
+      color: #a98a57;
+      margin-top: 7px;
+      text-align: center;
+      letter-spacing: 0.8px;
+    }
+    @media (max-width: 333px) {
+      .carousel-shell { padding: 14px 4vw 24px; min-height: 222px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="carousel-shell">
+    <div class="carousel-title">Lightbearers  Activists of Change</div>
+    <div class="lb-name" id="lbName"></div>
+    <div class="lb-tagline" id="lbTagline"></div>
+    <div class="lb-quote" id="lbQuote"></div>
+    <div class="carousel-arrows">
+      <button class="carousel-btn" id="prevBtn" aria-label="Previous">&#8592;</button>
+      <button class="carousel-btn" id="nextBtn" aria-label="Next">&#8594;</button>
+    </div>
+    <div class="lb-counter" id="lbCounter"></div>
+  </div>
+  <script>
+    // Example: Add homepage links. (Update or expand for your needs!)
+    const lightbearers = [
+      { name: "Mahatma Gandhi", url: "https://www.mkgandhi.org/", tagline: "Nonviolent Independence · India", quote: "Be the change you wish to see in the world." },
+      { name: "Martin Luther King Jr.", url: "https://thekingcenter.org/", tagline: "Civil Rights · USA", quote: "Injustice anywhere is a threat to justice everywhere." },
+      { name: "Nelson Mandela", url: "https://www.nelsonmandela.org/", tagline: "Anti-Apartheid · South Africa", quote: "It always seems impossible until it’s done." },
+      { name: "Rosa Parks", url: "https://www.rosaparks.org/", tagline: "Civil Rights · USA", quote: "You must never be fearful about what you are doing when it is right." },
+      { name: "Malala Yousafzai", url: "https://malala.org/", tagline: "Girls’ Education · Pakistan/Global", quote: "One child, one teacher, one book, and one pen can change the world." },
+      { name: "Greta Thunberg", url: "https://www.fridaysforfuture.org/", tagline: "Climate Justice · Sweden/Global", quote: "You are never too small to make a difference." },
+      { name: "Rigoberta Menchú", url: "https://www.rigobertamenchu.com/", tagline: "Indigenous Rights · Guatemala", quote: "Peace is not only the absence of war; as long as there is poverty, racism, discrimination, and exclusion, we’ll be hard-pressed to achieve a world of peace." },
+      { name: "César Chávez", url: "https://chavezfoundation.org/", tagline: "Farmworker Rights · USA", quote: "Si, se puede! (Yes, it can be done!)" },
+      { name: "Harriet Tubman", url: "https://www.harriettubmanmonument.com/", tagline: "Abolitionist · USA", quote: "Every great dream begins with a dreamer." },
+      { name: "Dorothy Height", url: "https://www.nwhm.org/education-resources/biography/biographies/dorothy-height/", tagline: "Civil & Women’s Rights · USA", quote: "Greatness is not measured by what a man or woman accomplishes, but by the opposition he or she has overcome." },
+      { name: "Ai-jen Poo", url: "https://www.domesticworkers.org/", tagline: "Labor & Immigrant Rights · USA", quote: "Dignity for all work. Dignity for all people." },
+      { name: "Desmond Tutu", url: "https://www.tutu.org.za/", tagline: "Human Rights · South Africa", quote: "Do your little bit of good where you are; it’s those little bits of good put together that overwhelm the world." },
+      { name: "Wangari Maathai", url: "https://www.greenbeltmovement.org/", tagline: "Environment & Women’s Rights · Kenya", quote: "It’s the little things citizens do. That’s what will make the difference." },
+      { name: "Shirin Ebadi", url: "https://www.nobelprize.org/prizes/peace/2003/ebadi/biographical/", tagline: "Human Rights · Iran", quote: "Human rights is a universal standard. It is a component of every religion and every civilization." },
+      { name: "Steve Biko", url: "https://www.sahistory.org.za/people/stephen-bantu-biko", tagline: "Black Consciousness · South Africa", quote: "The most potent weapon in the hands of the oppressor is the mind of the oppressed." },
+      { name: "Alice Paul", url: "https://www.alicepaul.org/", tagline: "Women’s Suffrage · USA", quote: "I never doubted that equal rights was the right direction. Most reforms, most problems are complicated. But to me there is nothing complicated about ordinary equality." },
+      { name: "Nadia Murad", url: "https://www.nadiamurad.org/", tagline: "Human Rights, Survivor Advocacy · Iraq", quote: "We must all work together so that the world can be a safe place for women and girls." },
+      { name: "Vanessa Nakate", url: "https://www.vanessanakate.com/", tagline: "Climate Justice · Uganda", quote: "We cannot have climate justice without racial justice." },
+      { name: "W.E.B. Du Bois", url: "https://www.webdubois.org/", tagline: "Civil Rights, Scholarship · USA", quote: "The cost of liberty is less than the price of repression." },
+      { name: "Marsha P. Johnson", url: "https://marshap.org/", tagline: "LGBTQ+ Rights · USA", quote: "No pride for some of us without liberation for all of us." },
+      { name: "Tarana Burke", url: "https://metoomvmt.org/", tagline: "#MeToo Movement · USA", quote: "You are not alone." },
+      { name: "Leymah Gbowee", url: "https://leymahgbowee.com/", tagline: "Peace Activism · Liberia", quote: "You can never leave footprints that last if you are always walking on tiptoe." },
+      { name: "Gloria Steinem", url: "https://www.gloriasteinem.com/", tagline: "Women’s Rights · USA", quote: "The truth will set you free, but first it will piss you off." },
+      { name: "Fred Korematsu", url: "https://korematsuinstitute.org/", tagline: "Civil Liberties · USA", quote: "If you have the feeling that something is wrong, don’t be afraid to speak up." },
+      { name: "Angela Davis", url: "https://www.angeladavis.com/", tagline: "Prison Abolition · USA", quote: "I am no longer accepting the things I cannot change. I am changing the things I cannot accept." },
+      { name: "Oscar Romero", url: "https://www.oscarromero.org.uk/", tagline: "Human Rights · El Salvador", quote: "Peace is not the product of terror or fear. Peace is not the silence of cemeteries. Peace is the generous, tranquil contribution of all to the good of all." },
+      { name: "Aung San Suu Kyi", url: "https://www.nobelprize.org/prizes/peace/1991/kyi/biographical/", tagline: "Democracy & Human Rights · Myanmar", quote: "Please use your freedom to promote ours." },
+      { name: "Jane Goodall", url: "https://www.janegoodall.org/", tagline: "Conservation & Animal Rights · UK/Global", quote: "What you do makes a difference, and you have to decide what kind of difference you want to make." }
+    ];
+    let idx = 0;
+
+    function showLB(n) {
+      idx = (n + lightbearers.length) % lightbearers.length;
+      const lb = lightbearers[idx];
+      document.getElementById('lbName').innerHTML = `<a href="${lb.url}" target="_blank" rel="noopener">${lb.name}</a>`;
+      document.getElementById('lbTagline').textContent = lb.tagline;
+      document.getElementById('lbQuote').textContent = `“${lb.quote}”`;
+      document.getElementById('lbCounter').textContent = `#${idx + 1} of ${lightbearers.length}`;
+    }
+    document.getElementById('prevBtn').onclick = () => showLB(idx - 1);
+    document.getElementById('nextBtn').onclick = () => showLB(idx + 1);
+    setInterval(() => showLB(idx + 1), 12000);
+    showLB(0);
+  </script>
+</body>
+</html>
