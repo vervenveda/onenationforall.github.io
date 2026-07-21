@@ -1,0 +1,1512 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
+<title>We the People Learning Lab — Constitution Monte Carlo Portal</title>
+<style>
+:root {
+  --bg: #11151c;
+  --panel: #1a2130;
+  --panel2: #232d40;
+  --ink: #f4efe7;
+  --muted: #cbbfAA;
+  --accent: #d6ad60;
+  --accent2: #8fb7ff;
+  --good: #9de0ad;
+  --warn: #ffd37a;
+  --bad: #ff9999;
+  --line: rgba(255,255,255,.14);
+  --shadow: 0 18px 50px rgba(0,0,0,.35);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(214,173,96,.18), transparent 30rem),
+    radial-gradient(circle at 90% 20%, rgba(143,183,255,.15), transparent 28rem),
+    var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.5;
+}
+a { color: var(--accent2); }
+a:hover { color: var(--accent); }
+.skip {
+  position: absolute; left: -999px; top: 0; background: var(--ink); color: #111; padding: .7rem;
+}
+.skip:focus { left: .5rem; z-index: 10; }
+header {
+  padding: clamp(1.5rem, 4vw, 4rem);
+  border-bottom: 1px solid var(--line);
+}
+.hero {
+  max-width: 1180px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+@media (max-width: 850px) {
+  .hero { grid-template-columns: 1fr; }
+}
+.kicker {
+  color: var(--accent);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: .78rem;
+}
+h1 {
+  margin: .25rem 0 .6rem;
+  font-size: clamp(2.1rem, 7vw, 5rem);
+  line-height: .98;
+}
+h2 { font-size: clamp(1.5rem, 3vw, 2.3rem); margin: 0 0 .75rem; }
+h3 { margin: 0 0 .45rem; }
+p { color: var(--muted); }
+.card, .stat, .toolbox {
+  background: linear-gradient(180deg, rgba(255,255,255,.065), rgba(255,255,255,.035));
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+}
+.card { padding: 1rem; }
+.hero .card { padding: 1.2rem; }
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: rgba(17,21,28,.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.navwrap {
+  max-width: 1180px;
+  margin: auto;
+  display: flex;
+  gap: .45rem;
+  flex-wrap: wrap;
+  padding: .65rem 1rem;
+}
+.navwrap a, button, .pill {
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.05);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: .55rem .8rem;
+  text-decoration: none;
+  cursor: pointer;
+  font: inherit;
+}
+button:hover, .navwrap a:hover, .pill:hover { border-color: var(--accent); color: var(--accent); }
+main {
+  max-width: 1180px;
+  margin: auto;
+  padding: 1rem;
+}
+section {
+  padding: clamp(1.5rem, 4vw, 3rem) 0;
+  border-bottom: 1px solid var(--line);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+}
+.col-3 { grid-column: span 3; }
+.col-4 { grid-column: span 4; }
+.col-6 { grid-column: span 6; }
+.col-8 { grid-column: span 8; }
+.col-12 { grid-column: span 12; }
+@media (max-width: 900px) {
+  .col-3, .col-4, .col-6, .col-8 { grid-column: span 12; }
+}
+.stat {
+  padding: 1rem;
+  min-height: 130px;
+}
+.stat b {
+  display: block;
+  color: var(--accent);
+  font-size: 2rem;
+}
+input, select, textarea {
+  width: 100%;
+  padding: .8rem .9rem;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.06);
+  color: var(--ink);
+  font: inherit;
+}
+textarea { min-height: 110px; }
+label { display: block; color: var(--muted); margin: .25rem 0 .35rem; }
+.toolbar {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: .8rem;
+  margin: 1rem 0;
+}
+@media (max-width: 700px) {
+  .toolbar { grid-template-columns: 1fr; }
+}
+.list {
+  display: grid;
+  gap: .85rem;
+}
+.item {
+  background: rgba(0,0,0,.18);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: .9rem;
+}
+.item small { color: var(--accent); }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .25rem;
+  margin: .16rem .16rem .16rem 0;
+  padding: .25rem .55rem;
+  border-radius: 999px;
+  background: rgba(214,173,96,.12);
+  border: 1px solid rgba(214,173,96,.25);
+  color: #f8dfaa;
+  font-size: .82rem;
+}
+.lawbadge { background: rgba(143,183,255,.11); border-color: rgba(143,183,255,.25); color: #cfe0ff; }
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  align-items: end;
+}
+.controls > div { flex: 1 1 180px; }
+.result {
+  background: rgba(0,0,0,.25);
+  border: 1px dashed rgba(214,173,96,.45);
+  border-radius: 18px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+.progress {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.1);
+  overflow: hidden;
+  margin: .5rem 0 1rem;
+}
+.bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), var(--accent2)); transition: width .3s; }
+footer {
+  max-width: 1180px;
+  margin: auto;
+  padding: 2rem 1rem 4rem;
+  color: var(--muted);
+}
+details {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: .8rem 1rem;
+  background: rgba(255,255,255,.035);
+}
+summary { cursor: pointer; color: var(--ink); font-weight: 700; }
+.notice {
+  border-left: 4px solid var(--warn);
+  background: rgba(255,211,122,.08);
+  padding: .8rem 1rem;
+  border-radius: 12px;
+}
+.resource-actions {
+  display:flex; flex-wrap: wrap; gap:.45rem; margin-top:.6rem;
+}
+.resource-actions a {
+  display:inline-block; text-decoration:none; border:1px solid var(--line); border-radius:999px; padding:.4rem .65rem;
+}
+mark {
+  background: rgba(214,173,96,.32);
+  color: var(--ink);
+}
+.printonly { display:none; }
+@media print {
+  nav, button, input, select, .no-print { display:none !important; }
+  body { background:#fff; color:#111; }
+  p, label { color:#333; }
+  .card, .stat, .item, details { box-shadow:none; border-color:#999; background:#fff; }
+  a { color:#111; }
+  .printonly { display:block; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+  <div class="hero">
+    <div>
+      <div class="kicker">Civic Learning Portal</div>
+      <h1>We the People Learning Lab</h1>
+      <p>A single-file, no-framework prototype for learning the U.S. Constitution, Bill of Rights, all 27 amendments, landmark legal concepts, and federal laws that affect daily life.</p>
+      <p class="notice"><strong>Education only.</strong> This portal teaches legal literacy and civic research skills. It is not legal advice and does not replace qualified legal counsel.</p>
+    </div>
+    <div class="card">
+      <h2>How the Lab works</h2>
+      <p>The portal randomly draws civic scenarios, legal topics, amendments, and daily-life law areas. Learners compare facts, identify constitutional hooks, and use free primary sources to research the answer.</p>
+      <button onclick="randomScenario()">Start a random scenario</button>
+      <button onclick="runBatch()">Run 25-scenario simulation</button>
+    </div>
+  </div>
+</header>
+
+<nav aria-label="Portal sections">
+  <div class="navwrap">
+    <a href="#dashboard">Dashboard</a>
+    <a href="#modules">Curriculum</a>
+    <a href="#amendments">Amendments</a>
+    <a href="#simulator"></a>
+    <a href="#daily">Daily Law</a>
+    <a href="#resources">Free Links</a>
+    <a href="#build">Build Notes</a>
+  </div>
+</nav>
+
+<main id="main">
+  <section id="dashboard">
+    <h2>Portal dashboard</h2>
+    <div class="grid">
+      <div class="stat col-3"><b id="statResources">0</b>free source links</div>
+      <div class="stat col-3"><b>27</b>constitutional amendments</div>
+      <div class="stat col-3"><b id="statScenarios">0</b>Scenarios</div>
+      <div class="stat col-3"><b id="statLaws">0</b>daily-life law maps</div>
+    </div>
+  </section>
+
+  <section id="modules">
+    <h2>Comprehensive learning architecture</h2>
+    <p>Use this as the “course spine.” Each module can become lessons, quizzes, short videos, primary-source reading, case brief practice, and scenario simulations.</p>
+    <div id="moduleList" class="grid"></div>
+  </section>
+
+  <section id="amendments">
+    <h2>All amendments quick-reference</h2>
+    <div class="toolbar">
+      <input id="amendmentSearch" placeholder="Search amendments: speech, voting, due process, taxes..." oninput="renderAmendments()">
+      <select id="amendmentFilter" onchange="renderAmendments()">
+        <option value="all">All amendments</option>
+        <option value="bor">Bill of Rights, 1–10</option>
+        <option value="reconstruction">Reconstruction, 13–15</option>
+        <option value="democracy">Voting/democracy, 12, 15, 17, 19, 23, 24, 26</option>
+        <option value="government">Government structure/timing, 11, 12, 16, 17, 20, 22, 25, 27</option>
+      </select>
+    </div>
+    <div id="amendmentList" class="grid"></div>
+  </section>
+
+  <section id="simulator">
+    <h2>Civic scenario simulator</h2>
+    <p>Randomized scenarios help learners practice thinking like civic researchers: facts → constitutional issues → statutes/regulations → case law → source checking.</p>
+    <div class="card">
+      <div class="controls">
+        <div>
+          <label for="topicSelect">Scenario topic</label>
+          <select id="topicSelect">
+            <option value="any">Any topic</option>
+            <option value="Speech">Speech / protest / religion</option>
+            <option value="Search">Search / privacy / police</option>
+            <option value="Voting">Voting / elections</option>
+            <option value="Education">Education</option>
+            <option value="Employment">Workplace</option>
+            <option value="Environment">Environment</option>
+          </select>
+        </div>
+        <div>
+          <label for="learnerLevel">Learner level</label>
+          <select id="learnerLevel">
+            <option>Middle school</option>
+            <option selected>High school / adult beginner</option>
+            <option>Advanced civic researcher</option>
+          </select>
+        </div>
+        <div>
+          <label for="seedBox">Optional seed</label>
+          <input id="seedBox" placeholder="type any word">
+        </div>
+      </div>
+      <p>
+        <button onclick="randomScenario()">Draw scenario</button>
+        <button onclick="revealGuidance()">Reveal research guidance</button>
+        <button onclick="runBatch()">Run 25-scenario simulation</button>
+      </p>
+      <div id="scenarioResult" class="result" aria-live="polite">Choose “Draw scenario” to begin.</div>
+      <div id="batchResult" class="result" style="display:none"></div>
+    </div>
+  </section>
+
+  <section id="daily">
+    <h2>Laws that affect daily life</h2>
+    <p>This map connects constitutional principles to statutes, agency rules, and practical daily-life situations.</p>
+    <div id="dailyList" class="grid"></div>
+  </section>
+
+  <section id="resources">
+    <h2>Free access constitutional and legal resource library</h2>
+    <p>These links emphasize official public sources first, then high-quality free educational explainers. Use the filters to build reading paths for students, adults, teachers, or civic volunteers.</p>
+    <div class="toolbar">
+      <input id="resourceSearch" placeholder="Search resources: Supreme Court, CFR, voting, iCivics, API..." oninput="renderResources()">
+      <select id="resourceType" onchange="renderResources()">
+        <option value="all">All resource types</option>
+      </select>
+    </div>
+    <div id="resourceList" class="list"></div>
+  </section>
+
+  <section id="build">
+    <h2></h2>
+    <div class="grid">
+      <div class="card col-6">
+        <h3></h3>
+        <ul>
+         
+      </div>
+      <div class="card col-12">
+        <h3>Suggested learning modes</h3>
+        <p><span class="badge">Explore</span> Read primary text and plain-English summaries. <span class="badge">Apply</span> Try randomized scenarios. <span class="badge">Compare</span> Match constitutional text to statutes, regulations, and cases. <span class="badge">Participate</span> Learn how to comment on rules, contact representatives, read bills, and file public records requests.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p><strong>We the People Learning Lab</strong> — Khaemenes Academy All Rights Reserved 2026 Verify legal text against official sources before publication.</p>
+</footer>
+
+<script id="portalData" type="application/json">
+{
+  "resources": [
+    {
+      "title": "National Archives \u2014 Constitution of the United States",
+      "type": "Primary text",
+      "source": "National Archives",
+      "url": "https://www.archives.gov/founding-docs/constitution",
+      "notes": "Official public access page for the Constitution, Bill of Rights, and Amendments 11\u201327."
+    },
+    {
+      "title": "National Archives \u2014 Constitution transcript",
+      "type": "Primary text",
+      "source": "National Archives",
+      "url": "https://www.archives.gov/founding-docs/constitution-transcript",
+      "notes": "Transcription of the Constitution as inscribed on parchment."
+    },
+    {
+      "title": "National Archives \u2014 Bill of Rights",
+      "type": "Primary text",
+      "source": "National Archives",
+      "url": "https://www.archives.gov/founding-docs/bill-of-rights",
+      "notes": "Background and transcript links for the first ten amendments."
+    },
+    {
+      "title": "National Archives \u2014 Bill of Rights transcript",
+      "type": "Primary text",
+      "source": "National Archives",
+      "url": "https://www.archives.gov/founding-docs/bill-of-rights-transcript",
+      "notes": "Transcription of the enrolled joint resolution proposing the Bill of Rights."
+    },
+    {
+      "title": "America's Founding Documents",
+      "type": "Primary collection",
+      "source": "National Archives",
+      "url": "https://www.archives.gov/founding-docs",
+      "notes": "Declaration, Constitution, Bill of Rights, high-resolution images, Founders Online gateway."
+    },
+    {
+      "title": "Constitution Annotated",
+      "type": "Legal analysis",
+      "source": "Congress.gov / Library of Congress",
+      "url": "https://constitution.congress.gov/",
+      "notes": "Comprehensive legal interpretation of the Constitution based on Supreme Court case law and historical practice."
+    },
+    {
+      "title": "U.S. Constitution text at Congress.gov",
+      "type": "Primary text + annotation gateway",
+      "source": "Congress.gov / Library of Congress",
+      "url": "https://constitution.congress.gov/constitution/",
+      "notes": "Browse the Constitution by article and amendment."
+    },
+    {
+      "title": "Guide to Law Online \u2014 U.S. Constitution",
+      "type": "Research guide",
+      "source": "Library of Congress",
+      "url": "https://guides.loc.gov/us-federal-law/constitution",
+      "notes": "Government and non-government free legal resources related to the Constitution."
+    },
+    {
+      "title": "Federalist Papers \u2014 full text",
+      "type": "Primary commentary",
+      "source": "Library of Congress",
+      "url": "https://guides.loc.gov/federalist-papers/full-text",
+      "notes": "Full text of the 85 essays by Hamilton, Madison, and Jay."
+    },
+    {
+      "title": "Madison's Notes on the Constitutional Convention",
+      "type": "Primary source",
+      "source": "Library of Congress",
+      "url": "https://www.loc.gov/resource/mss31021a.01x01/",
+      "notes": "Digitized manuscript notes from James Madison's records of the Convention."
+    },
+    {
+      "title": "United States Code",
+      "type": "Federal statutes",
+      "source": "Office of the Law Revision Counsel, U.S. House",
+      "url": "https://uscode.house.gov/",
+      "notes": "Consolidation and codification by subject matter of general and permanent federal laws."
+    },
+    {
+      "title": "United States Code at govinfo",
+      "type": "Federal statutes",
+      "source": "Government Publishing Office",
+      "url": "https://www.govinfo.gov/app/collection/uscode",
+      "notes": "Official GPO access to U.S. Code publications."
+    },
+    {
+      "title": "Congress.gov",
+      "type": "Bills, laws, legislative history",
+      "source": "Library of Congress",
+      "url": "https://www.congress.gov/",
+      "notes": "Search bills, public laws, members, actions, summaries, committee materials, and votes."
+    },
+    {
+      "title": "Congress.gov API",
+      "type": "Developer API",
+      "source": "Library of Congress",
+      "url": "https://api.congress.gov/",
+      "notes": "Machine-readable congressional data. API key required through api.data.gov."
+    },
+    {
+      "title": "Code of Federal Regulations",
+      "type": "Federal regulations",
+      "source": "govinfo / GPO",
+      "url": "https://www.govinfo.gov/app/collection/cfr/",
+      "notes": "Annual edition of general and permanent federal agency rules."
+    },
+    {
+      "title": "Electronic Code of Federal Regulations",
+      "type": "Federal regulations",
+      "source": "Office of the Federal Register / GPO",
+      "url": "https://www.ecfr.gov/",
+      "notes": "Currently updated editorial compilation of CFR material."
+    },
+    {
+      "title": "eCFR API",
+      "type": "Developer API",
+      "source": "eCFR",
+      "url": "https://www.ecfr.gov/developers/documentation/api/v1",
+      "notes": "REST API for federal regulation data."
+    },
+    {
+      "title": "Federal Register",
+      "type": "Daily regulatory notices/rules",
+      "source": "Office of the Federal Register",
+      "url": "https://www.federalregister.gov/",
+      "notes": "Daily publication of proposed rules, final rules, notices, and presidential documents."
+    },
+    {
+      "title": "Federal Register API",
+      "type": "Developer API",
+      "source": "FederalRegister.gov",
+      "url": "https://www.federalregister.gov/developers/documentation/api/v1",
+      "notes": "No-key public API endpoints for Federal Register documents and metadata."
+    },
+    {
+      "title": "Regulations.gov",
+      "type": "Public comments on rules",
+      "source": "GSA / eRulemaking Program",
+      "url": "https://www.regulations.gov/",
+      "notes": "Find and comment on federal regulations."
+    },
+    {
+      "title": "Regulations.gov API",
+      "type": "Developer API",
+      "source": "GSA",
+      "url": "https://open.gsa.gov/api/regulationsgov/",
+      "notes": "API for regulatory dockets, documents, and comments."
+    },
+    {
+      "title": "Supreme Court opinions",
+      "type": "Court opinions",
+      "source": "Supreme Court of the United States",
+      "url": "https://www.supremecourt.gov/opinions/opinions.aspx",
+      "notes": "Slip opinions, preliminary prints, and opinions as released by the Court."
+    },
+    {
+      "title": "U.S. Reports",
+      "type": "Official Supreme Court reporter",
+      "source": "Supreme Court of the United States",
+      "url": "https://www.supremecourt.gov/opinions/USReports.aspx",
+      "notes": "Official published opinions of the Supreme Court."
+    },
+    {
+      "title": "Oyez",
+      "type": "Case summaries + audio",
+      "source": "Oyez",
+      "url": "https://www.oyez.org/",
+      "notes": "Multimedia archive with plain-English summaries, opinions, and transcript-synchronized Supreme Court audio."
+    },
+    {
+      "title": "Cornell Legal Information Institute",
+      "type": "Free legal reference",
+      "source": "Cornell Law School",
+      "url": "https://www.law.cornell.edu/",
+      "notes": "Free access to legal sources and educational explanations."
+    },
+    {
+      "title": "Wex legal dictionary and encyclopedia",
+      "type": "Plain-language legal definitions",
+      "source": "Cornell LII",
+      "url": "https://www.law.cornell.edu/wex",
+      "notes": "Free legal dictionary and encyclopedia."
+    },
+    {
+      "title": "National Constitution Center \u2014 Interactive Constitution",
+      "type": "Educational commentary",
+      "source": "National Constitution Center",
+      "url": "https://constitutioncenter.org/the-constitution",
+      "notes": "Text, history, and meaning of the Constitution with essays from constitutional scholars."
+    },
+    {
+      "title": "iCivics \u2014 The Constitution",
+      "type": "Curriculum",
+      "source": "iCivics",
+      "url": "https://ed.icivics.org/curriculum/constitution",
+      "notes": "Free lessons on the Constitution and amendments."
+    },
+    {
+      "title": "iCivics \u2014 Constitution Explained video series",
+      "type": "Video curriculum",
+      "source": "iCivics",
+      "url": "https://ed.icivics.org/curriculum/constitution-explained-video-series",
+      "notes": "35 short videos on the Constitution, Bill of Rights, and amendments."
+    },
+    {
+      "title": "iCivics \u2014 You've Got Rights!",
+      "type": "Bill of Rights lesson",
+      "source": "iCivics",
+      "url": "https://ed.icivics.org/node/615/resource",
+      "notes": "Lesson on rights guaranteed by the Bill of Rights and other amendments."
+    },
+    {
+      "title": "Annenberg Classroom",
+      "type": "Civics education",
+      "source": "Annenberg Classroom",
+      "url": "https://www.annenbergclassroom.org/",
+      "notes": "Free videos, games, lesson plans, timelines, books, glossary, and Constitution guide."
+    },
+    {
+      "title": "Bill of Rights Institute \u2014 Resources Library",
+      "type": "Lessons + essays + videos",
+      "source": "Bill of Rights Institute",
+      "url": "https://billofrightsinstitute.org/resources-library/",
+      "notes": "Large free civics library with lessons, essays, videos, and activities."
+    },
+    {
+      "title": "Center for Civic Education \u2014 We the People",
+      "type": "Curriculum",
+      "source": "Center for Civic Education",
+      "url": "https://civiced.org/we-the-people",
+      "notes": "Curriculum on constitutional democracy for elementary, middle, and high school."
+    },
+    {
+      "title": "USA.gov \u2014 Federal laws and regulations",
+      "type": "Citizen guide",
+      "source": "USA.gov",
+      "url": "https://www.usa.gov/laws-and-regulations",
+      "notes": "Plain-language federal laws, regulations, bills, and lawmaking process guide."
+    },
+    {
+      "title": "USA.gov \u2014 Labor laws and worker protection",
+      "type": "Daily-life law",
+      "source": "USA.gov",
+      "url": "https://www.usa.gov/labor-laws",
+      "notes": "Workplace law topics including wages, leave, discrimination, and safety."
+    },
+    {
+      "title": "U.S. Department of Labor \u2014 major laws",
+      "type": "Daily-life law",
+      "source": "Department of Labor",
+      "url": "https://www.dol.gov/general/aboutdol/majorlaws",
+      "notes": "Overview of major federal labor and employment laws."
+    },
+    {
+      "title": "Department of Justice Civil Rights Division",
+      "type": "Civil rights enforcement",
+      "source": "DOJ",
+      "url": "https://civilrights.justice.gov/",
+      "notes": "Learn rights and report possible civil rights violations."
+    },
+    {
+      "title": "EEOC laws",
+      "type": "Employment discrimination",
+      "source": "EEOC",
+      "url": "https://www.eeoc.gov/laws",
+      "notes": "Federal workplace equal employment opportunity laws."
+    },
+    {
+      "title": "CFPB \u2014 Learn more",
+      "type": "Consumer finance",
+      "source": "Consumer Financial Protection Bureau",
+      "url": "https://www.consumerfinance.gov/learnmore/",
+      "notes": "Consumer tools and information on financial products and services."
+    },
+    {
+      "title": "IRS Taxpayer Bill of Rights",
+      "type": "Tax rights",
+      "source": "IRS",
+      "url": "https://www.irs.gov/taxpayer-bill-of-rights",
+      "notes": "Ten fundamental taxpayer rights when dealing with the IRS."
+    },
+    {
+      "title": "HHS HIPAA Privacy Rule",
+      "type": "Health privacy",
+      "source": "HHS",
+      "url": "https://www.hhs.gov/hipaa/for-professionals/privacy/index.html",
+      "notes": "Privacy protections for protected health information."
+    },
+    {
+      "title": "Department of Education civil rights laws",
+      "type": "Education rights",
+      "source": "U.S. Department of Education",
+      "url": "https://www.ed.gov/laws-and-policy/civil-rights-laws",
+      "notes": "Civil rights laws and guidance affecting education."
+    },
+    {
+      "title": "EPA laws and executive orders",
+      "type": "Environmental law",
+      "source": "EPA",
+      "url": "https://www.epa.gov/laws-regulations/laws-and-executive-orders",
+      "notes": "Summaries of laws and executive orders that protect human health and the environment."
+    },
+    {
+      "title": "EPA Clean Water Act summary",
+      "type": "Environmental law",
+      "source": "EPA",
+      "url": "https://www.epa.gov/laws-regulations/summary-clean-water-act",
+      "notes": "Plain-language summary of the Clean Water Act."
+    },
+    {
+      "title": "U.S. government works and copyright",
+      "type": "Reuse / public domain guidance",
+      "source": "USA.gov",
+      "url": "https://www.usa.gov/government-copyright",
+      "notes": "Guidance on copyright and federal government materials."
+    }
+  ],
+  "amendments": [
+    [
+      "1st",
+      "Religion, speech, press, assembly, petition",
+      "Protects core freedoms of conscience, expression, association, and petitioning government."
+    ],
+    [
+      "2nd",
+      "Right to keep and bear arms",
+      "Protects the right to keep and bear arms; heavily shaped by Supreme Court interpretation and regulation."
+    ],
+    [
+      "3rd",
+      "Quartering of soldiers",
+      "Restricts housing soldiers in private homes without consent, especially in peacetime."
+    ],
+    [
+      "4th",
+      "Searches and seizures",
+      "Protects against unreasonable searches and seizures; requires warrants to be supported by probable cause."
+    ],
+    [
+      "5th",
+      "Criminal procedure, due process, takings",
+      "Grand jury, double jeopardy, self-incrimination, due process, and just compensation for takings."
+    ],
+    [
+      "6th",
+      "Criminal trial rights",
+      "Speedy public trial, impartial jury, notice of charges, confrontation, compulsory process, and counsel."
+    ],
+    [
+      "7th",
+      "Civil jury trials",
+      "Preserves jury trial in many federal civil cases."
+    ],
+    [
+      "8th",
+      "Bail, fines, punishment",
+      "Bars excessive bail, excessive fines, and cruel and unusual punishments."
+    ],
+    [
+      "9th",
+      "Unenumerated rights",
+      "Says listing certain rights does not deny or disparage other rights retained by the people."
+    ],
+    [
+      "10th",
+      "Reserved powers",
+      "Reserves undelegated federal powers to the states or the people."
+    ],
+    [
+      "11th",
+      "State sovereign immunity",
+      "Limits certain lawsuits against states in federal court."
+    ],
+    [
+      "12th",
+      "President and vice president elections",
+      "Revises Electoral College voting process for president and vice president."
+    ],
+    [
+      "13th",
+      "Abolition of slavery",
+      "Abolishes slavery and involuntary servitude except as punishment for crime."
+    ],
+    [
+      "14th",
+      "Citizenship, due process, equal protection",
+      "Defines citizenship and binds states to due process and equal protection requirements."
+    ],
+    [
+      "15th",
+      "Voting rights regardless of race",
+      "Bars denial of voting rights based on race, color, or previous condition of servitude."
+    ],
+    [
+      "16th",
+      "Income tax",
+      "Authorizes federal income tax without apportionment among states."
+    ],
+    [
+      "17th",
+      "Direct election of senators",
+      "Provides for senators to be elected directly by the people."
+    ],
+    [
+      "18th",
+      "Prohibition",
+      "Established national prohibition of intoxicating liquors; later repealed."
+    ],
+    [
+      "19th",
+      "Women's voting rights",
+      "Bars denial of voting rights on account of sex."
+    ],
+    [
+      "20th",
+      "Terms and succession timing",
+      "Changes start/end dates for presidential and congressional terms; addresses succession timing."
+    ],
+    [
+      "21st",
+      "Repeal of Prohibition",
+      "Repeals the 18th Amendment and returns alcohol regulation largely to states under federal limits."
+    ],
+    [
+      "22nd",
+      "Presidential term limits",
+      "Limits presidents to two elected terms, with special rules for partial terms."
+    ],
+    [
+      "23rd",
+      "D.C. electors",
+      "Gives the District of Columbia electors in presidential elections."
+    ],
+    [
+      "24th",
+      "Poll taxes",
+      "Bars poll taxes in federal elections."
+    ],
+    [
+      "25th",
+      "Presidential disability and succession",
+      "Clarifies vice presidential succession and procedures for presidential inability."
+    ],
+    [
+      "26th",
+      "Voting age 18",
+      "Bars denial of voting rights to citizens 18 or older on account of age."
+    ],
+    [
+      "27th",
+      "Congressional pay changes",
+      "Delays congressional compensation changes until after an intervening House election."
+    ]
+  ],
+  "daily_laws": [
+    {
+      "area": "Voting and elections",
+      "constitution": [
+        "1st",
+        "14th",
+        "15th",
+        "19th",
+        "24th",
+        "26th"
+      ],
+      "examples": [
+        "Voter eligibility",
+        "registration deadlines",
+        "districting",
+        "election administration",
+        "campaign speech"
+      ],
+      "laws": [
+        "Voting Rights Act",
+        "National Voter Registration Act",
+        "Help America Vote Act",
+        "Uniformed and Overseas Citizens Absentee Voting Act"
+      ]
+    },
+    {
+      "area": "Speech, protest, press, religion",
+      "constitution": [
+        "1st",
+        "14th"
+      ],
+      "examples": [
+        "Public meetings",
+        "school speech",
+        "news gathering",
+        "religious practice",
+        "social media moderation by government actors"
+      ],
+      "laws": [
+        "Religious Freedom Restoration Act",
+        "civil rights statutes",
+        "public forum doctrine through case law"
+      ]
+    },
+    {
+      "area": "Police encounters and criminal process",
+      "constitution": [
+        "4th",
+        "5th",
+        "6th",
+        "8th",
+        "14th"
+      ],
+      "examples": [
+        "Stops",
+        "searches",
+        "arrests",
+        "right to counsel",
+        "Miranda warnings",
+        "bail",
+        "sentencing"
+      ],
+      "laws": [
+        "Federal Rules of Criminal Procedure",
+        "civil rights enforcement statutes",
+        "state criminal codes"
+      ]
+    },
+    {
+      "area": "Workplace",
+      "constitution": [
+        "1st",
+        "5th",
+        "14th"
+      ],
+      "examples": [
+        "Minimum wage",
+        "overtime",
+        "workplace safety",
+        "family leave",
+        "discrimination",
+        "retaliation"
+      ],
+      "laws": [
+        "Fair Labor Standards Act",
+        "Family and Medical Leave Act",
+        "Occupational Safety and Health Act",
+        "Title VII",
+        "ADA",
+        "ADEA",
+        "Equal Pay Act"
+      ]
+    },
+    {
+      "area": "Education",
+      "constitution": [
+        "1st",
+        "4th",
+        "5th",
+        "14th"
+      ],
+      "examples": [
+        "Student speech",
+        "searches at school",
+        "special education",
+        "sex discrimination",
+        "race discrimination",
+        "discipline"
+      ],
+      "laws": [
+        "Title IX",
+        "IDEA",
+        "Section 504",
+        "FERPA",
+        "Every Student Succeeds Act"
+      ]
+    },
+    {
+      "area": "Housing",
+      "constitution": [
+        "5th",
+        "14th"
+      ],
+      "examples": [
+        "Fair housing",
+        "zoning",
+        "eviction process",
+        "accessibility",
+        "takings and land use"
+      ],
+      "laws": [
+        "Fair Housing Act",
+        "Americans with Disabilities Act",
+        "Section 504",
+        "state landlord-tenant laws"
+      ]
+    },
+    {
+      "area": "Health and privacy",
+      "constitution": [
+        "4th",
+        "5th",
+        "9th",
+        "14th"
+      ],
+      "examples": [
+        "Medical privacy",
+        "health records access",
+        "insurance rules",
+        "public health powers",
+        "bodily autonomy debates"
+      ],
+      "laws": [
+        "HIPAA",
+        "Affordable Care Act",
+        "Public Health Service Act",
+        "state health privacy laws"
+      ]
+    },
+    {
+      "area": "Consumer finance and commerce",
+      "constitution": [
+        "1st",
+        "5th",
+        "14th"
+      ],
+      "examples": [
+        "Credit reports",
+        "debt collection",
+        "banking disclosures",
+        "identity theft",
+        "consumer complaints"
+      ],
+      "laws": [
+        "Truth in Lending Act",
+        "Fair Credit Reporting Act",
+        "Fair Debt Collection Practices Act",
+        "Dodd-Frank Act"
+      ]
+    },
+    {
+      "area": "Taxes and public benefits",
+      "constitution": [
+        "5th",
+        "14th",
+        "16th"
+      ],
+      "examples": [
+        "Income tax",
+        "refunds",
+        "audits",
+        "appeals",
+        "Social Security",
+        "Medicare",
+        "SNAP"
+      ],
+      "laws": [
+        "Internal Revenue Code",
+        "Social Security Act",
+        "Administrative Procedure Act"
+      ]
+    },
+    {
+      "area": "Environment and public health",
+      "constitution": [
+        "Commerce Clause",
+        "5th",
+        "10th",
+        "14th"
+      ],
+      "examples": [
+        "Clean water",
+        "air quality",
+        "hazardous waste",
+        "local land use",
+        "public comments on rules"
+      ],
+      "laws": [
+        "Clean Water Act",
+        "Clean Air Act",
+        "Safe Drinking Water Act",
+        "CERCLA/Superfund",
+        "NEPA"
+      ]
+    },
+    {
+      "area": "Digital life",
+      "constitution": [
+        "1st",
+        "4th",
+        "5th",
+        "14th"
+      ],
+      "examples": [
+        "Digital searches",
+        "platform speech issues",
+        "data privacy",
+        "cybersecurity",
+        "children online"
+      ],
+      "laws": [
+        "Electronic Communications Privacy Act",
+        "Computer Fraud and Abuse Act",
+        "COPPA",
+        "FTC Act"
+      ]
+    },
+    {
+      "area": "Immigration and citizenship",
+      "constitution": [
+        "5th",
+        "14th"
+      ],
+      "examples": [
+        "Naturalization",
+        "due process",
+        "detention",
+        "work authorization",
+        "citizenship rights"
+      ],
+      "laws": [
+        "Immigration and Nationality Act",
+        "REAL ID Act",
+        "federal asylum statutes"
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "title": "A city park protest needs a permit",
+      "facts": "A neighborhood group wants to protest a zoning decision in a public park. The city requires a permit and denies it because officials dislike the message.",
+      "issues": [
+        "Speech",
+        "Assembly",
+        "Public forum",
+        "Content/viewpoint discrimination"
+      ],
+      "amendments": [
+        "1st",
+        "14th"
+      ],
+      "question": "Can government regulate time, place, and manner without discriminating against the viewpoint?"
+    },
+    {
+      "title": "Phone search after a traffic stop",
+      "facts": "During a routine traffic stop, an officer asks to search a phone without a warrant or consent.",
+      "issues": [
+        "Search and seizure",
+        "Digital privacy",
+        "Consent",
+        "Warrant requirement"
+      ],
+      "amendments": [
+        "4th",
+        "5th"
+      ],
+      "question": "What makes a search reasonable, and how do phones differ from ordinary containers?"
+    },
+    {
+      "title": "Student punished for a political armband",
+      "facts": "A public school student wears a peaceful political armband and is suspended for being controversial.",
+      "issues": [
+        "Student speech",
+        "School authority",
+        "Disruption standard"
+      ],
+      "amendments": [
+        "1st",
+        "14th"
+      ],
+      "question": "When may a public school limit student expression?"
+    },
+    {
+      "title": "Workplace religious accommodation",
+      "facts": "An employee requests a schedule change for a sincere religious observance. The employer refuses without explanation.",
+      "issues": [
+        "Religion",
+        "Employment discrimination",
+        "Accommodation"
+      ],
+      "amendments": [
+        "1st",
+        "14th"
+      ],
+      "question": "How do constitutional principles and statutory employment laws interact?"
+    },
+    {
+      "title": "Tenant faces eviction without notice",
+      "facts": "A tenant is locked out without court process or meaningful notice.",
+      "issues": [
+        "Due process",
+        "Property",
+        "Housing rights"
+      ],
+      "amendments": [
+        "5th",
+        "14th"
+      ],
+      "question": "What process is due before someone is deprived of property or housing access?"
+    },
+    {
+      "title": "Poll tax revival attempt",
+      "facts": "A state considers charging a fee to vote in federal elections.",
+      "issues": [
+        "Voting rights",
+        "Poll taxes",
+        "Equal protection"
+      ],
+      "amendments": [
+        "14th",
+        "24th"
+      ],
+      "question": "Why does the Constitution specifically ban poll taxes in federal elections?"
+    },
+    {
+      "title": "Clean water rule comment period",
+      "facts": "An agency proposes a water quality rule affecting a local river and opens public comments.",
+      "issues": [
+        "Administrative law",
+        "Public participation",
+        "Environmental law"
+      ],
+      "amendments": [
+        "1st",
+        "10th"
+      ],
+      "question": "How do statutes delegate rulemaking and how can citizens participate?"
+    },
+    {
+      "title": "Jury trial and public defender",
+      "facts": "A person charged with a serious crime cannot afford a lawyer and asks for counsel.",
+      "issues": [
+        "Right to counsel",
+        "Jury trial",
+        "Criminal process"
+      ],
+      "amendments": [
+        "5th",
+        "6th",
+        "14th"
+      ],
+      "question": "Why is counsel central to a fair criminal trial?"
+    },
+    {
+      "title": "Unequal school discipline",
+      "facts": "A public school discipline policy appears neutral but is enforced unevenly against one group of students.",
+      "issues": [
+        "Equal protection",
+        "Education civil rights",
+        "Disparate treatment"
+      ],
+      "amendments": [
+        "14th"
+      ],
+      "question": "How do equal protection principles and education civil-rights statutes overlap?"
+    },
+    {
+      "title": "Credit report error blocks housing",
+      "facts": "A family is denied an apartment because of an inaccurate credit report.",
+      "issues": [
+        "Consumer finance",
+        "Fair reporting",
+        "Housing access"
+      ],
+      "amendments": [
+        "5th",
+        "14th"
+      ],
+      "question": "Which federal consumer laws create correction rights beyond the Constitution?"
+    },
+    {
+      "title": "New federal income tax dispute",
+      "facts": "A taxpayer receives an IRS notice they believe is wrong and wants to challenge it.",
+      "issues": [
+        "Taxation",
+        "Due process",
+        "Appeals"
+      ],
+      "amendments": [
+        "5th",
+        "16th"
+      ],
+      "question": "How do statutory taxpayer rights make due process practical?"
+    },
+    {
+      "title": "City takes land for a flood-control project",
+      "facts": "A city takes private land for a public flood-control project and offers compensation below market value.",
+      "issues": [
+        "Takings",
+        "Public use",
+        "Just compensation"
+      ],
+      "amendments": [
+        "5th",
+        "14th"
+      ],
+      "question": "What counts as public use and just compensation?"
+    }
+  ],
+  "modules": [
+    {
+      "name": "Founding Framework",
+      "lessons": [
+        "Declaration \u2192 Articles \u2192 Constitution",
+        "Federalism",
+        "Separation of powers",
+        "Checks and balances",
+        "Ratification debates"
+      ],
+      "output": "Learner can explain why the Constitution was written and what problem each branch/federalism design tries to solve."
+    },
+    {
+      "name": "Text of the Constitution",
+      "lessons": [
+        "Preamble",
+        "Article I Congress",
+        "Article II President",
+        "Article III Courts",
+        "Articles IV\u2013VII"
+      ],
+      "output": "Learner can navigate the document by article, clause, power, limit, and amendment."
+    },
+    {
+      "name": "Bill of Rights",
+      "lessons": [
+        "Civil liberties",
+        "Criminal procedure",
+        "Unenumerated rights",
+        "Reserved powers"
+      ],
+      "output": "Learner can identify the first ten amendments and apply them to daily scenarios."
+    },
+    {
+      "name": "Reconstruction Amendments",
+      "lessons": [
+        "13th slavery abolition",
+        "14th citizenship/due process/equal protection",
+        "15th race and voting"
+      ],
+      "output": "Learner can explain how the Constitution began applying more directly to state action."
+    },
+    {
+      "name": "Democracy Amendments",
+      "lessons": [
+        "17th direct senators",
+        "19th sex and voting",
+        "23rd D.C. electors",
+        "24th poll taxes",
+        "26th voting age"
+      ],
+      "output": "Learner can trace expansion of democratic participation."
+    },
+    {
+      "name": "Law in Daily Life",
+      "lessons": [
+        "Statutes vs regulations",
+        "Courts and precedent",
+        "Administrative agencies",
+        "Public comments",
+        "Rights enforcement"
+      ],
+      "output": "Learner can find primary law and know when to seek qualified legal help."
+    }
+  ]
+}
+</script>
+<script>
+const DATA = JSON.parse(document.getElementById('portalData').textContent);
+let currentScenario = null;
+
+function $(id) { return document.getElementById(id); }
+function escapeHTML(str) {
+  return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+}
+function ordinalNumber(label) { return parseInt(label, 10); }
+function sourceLinks(keywordList = []) {
+  const terms = keywordList.join(' ').toLowerCase();
+  const matches = DATA.resources.filter(r => {
+    const hay = (r.title + ' ' + r.type + ' ' + r.source + ' ' + r.notes).toLowerCase();
+    return keywordList.length === 0 || keywordList.some(k => hay.includes(String(k).toLowerCase())) || hay.includes(terms);
+  }).slice(0, 5);
+  return matches.map(r => `<a href="${r.url}" rel="noopener noreferrer" target="_blank">${escapeHTML(r.title)}</a>`).join(' ');
+}
+function init() {
+  $('statResources').textContent = DATA.resources.length;
+  $('statScenarios').textContent = DATA.scenarios.length;
+  $('statLaws').textContent = DATA.daily_laws.length;
+  populateTypes();
+  renderModules();
+  renderAmendments();
+  renderDaily();
+  renderResources();
+}
+function populateTypes() {
+  const types = [...new Set(DATA.resources.map(r => r.type))].sort();
+  $('resourceType').innerHTML += types.map(t => `<option value="${escapeHTML(t)}">${escapeHTML(t)}</option>`).join('');
+}
+function renderModules() {
+  $('moduleList').innerHTML = DATA.modules.map((m, idx) => `
+    <article class="card col-4">
+      <small class="badge">Module ${idx + 1}</small>
+      <h3>${escapeHTML(m.name)}</h3>
+      <p>${escapeHTML(m.output)}</p>
+      <details>
+        <summary>Lesson sequence</summary>
+        <ul>${m.lessons.map(l => `<li>${escapeHTML(l)}</li>`).join('')}</ul>
+      </details>
+    </article>`).join('');
+}
+function amendmentInFilter(num, filter) {
+  if (filter === 'all') return true;
+  if (filter === 'bor') return num >= 1 && num <= 10;
+  if (filter === 'reconstruction') return num >= 13 && num <= 15;
+  if (filter === 'democracy') return [12,15,17,19,23,24,26].includes(num);
+  if (filter === 'government') return [11,12,16,17,20,22,25,27].includes(num);
+  return true;
+}
+function renderAmendments() {
+  const q = $('amendmentSearch').value.trim().toLowerCase();
+  const filter = $('amendmentFilter').value;
+  const cards = DATA.amendments.filter(a => {
+    const num = ordinalNumber(a[0]);
+    const hay = a.join(' ').toLowerCase();
+    return amendmentInFilter(num, filter) && (!q || hay.includes(q));
+  }).map(a => `
+    <article class="item col-4">
+      <small>${escapeHTML(a[0])} Amendment</small>
+      <h3>${escapeHTML(a[1])}</h3>
+      <p>${escapeHTML(a[2])}</p>
+      <p>${sourceLinks(['Constitution', 'Annotated', 'National Archives'])}</p>
+    </article>`).join('');
+  $('amendmentList').innerHTML = cards || '<p>No amendments match that search.</p>';
+}
+function seededRandom(seed) {
+  let h = 2166136261 >>> 0;
+  for (let i = 0; i < seed.length; i++) {
+    h ^= seed.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return function() {
+    h += h << 13; h ^= h >>> 7; h += h << 3; h ^= h >>> 17; h += h << 5;
+    return (h >>> 0) / 4294967295;
+  };
+}
+function pick(arr, rng = Math.random) { return arr[Math.floor(rng() * arr.length)]; }
+function findScenario() {
+  const topic = $('topicSelect').value;
+  const seed = $('seedBox').value.trim();
+  const rng = seed ? seededRandom(seed + Date.now().toString().slice(-4)) : Math.random;
+  let pool = DATA.scenarios;
+  if (topic !== 'any') {
+    pool = DATA.scenarios.filter(s => (s.title + ' ' + s.facts + ' ' + s.issues.join(' ')).toLowerCase().includes(topic.toLowerCase()));
+    if (!pool.length) pool = DATA.scenarios;
+  }
+  return pick(pool, rng);
+}
+function randomScenario() {
+  currentScenario = findScenario();
+  const level = $('learnerLevel').value;
+  $('batchResult').style.display = 'none';
+  $('scenarioResult').innerHTML = `
+    <small class="badge">${escapeHTML(level)}</small>
+    <h3>${escapeHTML(currentScenario.title)}</h3>
+    <p>${escapeHTML(currentScenario.facts)}</p>
+    <p><strong>Initial question:</strong> ${escapeHTML(currentScenario.question)}</p>
+    <p><strong>Your turn:</strong> Name the constitutional amendment(s), then identify whether you also need a statute, regulation, agency rule, or court case.</p>
+    <label for="learnerAnswer">Learner notes</label>
+    <textarea id="learnerAnswer" placeholder="I think this involves..."></textarea>
+  `;
+}
+function revealGuidance() {
+  if (!currentScenario) randomScenario();
+  $('scenarioResult').innerHTML += `
+    <div class="result">
+      <h3>Research guidance</h3>
+      <p><strong>Likely constitutional hooks:</strong> ${currentScenario.amendments.map(a => `<span class="badge">${escapeHTML(a)}</span>`).join('')}</p>
+      <p><strong>Issue tags:</strong> ${currentScenario.issues.map(i => `<span class="badge lawbadge">${escapeHTML(i)}</span>`).join('')}</p>
+      <p><strong>Start with:</strong> ${sourceLinks(['Constitution Annotated','National Archives','Oyez','Cornell','Supreme Court'])}</p>
+      <p><strong>Next research move:</strong> Look for a statute or agency page if the problem concerns employment, education, housing, taxes, health privacy, consumer finance, or environment.</p>
+    </div>
+  `;
+}
+function runBatch() {
+  const counts = {};
+  const saved = $('topicSelect').value;
+  for (let i = 0; i < 25; i++) {
+    const s = pick(DATA.scenarios);
+    s.amendments.forEach(a => counts[a] = (counts[a] || 0) + 1);
+  }
+  const max = Math.max(...Object.values(counts));
+  const rows = Object.entries(counts).sort((a,b) => b[1]-a[1]).map(([k,v]) => `
+    <div>
+      <strong>${escapeHTML(k)}</strong> — ${v} hits
+      <div class="progress"><div class="bar" style="width:${Math.round(v/max*100)}%"></div></div>
+    </div>`).join('');
+  $('batchResult').style.display = 'block';
+  $('batchResult').innerHTML = `<h3>25-scenario amendment distribution</h3><p>This shows which amendments appeared most often in this random run.</p>${rows}`;
+}
+function renderDaily() {
+  $('dailyList').innerHTML = DATA.daily_laws.map(d => `
+    <article class="card col-4">
+      <h3>${escapeHTML(d.area)}</h3>
+      <p>${d.constitution.map(c => `<span class="badge">${escapeHTML(c)}</span>`).join('')}</p>
+      <p><strong>Daily examples:</strong> ${d.examples.map(escapeHTML).join(', ')}</p>
+      <p><strong>Key laws:</strong> ${d.laws.map(l => `<span class="badge lawbadge">${escapeHTML(l)}</span>`).join('')}</p>
+    </article>`).join('');
+}
+function renderResources() {
+  const q = $('resourceSearch').value.trim().toLowerCase();
+  const type = $('resourceType').value;
+  const rows = DATA.resources.filter(r => {
+    const hay = Object.values(r).join(' ').toLowerCase();
+    return (type === 'all' || r.type === type) && (!q || hay.includes(q));
+  }).map(r => `
+    <article class="item">
+      <small>${escapeHTML(r.type)} • ${escapeHTML(r.source)}</small>
+      <h3>${escapeHTML(r.title)}</h3>
+      <p>${escapeHTML(r.notes)}</p>
+      <div class="resource-actions">
+        <a href="${r.url}" target="_blank" rel="noopener noreferrer">Open free resource</a>
+        <button onclick="copyText('${encodeURIComponent(r.url)}')">Copy URL</button>
+      </div>
+    </article>`).join('');
+  $('resourceList').innerHTML = rows || '<p>No resources match that search.</p>';
+}
+function copyText(encoded) {
+  const url = decodeURIComponent(encoded);
+  navigator.clipboard?.writeText(url).then(() => alert('Copied: ' + url)).catch(() => prompt('Copy this URL:', url));
+}
+init();
+</script>
+</body>
+</html>
