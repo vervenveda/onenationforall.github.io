@@ -3,77 +3,496 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="One Nation For All — a patriotic civic and political portal for government, elections, law, policy, public resources, news, and community participation.">
-<meta name="theme-color" content="#081d36">
-<title>One Nation For All | America's Civic Information Portal</title>
+<meta name="description" content="One Nation For All — a red, blue, and purple No Party Citizen portal for voter participation, veterans, civic learning, public policy, and Jennifer Pearl 2028.">
+<meta name="theme-color" content="#35135f">
+<meta name="color-scheme" content="light">
+<title>One Nation For All | No Party Citizen Movement</title>
 <style>
-:root{--navy:#071a31;--blue:#1f5d92;--red:#9d2d35;--cream:#f7f0df;--paper:#fffdf7;--gold:#d2a74b;--ink:#152235;--muted:#617083;--line:#d8d4ca;--shadow:0 22px 60px rgba(9,31,55,.15);--radius:22px;--max:1260px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:linear-gradient(180deg,#f8f5ec,#f7f0df);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}a{color:inherit}button,input{font:inherit}.shell{width:min(calc(100% - 32px),var(--max));margin:auto}.skip{position:fixed;left:12px;top:12px;z-index:9999;transform:translateY(-180%);background:#fff;color:#000;padding:10px 14px;border-radius:999px;text-decoration:none}.skip:focus{transform:none}.flag-line{height:8px;background:linear-gradient(90deg,var(--red) 0 33.3%,var(--paper) 33.3% 66.6%,var(--blue) 66.6%)}
-.utility{color:#dfeaf4;background:#041223;border-bottom:1px solid #ffffff20}.utility-inner{min-height:42px;display:flex;align-items:center;justify-content:space-between;gap:18px;font-size:.8rem}.utility-links{display:flex;gap:14px;flex-wrap:wrap}.utility a{text-decoration:none;color:#dfeaf4}.site-header{position:sticky;top:0;z-index:1000;background:#071a31ef;border-bottom:1px solid #ffffff20;backdrop-filter:blur(18px)}.nav{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:22px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}.seal{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--gold);background:radial-gradient(circle,#f5e9c1 0 34%,#b8862c 35% 40%,#102f50 41%)}.seal:before{content:"★";font-size:1.35rem;color:#8b1f2b}.brand-title{font:700 1.18rem Georgia,serif}.brand-sub{display:block;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:#b9ccdc}.nav-links{display:flex;align-items:center;gap:4px}.nav-links a{text-decoration:none;color:#fff;font-size:.8rem;font-weight:800;padding:.7rem .68rem;border-radius:999px}.nav-links a:hover{background:#ffffff18}.menu{display:none;width:44px;height:44px;border-radius:12px;border:1px solid #ffffff38;background:transparent;color:#fff}.menu span,.menu:before,.menu:after{content:"";display:block;width:19px;height:2px;background:currentColor;margin:4px auto}
-.hero{position:relative;overflow:hidden;color:#fff;background:linear-gradient(90deg,#041223f5,#07213be8)}.hero-inner{min-height:700px;padding:90px 0 74px;display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:48px}.eyebrow,.kicker{margin:0 0 14px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;font-size:.74rem}.eyebrow{color:#f1cd77}.kicker{color:var(--red)}h1,h2,h3{margin:0;font-family:Georgia,serif}h1{font-size:clamp(3.4rem,8.5vw,7rem);line-height:.93;letter-spacing:-.048em}.hero-lead{margin:24px 0 0;color:#dce9f3;font-size:1.15rem}.hero-quote{margin:24px 0 0;padding:18px 20px;border-left:4px solid var(--gold);background:#ffffff0d;color:#f9edd0;font-family:Georgia,serif}.actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:28px}.btn{min-height:50px;padding:.85rem 1.2rem;border-radius:999px;border:1px solid transparent;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-weight:900}.primary{background:linear-gradient(135deg,#f6d986,#d2a74b);color:#13243a}.secondary{color:#fff;border-color:#ffffff3d;background:#ffffff0d}.hero-panel{padding:24px;border:1px solid #ffffff29;border-radius:26px;background:#ffffff0f;box-shadow:0 30px 90px #0005}.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.quick{min-height:100px;padding:15px;border-radius:16px;text-decoration:none;border:1px solid #ffffff1f;background:#030f1e5c}.quick strong{display:block;font-family:Georgia,serif}.quick span{display:block;margin-top:5px;color:#bcd0df;font-size:.75rem}.notice{padding:14px 0;background:#efe5c9;border-bottom:1px solid #d4c6a1;color:#392f1e}.notice-inner{text-align:center;font-size:.86rem}
-.section{padding:90px 0}.alt{background:#ffffff8f;border-block:1px solid #58524624}.heading{max-width:880px;margin:0 auto 40px;text-align:center}h2{font-size:clamp(2.25rem,5vw,4.6rem);line-height:1.02;letter-spacing:-.045em;color:var(--navy)}.heading p{color:var(--muted)}.grid{display:grid;gap:16px}.four{grid-template-columns:repeat(4,1fr)}.card{border:1px solid var(--line);border-radius:var(--radius);background:#fffdf7eb;box-shadow:var(--shadow)}.gateway{min-height:260px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;transition:.18s}.gateway:hover{transform:translateY(-6px);border-color:var(--blue)}.icon{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:1.55rem;background:linear-gradient(145deg,#1f5d921f,#d2a74b24);border:1px solid #e5decf}.gateway h3{margin-top:17px;font-size:1.4rem;color:var(--navy)}.gateway p{color:var(--muted);font-size:.92rem}.visit{color:var(--red);font-size:.82rem;font-weight:900}.badge{display:inline-flex;width:max-content;margin-bottom:12px;padding:5px 9px;border-radius:999px;background:#f1e2be;color:#725619;font-size:.65rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em}
-.policy-stage{display:grid;grid-template-columns:.85fr 1.15fr;gap:18px}.policy-intro{padding:28px}.policy-intro h3{font-size:2rem;color:var(--navy)}.policy-intro p{color:var(--muted)}.policy-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.policy-item{min-height:120px;padding:18px;border:1px solid var(--line);border-radius:16px;background:#fff}.policy-item strong{display:block;font-family:Georgia,serif;color:var(--navy)}.policy-item span{display:block;margin-top:7px;color:var(--muted);font-size:.82rem}.search-wrap{margin-bottom:24px;padding:18px;border-radius:18px;background:var(--navy);box-shadow:var(--shadow)}.search-wrap label{display:block;color:#fff;font-weight:900;margin-bottom:8px}.search-wrap input{width:100%;padding:14px 16px;border-radius:12px;border:0}.tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:28px}.tab{border:1px solid var(--line);border-radius:999px;background:#fff;padding:.7rem 1rem;font-weight:900;color:var(--navy)}.tab[aria-selected=true]{background:var(--navy);color:#fff}.resource-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.resource{padding:20px;border:1px solid var(--line);border-radius:18px;background:#fffdf8}.resource h3{font-size:1.08rem;color:var(--navy)}.resource p{color:var(--muted);font-size:.84rem}.resource a{color:var(--red);font-weight:900;text-decoration:none;font-size:.82rem}.resource small{display:block;margin-top:9px;color:#7c7c76}.map-shell{padding:24px;display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center}.map-art{min-height:340px;border-radius:22px;background:linear-gradient(135deg,#1f5d9233,#9d2d3514);display:grid;place-items:center}.map-art:before{content:"USA";font:900 clamp(5rem,15vw,11rem) Georgia,serif;color:#071a3121;letter-spacing:.1em}.map-copy h3{font-size:2rem;color:var(--navy)}.map-copy p{color:var(--muted)}.state-links{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.state-links a{padding:10px 12px;border:1px solid var(--line);border-radius:12px;text-decoration:none;background:#fff;font-weight:800;font-size:.82rem}.news-grid,.network{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.news-card{min-height:190px;padding:20px;border-radius:18px;text-decoration:none;color:#fff;background:linear-gradient(145deg,#071a31,#0c2b4b);box-shadow:var(--shadow)}.news-card:nth-child(2n){background:linear-gradient(145deg,#6e2029,#9d2d35)}.news-card p{color:#dce8ef;font-size:.84rem}.network a{min-height:180px;padding:21px;border-radius:18px;border:1px solid var(--line);text-decoration:none;background:linear-gradient(145deg,#fffdf8,#f3ead6)}.network h3{color:var(--navy)}.network p{color:var(--muted);font-size:.86rem}.hidden{display:none!important}
-footer{padding:50px 0;background:#041223;color:#fff;border-top:6px solid var(--gold)}.footer-grid{display:grid;grid-template-columns:1.35fr 1fr 1fr 1fr;gap:28px}footer p{color:#b9ccdc}.footer-links{display:grid;gap:8px}.footer-links a{text-decoration:none;color:#c8d8e5}.bottom{margin-top:32px;padding-top:20px;border-top:1px solid #ffffff21;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#aebfd0;font-size:.8rem}.back{border:1px solid #ffffff33;background:transparent;color:#fff;border-radius:10px;padding:.55rem .75rem}
-@media(max-width:1080px){.hero-inner,.policy-stage,.map-shell{grid-template-columns:1fr}.four,.news-grid,.network{grid-template-columns:repeat(2,1fr)}.resource-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:840px){.menu{display:block}.nav-links{position:absolute;top:82px;left:0;right:0;display:none;flex-direction:column;align-items:stretch;padding:16px;background:#071a31}.nav-links.open{display:flex}.utility-inner{flex-direction:column;align-items:flex-start;padding:8px 0}.footer-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.four,.news-grid,.network,.resource-grid,.policy-list,.footer-grid,.quick-grid,.state-links{grid-template-columns:1fr}.actions .btn{width:100%}}
+:root{
+  --navy:#071a3a;--navy2:#102f68;--blue:#1d6fd5;--blue2:#58b9ff;
+  --red:#a52037;--red2:#ef4e5f;--purple:#6d35a5;--purple2:#a85ad5;
+  --gold:#f1cf78;--cream:#fbf5e7;--paper:#fffdf8;--ink:#172238;--muted:#667187;
+  --line:rgba(35,48,83,.14);--shadow:0 22px 62px rgba(20,29,67,.16);
+  --soft:0 10px 28px rgba(20,29,67,.11);--radius:24px;--max:1320px;
+  --sans:ui-sans-serif,"Avenir Next","Segoe UI",Arial,sans-serif;
+  --serif:Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:#f8f5ee}
+body{margin:0;min-width:300px;overflow-x:hidden;color:var(--ink);background:
+  radial-gradient(circle at 4% 14%,rgba(29,111,213,.12),transparent 30rem),
+  radial-gradient(circle at 96% 16%,rgba(197,38,62,.12),transparent 30rem),
+  radial-gradient(circle at 50% 56%,rgba(109,53,165,.09),transparent 38rem),
+  linear-gradient(180deg,#fbf8f0,#f4f6fb 55%,#fbf7ef);
+  font-family:var(--sans);line-height:1.58;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body.drawer-open{overflow:hidden}
+a{color:inherit}button,input,select{font:inherit}button{cursor:pointer}
+.shell{width:min(calc(100% - 30px),var(--max));margin:auto}
+.skip{position:fixed;z-index:9999;left:12px;top:12px;transform:translateY(-180%);padding:10px 14px;border-radius:999px;background:#111;color:#fff;text-decoration:none;font-weight:800}
+.skip:focus{transform:none}
+:focus-visible{outline:4px solid rgba(145,79,202,.52);outline-offset:3px}
+[hidden]{display:none!important}
+
+.unity-line{height:10px;background:linear-gradient(90deg,var(--blue) 0 36%,var(--purple) 46% 54%,var(--red) 64% 100%)}
+.utility{color:#eaf2ff;background:#030d22;border-bottom:1px solid rgba(255,255,255,.12)}
+.utility-inner{min-height:43px;display:flex;align-items:center;justify-content:space-between;gap:18px;font-size:.8rem}
+.utility-links{display:flex;gap:8px;flex-wrap:wrap}
+.utility a{padding:5px 9px;border-radius:999px;color:#fff;text-decoration:none;font-weight:800}
+.utility a:hover{background:rgba(255,255,255,.1)}
+
+.site-header{position:sticky;top:0;z-index:1000;background:#081a3b;border-bottom:1px solid rgba(255,255,255,.14);box-shadow:0 8px 24px rgba(3,13,34,.18)}
+.nav{min-height:80px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none}
+.seal{position:relative;width:54px;height:54px;display:grid;place-items:center;overflow:hidden;border:3px solid #fff;border-radius:50%;background:conic-gradient(from 270deg,var(--blue),var(--purple),var(--red),var(--purple),var(--blue));box-shadow:0 8px 22px rgba(0,0,0,.25)}
+.seal:before{content:"★";width:36px;height:36px;display:grid;place-items:center;border-radius:50%;color:#42245e;background:var(--cream);font-size:1.2rem}
+.brand-title{display:block;font-family:var(--serif);font-size:1.26rem;font-weight:700}
+.brand-sub{display:block;margin-top:3px;color:#c6d4e5;font-size:.66rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{padding:.68rem .72rem;border-radius:999px;color:#fff;text-decoration:none;font-size:.82rem;font-weight:800}
+.nav-links a:hover{background:rgba(255,255,255,.1)}
+.menu-button{width:48px;height:48px;border:1px solid rgba(255,255,255,.24);border-radius:15px;color:#fff;background:linear-gradient(145deg,var(--purple),var(--red));font-size:1.25rem;font-weight:800}
+
+.hero{position:relative;overflow:hidden;color:#fff;background:
+  radial-gradient(circle at 18% 10%,rgba(63,151,255,.38),transparent 31rem),
+  radial-gradient(circle at 82% 12%,rgba(239,63,84,.35),transparent 31rem),
+  radial-gradient(circle at 50% 82%,rgba(169,84,214,.34),transparent 34rem),
+  linear-gradient(110deg,#061832,#33135d 51%,#681426)}
+.hero:before,.hero:after{content:"";position:absolute;top:0;bottom:0;width:38%;pointer-events:none;opacity:.55}
+.hero:before{left:-8%;background:linear-gradient(120deg,rgba(31,107,214,.55),transparent);clip-path:polygon(0 0,100% 50%,0 100%)}
+.hero:after{right:-8%;background:linear-gradient(240deg,rgba(210,41,61,.55),transparent);clip-path:polygon(100% 0,0 50%,100% 100%)}
+.hero-inner{position:relative;z-index:2;min-height:760px;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:clamp(30px,5vw,72px);padding:80px 0}
+.eyebrow,.kicker{margin:0;color:var(--gold);font-size:.74rem;font-weight:800;letter-spacing:.19em;text-transform:uppercase}
+h1,h2,h3{margin:0;font-family:var(--serif);text-wrap:balance}
+h1{margin-top:13px;font-size:clamp(3.7rem,8vw,7.8rem);line-height:.88;letter-spacing:-.055em}
+.hero-purple{display:block;color:#e1b7ff;text-shadow:0 0 28px rgba(199,115,255,.3)}
+.hero-lead{max-width:760px;margin:23px 0 0;color:#dfe9f5;font-size:clamp(1.04rem,2vw,1.23rem)}
+.hero-statement{max-width:760px;margin:24px 0 0;padding:17px 19px;border-left:5px solid var(--gold);border-radius:0 16px 16px 0;color:#fff6d9;background:rgba(255,255,255,.08);font-family:var(--serif);font-size:1.12rem}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.btn{min-height:54px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:.87rem 1.16rem;border:1px solid transparent;border-radius:999px;text-decoration:none;font-weight:800;transition:transform .18s,box-shadow .18s}
+.btn:hover{transform:translateY(-4px);box-shadow:0 16px 35px rgba(0,0,0,.25)}
+.btn.vote{color:#071a3a;background:linear-gradient(135deg,#fff4c6,var(--gold))}
+.btn.veteran{color:#fff;background:linear-gradient(135deg,#124b93,#2388e6)}
+.btn.campaign{color:#fff;background:linear-gradient(135deg,var(--purple),var(--red2))}
+.btn.ghost{color:#fff;border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.07)}
+.hero-notes{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.hero-note{padding:7px 10px;border:1px solid rgba(255,255,255,.18);border-radius:999px;color:#dbe7f5;background:rgba(255,255,255,.07);font-size:.72rem;font-weight:700}
+
+.poster-card{position:relative;padding:15px;border:2px solid rgba(255,255,255,.25);border-radius:32px;background:linear-gradient(145deg,rgba(29,111,213,.35),rgba(109,53,165,.36),rgba(165,32,55,.35));box-shadow:0 34px 90px rgba(0,0,0,.36);transform:rotate(1deg)}
+.poster-card img{display:block;width:100%;max-height:610px;object-fit:contain;border:5px solid rgba(255,255,255,.88);border-radius:22px;background:#100b2e}
+.poster-badge{position:absolute;left:-18px;bottom:35px;padding:12px 15px;border:3px solid #fff;border-radius:18px;color:#39204f;background:#f6e9ff;box-shadow:var(--soft);font-size:.78rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;transform:rotate(-3deg)}
+
+.primary-doorways{position:relative;z-index:5;margin-top:-38px}
+.doorway-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.doorway{min-height:245px;display:flex;flex-direction:column;padding:25px;border:4px solid #fff;border-radius:27px;color:#fff;text-decoration:none;box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s}
+.doorway:hover{transform:translateY(-8px);box-shadow:0 30px 68px rgba(20,29,67,.22)}
+.doorway.vote{background:linear-gradient(145deg,#113b79,#207bd5)}
+.doorway.vets{background:linear-gradient(145deg,#172e62,#6340a4)}
+.doorway.president{background:linear-gradient(145deg,#6e286f,#a51f38)}
+.doorway-icon{font-size:2.5rem}
+.doorway h2{margin-top:14px;color:#fff;font-size:clamp(1.8rem,3vw,2.55rem);line-height:1}
+.doorway p{margin:10px 0;color:rgba(255,255,255,.84)}
+.doorway strong{margin-top:auto;color:#fff0b9;font-size:.88rem}
+
+.section{padding:clamp(78px,9vw,118px) 0}
+.alt{border-block:1px solid var(--line);background:rgba(255,255,255,.72)}
+.heading{max-width:920px;margin:0 auto 40px;text-align:center}
+.heading .kicker{color:var(--purple)}
+h2{margin-top:8px;color:var(--navy);font-size:clamp(2.35rem,5vw,4.7rem);line-height:1;letter-spacing:-.04em}
+.heading p{margin:15px 0 0;color:var(--muted)}
+
+.movement{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px;align-items:stretch}
+.movement-visual{position:relative;min-height:430px;overflow:hidden;border-radius:30px;background:linear-gradient(90deg,var(--blue) 0 39%,var(--purple) 48% 52%,var(--red) 61% 100%);box-shadow:var(--shadow)}
+.movement-visual:before{content:"";position:absolute;inset:17%;border:5px solid rgba(255,255,255,.7);border-radius:50%;box-shadow:0 0 0 25px rgba(255,255,255,.06),0 0 0 55px rgba(255,255,255,.035)}
+.movement-visual:after{content:"PURPLE";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-family:var(--serif);font-size:clamp(3.2rem,8vw,6.6rem);font-weight:700;letter-spacing:.05em;text-shadow:0 7px 30px rgba(0,0,0,.3)}
+.movement-copy{padding:35px;border:1px solid var(--line);border-radius:30px;background:#fff;box-shadow:var(--shadow)}
+.movement-copy h3{color:var(--navy);font-size:2rem}
+.movement-copy p{color:var(--muted)}
+.principle-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:20px}
+.principle{padding:15px;border:1px solid var(--line);border-radius:16px;background:#faf8ff}
+.principle strong{display:block;color:var(--purple)}
+.principle span{color:var(--muted);font-size:.82rem}
+
+.veterans-stage{color:#fff;background:
+  radial-gradient(circle at 15% 10%,rgba(62,146,255,.25),transparent 28rem),
+  radial-gradient(circle at 85% 20%,rgba(167,71,208,.24),transparent 28rem),
+  linear-gradient(145deg,#071934,#1b2355 55%,#401c61)}
+.veterans-stage h2{color:#fff}
+.veterans-stage .heading p{color:#cbd8e8}
+.veterans-grid{display:grid;grid-template-columns:1.2fr repeat(2,.9fr);gap:15px}
+.veteran-card{min-height:250px;display:flex;flex-direction:column;padding:25px;border:1px solid rgba(255,255,255,.15);border-radius:24px;color:#fff;background:rgba(255,255,255,.08);text-decoration:none;transition:.18s}
+.veteran-card:hover{transform:translateY(-5px);background:rgba(255,255,255,.13)}
+.veteran-card.featured{background:linear-gradient(145deg,rgba(24,93,180,.8),rgba(100,55,160,.72))}
+.veteran-card h3{margin-top:15px;font-size:1.5rem}
+.veteran-card p{color:rgba(255,255,255,.76)}
+.veteran-card strong{margin-top:auto;color:#ffe9a5}
+.crisis-note{margin-top:15px;padding:17px;border:1px solid rgba(255,255,255,.18);border-radius:18px;color:#fff;background:rgba(165,31,55,.55)}
+.crisis-note a{font-weight:900}
+
+.slideshow-shell{overflow:hidden;border:1px solid var(--line);border-radius:30px;background:#0a1026;box-shadow:var(--shadow)}
+.slide-stage{position:relative;aspect-ratio:16/9;min-height:430px;background:#0a1026}
+.slide-stage iframe{width:100%;height:100%;border:0;background:#0a1026}
+.slide-fallback{position:absolute;inset:0;display:none;place-items:center;padding:30px;color:#fff;text-align:center}
+.slide-controls{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:15px;padding:16px;color:#fff;background:linear-gradient(90deg,#0c3471,#4c246f,#7b1d33)}
+.slide-button{width:46px;height:46px;border:1px solid rgba(255,255,255,.25);border-radius:50%;color:#fff;background:rgba(255,255,255,.08);font-size:1.2rem}
+.slide-copy{text-align:center}
+.slide-copy strong{display:block;font-family:var(--serif);font-size:1.25rem}
+.slide-copy small{display:block;margin-top:3px;color:#d9e1ee}
+.slide-dots{display:flex;justify-content:center;gap:7px;padding:11px;background:#090f22}
+.slide-dot{width:10px;height:10px;border:0;border-radius:50%;background:#6e7894}
+.slide-dot.active{background:var(--gold);box-shadow:0 0 0 4px rgba(241,207,120,.14)}
+.slide-link{display:block;padding:10px;text-align:center;color:#61418b;background:#fff;text-decoration:none;font-weight:800}
+
+.catalog{padding:14px;border:1px solid var(--line);border-radius:28px;background:#fff;box-shadow:var(--shadow)}
+.toolbar{display:grid;grid-template-columns:minmax(230px,1fr) 230px auto auto;gap:10px}
+.field,.tool-button{min-height:54px;border:1px solid var(--line);border-radius:15px;background:#fff}
+.field{width:100%;padding:0 14px;color:var(--ink)}
+.tool-button{padding:0 15px;color:var(--navy);font-weight:800}
+.tool-button[aria-pressed=true]{color:#fff;background:var(--purple)}
+.results{margin:12px 5px 0;color:var(--muted);font-size:.84rem}
+.group-heading{margin:36px 0 15px;padding-bottom:10px;border-bottom:2px solid #e5dff0;color:var(--navy);font-family:var(--serif);font-size:1.35rem}
+.app-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.app-card{position:relative;min-height:310px;display:flex;flex-direction:column;overflow:hidden;padding:21px;border:1px solid var(--line);border-radius:22px;background:#fff;box-shadow:var(--soft);transition:.18s}
+.app-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.app-card:after{content:"";position:absolute;right:-50px;bottom:-55px;width:150px;height:150px;border-radius:50%;background:linear-gradient(145deg,var(--blue),var(--purple),var(--red));opacity:.08}
+.card-top{position:relative;z-index:2;display:flex;justify-content:space-between;gap:10px}
+.app-icon{width:55px;height:55px;display:grid;place-items:center;border-radius:17px;color:#fff;background:linear-gradient(145deg,var(--blue),var(--purple),var(--red));font-family:var(--serif);font-size:1.35rem;font-weight:700}
+.status{padding:5px 8px;border-radius:999px;font-size:.64rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase}
+.status.ready{color:#0e6247;background:#d9f6e8}
+.status.refresh{color:#775213;background:#fff0b8}
+.status.network{color:#124e7b;background:#dcedff}
+.status.fragment{color:#59407c;background:#eee4ff}
+.status.repair{color:#813046;background:#ffe0e7}
+.status.empty{color:#8a2633;background:#ffd9dd}
+.app-card h3{position:relative;z-index:2;margin-top:17px;color:var(--navy);font-size:1.42rem;line-height:1.12}
+.app-card p{position:relative;z-index:2;color:var(--muted);font-size:.88rem}
+.path{position:relative;z-index:2;margin-top:auto;color:#8d93a0;font-size:.68rem;word-break:break-word}
+.app-actions{position:relative;z-index:2;display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:14px}
+.open-app,.copy-link,.needs-content{min-height:44px;display:flex;align-items:center;justify-content:center;border-radius:13px;font-size:.78rem;font-weight:800;text-decoration:none}
+.open-app{color:#fff;background:linear-gradient(135deg,var(--navy2),var(--purple))}
+.copy-link{padding:0 12px;border:1px solid var(--line);color:var(--navy);background:#fff}
+.needs-content{grid-column:1/-1;color:#862839;background:#ffe1e4}
+.empty-state{display:none;margin:18px 0 4px;padding:30px;border:2px dashed #d7cfe5;border-radius:20px;color:var(--muted);text-align:center}
+.empty-state.show{display:block}
+
+.campaign-links{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.campaign-link{min-height:190px;display:flex;flex-direction:column;padding:22px;border:1px solid var(--line);border-radius:22px;background:#fff;text-decoration:none;box-shadow:var(--soft);transition:.18s}
+.campaign-link:hover{transform:translateY(-5px);border-color:#9d74c6;box-shadow:var(--shadow)}
+.campaign-link span{font-size:1.9rem}
+.campaign-link h3{margin-top:13px;color:var(--navy);font-size:1.28rem}
+.campaign-link p{color:var(--muted);font-size:.84rem}
+.campaign-link strong{margin-top:auto;color:var(--purple);font-size:.8rem}
+
+.network-stage{color:#fff;background:linear-gradient(145deg,#071934,#32155b 56%,#681a2d)}
+.network-stage h2{color:#fff}.network-stage .heading p{color:#d6ddea}
+.network-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+.site-card{min-height:225px;display:flex;flex-direction:column;padding:20px;border:1px solid rgba(255,255,255,.14);border-radius:21px;color:#fff;background:rgba(255,255,255,.075);text-decoration:none;transition:.18s}
+.site-card:hover{transform:translateY(-4px);background:rgba(255,255,255,.13)}
+.site-card.building{border-style:dashed}
+.site-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.site-icon{width:46px;height:46px;display:grid;place-items:center;border-radius:15px;background:rgba(255,255,255,.12);font-family:var(--serif);font-weight:700}
+.site-status{padding:4px 7px;border-radius:999px;font-size:.62rem;font-weight:900;text-transform:uppercase}
+.site-status.live{color:#153f30;background:#aef0d6}.site-status.building{color:#4b3815;background:#ffe49b}
+.site-card h3{margin-top:14px;font-size:1.2rem}.site-card p{color:rgba(255,255,255,.7);font-size:.82rem}
+.site-card small{margin-top:auto;color:#f1dcae;word-break:break-word}
+
+.notice-panel{padding:24px;border:1px solid var(--line);border-radius:22px;background:#fff;box-shadow:var(--soft)}
+.notice-panel strong{color:var(--navy)}
+footer{padding:44px 0;color:#c7d5e5;background:#030d22;border-top:7px solid transparent;border-image:linear-gradient(90deg,var(--blue),var(--purple),var(--red)) 1}
+.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:28px}
+footer h3{color:#fff}.footer-links{display:grid;gap:8px}.footer-links a{color:#dbe6f2;text-decoration:none;font-size:.84rem}
+.campaign-disclaimer{margin-top:25px;padding-top:18px;border-top:1px solid rgba(255,255,255,.13);color:#ffe7a8;font-size:.8rem}
+.footer-bottom{margin-top:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.78rem}
+
+.drawer-overlay{position:fixed;inset:0;z-index:3000;visibility:hidden;opacity:0;background:rgba(2,7,20,.7);transition:.2s}
+.drawer-overlay.open{visibility:visible;opacity:1}
+.drawer{position:absolute;right:0;top:0;width:min(95vw,500px);height:100%;overflow:auto;padding:20px;background:linear-gradient(180deg,#fff9ec,#f3efff);box-shadow:-30px 0 90px rgba(0,0,0,.35);transform:translateX(100%);transition:.22s}
+.drawer-overlay.open .drawer{transform:none}
+.drawer-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.drawer-top h2{font-size:2rem}.drawer-close{width:44px;height:44px;border:0;border-radius:14px;color:#fff;background:var(--purple);font-size:1.35rem}
+.drawer p{color:var(--muted)}
+.drawer-search{width:100%;min-height:52px;padding:0 14px;border:1px solid var(--line);border-radius:15px;background:#fff}
+.menu-group{margin:20px 0 8px;color:var(--purple);font-size:.7rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase}
+.menu-list{display:grid;gap:7px}
+.menu-link{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:10px;border:1px solid var(--line);border-radius:15px;background:#fff;text-decoration:none}
+.menu-link i{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;color:#fff;background:linear-gradient(145deg,var(--blue),var(--purple),var(--red));font-style:normal}
+.menu-link strong{display:block;color:#332758;font-size:.88rem}.menu-link small{display:block;color:var(--muted);font-size:.67rem}
+.toast{position:fixed;left:50%;bottom:20px;z-index:5000;transform:translate(-50%,120px);padding:.78rem 1rem;border-radius:999px;color:#fff;background:#35135f;box-shadow:var(--shadow);font-size:.82rem;font-weight:800;transition:.2s}
+.toast.show{transform:translate(-50%,0)}
+
+@media(max-width:1100px){
+  .hero-inner,.movement{grid-template-columns:1fr}.poster-card{width:min(100%,650px);margin:auto}.doorway-grid{grid-template-columns:1fr}
+  .veterans-grid{grid-template-columns:1fr 1fr}.veteran-card.featured{grid-column:1/-1}
+  .app-grid{grid-template-columns:repeat(2,1fr)}.campaign-links,.network-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:820px){
+  .nav-links{display:none}.toolbar{grid-template-columns:1fr 1fr}.toolbar .field:first-child{grid-column:1/-1}
+  .footer-grid{grid-template-columns:1fr 1fr}.primary-doorways{margin-top:0;padding-top:18px}
+}
+@media(max-width:600px){
+  .utility-inner{align-items:flex-start;flex-direction:column;padding:8px 0}.hero-inner{min-height:auto;padding:54px 0}.actions{display:grid}.btn{width:100%}
+  h1{font-size:3.8rem}.poster-badge{position:static;margin-top:10px;transform:none;text-align:center}.veterans-grid,.app-grid,.campaign-links,.network-grid,.principle-grid,.footer-grid{grid-template-columns:1fr}
+  .toolbar{grid-template-columns:1fr}.toolbar .field:first-child{grid-column:auto}.app-actions{grid-template-columns:1fr}.slide-stage{min-height:300px}
+}
+@media print{.utility,.site-header,.drawer-overlay,.actions,.primary-doorways,.toolbar,.copy-link,.network-stage,footer,.toast{display:none!important}.hero{color:#111;background:#fff}.hero h1,.hero-purple{color:#111;text-shadow:none}.hero-lead,.hero-statement{color:#333}.section{padding:1.5rem 0}.app-grid{grid-template-columns:repeat(2,1fr)}.app-card{box-shadow:none;break-inside:avoid}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style>
 </head>
 <body id="top">
-<div class="flag-line"></div><a class="skip" href="#main">Skip to main content</a>
-<div class="utility"><div class="shell utility-inner"><div>Independent civic education, public resources, policy, law, and participation</div><nav class="utility-links"><a href="https://www.usa.gov/" target="_blank" rel="noopener">USA.gov</a><a href="https://vote.gov/" target="_blank" rel="noopener">Vote.gov</a><a href="https://www.congress.gov/" target="_blank" rel="noopener">Congress.gov</a><a href="https://www.supremecourt.gov/" target="_blank" rel="noopener">Supreme Court</a></nav></div></div>
-<header class="site-header"><div class="shell nav"><a class="brand" href="#top"><span class="seal"></span><span><span class="brand-title">One Nation For All</span><span class="brand-sub">America's Civic Information Portal</span></span></a><button class="menu" aria-label="Open navigation" aria-expanded="false"><span></span></button><nav class="nav-links" id="mainMenu"><a href="#government">Government</a><a href="#elections">Elections</a><a href="#policies">Policies</a><a href="#law">Law</a><a href="#resources">Resources</a><a href="#news">News</a><a href="#community">Community</a></nav></div></header>
+<a class="skip" href="#main">Skip to main content</a>
+<div class="unity-line"></div>
+<div class="utility">
+  <div class="shell utility-inner">
+    <span>Independent civic and campaign portal · Not a government agency</span>
+    <nav class="utility-links" aria-label="Official quick links">
+      <a href="https://vote.gov/" target="_blank" rel="noopener noreferrer">Vote.gov</a>
+      <a href="https://www.va.gov/" target="_blank" rel="noopener noreferrer">VA.gov</a>
+      <a href="https://www.congress.gov/" target="_blank" rel="noopener noreferrer">Congress.gov</a>
+      <a href="https://www.fec.gov/data/" target="_blank" rel="noopener noreferrer">FEC Data</a>
+    </nav>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="shell nav">
+    <a class="brand" href="#top"><span class="seal" aria-hidden="true"></span><span><span class="brand-title">One Nation For All</span><span class="brand-sub">Red + Blue = Purple · No Party Citizen</span></span></a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="#doorways">Start Here</a><a href="#movement">Movement</a><a href="#veterans">Veterans</a><a href="#gallery">Gallery</a><a href="#apps">Civic Apps</a><a href="#network">Repositories</a>
+    </nav>
+    <button class="menu-button" id="menuButton" type="button" aria-label="Open complete directory" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<div class="drawer-overlay" id="drawer" aria-hidden="true">
+  <aside class="drawer" aria-label="One Nation For All complete directory">
+    <div class="drawer-top"><h2>National Directory</h2><button class="drawer-close" id="drawerClose" type="button" aria-label="Close directory">×</button></div>
+    <p>Search all civic applications, statements, campaign links, veteran resources, and connected repositories.</p>
+    <input class="drawer-search" id="drawerSearch" type="search" placeholder="Search the complete network…" autocomplete="off">
+    <div id="drawerContent"></div>
+  </aside>
+</div>
+
 <main id="main">
-<section class="hero"><div class="shell hero-inner"><div><p class="eyebrow">We the people deserve a clear way in</p><h1>One Nation For All</h1><p class="hero-lead">A patriotic United States political enclave built to help people understand government, protect their rights, follow public decisions, explore policy, find trustworthy resources, vote with confidence, and participate in their communities.</p><blockquote class="hero-quote">Something our government should have provided clearly for the people, we will help organize and make accessible.</blockquote><div class="actions"><a class="btn primary" href="#resources">Find Public Resources</a><a class="btn secondary" href="#policies">Explore the Policy Library</a></div></div><aside class="hero-panel"><span class="badge">Start here</span><h2>Your civic command center</h2><div class="quick-grid"><a class="quick" href="https://vote.gov/" target="_blank" rel="noopener"><strong>🗳 Register to Vote</strong><span>Official state pathways</span></a><a class="quick" href="https://www.house.gov/representatives/find-your-representative" target="_blank" rel="noopener"><strong>🏛 Find Your Representative</strong><span>Search by ZIP code</span></a><a class="quick" href="https://www.congress.gov/" target="_blank" rel="noopener"><strong>📜 Track Legislation</strong><span>Bills, actions, committees</span></a><a class="quick" href="https://www.fec.gov/data/" target="_blank" rel="noopener"><strong>💰 Follow Campaign Money</strong><span>Federal filings</span></a><a class="quick" href="https://www.foia.gov/" target="_blank" rel="noopener"><strong>🔎 Request Public Records</strong><span>Federal FOIA guidance</span></a><a class="quick" href="https://www.usa.gov/benefits" target="_blank" rel="noopener"><strong>🤝 Find Benefits</strong><span>Programs and assistance</span></a></div></aside></div></section>
-<div class="notice"><div class="shell notice-inner"><strong>Important:</strong> One Nation For All organizes public information but is not a government agency. Official services open on their administering government websites.</div></div>
-<section class="section" id="government"><div class="shell"><div class="heading"><p class="kicker">Understand the republic</p><h2>Government, made easier to navigate.</h2><p>Learn who makes decisions, how laws move, where public records live, and how to contact the institutions that serve the people.</p></div><div class="grid four">
-<a class="card gateway" href="https://www.whitehouse.gov/" target="_blank" rel="noopener"><span><span class="icon">🏛️</span><h3>Executive Branch</h3><p>Presidential actions, executive offices, proclamations, briefings, and federal priorities.</p></span><span class="visit">Visit the White House →</span></a>
-<a class="card gateway" href="https://www.congress.gov/" target="_blank" rel="noopener"><span><span class="icon">📜</span><h3>Congress & Legislation</h3><p>Search bills, resolutions, amendments, committees, summaries, sponsors, and history.</p></span><span class="visit">Search Congress.gov →</span></a>
-<a class="card gateway" href="https://www.supremecourt.gov/opinions/opinions.aspx" target="_blank" rel="noopener"><span><span class="icon">⚖️</span><h3>Judicial Branch</h3><p>Read Supreme Court opinions, orders, dockets, calendars, and oral argument materials.</p></span><span class="visit">Read Court opinions →</span></a>
-<a class="card gateway" href="https://www.usa.gov/agency-index" target="_blank" rel="noopener"><span><span class="icon">🏢</span><h3>Federal Agencies</h3><p>Locate departments, independent agencies, services, contacts, and official websites.</p></span><span class="visit">Open the agency directory →</span></a>
-</div></div></section>
-<section class="section alt" id="elections"><div class="shell"><div class="heading"><p class="kicker">Voting and elections</p><h2>Every eligible voter should know where to begin.</h2><p>Official tools for registration, election administration, candidate research, campaign finance, accessibility, and overseas voting.</p></div><div class="grid four">
-<a class="card gateway" href="https://vote.gov/" target="_blank" rel="noopener"><span><span class="badge">Official</span><span class="icon">🗳️</span><h3>Register or Update</h3><p>Choose your state or territory and follow the official registration process.</p></span><span class="visit">Go to Vote.gov →</span></a>
-<a class="card gateway" href="https://www.eac.gov/voters" target="_blank" rel="noopener"><span><span class="badge">Voter help</span><span class="icon">♿</span><h3>Election Assistance</h3><p>Accessibility, election security, state information, and trusted voter education.</p></span><span class="visit">Visit the EAC →</span></a>
-<a class="card gateway" href="https://www.fec.gov/data/" target="_blank" rel="noopener"><span><span class="badge">Transparency</span><span class="icon">💵</span><h3>Campaign Finance</h3><p>See how federal candidates, parties, PACs, and committees raise and spend money.</p></span><span class="visit">Search FEC data →</span></a>
-<a class="card gateway" href="https://www.fvap.gov/" target="_blank" rel="noopener"><span><span class="badge">Military & overseas</span><span class="icon">🌎</span><h3>Vote From Abroad</h3><p>Registration and absentee ballot resources for military members and U.S. citizens overseas.</p></span><span class="visit">Visit FVAP →</span></a>
-</div></div></section>
-<section class="section" id="policies"><div class="shell"><div class="heading"><p class="kicker">Public policy library</p><h2>Ideas should be open to examination.</h2><p>This section is prepared for your Florida policy archive, emerging national policies, research, implementation notes, and direct document links.</p></div><div class="policy-stage"><div class="card policy-intro"><span class="badge">Document links ready</span><h3>Policy Commons</h3><p>Florida Proposals written by Jennifer Kay Pearl</p><div class="actions"><a class="btn primary" href="apps/policy-library.html">Open Policy Library App</a></div></div><div class="policy-list">
-<div class="policy-item"><strong>Economy & Small Business</strong><span>Fair markets, local enterprise, entrepreneurship, accountability, and reinvestment.</span></div><div class="policy-item"><strong>Jobs & Workforce</strong><span>Skills, apprenticeships, worker dignity, public service, and future industries.</span></div><div class="policy-item"><strong>Healthcare & Families</strong><span>Access, prevention, maternal care, mental health, seniors, and children.</span></div><div class="policy-item"><strong>Veterans</strong><span>Healthcare, housing, employment, family support, and reintegration.</span></div><div class="policy-item"><strong>Housing & Homelessness</strong><span>Housing-first, prevention, insurance, affordability, and dignity.</span></div><div class="policy-item"><strong>Justice & Public Safety</strong><span>Ethical policing, due process, rehabilitation, and transparency.</span></div><div class="policy-item"><strong>Environment & Water</strong><span>Conservation, clean water, resilience, energy, food, and agriculture.</span></div><div class="policy-item"><strong>Transportation & Infrastructure</strong><span>Transit dignity, walkability, green corridors, and readiness.</span></div><div class="policy-item"><strong>Education, Arts & Science</strong><span>Public learning, creativity, trades, research, and civic education.</span></div><div class="policy-item"><strong>Government & Democracy</strong><span>Transparency, elections, public records, rights, and participation.</span></div>
-</div></div></div></section>
-<section class="section alt" id="law"><div class="shell"><div class="heading"><p class="kicker">Law, rights, and public records</p><h2>A direct bridge to Firmament.</h2><p>The legal wing of the ecosystem can explain constitutional structure, rights, statutes, regulations, court decisions, and official legal resources.</p></div><div class="grid four">
-<a class="card gateway" href="https://vervenveda.github.io/firmament.github.io/" target="_blank" rel="noopener"><span><span class="badge">Verve N Veda legal portal</span><span class="icon">⚖️</span><h3>Firmament</h3><p>Your dedicated legal and constitutional portal for rights, law, courts, civic learning, and guidance.</p></span><span class="visit">Enter Firmament →</span></a>
-<a class="card gateway" href="https://www.archives.gov/founding-docs" target="_blank" rel="noopener"><span><span class="icon">📜</span><h3>Founding Documents</h3><p>The Declaration, Constitution, Bill of Rights, amendments, transcripts, and originals.</p></span><span class="visit">Visit the National Archives →</span></a>
-<a class="card gateway" href="https://www.govinfo.gov/" target="_blank" rel="noopener"><span><span class="icon">📚</span><h3>Federal Publications</h3><p>Authenticated publications from Congress, federal agencies, and courts.</p></span><span class="visit">Search GovInfo →</span></a>
-<a class="card gateway" href="https://www.foia.gov/" target="_blank" rel="noopener"><span><span class="icon">🔍</span><h3>Freedom of Information</h3><p>Find records, agency contacts, request guidance, and federal FOIA information.</p></span><span class="visit">Open FOIA.gov →</span></a>
-</div></div></section>
-<section class="section" id="resources"><div class="shell"><div class="heading"><p class="kicker">Citizen resource center</p><h2>Find the right public doorway.</h2><p>Search these curated official resources by need, topic, or agency.</p></div><div class="search-wrap"><label for="resourceSearch">Search resources</label><input id="resourceSearch" type="search" placeholder="passport, veterans, housing, taxes, grants, disaster, jobs, student aid..."></div><div class="tabs"><button class="tab" aria-selected="true" data-filter="all">All</button><button class="tab" aria-selected="false" data-filter="government">Government</button><button class="tab" aria-selected="false" data-filter="assistance">Assistance</button><button class="tab" aria-selected="false" data-filter="economic">Economic</button><button class="tab" aria-selected="false" data-filter="rights">Rights & Safety</button><button class="tab" aria-selected="false" data-filter="service">Service</button></div><div class="resource-grid" id="resourceGrid">
-<article class="resource" data-cat="government" data-keywords="government services agencies passport housing taxes voting"><h3>USA.gov</h3><p>Official guide to government information, services, agencies, and common life needs.</p><a href="https://www.usa.gov/" target="_blank" rel="noopener">Visit USA.gov ↗</a><small>Official federal resource</small></article>
-<article class="resource" data-cat="assistance" data-keywords="benefits financial assistance food housing disability family"><h3>Government Benefits</h3><p>Explore public benefits and financial assistance and learn how to apply.</p><a href="https://www.usa.gov/benefits" target="_blank" rel="noopener">Find benefits ↗</a><small>Official federal guide</small></article>
-<article class="resource" data-cat="government" data-keywords="passport renew travel"><h3>U.S. Passports</h3><p>Apply for, renew, replace, or track a United States passport.</p><a href="https://travel.state.gov/content/travel/en/passports.html" target="_blank" rel="noopener">Passport services ↗</a><small>Department of State</small></article>
-<article class="resource" data-cat="economic" data-keywords="taxes irs refund file payment forms"><h3>Internal Revenue Service</h3><p>Federal filing, refund status, payments, forms, credits, and taxpayer help.</p><a href="https://www.irs.gov/" target="_blank" rel="noopener">Visit IRS.gov ↗</a><small>Official tax administration</small></article>
-<article class="resource" data-cat="assistance" data-keywords="social security retirement disability medicare survivor"><h3>Social Security</h3><p>Retirement, disability, Medicare enrollment, survivor benefits, and account services.</p><a href="https://www.ssa.gov/" target="_blank" rel="noopener">Visit SSA.gov ↗</a><small>Social Security Administration</small></article>
-<article class="resource" data-cat="assistance" data-keywords="healthcare insurance medicaid marketplace coverage"><h3>HealthCare.gov</h3><p>Health insurance marketplace information, enrollment, and coverage options.</p><a href="https://www.healthcare.gov/" target="_blank" rel="noopener">Explore coverage ↗</a><small>Official federal marketplace</small></article>
-<article class="resource" data-cat="assistance" data-keywords="student aid fafsa college grants loans"><h3>Federal Student Aid</h3><p>FAFSA, federal grants, loans, repayment, and college aid guidance.</p><a href="https://studentaid.gov/" target="_blank" rel="noopener">Visit StudentAid.gov ↗</a><small>Department of Education</small></article>
-<article class="resource" data-cat="service" data-keywords="veterans healthcare disability education employment housing"><h3>Veterans Affairs</h3><p>Health care, disability, education, careers, housing, pensions, records, and family benefits.</p><a href="https://www.va.gov/" target="_blank" rel="noopener">Visit VA.gov ↗</a><small>Department of Veterans Affairs</small></article>
-<article class="resource" data-cat="assistance" data-keywords="disaster emergency fema hurricane flood wildfire"><h3>Disaster Assistance</h3><p>Apply for disaster aid, locate recovery centers, and find emergency information.</p><a href="https://www.disasterassistance.gov/" target="_blank" rel="noopener">Get disaster help ↗</a><small>Official assistance portal</small></article>
-<article class="resource" data-cat="economic" data-keywords="small business startup entrepreneur loans counseling"><h3>Small Business Administration</h3><p>Start, fund, manage, and grow a business; locate counseling and support.</p><a href="https://www.sba.gov/" target="_blank" rel="noopener">Visit SBA.gov ↗</a><small>Small Business Administration</small></article>
-<article class="resource" data-cat="economic" data-keywords="grants nonprofit government funding opportunities"><h3>Grants.gov</h3><p>Search federal funding opportunities for eligible organizations and entities.</p><a href="https://www.grants.gov/" target="_blank" rel="noopener">Search grants ↗</a><small>Not personal cash assistance</small></article>
-<article class="resource" data-cat="economic" data-keywords="jobs federal employment career"><h3>USAJOBS</h3><p>Search federal employment opportunities and learn about government hiring.</p><a href="https://www.usajobs.gov/" target="_blank" rel="noopener">Search federal jobs ↗</a><small>Official federal employment site</small></article>
-<article class="resource" data-cat="rights" data-keywords="consumer complaints banking credit scams fraud"><h3>Consumer Financial Protection</h3><p>Complaint submission, mortgage and credit resources, and consumer tools.</p><a href="https://www.consumerfinance.gov/" target="_blank" rel="noopener">Visit CFPB ↗</a><small>Independent federal agency</small></article>
-<article class="resource" data-cat="rights" data-keywords="fraud scams identity theft report ftc"><h3>Report Fraud</h3><p>Report scams, fraud, and deceptive business practices to the FTC.</p><a href="https://reportfraud.ftc.gov/" target="_blank" rel="noopener">Report fraud ↗</a><small>Federal Trade Commission</small></article>
-<article class="resource" data-cat="rights" data-keywords="civil rights discrimination complaint justice"><h3>Civil Rights Reporting</h3><p>Learn about protections and report possible violations to the Department of Justice.</p><a href="https://civilrights.justice.gov/" target="_blank" rel="noopener">Report an issue ↗</a><small>Department of Justice</small></article>
-<article class="resource" data-cat="government" data-keywords="federal register rules regulations public comment"><h3>Federal Register</h3><p>Read proposed rules, final rules, notices, presidential documents, and comment opportunities.</p><a href="https://www.federalregister.gov/" target="_blank" rel="noopener">Read the Federal Register ↗</a><small>Daily journal of the U.S. government</small></article>
-<article class="resource" data-cat="government" data-keywords="regulations cfr federal rules"><h3>eCFR</h3><p>Browse the continuously updated electronic Code of Federal Regulations.</p><a href="https://www.ecfr.gov/" target="_blank" rel="noopener">Browse federal regulations ↗</a><small>Official regulatory text</small></article>
-<article class="resource" data-cat="government" data-keywords="data census population economy demographics"><h3>U.S. Census Data</h3><p>Population, housing, business, community, and demographic data.</p><a href="https://data.census.gov/" target="_blank" rel="noopener">Explore Census data ↗</a><small>U.S. Census Bureau</small></article>
-<article class="resource" data-cat="service" data-keywords="volunteer national service community"><h3>AmeriCorps</h3><p>National service, volunteer pathways, community programs, and opportunities.</p><a href="https://americorps.gov/" target="_blank" rel="noopener">Explore service ↗</a><small>Federal agency for national service</small></article>
-<article class="resource" data-cat="service" data-keywords="public lands parks recreation camping"><h3>Recreation.gov</h3><p>Plan visits, reserve activities, and explore federal lands and recreation sites.</p><a href="https://www.recreation.gov/" target="_blank" rel="noopener">Explore public lands ↗</a><small>Interagency recreation portal</small></article>
-</div></div></section>
-<section class="section alt"><div class="shell"><div class="heading"><p class="kicker">The fifty-state doorway</p><h2>National information must lead people home.</h2><p>Many election, legal, benefits, licensing, and public-service questions are administered by states or local governments.</p></div><div class="card map-shell"><div class="map-art"></div><div class="map-copy"><h3>United States Resource Map</h3><p>The next phase can add one card for every state and territory with official election offices, legislatures, courts, governors, attorneys general, education agencies, health departments, and public-records resources.</p><div class="state-links"><a href="https://www.usa.gov/state-governments" target="_blank" rel="noopener">State Government Directory</a><a href="https://www.eac.gov/voters/register-and-vote-in-your-state" target="_blank" rel="noopener">State Election Information</a><a href="https://www.congress.gov/state-legislature-websites" target="_blank" rel="noopener">State Legislatures</a><a href="https://www.ncsc.org/information-and-resources/state-court-websites" target="_blank" rel="noopener">State Court Websites</a></div></div></div></div></section>
-<section class="section" id="news"><div class="shell"><div class="heading"><p class="kicker">News and public information</p><h2>Read broadly. Verify carefully.</h2><p>Pathways to official records, public media, independent journalism, and The Verifier.</p></div><div class="news-grid"><a class="news-card" href="https://vervenveda.github.io/theverifier.github.io/" target="_blank" rel="noopener"><h3>The Verifier</h3><p>Source comparison, verification tools, and media literacy.</p></a><a class="news-card" href="https://apnews.com/" target="_blank" rel="noopener"><h3>Associated Press</h3><p>National and international reporting from an independent news cooperative.</p></a><a class="news-card" href="https://www.reuters.com/" target="_blank" rel="noopener"><h3>Reuters</h3><p>Global reporting on government, business, science, and public events.</p></a><a class="news-card" href="https://www.npr.org/" target="_blank" rel="noopener"><h3>NPR</h3><p>Public-service journalism, national reporting, audio, and local coverage.</p></a><a class="news-card" href="https://www.c-span.org/" target="_blank" rel="noopener"><h3>C-SPAN</h3><p>Congressional proceedings, hearings, and public affairs programming.</p></a><a class="news-card" href="https://www.congress.gov/congressional-record" target="_blank" rel="noopener"><h3>Congressional Record</h3><p>The official record of proceedings and debates in Congress.</p></a><a class="news-card" href="https://www.federalregister.gov/" target="_blank" rel="noopener"><h3>Federal Register</h3><p>Government rules, notices, presidential documents, and public participation.</p></a><a class="news-card" href="https://www.gao.gov/" target="_blank" rel="noopener"><h3>GAO</h3><p>Audits, reports, recommendations, and oversight of federal programs.</p></a></div></div></section>
-<section class="section alt" id="community"><div class="shell"><div class="heading"><p class="kicker">From knowledge to action</p><h2>Democracy lives in communities.</h2><p>Public understanding matters most when it helps people serve, organize, create, restore, teach, vote, and solve problems together.</p></div><div class="network"><a href="https://vervenveda.github.io/river_to_road.github.io/" target="_blank" rel="noopener"><h3>River to Road</h3><p>Environmental stewardship, cleanup projects, and neighborhood action.</p></a><a href="https://vervenveda.github.io/khaemenesacademy.github.io/" target="_blank" rel="noopener"><h3>Khaemenes Academy</h3><p>Free lifelong education, civic learning, and public knowledge.</p></a><a href="https://vervenveda.github.io/Arshif.github.io/" target="_blank" rel="noopener"><h3>ARSHIF</h3><p>Research halls, archives, history, science, and public inquiry.</p></a><a href="https://vervenveda.github.io/firmament.github.io/" target="_blank" rel="noopener"><h3>Firmament</h3><p>Law, rights, constitutional structure, courts, and public records.</p></a><a href="https://vervenveda.github.io/theverifier.github.io/" target="_blank" rel="noopener"><h3>The Verifier</h3><p>News discovery, source comparison, and verification.</p></a><a href="https://vervenveda.github.io/solanar.github.io/" target="_blank" rel="noopener"><h3>Solanar</h3><p>Weather, environment, Earth systems, and emergency awareness.</p></a><a href="https://vervenveda.github.io/" target="_blank" rel="noopener"><h3>Verve N Veda</h3><p>The wider public network for education, research, creativity, and civic life.</p></a><a href="apps/high-school-voting-portal.html"><h3>Voti the Owl</h3><p>A mock-election and civic-learning application for high school students.</p></a></div></div></section>
+<section class="hero">
+  <div class="shell hero-inner">
+    <div>
+      <p class="eyebrow">The No Party Citizen Movement</p>
+      <h1>One Nation <span class="hero-purple">For All</span></h1>
+      <p class="hero-lead">A patriotic civic and political home for citizens who refuse to be reduced to party labels. Here, red and blue meet in a purple bridge of service, evidence, liberty, responsibility, and practical solutions.</p>
+      <blockquote class="hero-statement">We can disagree without becoming enemies. We can protect conviction without surrendering compassion. We can build a government that answers to citizens before parties, donors, lobbyists, or permanent insiders.</blockquote>
+      <div class="actions">
+        <a class="btn vote" href="https://vote.gov/" target="_blank" rel="noopener noreferrer">🗳 Register to Vote</a>
+        <a class="btn veteran" href="https://www.vervenveda.com/veterans" target="_blank" rel="noopener noreferrer">🎖 Veterans Hub</a>
+        <a class="btn campaign" href="./apps/Jennifer_Pearl_President_2028_index.html">🦅 Jennifer Pearl 2028</a>
+        <a class="btn ghost" href="#apps">Explore All Civic Tools</a>
+      </div>
+      <div class="hero-notes"><span class="hero-note">No Party Citizen</span><span class="hero-note"><strong id="appCount">23</strong>&nbsp;connected pages</span><span class="hero-note">22 public repositories</span><span class="hero-note">Official links identified clearly</span></div>
+    </div>
+    <div class="poster-card">
+      <img src="image/001_unity_is_strength.jpeg" alt="Unity is Strength — Bridging the Divide — Jennifer Pearl 2028">
+      <span class="poster-badge">Unity Is Strength · 2028</span>
+    </div>
+  </div>
+</section>
+
+<section class="primary-doorways" id="doorways">
+  <div class="shell doorway-grid">
+    <a class="doorway vote" href="https://vote.gov/" target="_blank" rel="noopener noreferrer"><span class="doorway-icon">🗳</span><h2>Register to Vote</h2><p>Begin with the official federal gateway to your state or territory’s voter-registration process.</p><strong>Open Vote.gov ↗</strong></a>
+    <a class="doorway vets" href="#veterans"><span class="doorway-icon">🎖</span><h2>Veterans & Military Families</h2><p>Reach benefits, healthcare, housing, crisis support, employment, Vet Centers, and the Verve N Veda Veterans Hub.</p><strong>Enter the Veterans Command Center ↓</strong></a>
+    <a class="doorway president" href="./apps/Jennifer_Pearl_President_2028_index.html"><span class="doorway-icon">🦅</span><h2>Jennifer Pearl 2028</h2><p>Explore the citizen-candidate campaign page, national policies, voter concerns, public letters, and campaign pathways.</p><strong>Open the Presidential Campaign Page →</strong></a>
+  </div>
+</section>
+
+<section class="section" id="movement">
+  <div class="shell">
+    <div class="heading"><p class="kicker">Red and blue make purple</p><h2>The No Party Citizen movement</h2><p>A civic identity for people who place conscience, constitutional responsibility, evidence, and the public good above automatic party loyalty.</p></div>
+    <div class="movement">
+      <div class="movement-visual" aria-label="Blue and red meeting in purple"></div>
+      <article class="movement-copy">
+        <h3>Not politically homeless—politically sovereign.</h3>
+        <p>No Party Citizen does not require everyone to think alike. It asks citizens to remain free enough to question every party, every candidate, every institution, and every claim.</p>
+        <p>Purple is not a demand for false compromise. It is the meeting place where honest differences can become workable solutions without dehumanizing neighbors.</p>
+        <div class="principle-grid">
+          <div class="principle"><strong>People over parties</strong><span>Citizens are not property of political organizations.</span></div>
+          <div class="principle"><strong>Evidence over slogans</strong><span>Claims should survive examination and source checking.</span></div>
+          <div class="principle"><strong>Service over status</strong><span>Public office is a duty, not a throne.</span></div>
+          <div class="principle"><strong>Unity without conformity</strong><span>Cooperation does not require surrendering conscience.</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section veterans-stage" id="veterans">
+  <div class="shell">
+    <div class="heading"><p class="kicker">A prominent national doorway</p><h2>Veterans and military families first</h2><p>Direct pathways to official benefits and care, confidential crisis support, local counseling, housing assistance, employment resources, and the growing Verve N Veda Veterans Hub.</p></div>
+    <div class="veterans-grid">
+      <a class="veteran-card featured" href="https://www.vervenveda.com/veterans" target="_blank" rel="noopener noreferrer"><span style="font-size:2.5rem">🎖</span><h3>Verve N Veda Veterans Hub</h3><p>The public-facing veterans resource hub for navigating support, services, benefits, family needs, and community pathways.</p><strong>Open the Veterans Hub ↗</strong></a>
+      <a class="veteran-card" href="https://www.va.gov/" target="_blank" rel="noopener noreferrer"><span style="font-size:2.2rem">🇺🇸</span><h3>VA.gov</h3><p>Health care, disability, education, careers, housing, pensions, records, caregiver, survivor, and family benefits.</p><strong>Visit the Department of Veterans Affairs ↗</strong></a>
+      <a class="veteran-card" href="https://www.vetcenter.va.gov/" target="_blank" rel="noopener noreferrer"><span style="font-size:2.2rem">🤝</span><h3>Vet Centers</h3><p>Community-based readjustment counseling and support for eligible Veterans, service members, and families.</p><strong>Find Vet Center services ↗</strong></a>
+      <a class="veteran-card" href="https://department.va.gov/homeless/" target="_blank" rel="noopener noreferrer"><span style="font-size:2.2rem">🏠</span><h3>Veteran Housing Help</h3><p>VA programs and pathways for Veterans experiencing or at risk of homelessness.</p><strong>Open VA Homeless Programs ↗</strong></a>
+      <a class="veteran-card" href="https://www.va.gov/careers-employment/" target="_blank" rel="noopener noreferrer"><span style="font-size:2.2rem">🧰</span><h3>Careers & Employment</h3><p>Career guidance, training, vocational rehabilitation, employment resources, and small-business support.</p><strong>Explore career resources ↗</strong></a>
+    </div>
+    <div class="crisis-note"><strong>Veterans Crisis Line:</strong> For free, confidential support 24/7, dial <strong>988, then press 1</strong>, text <strong>838255</strong>, or <a href="https://www.veteranscrisisline.net/" target="_blank" rel="noopener noreferrer">chat through the official Veterans Crisis Line ↗</a>.</div>
+  </div>
+</section>
+
+<section class="section alt" id="gallery">
+  <div class="shell">
+    <div class="heading"><p class="kicker">Campaign image and statement gallery</p><h2>A slideshow that grows one numbered page at a time</h2><p>The gallery loads `image/001_description_index.html`, `002`, `003`, and onward. Replace the contents of a numbered slide page without rebuilding this landing page.</p></div>
+    <div class="slideshow-shell">
+      <div class="slide-stage"><iframe id="slideFrame" title="Campaign slideshow" loading="eager"></iframe><div class="slide-fallback" id="slideFallback">This slide page could not be loaded.</div></div>
+      <div class="slide-controls"><button class="slide-button" id="prevSlide" type="button" aria-label="Previous slide">←</button><div class="slide-copy"><strong id="slideTitle"></strong><small id="slideCaption"></small></div><button class="slide-button" id="nextSlide" type="button" aria-label="Next slide">→</button></div>
+      <div class="slide-dots" id="slideDots"></div>
+      <a class="slide-link" id="openSlide" href="image/001_description_index.html">Open the current slide page →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="campaign">
+  <div class="shell">
+    <div class="heading"><p class="kicker">Campaign and public-facing paths</p><h2>Move directly between the movement, campaign, candidates, policies, and participation pages.</h2></div>
+    <div class="campaign-links">
+      <a class="campaign-link" href="https://www.vervenveda.com/onenationforall" target="_blank" rel="noopener noreferrer"><span>🇺🇸</span><h3>One Nation For All</h3><p>The current public-facing movement and campaign page on Verve N Veda.</p><strong>Open vervenveda.com/onenationforall ↗</strong></a>
+      <a class="campaign-link" href="https://www.vervenveda.com/candidates" target="_blank" rel="noopener noreferrer"><span>🗂</span><h3>Candidate Page</h3><p>The current public candidate doorway and campaign information page.</p><strong>Open vervenveda.com/candidates ↗</strong></a>
+      <a class="campaign-link" href="https://www.jenniferpearl2028.com/" target="_blank" rel="noopener noreferrer"><span>🦅</span><h3>JenniferPearl2028.com</h3><p>The dedicated campaign domain supplied for the presidential campaign.</p><strong>Open campaign domain ↗</strong></a>
+      <a class="campaign-link" href="./apps/National_Policy_Proposals_index.html"><span>📜</span><h3>National Policies</h3><p>Search the repository’s growing collection of 2028 national policy proposals.</p><strong>Open the policy library →</strong></a>
+      <a class="campaign-link" href="https://www.vervenveda.com/volunteer" target="_blank" rel="noopener noreferrer"><span>🤝</span><h3>Volunteer</h3><p>The working public volunteer page while the repository’s local volunteer file is completed.</p><strong>Open volunteer page ↗</strong></a>
+      <a class="campaign-link" href="https://www.vervenveda.com/donate" target="_blank" rel="noopener noreferrer"><span>💝</span><h3>Campaign Support</h3><p>The working public contribution page while the repository’s local donate file is completed.</p><strong>Open support page ↗</strong></a>
+      <a class="campaign-link" href="https://www.vervenveda.com/revolution" target="_blank" rel="noopener noreferrer"><span>⚡</span><h3>ReVeda Revolution</h3><p>The working public movement page while the local Revolution file is completed.</p><strong>Open movement page ↗</strong></a>
+      <a class="campaign-link" href="./apps/voter_concerns_compass_index.html"><span>🧭</span><h3>Voter Concerns Compass</h3><p>Explore the campaign’s current moral and policy framing across major national concerns.</p><strong>Open the compass →</strong></a>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="apps">
+  <div class="shell">
+    <div class="heading"><p class="kicker">Verified repository directory</p><h2>Every civic app, campaign page, and public statement in one searchable library.</h2><p>Status labels distinguish ready pages, pages needing a 2028 refresh, network-dependent tools, fragments, tiny repairs, and empty build files.</p></div>
+    <div class="catalog">
+      <div class="toolbar">
+        <input class="field" id="appSearch" type="search" placeholder="Search voter hubs, policies, Constitution, youth portals, letters…" autocomplete="off">
+        <select class="field" id="groupFilter" aria-label="Filter application group"></select>
+        <button class="tool-button" id="readyButton" type="button" aria-pressed="false">Ready Only</button>
+        <button class="tool-button" id="randomButton" type="button">Random Civic Tool ✦</button>
+      </div>
+      <p class="results" id="results" aria-live="polite"></p>
+      <div id="appGroups"></div>
+      <div class="empty-state" id="emptyState"><h3>No page matched that search.</h3><p>Try a broader word or another group.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section network-stage" id="network">
+  <div class="shell">
+    <div class="heading"><p class="kicker">Complete public ecosystem</p><h2>All 22 repositories connected.</h2><p>Live repositories open their public landing page. Building repositories open GitHub so unfinished sites do not send visitors to a 404 page.</p></div>
+    <div class="network-grid" id="networkGrid"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell notice-panel">
+    <strong>Public-information notice:</strong> One Nation For All combines independent political speech, campaign material, civic education, and links to official services. It is not a government agency. Official registration, benefits, legal, election, and veterans services should always be completed through the administering government website.
+  </div>
+</section>
 </main>
-<footer><div class="shell"><div class="footer-grid"><div><h3>One Nation For All</h3><p>A patriotic civic, political, legal, educational, and public-resource portal.</p></div><div><h3>Civic Tools</h3><div class="footer-links"><a href="https://vote.gov/" target="_blank" rel="noopener">Register to Vote</a><a href="https://www.house.gov/representatives/find-your-representative" target="_blank" rel="noopener">Find Your Representative</a><a href="https://www.senate.gov/senators/senators-contact.htm" target="_blank" rel="noopener">Contact Senators</a><a href="https://www.congress.gov/" target="_blank" rel="noopener">Track Legislation</a></div></div><div><h3>Public Records</h3><div class="footer-links"><a href="https://www.foia.gov/" target="_blank" rel="noopener">FOIA.gov</a><a href="https://www.fec.gov/data/" target="_blank" rel="noopener">FEC Data</a><a href="https://www.federalregister.gov/" target="_blank" rel="noopener">Federal Register</a><a href="https://www.gao.gov/" target="_blank" rel="noopener">GAO Reports</a></div></div><div><h3>Site Information</h3><div class="footer-links"><a href="about/index.html">About</a><a href="policies/accessibility.html">Accessibility</a><a href="policies/privacy.html">Privacy</a><a href="policies/editorial-standards.html">Editorial Standards</a><a href="LICENSE.md">License</a></div></div></div><div class="bottom"><span>© <span id="year"></span> Jennifer Kay Pearl · One Nation For All</span><span>Independent civic portal · Not an official government website</span><button class="back" id="backTop">Back to top</button></div></div></footer>
+
+<footer>
+  <div class="shell">
+    <div class="footer-grid">
+      <div><h3>One Nation For All</h3><p>A patriotic No Party Citizen movement for civic knowledge, participation, constitutional responsibility, policy, veterans, and public service.</p></div>
+      <div><h3>Primary Doorways</h3><nav class="footer-links"><a href="https://vote.gov/" target="_blank" rel="noopener noreferrer">Register to Vote</a><a href="https://www.vervenveda.com/veterans" target="_blank" rel="noopener noreferrer">Veterans Hub</a><a href="./apps/Jennifer_Pearl_President_2028_index.html">Jennifer Pearl 2028</a><a href="./apps/National_Policy_Proposals_index.html">National Policies</a></nav></div>
+      <div><h3>Public Network</h3><nav class="footer-links"><a href="https://vervenveda.github.io/" target="_blank" rel="noopener noreferrer">Verve N Veda</a><a href="https://vervenveda.github.io/theverifier.github.io/" target="_blank" rel="noopener noreferrer">The Verifier</a><a href="https://vervenveda.github.io/firmament.github.io/" target="_blank" rel="noopener noreferrer">Firmament Law</a><a href="https://github.com/vervenveda/onenationforall.github.io" target="_blank" rel="noopener noreferrer">GitHub Repository</a></nav></div>
+    </div>
+    <div class="campaign-disclaimer">Campaign disclaimer placeholder — before public campaign publication, replace this notice with the exact payor and authorization language required for the campaign’s current legal and committee status.</div>
+    <div class="footer-bottom"><span>© <span id="year"></span> Jennifer Kay Pearl · One Nation For All</span><span>Red + Blue = Purple · People Over Parties</span></div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <script>
-const menuButton=document.querySelector('.menu'),menu=document.getElementById('mainMenu');menuButton.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')!=='true';menuButton.setAttribute('aria-expanded',open);menu.classList.toggle('open',open)});menu.addEventListener('click',e=>{if(e.target.closest('a')){menuButton.setAttribute('aria-expanded','false');menu.classList.remove('open')}});
-const searchInput=document.getElementById('resourceSearch'),resources=[...document.querySelectorAll('.resource')],tabs=[...document.querySelectorAll('.tab')];let activeCategory='all';function filterResources(){const q=searchInput.value.trim().toLowerCase();resources.forEach(card=>{const category=activeCategory==='all'||card.dataset.cat===activeCategory;const text=(card.textContent+' '+(card.dataset.keywords||'')).toLowerCase();card.classList.toggle('hidden',!(category&&text.includes(q)))})}tabs.forEach(tab=>tab.addEventListener('click',()=>{activeCategory=tab.dataset.filter;tabs.forEach(t=>t.setAttribute('aria-selected',t===tab));filterResources()}));searchInput.addEventListener('input',filterResources);document.getElementById('year').textContent=new Date().getFullYear();document.getElementById('backTop').addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+"use strict";
+const APPS=[{"id":"pulse-one-nation","title":"Pulse — One Nation","path":"apps/Pulse/index.html","group":"Civic Participation","icon":"♥","status":"ready","description":"A calm, people-first civic idea generator for reflection, service, and community care.","tags":"pulse civic reflection service community local"},{"id":"reveda-pulse-poll","title":"ReVeda Pulse Poll","path":"apps/Pulse/reveda_pulse_poll_index.html","group":"Civic Participation","icon":"◉","status":"ready","description":"A locally stored public-concerns poll with issue questions and private device-based results.","tags":"poll civic issues public opinion local storage"},{"id":"elementary-vote","title":"Elementary Kids Vote","path":"apps/Elementary_Kids_Vote_index.html","group":"Youth Civic Learning","icon":"🦉","status":"ready","description":"A playful mock election that introduces young learners to registration, petitions, issues, and ballots.","tags":"elementary kids vote mock election education"},{"id":"florida-citizen-connect","title":"Florida Citizen Connect","path":"apps/Florida_Citizen_connect_index.html","group":"Voter & Citizen Hubs","icon":"☀","status":"refresh","description":"Florida government, parks, cities, visitor information, emergency links, and local civic feedback.","tags":"florida citizen government cities resources 2026 refresh"},{"id":"florida-voter-hub","title":"Florida Voter Hub","path":"apps/Florida_Voter_Hub_index.html","group":"Voter & Citizen Hubs","icon":"🗳","status":"refresh","description":"Official-first Florida voter pathways for registration, voter status, polling places, and election information.","tags":"florida voter registration polling official 2026 refresh"},{"id":"global-voter","title":"Global Voter Portal","path":"apps/Global_Voter_Portal_index.html","group":"Voter & Citizen Hubs","icon":"🌍","status":"network","description":"International election resources, registration pathways, community concerns, and a network-powered map.","tags":"global voter elections map network leaflet"},{"id":"high-school-vote","title":"High School Voter Portal","path":"apps/High_School_voter_portal_index.html","group":"Youth Civic Learning","icon":"🎓","status":"ready","description":"A student election and civic-issues simulator for high-school learners.","tags":"high school vote civics student election"},{"id":"jennifer-2028","title":"Jennifer Pearl — President 2028","path":"apps/Jennifer_Pearl_President_2028_index.html","group":"Jennifer Pearl 2028","icon":"🦅","status":"ready","description":"The principal repository campaign page for Jennifer Pearl’s 2028 presidential vision, policies, and public invitation.","tags":"jennifer pearl president 2028 campaign candidate"},{"id":"middle-school-vote","title":"Middle School Voting Portal","path":"apps/MiddleSchool_Voting_Portal_index.html","group":"Youth Civic Learning","icon":"📘","status":"ready","description":"A middle-school mock-election portal with candidates, school issues, choices, and a civics quiz.","tags":"middle school vote civics quiz election"},{"id":"national-policies","title":"National Policy Proposals","path":"apps/National_Policy_Proposals_index.html","group":"Jennifer Pearl 2028","icon":"📜","status":"ready","description":"A searchable national policy library organized by date, topic, series, and proposal.","tags":"national policy proposals jennifer 2028 library"},{"id":"road-to-governor","title":"Road to Public Office","path":"apps/Road_to_governor_index.html","group":"Letters & Platform","icon":"🛤","status":"fragment","description":"A campaign letter fragment inviting Americans to walk toward a kinder, braver, and more accountable future.","tags":"road governor public office letter statement fragment"},{"id":"us-voter-hub","title":"United States Voter Hub","path":"apps/US_VOTER_HUB_index.html","group":"Voter & Citizen Hubs","icon":"🇺🇸","status":"ready","description":"A state-and-territory voter gateway connecting people to official registration and election offices.","tags":"usa voter hub states territories vote gov official"},{"id":"donate-local","title":"Donate — Local Build","path":"apps/donate_index.html","group":"Build Queue","icon":"💝","status":"empty","description":"The repository path exists but currently contains no page content. The prominent Donate button uses the working public campaign page.","tags":"donate empty build queue"},{"id":"lightbearers","title":"Lightbearers","path":"apps/lightbearers_index.html","group":"Civic Participation","icon":"✦","status":"ready","description":"A rotating introduction to historic and modern activists, reformers, and advocates for change.","tags":"lightbearers activists change history carousel"},{"id":"reveda-resources","title":"ReVeda Resource Library","path":"apps/reveda_resources_index.html","group":"Civic Participation","icon":"📚","status":"ready","description":"A filterable collection of civic, legal, educational, community, and advocacy resources.","tags":"reveda resources library legal civic community"},{"id":"revolution-local","title":"Revolution — Local Build","path":"apps/revolution_index.html","group":"Build Queue","icon":"⚡","status":"empty","description":"The repository path exists but currently contains no page content. The main movement button uses the working public ReVeda page.","tags":"revolution empty build queue"},{"id":"volunteer-local","title":"Volunteer — Local Build","path":"apps/volunteer_index.html","group":"Build Queue","icon":"🤝","status":"empty","description":"The repository path exists but currently contains no page content. The prominent Volunteer button uses the working public page.","tags":"volunteer empty build queue"},{"id":"voter-compass","title":"Voter Concerns Compass","path":"apps/voter_concerns_compass_index.html","group":"Jennifer Pearl 2028","icon":"🧭","status":"ready","description":"A campaign-centered issue compass covering major concerns named by American voters.","tags":"voter concerns compass issues jennifer 2028"},{"id":"we-the-people-2","title":"We the People Learning Lab v2","path":"apps/we_the_people_2_index.html","group":"Constitution & Civic Learning","icon":"⚖","status":"ready","description":"An expanded Constitution portal with articles, amendments, cases, daily law, quizzes, scenarios, and civic tools.","tags":"constitution learning lab amendments cases civics v2"},{"id":"we-the-people-1","title":"We the People Learning Lab","path":"apps/we_the_people_index.html","group":"Constitution & Civic Learning","icon":"🏛","status":"ready","description":"The original civic-learning lab for constitutional structure, amendments, legal research, and scenario practice.","tags":"constitution learning lab civic law v1"},{"id":"seven-pillars","title":"The Seven Pillars Platform","path":"statements/7_pillars_platform_index.html","group":"Letters & Platform","icon":"7","status":"fragment","description":"Integrity, discipline, service, responsibility, resilience, compassion, and humility as principles of public leadership.","tags":"seven pillars platform integrity service statement fragment"},{"id":"letter-americans","title":"Letter to Americans","path":"statements/Letter_to_Americans_index.html","group":"Letters & Platform","icon":"✉","status":"fragment","description":"A campaign letter fragment centered on restoration, service, possibility, and accountable leadership.","tags":"letter americans campaign statement fragment"},{"id":"letter-american-people","title":"A Letter to the American People","path":"statements/letter_to_American_people_index.html","group":"Letters & Platform","icon":"🖋","status":"repair","description":"A complete citizen-candidate letter with one small closing-tag typo still needing repair.","tags":"letter american people candidate no party repair"}];
+const SITES=[{"title":"One Nation For All","repo":"onenationforall.github.io","url":"https://vervenveda.github.io/onenationforall.github.io/","icon":"🇺🇸","description":"This civic, political, policy, and participation portal.","status":"live"},{"title":"Verve N Veda","repo":"vervenveda.github.io","url":"https://vervenveda.github.io/","icon":"V","description":"The public front door to the full Verve N Veda network.","status":"live"},{"title":"The Verifier","repo":"theverifier.github.io","url":"https://vervenveda.github.io/theverifier.github.io/","icon":"✓","description":"Independent news discovery, research, and source comparison.","status":"live"},{"title":"PLERA Search","repo":"PLERASearch.github.io","url":"https://vervenveda.github.io/PLERASearch.github.io/","icon":"⌕","description":"Search and trusted public-resource pathways.","status":"live"},{"title":"Khaemenes Academy","repo":"khaemenesacademy.github.io","url":"https://vervenveda.github.io/khaemenesacademy.github.io/","icon":"KA","description":"Free, sovereign education for learners of every age.","status":"live"},{"title":"Khaemenes Elementary","repo":"Khaemenes-elementary.github.io","url":"https://github.com/vervenveda/Khaemenes-elementary.github.io","icon":"E","description":"A developing elementary-school campus.","status":"building"},{"title":"Khaemenes Junior High","repo":"Khaemenes-jrhigh.github.io","url":"https://github.com/vervenveda/Khaemenes-jrhigh.github.io","icon":"JH","description":"A developing junior-high campus.","status":"building"},{"title":"Khaemenes High School","repo":"Khaemenes-High_github.io","url":"https://github.com/vervenveda/Khaemenes-High_github.io","icon":"HS","description":"A developing high-school campus.","status":"building"},{"title":"Khaemenes University","repo":"Khaemenes-university.github.io","url":"https://github.com/vervenveda/Khaemenes-university.github.io","icon":"U","description":"A developing collegiate and adult-learning campus.","status":"building"},{"title":"Crèche Preschool","repo":"creche_preschool.github.io","url":"https://vervenveda.github.io/creche_preschool.github.io/","icon":"🌈","description":"Colorful early learning for children and families.","status":"live"},{"title":"KinderGarden","repo":"KinderGarden.github.io","url":"https://github.com/vervenveda/KinderGarden.github.io","icon":"🌻","description":"A developing kindergarten learning space.","status":"building"},{"title":"ARSHIF Archives","repo":"Arshif.github.io","url":"https://vervenveda.github.io/Arshif.github.io/","icon":"A","description":"Research halls, archives, history, culture, and memory.","status":"live"},{"title":"Linguistics","repo":"linguistics.github.io","url":"https://github.com/vervenveda/linguistics.github.io","icon":"L","description":"A developing language and linguistics repository.","status":"building"},{"title":"Solanar","repo":"solanar.github.io","url":"https://vervenveda.github.io/solanar.github.io/","icon":"☀","description":"Weather, Earth systems, moon cycles, and observation.","status":"live"},{"title":"Firmament Law","repo":"firmament.github.io","url":"https://vervenveda.github.io/firmament.github.io/","icon":"§","description":"Legal information, rights, courts, and public resources.","status":"live"},{"title":"River to Road","repo":"river_to_road.github.io","url":"https://vervenveda.github.io/river_to_road.github.io/","icon":"≈","description":"Environmental stewardship and community action.","status":"live"},{"title":"Arcade","repo":"arcade.github.io","url":"https://vervenveda.github.io/arcade.github.io/","icon":"◆","description":"Games, strategy, trivia, and playful learning.","status":"live"},{"title":"Aurora Inspiration","repo":"aurora.github.io","url":"https://vervenveda.github.io/aurora.github.io/","icon":"☼","description":"Reflection, encouragement, wellbeing, and renewal.","status":"live"},{"title":"Professional Resource Hub","repo":"proresource_hub.github.io","url":"https://vervenveda.github.io/proresource_hub.github.io/","icon":"⌬","description":"Professional writing, design, coding, and productivity tools.","status":"live"},{"title":"Bazaar Art","repo":"bazaarart.github.io","url":"https://vervenveda.github.io/bazaarart.github.io/","icon":"✦","description":"Art tools, education, galleries, and creative resources.","status":"live"},{"title":"My Art Gallery","repo":"myartgallery.github.io","url":"https://github.com/vervenveda/myartgallery.github.io","icon":"▧","description":"A developing personal gallery repository.","status":"building"},{"title":"Administration","repo":"admin.github.io","url":"https://github.com/vervenveda/admin.github.io","icon":"⌘","description":"A developing administrative and planning repository.","status":"building"}];
+const SLIDES=[{"src":"image/001_description_index.html","title":"Unity Is Strength","caption":"A campaign image centered on unity, strength, and bridging division."},{"src":"image/002_description_index.html","title":"Red + Blue = Purple","caption":"A visual statement for the No Party Citizen movement."},{"src":"image/003_description_index.html","title":"No Party Citizen","caption":"A replaceable slide page for a campaign principle, image, or announcement."},{"src":"image/004_description_index.html","title":"Veterans First","caption":"A replaceable slide page for veteran resources, service, and policy."},{"src":"image/005_description_index.html","title":"Register. Research. Vote.","caption":"A replaceable slide page for election dates and official voter links."},{"src":"image/006_description_index.html","title":"Policy Spotlight","caption":"A replaceable slide page for one national policy proposal at a time."}];
+const $=id=>document.getElementById(id);
+let readyOnly=false,slideIndex=0,slideTimer=null;
+const STATUS_LABELS={ready:"Ready",refresh:"2028 Refresh",network:"Network Needed",fragment:"Content Fragment",repair:"Tiny Repair",empty:"Needs Content"};
+function escapeHtml(value){return String(value).replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[char]))}
+function relativeUrl(path){return "./"+path.split("/").map(encodeURIComponent).join("/")}
+function toast(message){$("toast").textContent=message;$("toast").classList.add("show");clearTimeout(toast.timer);toast.timer=setTimeout(()=>$("toast").classList.remove("show"),1800)}
+function buildGroups(){
+  const groups=["All Pages",...new Set(APPS.map(app=>app.group))];
+  $("groupFilter").innerHTML=groups.map(group=>`<option value="${escapeHtml(group)}">${escapeHtml(group)}</option>`).join("");
+}
+function renderApps(){
+  const groups=[...new Set(APPS.map(app=>app.group))];
+  $("appGroups").innerHTML=groups.map(group=>{
+    const items=APPS.filter(app=>app.group===group);
+    return `<section class="app-group" data-group="${escapeHtml(group)}"><h3 class="group-heading">${escapeHtml(group)}</h3><div class="app-grid">${items.map(app=>`
+      <article class="app-card" data-id="${app.id}" data-group="${escapeHtml(app.group)}" data-status="${app.status}" data-search="${escapeHtml((app.title+" "+app.description+" "+app.tags+" "+app.path+" "+app.group+" "+STATUS_LABELS[app.status]).toLowerCase())}">
+        <div class="card-top"><span class="app-icon">${app.icon}</span><span class="status ${app.status}">${STATUS_LABELS[app.status]}</span></div>
+        <h3>${escapeHtml(app.title)}</h3><p>${escapeHtml(app.description)}</p><div class="path">${escapeHtml(app.path)}</div>
+        <div class="app-actions">${app.status==="empty"?`<span class="needs-content">Connected path · content still needed</span>`:`<a class="open-app" href="${relativeUrl(app.path)}">Open Page</a><button class="copy-link" type="button" data-copy="${app.id}">Copy Link</button>`}</div>
+      </article>`).join("")}</div></section>`;
+  }).join("");
+  document.querySelectorAll("[data-copy]").forEach(button=>button.addEventListener("click",()=>copyApp(button.dataset.copy)));
+}
+async function copyApp(id){
+  const app=APPS.find(item=>item.id===id),url=new URL(relativeUrl(app.path),location.href).href;
+  try{await navigator.clipboard.writeText(url);toast("Page link copied.")}catch{prompt("Copy this link:",url)}
+}
+function filterApps(){
+  const q=$("appSearch").value.trim().toLowerCase(),group=$("groupFilter").value;let count=0;
+  document.querySelectorAll(".app-card").forEach(card=>{
+    const visible=(group==="All Pages"||card.dataset.group===group)&&(!q||card.dataset.search.includes(q))&&(!readyOnly||card.dataset.status==="ready");
+    card.hidden=!visible;if(visible)count++;
+  });
+  document.querySelectorAll(".app-group").forEach(section=>section.hidden=![...section.querySelectorAll(".app-card")].some(card=>!card.hidden));
+  $("results").textContent=`${count} of ${APPS.length} connected repository pages shown${readyOnly?" · ready only":""}.`;
+  $("emptyState").classList.toggle("show",count===0);
+}
+function randomApp(){
+  let pool=APPS.filter(app=>app.status!=="empty");
+  const group=$("groupFilter").value;if(group!=="All Pages")pool=pool.filter(app=>app.group===group);
+  if(readyOnly)pool=pool.filter(app=>app.status==="ready");
+  const app=pool[Math.floor(Math.random()*pool.length)];
+  if(app)location.href=relativeUrl(app.path);else toast("No launchable page is available in that selection.");
+}
+function renderNetwork(){
+  $("networkGrid").innerHTML=SITES.map(site=>`<a class="site-card ${site.status}" href="${site.url}" target="_blank" rel="noopener noreferrer"><div class="site-top"><span class="site-icon">${site.icon}</span><span class="site-status ${site.status}">${site.status==="live"?"Live":"Building"}</span></div><h3>${escapeHtml(site.title)}</h3><p>${escapeHtml(site.description)}</p><small>${escapeHtml(site.repo)}</small></a>`).join("");
+}
+function showSlide(index,manual=false){
+  slideIndex=(index+SLIDES.length)%SLIDES.length;const slide=SLIDES[slideIndex];
+  $("slideFrame").src=slide.src;$("slideTitle").textContent=slide.title;$("slideCaption").textContent=slide.caption;$("openSlide").href=slide.src;
+  $("slideDots").innerHTML=SLIDES.map((_,i)=>`<button class="slide-dot ${i===slideIndex?"active":""}" type="button" data-slide="${i}" aria-label="Show slide ${i+1}"></button>`).join("");
+  document.querySelectorAll("[data-slide]").forEach(button=>button.addEventListener("click",()=>showSlide(Number(button.dataset.slide),true)));
+  if(manual)restartSlides();
+}
+function restartSlides(){clearInterval(slideTimer);slideTimer=setInterval(()=>showSlide(slideIndex+1),9000)}
+function buildDrawer(query=""){
+  const q=query.trim().toLowerCase();
+  const apps=APPS.filter(app=>!q||(app.title+" "+app.description+" "+app.tags+" "+app.path).toLowerCase().includes(q));
+  const sites=SITES.filter(site=>!q||(site.title+" "+site.repo+" "+site.description).toLowerCase().includes(q));
+  const quick=[
+    {title:"Register to Vote",url:"https://vote.gov/",icon:"🗳",small:"Official voter-registration gateway"},
+    {title:"Veterans Hub",url:"https://www.vervenveda.com/veterans",icon:"🎖",small:"Veterans and military-family resources"},
+    {title:"Jennifer Pearl 2028",url:relativeUrl("apps/Jennifer_Pearl_President_2028_index.html"),icon:"🦅",small:"Repository campaign page"},
+    {title:"Campaign Domain",url:"https://www.jenniferpearl2028.com/",icon:"★",small:"JenniferPearl2028.com"},
+    {title:"Candidate Page",url:"https://www.vervenveda.com/candidates",icon:"🗂",small:"Public candidate doorway"},
+    {title:"Volunteer",url:"https://www.vervenveda.com/volunteer",icon:"🤝",small:"Working public volunteer page"}
+  ].filter(item=>!q||(item.title+" "+item.small).toLowerCase().includes(q));
+  $("drawerContent").innerHTML=`
+    <p class="menu-group">Primary Doorways · ${quick.length}</p><div class="menu-list">${quick.map(item=>`<a class="menu-link" href="${item.url}" ${item.url.startsWith("http")?'target="_blank" rel="noopener noreferrer"':""}><i>${item.icon}</i><span><strong>${escapeHtml(item.title)}</strong><small>${escapeHtml(item.small)}</small></span><span>→</span></a>`).join("")||"<small>No primary doorway matched.</small>"}</div>
+    <p class="menu-group">Civic & Campaign Pages · ${apps.length}</p><div class="menu-list">${apps.map(app=>`<a class="menu-link" href="${app.status==="empty"?"#apps":relativeUrl(app.path)}"><i>${app.icon}</i><span><strong>${escapeHtml(app.title)}</strong><small>${escapeHtml(app.group)} · ${STATUS_LABELS[app.status]}</small></span><span>→</span></a>`).join("")||"<small>No repository page matched.</small>"}</div>
+    <p class="menu-group">Connected Repositories · ${sites.length}</p><div class="menu-list">${sites.map(site=>`<a class="menu-link" href="${site.url}" target="_blank" rel="noopener noreferrer"><i>${site.icon}</i><span><strong>${escapeHtml(site.title)}</strong><small>${escapeHtml(site.repo)} · ${site.status}</small></span><span>↗</span></a>`).join("")||"<small>No repository matched.</small>"}</div>`;
+}
+function openDrawer(){$("drawer").classList.add("open");$("drawer").setAttribute("aria-hidden","false");$("menuButton").setAttribute("aria-expanded","true");document.body.classList.add("drawer-open");setTimeout(()=>$("drawerSearch").focus(),80)}
+function closeDrawer(){$("drawer").classList.remove("open");$("drawer").setAttribute("aria-hidden","true");$("menuButton").setAttribute("aria-expanded","false");document.body.classList.remove("drawer-open")}
+$("appCount").textContent=APPS.length;buildGroups();renderApps();filterApps();renderNetwork();buildDrawer();showSlide(0);restartSlides();$("year").textContent=new Date().getFullYear();
+$("appSearch").addEventListener("input",filterApps);$("groupFilter").addEventListener("change",filterApps);
+$("readyButton").addEventListener("click",()=>{readyOnly=!readyOnly;$("readyButton").setAttribute("aria-pressed",String(readyOnly));filterApps()});
+$("randomButton").addEventListener("click",randomApp);$("prevSlide").addEventListener("click",()=>showSlide(slideIndex-1,true));$("nextSlide").addEventListener("click",()=>showSlide(slideIndex+1,true));
+$("menuButton").addEventListener("click",openDrawer);$("drawerClose").addEventListener("click",closeDrawer);$("drawer").addEventListener("click",event=>{if(event.target===$("drawer"))closeDrawer()});$("drawerSearch").addEventListener("input",event=>buildDrawer(event.target.value));
+document.addEventListener("keydown",event=>{if(event.key==="Escape")closeDrawer();if(event.key==="/"&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)){event.preventDefault();$("appSearch").focus()}});
 </script>
-</body></html>
+</body>
+</html>
