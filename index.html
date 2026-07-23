@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<base href="./">
+<meta name="robots" content="index,follow">
+<meta name="generator" content="Sovereign vanilla HTML">
 <meta name="description" content="One Nation For All — a red, blue, and purple No Party Citizen portal for voter participation, veterans, civic learning, public policy, and Jennifer Pearl 2028.">
 <meta name="theme-color" content="#35135f">
 <meta name="color-scheme" content="light">
@@ -32,6 +35,7 @@ a{color:inherit}button,input,select{font:inherit}button{cursor:pointer}
 .skip:focus{transform:none}
 :focus-visible{outline:4px solid rgba(145,79,202,.52);outline-offset:3px}
 [hidden]{display:none!important}
+.noscript-notice{margin:20px auto;padding:18px;border:2px solid #f1cf78;border-radius:16px;color:#fff;background:#071a3a;text-align:center;font-weight:800}
 
 .unity-line{height:10px;background:linear-gradient(90deg,var(--blue) 0 36%,var(--purple) 46% 54%,var(--red) 64% 100%)}
 .utility{color:#eaf2ff;background:#030d22;border-bottom:1px solid rgba(255,255,255,.12)}
@@ -595,6 +599,7 @@ footer h3{color:#fff}.footer-links{display:grid;gap:8px}.footer-links a{color:#d
 </div>
 
 <main id="main">
+<noscript><div class="shell noscript-notice">This page uses a small local script to build its searchable directories. The principal campaign, voter, government, and veteran links remain available above. Enable JavaScript to display all civic cards and public-network directories.</div></noscript>
 <section class="hero">
   <div class="shell hero-inner">
     <div>
@@ -854,12 +859,64 @@ function buildDrawer(query=""){
 }
 function openDrawer(){$("drawer").classList.add("open");$("drawer").setAttribute("aria-hidden","false");$("menuButton").setAttribute("aria-expanded","true");document.body.classList.add("drawer-open");setTimeout(()=>$("drawerSearch").focus(),80)}
 function closeDrawer(){$("drawer").classList.remove("open");$("drawer").setAttribute("aria-hidden","true");$("menuButton").setAttribute("aria-expanded","false");document.body.classList.remove("drawer-open")}
-$("appCount").textContent=APPS.length;$("siteCount").textContent=SITES.length;buildGroups();renderApps();filterApps();renderNetwork();renderLandingTrail();renderOfficialResources();buildDrawer();$("year").textContent=new Date().getFullYear();
-$("appSearch").addEventListener("input",filterApps);$("groupFilter").addEventListener("change",filterApps);
-$("readyButton").addEventListener("click",()=>{readyOnly=!readyOnly;$("readyButton").setAttribute("aria-pressed",String(readyOnly));filterApps()});
-$("randomButton").addEventListener("click",randomApp);
-$("menuButton").addEventListener("click",openDrawer);$("drawerClose").addEventListener("click",closeDrawer);$("drawer").addEventListener("click",event=>{if(event.target===$("drawer"))closeDrawer()});$("drawerSearch").addEventListener("input",event=>buildDrawer(event.target.value));
-document.addEventListener("keydown",event=>{if(event.key==="Escape")closeDrawer();if(event.key==="/"&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)){event.preventDefault();$("appSearch").focus()}});
+function initializePage(){
+  try{
+    const requiredIds=[
+      "appCount","siteCount","groupFilter","appGroups","appSearch","readyButton",
+      "randomButton","results","emptyState","networkGrid","landingTrail",
+      "officialResourceGrid","drawer","drawerClose","drawerSearch","drawerContent",
+      "menuButton","year","toast"
+    ];
+    const missingIds=requiredIds.filter(id=>!$(id));
+    if(missingIds.length)throw new Error("Missing required page elements: "+missingIds.join(", "));
+
+    $("appCount").textContent=APPS.length;
+    $("siteCount").textContent=SITES.length;
+    buildGroups();
+    renderApps();
+    filterApps();
+    renderNetwork();
+    renderLandingTrail();
+    renderOfficialResources();
+    buildDrawer();
+    $("year").textContent=new Date().getFullYear();
+
+    $("appSearch").addEventListener("input",filterApps);
+    $("groupFilter").addEventListener("change",filterApps);
+    $("readyButton").addEventListener("click",()=>{
+      readyOnly=!readyOnly;
+      $("readyButton").setAttribute("aria-pressed",String(readyOnly));
+      filterApps();
+    });
+    $("randomButton").addEventListener("click",randomApp);
+    $("menuButton").addEventListener("click",openDrawer);
+    $("drawerClose").addEventListener("click",closeDrawer);
+    $("drawer").addEventListener("click",event=>{
+      if(event.target===$("drawer"))closeDrawer();
+    });
+    $("drawerSearch").addEventListener("input",event=>buildDrawer(event.target.value));
+    document.addEventListener("keydown",event=>{
+      if(event.key==="Escape")closeDrawer();
+      if(event.key==="/"&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName||"")){
+        event.preventDefault();
+        $("appSearch").focus();
+      }
+    });
+    document.documentElement.dataset.pageReady="true";
+  }catch(error){
+    console.error("One Nation For All initialization failed:",error);
+    document.documentElement.dataset.pageReady="false";
+    const results=$("results");
+    if(results){
+      results.textContent="The static page loaded, but the interactive directory could not initialize.";
+    }
+  }
+}
+if(document.readyState==="loading"){
+  document.addEventListener("DOMContentLoaded",initializePage,{once:true});
+}else{
+  initializePage();
+}
 </script>
 </body>
 </html>
