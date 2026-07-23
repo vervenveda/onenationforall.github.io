@@ -1,4 +1,4 @@
-"# One Nation For All
+# One Nation For All
 
 **A patriotic, citizen-centered civic portal for voter participation, constitutional learning, public policy, veterans, youth civic education, and the Jennifer Pearl 2028 presidential campaign.**
 
