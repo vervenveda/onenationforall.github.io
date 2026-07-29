@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <base href="./">
 <meta name="robots" content="index,follow">
-<meta name="generator" content="Sovereign vanilla HTML · quiet header and spaced hero edition">
+<meta name="generator" content="Sovereign vanilla HTML · shared typography and spacing template edition">
 <meta name="description" content="One Nation For All — an independent civic and public-service gateway for voter participation, veterans, constitutional learning, public policy, housing, finance, law, health, and community action.">
 <meta name="theme-color" content="#0b1f3a">
 <meta name="color-scheme" content="light">
@@ -841,6 +841,76 @@ section[id],
   .hero-support .hero-statement{
     padding:24px 20px;
   }
+}
+
+
+/* =========================================================
+   SHARED TYPOGRAPHY + SPACING TEMPLATE
+   Reuse these measurements across ARSHIF and future halls.
+   ========================================================= */
+:root{
+  --section-eyebrow-gap:16px;
+  --section-title-gap:18px;
+  --section-copy-gap:16px;
+}
+
+/* Consistent eyebrow → title → description rhythm. */
+.section-heading{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  max-width:900px;
+  margin:0 auto 34px;
+  text-align:center;
+}
+.section-heading .kicker{
+  margin:0 0 var(--section-eyebrow-gap)!important;
+  line-height:1.4;
+}
+.section-heading h2{
+  margin:0!important;
+  line-height:.98;
+}
+.section-heading .section-intro{
+  margin:var(--section-title-gap) auto 0!important;
+  line-height:1.68;
+}
+
+/* The split hero follows the same measured rhythm. */
+.hero-intro .eyebrow{
+  margin:0 0 20px!important;
+}
+.hero-intro .hero-title{
+  margin:0!important;
+}
+.hero-intro .hero-lead{
+  margin:22px auto 0!important;
+}
+
+/* Correct the second-section color and contrast. */
+.hero-support{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.055)),
+    var(--blue)!important;
+  color:#fff!important;
+}
+.hero-support .hero-statement{
+  color:rgba(255,255,255,.9)!important;
+  background:rgba(255,255,255,.075);
+  border-color:rgba(255,255,255,.2);
+}
+.hero-support .hero-note{
+  color:rgba(255,255,255,.88)!important;
+  border-color:rgba(255,255,255,.3);
+  background:rgba(255,255,255,.045);
+}
+.hero-support .btn.outline{
+  color:#fff;
+  border-color:rgba(255,255,255,.45);
+}
+.hero-support .btn.outline:hover{
+  background:#fff;
+  color:var(--blue);
 }
 
 </style>
