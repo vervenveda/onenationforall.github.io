@@ -1,3 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<base href="./">
+<meta name="robots" content="index,follow">
+<meta name="generator" content="Sovereign vanilla HTML · quiet header and spaced hero edition">
+<meta name="description" content="One Nation For All — an independent civic and public-service gateway for voter participation, veterans, constitutional learning, public policy, housing, finance, law, health, and community action.">
+<meta name="theme-color" content="#0b1f3a">
+<meta name="color-scheme" content="light">
+<title>One Nation For All | Independent Civic Gateway</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -634,6 +647,202 @@ section[id],
   .featured-halls-grid{grid-template-columns:1fr}
 }
 
+
+/* =========================================================
+   DESIGN ITEM 1 — QUIET HEADER + SPACED HERO
+   ========================================================= */
+.utility{display:none!important;}
+
+.compact-header{
+  position:sticky;
+  top:0;
+  z-index:40;
+  background:rgba(11,31,58,.985);
+  border-top:3px solid var(--red);
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.compact-nav{
+  min-height:68px;
+  display:grid;
+  grid-template-columns:52px 1fr 44px;
+  align-items:center;
+  gap:18px;
+  padding-top:10px;
+  padding-bottom:10px;
+}
+.corner-flag{
+  display:inline-flex;
+  align-items:center;
+  justify-content:flex-start;
+}
+.corner-flag .flag-mark{
+  width:46px;
+  height:30px;
+}
+.compact-wordmark{
+  justify-self:center;
+  color:#fff;
+  text-align:center;
+  text-decoration:none;
+  line-height:1.15;
+}
+.compact-wordmark span{
+  display:block;
+  font-family:var(--ceremonial);
+  font-size:.95rem;
+  font-weight:333;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.compact-wordmark small{
+  display:block;
+  margin-top:5px;
+  color:rgba(255,255,255,.7);
+  font-size:.58rem;
+  font-weight:333;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.corner-menu{
+  justify-self:end;
+  width:42px;
+  height:42px;
+  flex:0 0 42px;
+  border-radius:5px;
+}
+
+/* Keep the breadcrumb separate and quiet. */
+.network-trail{
+  height:44px;
+  overflow:hidden;
+  background:var(--paper-bright);
+}
+.network-trail-inner{
+  min-height:44px;
+  height:44px;
+}
+.crumbs,
+.landing-trail{
+  font-weight:333;
+}
+
+/* Intro and supporting material now breathe as two distinct sections. */
+.hero.hero-intro{
+  min-height:auto;
+  padding:clamp(96px,10vw,142px) 18px clamp(78px,8vw,112px);
+}
+.hero-intro .hero-inner{
+  width:min(860px,100%);
+}
+.hero-intro .eyebrow{
+  margin:0 0 38px;
+  font-weight:333!important;
+  letter-spacing:.24em;
+  line-height:1.5;
+}
+.hero-intro .hero-title{
+  margin:0;
+  font-weight:444;
+}
+.hero-intro .hero-lead{
+  max-width:760px;
+  margin:42px auto 0;
+  line-height:1.72;
+}
+
+.hero-support{
+  padding:clamp(62px,7vw,92px) 18px clamp(76px,8vw,106px);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.055)),
+    var(--navy);
+  color:#fff;
+  border-top:1px solid rgba(255,255,255,.12);
+}
+.hero-support-inner{
+  width:min(950px,100%);
+  margin:0 auto;
+  text-align:center;
+}
+.hero-support .hero-statement{
+  max-width:760px;
+  margin:0 auto;
+  padding:30px 34px;
+  font-size:1.05rem;
+  line-height:1.72;
+}
+.hero-support .actions{
+  margin-top:42px;
+  gap:14px;
+}
+.hero-support .hero-notes{
+  margin-top:30px;
+  gap:10px;
+}
+.hero-support .btn,
+.hero-support .hero-note{
+  font-weight:333!important;
+}
+
+.drawer-quick-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:14px 0 22px;
+}
+.drawer-quick-links a{
+  padding:8px 10px;
+  color:var(--blue);
+  background:#fff;
+  border:1px solid var(--line);
+  text-decoration:none;
+  font-size:.72rem;
+  font-weight:333;
+  letter-spacing:.035em;
+}
+.drawer-quick-links a:hover{
+  border-color:var(--red);
+  color:var(--red);
+}
+
+/* More separation between section eyebrows and their supporting text. */
+.section-heading .kicker{
+  margin-bottom:24px;
+  font-weight:333!important;
+}
+.section-heading h2{
+  margin-top:0;
+}
+.section-intro{
+  margin-top:26px;
+}
+
+@media(max-width:760px){
+  .compact-nav{
+    grid-template-columns:46px 1fr 42px;
+    gap:10px;
+    min-height:64px;
+  }
+  .compact-wordmark span{font-size:.78rem}
+  .compact-wordmark small{display:none}
+  .corner-flag .flag-mark{width:41px;height:27px}
+  .hero.hero-intro{
+    padding:76px 18px 68px;
+  }
+  .hero-intro .eyebrow{
+    margin-bottom:28px;
+    letter-spacing:.17em;
+  }
+  .hero-intro .hero-lead{
+    margin-top:32px;
+  }
+  .hero-support{
+    padding:54px 18px 68px;
+  }
+  .hero-support .hero-statement{
+    padding:24px 20px;
+  }
+}
+
 </style>
 </head>
 
@@ -641,22 +850,9 @@ section[id],
 <a class="skip" href="#main">Skip to main content</a>
 <div class="top-rule" aria-hidden="true"></div>
 
-<div class="utility">
-  <div class="shell utility-inner">
-    <span>Independent civic and campaign portal · Not a government agency</span>
-    <nav class="utility-links" aria-label="Official quick links">
-      <a href="https://vote.gov/" target="_blank" rel="noopener noreferrer">Vote.gov</a>
-      <a href="https://www.eac.gov/voters" target="_blank" rel="noopener noreferrer">EAC Voter Resources</a>
-      <a href="https://www.fvap.gov/" target="_blank" rel="noopener noreferrer">Military &amp; Overseas Voting</a>
-      <a href="https://www.va.gov/" target="_blank" rel="noopener noreferrer">VA.gov</a>
-      <a href="https://www.congress.gov/" target="_blank" rel="noopener noreferrer">Congress.gov</a>
-    </nav>
-  </div>
-</div>
-
-<header class="site-header">
-  <div class="shell nav">
-    <a class="brand" href="#top">
+<header class="site-header compact-header">
+  <div class="shell compact-nav">
+    <a class="corner-flag" href="#top" aria-label="One Nation For All home">
       <span class="flag-mark" aria-hidden="true">
         <svg viewBox="0 0 52 34" xmlns="http://www.w3.org/2000/svg">
           <rect width="52" height="34" fill="#fff"/>
@@ -676,22 +872,14 @@ section[id],
           </g>
         </svg>
       </span>
-      <span class="brand-copy">
-        <span class="brand-title">One Nation For All</span>
-        <span class="brand-sub">Independent civic and public-service gateway</span>
-      </span>
     </a>
 
-    <nav class="nav-links" aria-label="Primary navigation">
-      <a href="#doorways">Start</a>
-      <a href="#government">Government</a>
-      <a href="#movement">Movement</a>
-      <a href="#veterans">Veterans</a>
-      <a href="#resources">Resources</a>
-      <a href="#apps">Civic Tools</a>
-    </nav>
+    <a class="compact-wordmark" href="#top" aria-label="One Nation For All">
+      <span>One Nation For All</span>
+      <small>Independent civic gateway</small>
+    </a>
 
-    <button class="menu-button" id="menuButton" type="button" aria-label="Open complete directory" aria-expanded="false" aria-controls="drawer">
+    <button class="menu-button corner-menu" id="menuButton" type="button" aria-label="Open complete directory" aria-expanded="false" aria-controls="drawer">
       <span class="menu-lines" aria-hidden="true"></span>
     </button>
   </div>
@@ -716,6 +904,13 @@ section[id],
     </div>
     <p>Search civic applications, official resources, public statements, veteran pathways, and connected Verve N Veda sites.</p>
     <input class="drawer-search" id="drawerSearch" type="search" placeholder="Search the complete directory…" autocomplete="off">
+    <nav class="drawer-quick-links" aria-label="Official quick links">
+      <a href="https://vote.gov/" target="_blank" rel="noopener noreferrer">Vote.gov</a>
+      <a href="https://www.eac.gov/voters" target="_blank" rel="noopener noreferrer">EAC Voter Resources</a>
+      <a href="https://www.fvap.gov/" target="_blank" rel="noopener noreferrer">Military &amp; Overseas Voting</a>
+      <a href="https://www.va.gov/" target="_blank" rel="noopener noreferrer">VA.gov</a>
+      <a href="https://www.congress.gov/" target="_blank" rel="noopener noreferrer">Congress.gov</a>
+    </nav>
     <div id="drawerContent"></div>
   </aside>
 </div>
@@ -723,11 +918,16 @@ section[id],
 <main id="main">
 <noscript><div class="shell noscript-notice">This page uses a small local script to build its searchable directories. The main voter, government, veterans, and campaign links remain available without JavaScript.</div></noscript>
 
-<section class="hero" aria-labelledby="heroTitle">
+<section class="hero hero-intro" aria-labelledby="heroTitle">
   <div class="hero-inner">
     <p class="eyebrow">The No Party Citizen Movement</p>
     <h1 class="hero-title" id="heroTitle">One Nation <span>For All</span></h1>
     <p class="hero-lead">A patriotic civic home for Americans who place conscience, constitutional responsibility, evidence, service, and the public good above automatic party loyalty.</p>
+  </div>
+</section>
+
+<section class="hero-support" aria-label="Movement statement and civic pathways">
+  <div class="hero-support-inner">
     <blockquote class="hero-statement">We can disagree without becoming enemies. We can protect conviction without surrendering compassion. Public office should answer to citizens before parties, donors, lobbyists, or permanent insiders.</blockquote>
     <div class="actions">
       <a class="btn primary" href="https://jenniferpearl2028.github.io/" target="_blank" rel="noopener noreferrer">Jennifer Pearl for President 2028</a>
