@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <base href="./">
 <meta name="robots" content="index,follow">
-<meta name="generator" content="Sovereign vanilla HTML · shared typography and spacing template edition">
-<meta name="description" content="One Nation For All — an independent civic and public-service gateway for voter participation, veterans, constitutional learning, public policy, housing, finance, law, health, and community action.">
+<meta name="generator" content="Sovereign vanilla HTML · complete civic gateway refinement · July 2026">
+<meta name="description" content="One Nation For All — an independent civic and public-service gateway connecting voter participation, constitutional learning, official government resources, veterans, public policy, housing, finance, law, health, education, and community action.">
 <meta name="theme-color" content="#0b1f3a">
 <meta name="color-scheme" content="light">
 <title>One Nation For All | Independent Civic Gateway</title>
@@ -913,6 +913,157 @@ section[id],
   color:var(--blue);
 }
 
+
+/* =========================================================
+   ONE NATION FOR ALL — COMPLETE CIVIC GATEWAY REFINEMENT
+   Uniform cards, open typography, clear civic/campaign boundary.
+   ========================================================= */
+:root{
+  --radius:7px;
+  --card-title-space:3.25rem;
+}
+body{font-weight:333}
+strong,b{font-weight:444}
+a,button,.status,.site-status{overflow-wrap:anywhere}
+.hero-title,
+.section-heading h2,
+.movement-copy h3,
+.doorway h2,
+.branch-card h3,
+.veteran-card h3,
+.official-resource h3,
+.campaign-link h3,
+.app-card h3,
+.site-card h3,
+.featured-hall-card h3{
+  overflow-wrap:anywhere;
+  word-break:normal;
+  hyphens:auto;
+}
+.hero-intro .hero-title{
+  max-width:920px;
+  line-height:.98;
+  letter-spacing:.035em;
+  white-space:normal;
+}
+.hero-intro .hero-title span{margin-top:.08em}
+.hero-title span::after{margin-top:28px}
+.hero-intro .hero-lead{line-height:1.78}
+.section-heading h2{
+  max-width:900px;
+  line-height:1.04;
+  letter-spacing:.005em;
+}
+.section-intro{line-height:1.76}
+.btn,.open-app,.copy-link,.needs-content,.tool-button,
+.doorway strong,.branch-card strong,.veteran-card strong,
+.official-resource strong,.campaign-link strong,.featured-hall-card strong{
+  white-space:normal;
+  text-align:center;
+  line-height:1.35;
+}
+.btn,.open-app,.copy-link,.needs-content,.tool-button{
+  min-height:46px;
+  padding-block:.72rem;
+}
+.doorway-grid,
+.branches-grid,
+.featured-halls-grid,
+.veterans-grid,
+.official-resource-grid,
+.campaign-links,
+.app-grid,
+.network-grid{
+  align-items:stretch;
+  grid-auto-rows:1fr;
+}
+.doorway,.branch-card,.featured-hall-card,.veteran-card,
+.official-resource,.campaign-link,.app-card,.site-card{
+  height:100%;
+  border-radius:var(--radius);
+  overflow:hidden;
+}
+.primary-doorways{padding-block:18px}
+.doorway-grid{gap:12px;border-inline:0}
+.doorway{border:1px solid var(--line)}
+.doorway:last-child{border-right:1px solid var(--line)}
+.branch-card,.featured-hall-card,.veteran-card,
+.official-resource,.campaign-link,.app-card,.site-card{
+  min-width:0;
+}
+.branch-card h3,.featured-hall-card h3,.veteran-card h3,
+.official-resource h3,.campaign-link h3,.app-card h3,.site-card h3{
+  min-height:var(--card-title-space);
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  text-align:center;
+}
+.branch-card,.featured-hall-card,.veteran-card,.official-resource,
+.campaign-link,.app-card,.site-card{align-items:center;text-align:center}
+.branch-card p,.featured-hall-card p,.veteran-card p,
+.official-resource p,.campaign-link p,.app-card p,.site-card p{
+  width:100%;
+  max-width:34rem;
+  margin-inline:auto;
+  text-align:center;
+}
+.branch-card strong,.featured-hall-card strong,.veteran-card strong,
+.official-resource strong,.campaign-link strong{width:100%;margin-top:auto}
+.branch-icon,.featured-hall-icon,.veteran-symbol,
+.official-resource-icon,.campaign-symbol,.app-icon,.site-icon{
+  flex:0 0 auto;
+}
+.veteran-symbol{min-height:2.2rem;display:flex;align-items:center;justify-content:center}
+.app-card .card-top,.site-card .site-top{width:100%}
+.app-card .path{width:100%;margin-top:auto;text-align:center}
+.app-actions{width:100%;margin-top:14px}
+.open-app,.needs-content{width:100%}
+.copy-link{min-width:96px}
+.campaign-boundary{
+  max-width:920px;
+  margin:0 auto 24px;
+  padding:17px 20px;
+  color:var(--blue);
+  background:#fff;
+  border:1px solid var(--line);
+  border-left:4px solid var(--red);
+  border-radius:var(--radius);
+  font-size:.86rem;
+  line-height:1.65;
+  text-align:center;
+}
+.campaign-boundary strong{color:var(--red)}
+.official-resource-grid{grid-template-columns:repeat(5,minmax(0,1fr))}
+.network-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.site-card{min-height:255px}
+.site-card small{width:100%;text-align:center;overflow-wrap:anywhere}
+.status.planned{color:#fff;background:#65717d}
+.needs-content{color:#fff;background:#65717d}
+.catalog{border-radius:var(--radius)}
+.field,.tool-button,.drawer,.drawer-search,.menu-link,.toast,
+.movement-visual,.movement-copy,.principle-grid,.principle,.notice-panel{
+  border-radius:var(--radius);
+}
+.movement-copy h3{text-align:center;line-height:1.08}
+.movement-copy>p{text-align:center}
+.notice-panel{text-align:center;line-height:1.7}
+@media(max-width:1180px){
+  .official-resource-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .network-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:900px){
+  .featured-halls-grid,.official-resource-grid,.network-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero-intro .hero-title{letter-spacing:.02em}
+}
+@media(max-width:560px){
+  .featured-halls-grid,.official-resource-grid,.network-grid{grid-template-columns:1fr}
+  .hero-intro .hero-title{font-size:clamp(3rem,15vw,4.65rem);line-height:1.02;letter-spacing:.015em}
+  .section-heading h2{font-size:clamp(2.55rem,13vw,4rem);line-height:1.06}
+  .app-actions{grid-template-columns:1fr}
+  .copy-link{width:100%}
+}
+
 </style>
 </head>
 
@@ -1000,7 +1151,7 @@ section[id],
   <div class="hero-support-inner">
     <blockquote class="hero-statement">We can disagree without becoming enemies. We can protect conviction without surrendering compassion. Public office should answer to citizens before parties, donors, lobbyists, or permanent insiders.</blockquote>
     <div class="actions">
-      <a class="btn primary" href="https://jenniferpearl2028.github.io/" target="_blank" rel="noopener noreferrer">Jennifer Pearl for President 2028</a>
+      <a class="btn primary" href="https://jenniferpearl2028.com/" target="_blank" rel="noopener noreferrer">Jennifer Pearl for President 2028</a>
       <a class="btn light" href="https://vote.gov/" target="_blank" rel="noopener noreferrer">Register to Vote</a>
       <a class="btn outline" href="#veterans">Veterans Resources</a>
       <a class="btn outline" href="#apps">Explore Civic Tools</a>
@@ -1040,7 +1191,7 @@ section[id],
   <div class="section-inner">
     <div class="section-heading">
       <p class="kicker">Connected public-service destinations</p>
-      <h2 id="featuredHallsTitle">Featured halls across the civic network</h2>
+      <h2 id="featuredHallsTitle">Featured halls across<br>the civic network</h2>
       <p class="section-intro">Focused halls keep each subject clear and useful while shared menus, breadcrumbs, and featured links connect the larger public network.</p>
     </div>
     <div class="featured-halls-grid">
@@ -1050,7 +1201,7 @@ section[id],
         <p>Founding documents, amendments, branches of government, landmark cases, civic learning, quizzes, and constitutional study.</p>
         <strong>Enter Constitutional Hall →</strong>
       </a>
-      <a class="featured-hall-card" href="https://vervenveda.github.io/firmamentlaw.github.io/" target="_blank" rel="noopener noreferrer">
+      <a class="featured-hall-card" href="https://vervenveda.github.io/firmament.github.io/" target="_blank" rel="noopener noreferrer">
         <span class="featured-hall-icon">§</span>
         <h3>Firmament Law</h3>
         <p>Rights, courts, legal research, civil protections, housing law, family law, veterans law, and practical public pathways.</p>
@@ -1062,7 +1213,7 @@ section[id],
         <p>Benefits, health care, housing, employment, records, military families, crisis support, and community resources.</p>
         <strong>Visit Veterans Hall ↗</strong>
       </a>
-      <a class="featured-hall-card" href="https://vervenveda.github.io/homeless.github.io/" target="_blank" rel="noopener noreferrer">
+      <a class="featured-hall-card" href="https://vervenveda.github.io/Homeless.github.io/" target="_blank" rel="noopener noreferrer">
         <span class="featured-hall-icon">1D</span>
         <h3>Homeless Services</h3>
         <p>One Door pathways for shelter, housing, food, health, identification, public benefits, and coordinated assistance.</p>
@@ -1080,7 +1231,7 @@ section[id],
         <p>Health education, medical halls, prevention, family resources, wellness tools, and official care pathways.</p>
         <strong>Visit Medicament Hub ↗</strong>
       </a>
-      <a class="featured-hall-card" href="https://vervenveda.github.io/arshif.github.io/" target="_blank" rel="noopener noreferrer">
+      <a class="featured-hall-card" href="https://vervenveda.github.io/Arshif.github.io/" target="_blank" rel="noopener noreferrer">
         <span class="featured-hall-icon">A</span>
         <h3>ARSHIF Archives</h3>
         <p>History, constitutional context, government systems, philosophy, literature, science, research halls, and civic trivia.</p>
@@ -1106,7 +1257,7 @@ section[id],
   <div class="section-inner">
     <div class="section-heading">
       <p class="kicker">Constitutional structure</p>
-      <h2 id="governmentTitle">The three branches of the United States government</h2>
+      <h2 id="governmentTitle">The three branches of<br>the United States government</h2>
       <p class="section-intro">Open official public sources for the executive, legislative, and judicial branches.</p>
     </div>
     <div class="branches-grid">
@@ -1136,7 +1287,7 @@ section[id],
   <div class="section-inner">
     <div class="section-heading">
       <p class="kicker">People over parties</p>
-      <h2 id="movementTitle">Independent thought. Constitutional responsibility. Common ground.</h2>
+      <h2 id="movementTitle">Independent thought.<br>Constitutional responsibility.<br>Common ground.</h2>
       <p class="section-intro">No Party Citizen is a civic identity for people who remain free enough to question every party, every candidate, every institution, and every claim.</p>
     </div>
     <div class="movement-grid">
@@ -1160,7 +1311,7 @@ section[id],
   <div class="section-inner">
     <div class="section-heading">
       <p class="kicker">A national priority</p>
-      <h2 id="veteransTitle">Veterans and military families</h2>
+      <h2 id="veteransTitle">Veterans and<br>military families</h2>
       <p class="section-intro">Direct pathways to confidential crisis support, official benefits and care, local counseling, housing assistance, employment resources, and the dedicated Veterans Hall.</p>
     </div>
     <div class="veterans-grid">
@@ -1208,7 +1359,7 @@ section[id],
   <div class="section-inner">
     <div class="section-heading">
       <p class="kicker">Official public-service pathways</p>
-      <h2 id="resourcesTitle">Resources for informed civic participation</h2>
+      <h2 id="resourcesTitle">Resources for informed<br>civic participation</h2>
       <p class="section-intro">Use official and public-service sites to register, understand elections, contact representatives, comment on federal rules, inspect spending, and read the nation’s founding documents.</p>
     </div>
     <div class="official-resource-grid" id="officialResourceGrid"></div>
@@ -1219,13 +1370,16 @@ section[id],
   <div class="section-inner">
     <div class="section-heading">
       <p class="kicker">Civic action and public policy</p>
-      <h2 id="actionTitle">Move from concern to informed participation.</h2>
+      <h2 id="actionTitle">Move from concern to<br>informed participation.</h2>
       <p class="section-intro">Explore policy proposals, public concerns, volunteer pathways, and the No Party Citizen movement without repeating campaign promotion throughout the page.</p>
+    </div>
+    <div class="campaign-boundary" role="note">
+      <strong>Campaign-material boundary:</strong> The links in this section include candidate policy, campaign participation, and independent political speech. Official government services and nonpartisan civic-learning resources are presented in the sections above.
     </div>
     <div class="campaign-links">
       <a class="campaign-link" href="./apps/National_Policy_Proposals_index.html"><span class="campaign-symbol">§</span><h3>National Policies</h3><p>Search the growing collection of national policy proposals by issue and topic.</p><strong>Open the policy library →</strong></a>
       <a class="campaign-link" href="./apps/voter_concerns_compass_index.html"><span class="campaign-symbol">◈</span><h3>Voter Concerns Compass</h3><p>Explore major public concerns through a structured civic and policy lens.</p><strong>Open the compass →</strong></a>
-      <a class="campaign-link" href="https://jenniferpearl2028.github.io/volunteer.github.io/" target="_blank" rel="noopener noreferrer"><span class="campaign-symbol">+</span><h3>Campaign Volunteer</h3><p>Visit the dedicated Jennifer Pearl 2028 volunteer page for campaign participation and future opportunities.</p><strong>Open campaign volunteer site ↗</strong></a>
+      <a class="campaign-link" href="https://jenniferpearl2028.com/" target="_blank" rel="noopener noreferrer"><span class="campaign-symbol">+</span><h3>Campaign &amp; Volunteer Updates</h3><p>Use the dedicated Jennifer Pearl 2028 website for candidate information, campaign participation, announcements, and future volunteer opportunities.</p><strong>Visit the separate campaign site ↗</strong></a>
       <a class="campaign-link" href="https://www.vervenveda.com/revolution" target="_blank" rel="noopener noreferrer"><span class="campaign-symbol">∞</span><h3>No Party Citizen</h3><p>Explore a peaceful movement centered on conscience, accountability, and service.</p><strong>Open the movement page ↗</strong></a>
     </div>
   </div>
@@ -1235,7 +1389,7 @@ section[id],
   <div class="section-inner">
     <div class="section-heading">
       <p class="kicker">Repository directory</p>
-      <h2 id="appsTitle">Every civic app, public statement, and learning pathway.</h2>
+      <h2 id="appsTitle">Every civic app, public statement,<br>and learning pathway.</h2>
       <p class="section-intro">Search the connected library. Status labels distinguish ready pages, pages needing a refresh, network-dependent tools, fragments, repairs, and empty build files.</p>
     </div>
     <div class="catalog">
@@ -1256,7 +1410,7 @@ section[id],
   <div class="section-inner">
     <div class="section-heading">
       <p class="kicker">Connected public ecosystem</p>
-      <h2 id="networkTitle">The Verve N Veda network</h2>
+      <h2 id="networkTitle">The Verve N Veda<br>public network</h2>
       <p class="section-intro">Use this directory to move between the major public landing pages and repositories connected to One Nation For All.</p>
     </div>
     <div class="network-grid" id="networkGrid"></div>
@@ -1273,7 +1427,7 @@ section[id],
 <footer class="site-footer">
   <div class="footer-grid">
     <div><h3>One Nation For All</h3><p>An independent civic movement for constitutional learning, public participation, policy, veterans, accountability, and service.</p></div>
-    <div><h3>Primary Doorways</h3><nav class="footer-links"><a href="https://vote.gov/" target="_blank" rel="noopener noreferrer">Register to Vote</a><a href="https://www.vervenveda.com/veterans" target="_blank" rel="noopener noreferrer">Veterans Hub</a><a href="./apps/National_Policy_Proposals_index.html">National Policies</a></nav></div>
+    <div><h3>Primary Doorways</h3><nav class="footer-links"><a href="https://vote.gov/" target="_blank" rel="noopener noreferrer">Register to Vote</a><a href="https://vervenveda.github.io/veterans.github.io/" target="_blank" rel="noopener noreferrer">Veterans Hub</a><a href="./apps/National_Policy_Proposals_index.html">National Policies</a></nav></div>
     <div><h3>Public Network</h3><nav class="footer-links"><a href="https://vervenveda.github.io/" target="_blank" rel="noopener noreferrer">Verve N Veda</a><a href="https://vervenveda.github.io/theverifier.github.io/" target="_blank" rel="noopener noreferrer">The Verifier</a><a href="https://vervenveda.github.io/firmament.github.io/" target="_blank" rel="noopener noreferrer">Firmament Law</a><a href="https://github.com/vervenveda/onenationforall.github.io" target="_blank" rel="noopener noreferrer">GitHub Repository</a></nav></div>
   </div>
   <div class="campaign-disclaimer">One Nation For All is an independent civic and public-service project. Campaign materials are published separately through the Jennifer Pearl 2028 campaign site.</div>
@@ -1285,33 +1439,14 @@ section[id],
 <script>
 "use strict";
 
-const APPS=[{"id":"pulse-one-nation","title":"Pulse — One Nation","path":"apps/Pulse/index.html","group":"Civic Participation","icon":"♥","status":"ready","description":"A calm, people-first civic idea generator for reflection, service, and community care.","tags":"pulse civic reflection service community local"},{"id":"reveda-pulse-poll","title":"ReVeda Pulse Poll","path":"apps/Pulse/reveda_pulse_poll_index.html","group":"Civic Participation","icon":"◉","status":"ready","description":"A locally stored public-concerns poll with issue questions and private device-based results.","tags":"poll civic issues public opinion local storage"},{"id":"elementary-vote","title":"Elementary Kids Vote","path":"apps/Elementary_Kids_Vote_index.html","group":"Youth Civic Learning","icon":"🦉","status":"ready","description":"A playful mock election that introduces young learners to registration, petitions, issues, and ballots.","tags":"elementary kids vote mock election education"},{"id":"florida-citizen-connect","title":"Florida Citizen Connect","path":"apps/Florida_Citizen_connect_index.html","group":"Voter & Citizen Hubs","icon":"☀","status":"refresh","description":"Florida government, parks, cities, visitor information, emergency links, and local civic feedback.","tags":"florida citizen government cities resources 2026 refresh"},{"id":"florida-voter-hub","title":"Florida Voter Hub","path":"apps/Florida_Voter_Hub_index.html","group":"Voter & Citizen Hubs","icon":"🗳","status":"refresh","description":"Official-first Florida voter pathways for registration, voter status, polling places, and election information.","tags":"florida voter registration polling official 2026 refresh"},{"id":"global-voter","title":"Global Voter Portal","path":"apps/Global_Voter_Portal_index.html","group":"Voter & Citizen Hubs","icon":"🌍","status":"network","description":"International election resources, registration pathways, community concerns, and a network-powered map.","tags":"global voter elections map network leaflet"},{"id":"high-school-vote","title":"High School Voter Portal","path":"apps/High_School_voter_portal_index.html","group":"Youth Civic Learning","icon":"🎓","status":"ready","description":"A student election and civic-issues simulator for high-school learners.","tags":"high school vote civics student election"},{"id":"jennifer-2028","title":"Jennifer Pearl — President 2028","path":"apps/Jennifer_Pearl_President_2028_index.html","group":"Jennifer Pearl 2028","icon":"JP","status":"ready","display":false,"description":"The principal repository campaign page for Jennifer Pearl’s 2028 presidential vision, policies, and public invitation.","tags":"jennifer pearl president 2028 campaign candidate"},{"id":"middle-school-vote","title":"Middle School Voting Portal","path":"apps/MiddleSchool_Voting_Portal_index.html","group":"Youth Civic Learning","icon":"📘","status":"ready","description":"A middle-school mock-election portal with candidates, school issues, choices, and a civics quiz.","tags":"middle school vote civics quiz election"},{"id":"national-policies","title":"National Policy Proposals","path":"apps/National_Policy_Proposals_index.html","group":"Jennifer Pearl 2028","icon":"📜","status":"ready","description":"A searchable national policy library organized by date, topic, series, and proposal.","tags":"national policy proposals jennifer 2028 library"},{"id":"road-to-governor","title":"Road to Public Office","path":"apps/Road_to_governor_index.html","group":"Letters & Platform","icon":"🛤","status":"fragment","description":"A campaign letter fragment inviting Americans to walk toward a kinder, braver, and more accountable future.","tags":"road governor public office letter statement fragment"},{"id":"us-voter-hub","title":"United States Voter Hub","path":"apps/US_VOTER_HUB_index.html","group":"Voter & Citizen Hubs","icon":"🇺🇸","status":"ready","description":"A state-and-territory voter gateway connecting people to official registration and election offices.","tags":"usa voter hub states territories vote gov official"},{"id":"donate-local","title":"Donate — Local Build","path":"apps/donate_index.html","group":"Build Queue","icon":"💝","status":"empty","description":"The repository path exists but currently contains no page content. The prominent Donate button uses the working public campaign page.","tags":"donate empty build queue"},{"id":"lightbearers","title":"Lightbearers","path":"apps/lightbearers_index.html","group":"Civic Participation","icon":"✦","status":"ready","description":"A rotating introduction to historic and modern activists, reformers, and advocates for change.","tags":"lightbearers activists change history carousel"},{"id":"reveda-resources","title":"ReVeda Resource Library","path":"apps/reveda_resources_index.html","group":"Civic Participation","icon":"📚","status":"ready","description":"A filterable collection of civic, legal, educational, community, and advocacy resources.","tags":"reveda resources library legal civic community"},{"id":"revolution-local","title":"Revolution — Local Build","path":"apps/revolution_index.html","group":"Build Queue","icon":"⚡","status":"empty","description":"The repository path exists but currently contains no page content. The main movement button uses the working public ReVeda page.","tags":"revolution empty build queue"},{"id":"volunteer-local","title":"Volunteer — Local Build","path":"apps/volunteer_index.html","group":"Build Queue","icon":"🤝","status":"empty","description":"The repository path exists but currently contains no page content. The prominent Volunteer button uses the working public page.","tags":"volunteer empty build queue"},{"id":"voter-compass","title":"Voter Concerns Compass","path":"apps/voter_concerns_compass_index.html","group":"Jennifer Pearl 2028","icon":"🧭","status":"ready","description":"A campaign-centered issue compass covering major concerns named by American voters.","tags":"voter concerns compass issues jennifer 2028"},{"id":"we-the-people-2","title":"We the People Learning Lab v2","path":"apps/we_the_people_2_index.html","group":"Constitution & Civic Learning","icon":"⚖","status":"ready","description":"An expanded Constitution portal with articles, amendments, cases, daily law, quizzes, scenarios, and civic tools.","tags":"constitution learning lab amendments cases civics v2"},{"id":"we-the-people-1","title":"We the People Learning Lab","path":"apps/we_the_people_index.html","group":"Constitution & Civic Learning","icon":"🏛","status":"ready","description":"The original civic-learning lab for constitutional structure, amendments, legal research, and scenario practice.","tags":"constitution learning lab civic law v1"},{"id":"seven-pillars","title":"The Seven Pillars Platform","path":"statements/7_pillars_platform_index.html","group":"Letters & Platform","icon":"7","status":"fragment","description":"Integrity, discipline, service, responsibility, resilience, compassion, and humility as principles of public leadership.","tags":"seven pillars platform integrity service statement fragment"},{"id":"letter-americans","title":"Letter to Americans","path":"statements/Letter_to_Americans_index.html","group":"Letters & Platform","icon":"✉","status":"fragment","description":"A campaign letter fragment centered on restoration, service, possibility, and accountable leadership.","tags":"letter americans campaign statement fragment"},{"id":"letter-american-people","title":"A Letter to the American People","path":"statements/letter_to_American_people_index.html","group":"Letters & Platform","icon":"🖋","status":"repair","description":"A complete citizen-candidate letter with one small closing-tag typo still needing repair.","tags":"letter american people candidate no party repair"}];
-const SITES=[
-{"title":"One Nation For All","repo":"onenationforall.github.io","url":"https://vervenveda.github.io/onenationforall.github.io/","icon":"1","status":"Current","description":"The civic gateway for voter participation, constitutional learning, public policy, veterans, and community action."},
-{"title":"Jennifer Pearl 2028","repo":"jenniferpearl2028.github.io","url":"https://jenniferpearl2028.github.io/","icon":"JP","status":"Campaign","description":"The dedicated presidential campaign site for Jennifer Pearl’s 2028 candidacy, policies, events, volunteer work, press, and public updates."},
-{"title":"Veterans","repo":"veterans.github.io","url":"https://vervenveda.github.io/veterans.github.io/","icon":"V","status":"New Hall","description":"A dedicated national resource hall for veterans, military families, benefits, health care, housing, careers, records, and support."},
-{"title":"Homeless Services","repo":"homeless.github.io","url":"https://vervenveda.github.io/homeless.github.io/","icon":"1D","status":"New Hall","description":"One Door pathways for housing, emergency shelter, food, health care, documents, benefits, and coordinated assistance."},
-{"title":"Finance","repo":"finance.github.io","url":"https://vervenveda.github.io/finance.github.io/","icon":"$","status":"New Hall","description":"Financial literacy, budgeting, credit, taxes, retirement, housing, benefits, small business, and fraud-prevention resources."},
-{"title":"Firmament Law","repo":"firmamentlaw.github.io","url":"https://vervenveda.github.io/firmamentlaw.github.io/","icon":"§","status":"Legal Hall","description":"Law, rights, courts, civil protections, legal research, housing law, family law, and public-resource pathways."},
-{"title":"ARSHIF Archives","repo":"arshif.github.io","url":"https://vervenveda.github.io/arshif.github.io/","icon":"A","status":"Knowledge Hall","description":"History, constitutional context, culture, philosophy, literature, science, research halls, and human memory."},
-{"title":"Verve N Veda","repo":"vervenveda.github.io","url":"https://vervenveda.com/","icon":"VNV","status":"Gateway","description":"The public front door to the connected Verve N Veda knowledge and service network."},
-{"title":"The Verifier","repo":"theverifier.github.io","url":"https://vervenveda.github.io/theverifier.github.io/","icon":"✓","status":"Live","description":"News discovery, source comparison, verification, research navigation, and information literacy."},
-{"title":"PLERA Search","repo":"PLERASearch.github.io","url":"https://vervenveda.github.io/PLERASearch.github.io/","icon":"⌕","status":"Live","description":"A gateway to trusted public resources, research, maps, learning tools, and discovery."},
-{"title":"Khaemenes Academy","repo":"khaemenesacademy.github.io","url":"https://vervenveda.github.io/khaemenesacademy.github.io/","icon":"KA","status":"Live","description":"Sovereign education, curriculum, student pathways, career learning, and lifelong education."},
-{"title":"Medicament Hub","repo":"medicament-hub.github.io","url":"https://vervenveda.github.io/medicament-hub.github.io/","icon":"+","status":"Health Hall","description":"Medical halls, health education, prevention, wellness tools, family resources, and official care pathways."},
-{"title":"ProReSources","repo":"proresource_hub.github.io","url":"https://vervenveda.github.io/proresource_hub.github.io/","icon":"PR","status":"Tools","description":"Professional templates and browser tools for writing, media, productivity, design, development, and public work."},
-{"title":"Aurora Sanctuary","repo":"aurora.github.io","url":"https://vervenveda.github.io/aurora.github.io/","icon":"AU","status":"Tools","description":"Rest, reflection, encouragement, breathing, personal organization, and creative renewal tools."},
-{"title":"The Refrain","repo":"the_refrain.github.io","url":"https://vervenveda.github.io/the_refrain.github.io/","icon":"♪","status":"Live","description":"Music education, composition, performance, workshops, recording, and sound tools."},
-{"title":"Solanar","repo":"solanar.github.io","url":"https://vervenveda.github.io/solanar.github.io/","icon":"☀","status":"Live","description":"Weather, Earth systems, lunar cycles, environmental observation, and world conditions."},
-{"title":"River to Road","repo":"river_to_road.github.io","url":"https://vervenveda.github.io/river_to_road.github.io/","icon":"≈","status":"Live","description":"Environmental stewardship, cleanup, restoration, neighborhood action, and community service."},
-{"title":"Bazaar Art","repo":"bazaarart.github.io","url":"https://vervenveda.github.io/bazaarart.github.io/","icon":"✦","status":"Live","description":"Art, artists, galleries, education, creative enterprise, and community culture."}
-];
-const OFFICIAL_RESOURCES=[{"title":"U.S. Election Assistance Commission","url":"https://www.eac.gov/voters","icon":"🗳","label":"Voter Information","description":"Official voter education, registration information, accessibility guidance, election security, and poll-worker resources."},{"title":"Federal Voting Assistance Program","url":"https://www.fvap.gov/","icon":"🎖","label":"Military & Overseas Voting","description":"Voting assistance for service members, eligible family members, and United States citizens living overseas."},{"title":"Find Your Elected Officials","url":"https://www.usa.gov/elected-officials","icon":"🏛","label":"Representation","description":"Find contact information for federal, state, territorial, county, and local elected officials."},{"title":"Regulations.gov","url":"https://www.regulations.gov/","icon":"💬","label":"Public Comment","description":"Search federal rulemaking dockets and submit public comments through the government’s public participation portal."},{"title":"USAspending.gov","url":"https://www.usaspending.gov/","icon":"◉","label":"Public Spending","description":"Explore searchable federal spending, awards, agencies, recipients, and open government financial data."},{"title":"National Archives — Founding Documents","url":"https://www.archives.gov/founding-docs","icon":"📜","label":"Constitutional Foundations","description":"Read the Constitution, Declaration of Independence, Bill of Rights, and other foundational records."}];
+const APPS=[{"id":"pulse-one-nation","title":"Pulse — One Nation","path":"apps/Pulse/index.html","group":"Civic Participation","icon":"♥","status":"ready","description":"A calm, people-first civic idea generator for reflection, service, and community care.","tags":"pulse civic reflection service community local"},{"id":"reveda-pulse-poll","title":"ReVeda Pulse Poll","path":"apps/Pulse/reveda_pulse_poll_index.html","group":"Civic Participation","icon":"◉","status":"ready","description":"A locally stored public-concerns poll with issue questions and private device-based results.","tags":"poll civic issues public opinion local storage"},{"id":"elementary-vote","title":"Elementary Kids Vote","path":"apps/Elementary_Kids_Vote_index.html","group":"Youth Civic Learning","icon":"🦉","status":"ready","description":"A playful mock election that introduces young learners to registration, petitions, issues, and ballots.","tags":"elementary kids vote mock election education"},{"id":"florida-citizen-connect","title":"Florida Citizen Connect","path":"apps/Florida_Citizen_connect_index.html","group":"Voter & Citizen Hubs","icon":"☀","status":"refresh","description":"A Florida civic gateway for government, parks, cities, visitor information, emergency links, and local public feedback.","tags":"florida citizen government cities resources 2026 refresh"},{"id":"florida-voter-hub","title":"Florida Voter Hub","path":"apps/Florida_Voter_Hub_index.html","group":"Voter & Citizen Hubs","icon":"🗳","status":"refresh","description":"A Florida voter gateway for registration, voter status, polling places, and official election information.","tags":"florida voter registration polling official 2026 refresh"},{"id":"global-voter","title":"Global Voter Portal","path":"apps/Global_Voter_Portal_index.html","group":"Voter & Citizen Hubs","icon":"🌍","status":"network","description":"International election resources, registration pathways, community concerns, and a network-powered map.","tags":"global voter elections map network leaflet"},{"id":"high-school-vote","title":"High School Voter Portal","path":"apps/High_School_voter_portal_index.html","group":"Youth Civic Learning","icon":"🎓","status":"ready","description":"A student election and civic-issues simulator for high-school learners.","tags":"high school vote civics student election"},{"id":"jennifer-2028","title":"Jennifer Pearl — President 2028","path":"apps/Jennifer_Pearl_President_2028_index.html","group":"Campaign & Candidate Materials","icon":"JP","status":"ready","display":true,"description":"The repository’s campaign presentation for Jennifer Pearl’s 2028 presidential vision, policies, and public invitation.","tags":"jennifer pearl president 2028 campaign candidate"},{"id":"middle-school-vote","title":"Middle School Voting Portal","path":"apps/MiddleSchool_Voting_Portal_index.html","group":"Youth Civic Learning","icon":"📘","status":"ready","description":"A middle-school mock-election portal with candidates, school issues, choices, and a civics quiz.","tags":"middle school vote civics quiz election"},{"id":"national-policies","title":"National Policy Proposals","path":"apps/National_Policy_Proposals_index.html","group":"Campaign & Candidate Materials","icon":"📜","status":"ready","description":"A searchable national policy library organized by date, topic, series, and proposal.","tags":"national policy proposals jennifer 2028 library"},{"id":"road-to-governor","title":"Road to Public Service","path":"apps/Road_to_governor_index.html","group":"Campaign Letters & Platform","icon":"🛤","status":"fragment","description":"A partial campaign letter inviting Americans toward a kinder, braver, and more accountable public future.","tags":"road governor public office letter statement fragment"},{"id":"us-voter-hub","title":"United States Voter Hub","path":"apps/US_VOTER_HUB_index.html","group":"Voter & Citizen Hubs","icon":"🇺🇸","status":"ready","description":"A state-and-territory voter gateway connecting people to official registration and election offices.","tags":"usa voter hub states territories vote gov official"},{"id":"donate-local","title":"Donate — Local Build","path":"apps/donate_index.html","group":"Planned Civic Builds","icon":"💝","status":"planned","description":"The repository path exists but is currently empty. The prominent Donate button uses the working public campaign page.","tags":"donate empty build queue"},{"id":"lightbearers","title":"Lightbearers","path":"apps/lightbearers_index.html","group":"Civic Participation","icon":"✦","status":"ready","description":"A rotating introduction to historic and modern activists, reformers, and advocates for change.","tags":"lightbearers activists change history carousel"},{"id":"reveda-resources","title":"ReVeda Resource Library","path":"apps/reveda_resources_index.html","group":"Civic Participation","icon":"📚","status":"ready","description":"A filterable collection of civic, legal, educational, community, and advocacy resources.","tags":"reveda resources library legal civic community"},{"id":"revolution-local","title":"Revolution — Local Build","path":"apps/revolution_index.html","group":"Planned Civic Builds","icon":"⚡","status":"planned","description":"The repository path exists but is currently empty. The main movement button uses the working public ReVeda page.","tags":"revolution empty build queue"},{"id":"volunteer-local","title":"Volunteer — Local Build","path":"apps/volunteer_index.html","group":"Planned Civic Builds","icon":"🤝","status":"planned","description":"The repository path exists but is currently empty. The prominent Volunteer button uses the working public page.","tags":"volunteer empty build queue"},{"id":"voter-compass","title":"Voter Concerns Compass","path":"apps/voter_concerns_compass_index.html","group":"Campaign & Candidate Materials","icon":"🧭","status":"ready","description":"A campaign-centered issue compass covering major concerns named by American voters.","tags":"voter concerns compass issues jennifer 2028"},{"id":"we-the-people-2","title":"We the People Learning Lab v2","path":"apps/we_the_people_2_index.html","group":"Constitution & Civic Learning","icon":"⚖","status":"ready","description":"An expanded Constitution portal with articles, amendments, cases, daily law, quizzes, scenarios, and civic tools.","tags":"constitution learning lab amendments cases civics v2"},{"id":"we-the-people-1","title":"We the People Learning Lab","path":"apps/we_the_people_index.html","group":"Constitution & Civic Learning","icon":"🏛","status":"ready","description":"The original civic-learning lab for constitutional structure, amendments, legal research, and scenario practice.","tags":"constitution learning lab civic law v1"},{"id":"seven-pillars","title":"The Seven Pillars Platform","path":"statements/7_pillars_platform_index.html","group":"Campaign Letters & Platform","icon":"7","status":"fragment","description":"Integrity, discipline, service, responsibility, resilience, compassion, and humility as principles of public leadership.","tags":"seven pillars platform integrity service statement fragment"},{"id":"letter-americans","title":"Letter to Americans","path":"statements/Letter_to_Americans_index.html","group":"Campaign Letters & Platform","icon":"✉","status":"fragment","description":"A campaign letter fragment centered on restoration, service, possibility, and accountable leadership.","tags":"letter americans campaign statement fragment"},{"id":"letter-american-people","title":"A Letter to the American People","path":"statements/letter_to_American_people_index.html","group":"Campaign Letters & Platform","icon":"🖋","status":"repair","description":"A complete citizen-candidate letter with one small closing-tag typo still needing repair.","tags":"letter american people candidate no party repair"}];
+const SITES=[{"title":"One Nation For All","repo":"onenationforall.github.io","url":"https://vervenveda.github.io/onenationforall.github.io/","icon":"1","status":"Current","description":"The independent civic gateway for voter participation, constitutional learning, public policy, veterans, and community action."},{"title":"Verve N Veda","repo":"vervenveda.github.io","url":"https://vervenveda.github.io/","icon":"VNV","status":"Gateway","description":"The public front door to the connected Verve N Veda knowledge, learning, creative, and public-service network."},{"title":"Jennifer Pearl 2028","repo":"JenniferPearl2028.com","url":"https://jenniferpearl2028.com/","icon":"JP","status":"Separate Campaign","description":"The separate candidate and campaign website for Jennifer Pearl’s 2028 presidential campaign."},{"title":"The Verifier","repo":"theverifier.github.io","url":"https://vervenveda.github.io/theverifier.github.io/","icon":"✓","status":"News & Verification","description":"News discovery, source comparison, verification, research navigation, and information literacy."},{"title":"Firmament Law","repo":"firmament.github.io","url":"https://vervenveda.github.io/firmament.github.io/","icon":"§","status":"Legal Hall","description":"Law, rights, courts, civil protections, legal research, family law, housing law, and public-resource pathways."},{"title":"Veterans","repo":"veterans.github.io","url":"https://vervenveda.github.io/veterans.github.io/","icon":"V","status":"Public Service","description":"Benefits, health care, housing, employment, records, military families, crisis support, and community resources."},{"title":"Homeless Services","repo":"Homeless.github.io","url":"https://vervenveda.github.io/Homeless.github.io/","icon":"1D","status":"Repository Setup","description":"A developing One Door pathway for shelter, housing, food, health, identification, benefits, and coordinated assistance."},{"title":"Finance","repo":"finance.github.io","url":"https://vervenveda.github.io/finance.github.io/","icon":"$","status":"Financial Hall","description":"Budgeting, banking, credit, taxes, retirement, housing, benefits, small business, and fraud prevention."},{"title":"Medicament Hub","repo":"medicament-hub.github.io","url":"https://vervenveda.github.io/medicament-hub.github.io/","icon":"+","status":"Health Hall","description":"Health education, medical halls, prevention, wellness tools, family resources, and official care pathways."},{"title":"ARSHIF Archives","repo":"Arshif.github.io","url":"https://vervenveda.github.io/Arshif.github.io/","icon":"A","status":"Knowledge Hall","description":"History, constitutional context, culture, philosophy, literature, science, research halls, and human memory."},{"title":"PLERA Search","repo":"PLERASearch.github.io","url":"https://vervenveda.github.io/PLERASearch.github.io/","icon":"⌕","status":"Research","description":"A gateway to public resources, research, maps, learning tools, and discovery."},{"title":"ProReSources","repo":"proresource_hub.github.io","url":"https://vervenveda.github.io/proresource_hub.github.io/","icon":"PR","status":"Professional Tools","description":"Professional templates and browser tools for writing, media, productivity, design, development, and public work."},{"title":"Khaemenes Academy","repo":"Khaemenes_Academy.github.io","url":"https://vervenveda.github.io/Khaemenes_Academy.github.io/","icon":"KA","status":"Academy Gateway","description":"The central Khaemenes educational campus connecting all learning stages and lifelong education."},{"title":"Khaemenes Preschool","repo":"Khaemenes_Preschool.github.io","url":"https://vervenveda.github.io/Khaemenes_Preschool.github.io/","icon":"PK","status":"Early Learning","description":"Play-based preschool learning, stories, music, shapes, art, early literacy, and discovery."},{"title":"Khaemenes Kinder Garden","repo":"Khaemenes_KinderGarden.github.io","url":"https://vervenveda.github.io/Khaemenes_KinderGarden.github.io/","icon":"KG","status":"Early Learning","description":"A garden-themed kindergarten campus for growing foundational skills through guided exploration."},{"title":"Khaemenes Elementary","repo":"Khaemenes_Elementary.github.io","url":"https://vervenveda.github.io/Khaemenes_Elementary.github.io/","icon":"EL","status":"Elementary","description":"Elementary curriculum, class portals, foundational subjects, civic learning, and creative exploration."},{"title":"Khaemenes Middle","repo":"Khaemenes_Middle.github.io","url":"https://vervenveda.github.io/Khaemenes_Middle.github.io/","icon":"MS","status":"Middle School","description":"Middle-school academics, independent study, civic education, research, and growing responsibility."},{"title":"Khaemenes High","repo":"Khaemenes_High.github.io","url":"https://vervenveda.github.io/Khaemenes_High.github.io/","icon":"HS","status":"High School","description":"High-school coursework, graduation pathways, career preparation, civic learning, and advanced study."},{"title":"Khaemenes Higher Learning","repo":"Khaemenes_Higher_Learning.github.io","url":"https://vervenveda.github.io/Khaemenes_Higher_Learning.github.io/","icon":"HL","status":"Higher Learning","description":"Adult education, college-level study, professional growth, certifications, and lifelong learning."},{"title":"Khaemenes Linguistics","repo":"Khaemenes_Linguistics.github.io","url":"https://vervenveda.github.io/Khaemenes_Linguistics.github.io/","icon":"LG","status":"Languages","description":"Languages, writing systems, translation, communication, and comparative linguistics."},{"title":"Aurora Sanctuary","repo":"aurora.github.io","url":"https://vervenveda.github.io/aurora.github.io/","icon":"AU","status":"Wellness","description":"Rest, reflection, encouragement, breathing, personal organization, and creative renewal."},{"title":"The Refrain","repo":"the_refrain.github.io","url":"https://vervenveda.github.io/the_refrain.github.io/","icon":"♪","status":"Music Hall","description":"Music education, composition, performance, workshops, recording, and sound tools."},{"title":"Solanar","repo":"solanar.github.io","url":"https://vervenveda.github.io/solanar.github.io/","icon":"☀","status":"Earth & Weather","description":"Weather, Earth systems, lunar cycles, environmental observation, and world conditions."},{"title":"River to Road","repo":"river_to_road.github.io","url":"https://vervenveda.github.io/river_to_road.github.io/","icon":"≈","status":"Community Service","description":"Environmental stewardship, cleanup, restoration, neighborhood action, and public service."},{"title":"Bazaar Art","repo":"bazaarart.github.io","url":"https://vervenveda.github.io/bazaarart.github.io/","icon":"✦","status":"Arts","description":"Art, artists, galleries, education, creative enterprise, instruments, and community culture."},{"title":"My Art Gallery","repo":"myartgallery.github.io","url":"https://vervenveda.github.io/myartgallery.github.io/","icon":"MG","status":"Gallery","description":"A developing public gallery for presenting, preserving, and sharing original artwork."},{"title":"Arcade","repo":"arcade.github.io","url":"https://vervenveda.github.io/arcade.github.io/","icon":"AR","status":"Learning Games","description":"Games, puzzles, simulations, trivia, and learning through play across the wider network."}];
+const OFFICIAL_RESOURCES=[{"title":"Vote.gov","url":"https://vote.gov/","icon":"🗳","label":"Voter Registration","description":"The official federal gateway for voter-registration directions by state and territory."},{"title":"U.S. Election Assistance Commission","url":"https://www.eac.gov/voters","icon":"✓","label":"Election Information","description":"Official voter education, accessibility guidance, election administration, security, and poll-worker resources."},{"title":"Federal Voting Assistance Program","url":"https://www.fvap.gov/","icon":"🎖","label":"Military & Overseas Voting","description":"Official voting assistance for service members, eligible family members, and United States citizens living overseas."},{"title":"Find Your Elected Officials","url":"https://www.usa.gov/elected-officials","icon":"🏛","label":"Representation","description":"Find official contact pathways for federal, state, territorial, county, and local elected representatives."},{"title":"Regulations.gov","url":"https://www.regulations.gov/","icon":"💬","label":"Public Comment","description":"Search federal rulemaking dockets and participate in the government’s public-comment process."},{"title":"Federal Register","url":"https://www.federalregister.gov/","icon":"FR","label":"Rules & Notices","description":"Read federal rules, proposed rules, notices, presidential documents, and public inspection materials."},{"title":"USAspending.gov","url":"https://www.usaspending.gov/","icon":"◉","label":"Public Spending","description":"Explore searchable federal spending, awards, agencies, recipients, and open government financial data."},{"title":"National Archives — Founding Documents","url":"https://www.archives.gov/founding-docs","icon":"📜","label":"Constitutional Foundations","description":"Read the Constitution, Declaration of Independence, Bill of Rights, and related foundational records."},{"title":"Federal Election Commission","url":"https://www.fec.gov/","icon":"FEC","label":"Campaign Finance","description":"Official federal campaign-finance data, filing information, legal resources, and public records."},{"title":"Data.gov","url":"https://data.gov/","icon":"DATA","label":"Public Data","description":"Discover federal open-data collections for independent civic research and public-interest analysis."}];
 
 const $=id=>document.getElementById(id);
 let readyOnly=false;
 let lastFocusedElement=null;
-const STATUS_LABELS={ready:"Ready",refresh:"Refresh",network:"Network Needed",fragment:"Content Fragment",repair:"Repair",empty:"Needs Content"};
+const STATUS_LABELS={ready:"Ready",refresh:"Review Current Links",network:"Internet Required",fragment:"Partial Page",repair:"Repair Needed",planned:"Planned Build"};
 
 function escapeHtml(value){
   return String(value).replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[char]));
@@ -1335,12 +1470,12 @@ function renderApps(){
       <h3 class="group-heading">${escapeHtml(group)}</h3>
       <div class="app-grid">${items.map(app=>`
         <article class="app-card" data-id="${escapeHtml(app.id)}" data-group="${escapeHtml(app.group)}" data-status="${escapeHtml(app.status)}" data-search="${escapeHtml((app.title+" "+app.description+" "+app.tags+" "+app.path+" "+app.group+" "+STATUS_LABELS[app.status]).toLowerCase())}">
-          <div class="card-top"><span class="app-icon">${app.icon}</span><span class="status ${escapeHtml(app.status)}">${escapeHtml(STATUS_LABELS[app.status])}</span></div>
+          <div class="card-top"><span class="app-icon">${escapeHtml(app.icon)}</span><span class="status ${escapeHtml(app.status)}">${escapeHtml(STATUS_LABELS[app.status])}</span></div>
           <h3>${escapeHtml(app.title)}</h3>
           <p>${escapeHtml(app.description)}</p>
           <div class="path">${escapeHtml(app.path)}</div>
-          <div class="app-actions">${app.status==="empty"
-            ?`<span class="needs-content">Connected path · content still needed</span>`
+          <div class="app-actions">${app.status==="planned"
+            ?`<span class="needs-content">Planned route · page content not built</span>`
             :`<a class="open-app" href="${relativeUrl(app.path)}">Open Page</a><button class="copy-link" type="button" data-copy="${escapeHtml(app.id)}">Copy Link</button>`}
           </div>
         </article>`).join("")}</div>
@@ -1371,7 +1506,7 @@ function filterApps(){
   $("emptyState").classList.toggle("show",count===0);
 }
 function randomApp(){
-  let pool=APPS.filter(app=>app.status!=="empty"&&app.display!==false);
+  let pool=APPS.filter(app=>["ready","refresh","network"].includes(app.status)&&app.display!==false);
   const group=$("groupFilter").value;
   if(group!=="All Pages")pool=pool.filter(app=>app.group===group);
   if(readyOnly)pool=pool.filter(app=>app.status==="ready");
@@ -1414,7 +1549,7 @@ function buildDrawer(query=""){
     {title:"Register to Vote",url:"https://vote.gov/",icon:"VOTE",small:"Official federal voter-registration gateway"},
     {title:"EAC Voter Resources",url:"https://www.eac.gov/voters",icon:"EAC",small:"Election information, accessibility, security, and poll workers"},
     {title:"Military & Overseas Voting",url:"https://www.fvap.gov/",icon:"FVAP",small:"Official voting assistance"},
-    {title:"Veterans Hub",url:"https://www.vervenveda.com/veterans",icon:"VET",small:"Veterans and military-family resources"},
+    {title:"Veterans Hub",url:"https://vervenveda.github.io/veterans.github.io/",icon:"VET",small:"Veterans and military-family resources"},
     {title:"Contact Elected Officials",url:"https://www.usa.gov/elected-officials",icon:"GOV",small:"Federal, state, and local representation"}
   ].filter(item=>!q||(item.title+" "+item.small).toLowerCase().includes(q));
 
@@ -1422,7 +1557,7 @@ function buildDrawer(query=""){
     <p class="menu-group">Primary Doorways · ${quick.length}</p>
     <div class="menu-list">${quick.map(item=>`<a class="menu-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer"><i>${escapeHtml(item.icon)}</i><span><strong>${escapeHtml(item.title)}</strong><small>${escapeHtml(item.small)}</small></span><span>↗</span></a>`).join("")||"<small>No primary doorway matched.</small>"}</div>
     <p class="menu-group">Civic Pages · ${apps.length}</p>
-    <div class="menu-list">${apps.map(app=>`<a class="menu-link" href="${app.status==="empty"?"#apps":relativeUrl(app.path)}"><i>${app.icon}</i><span><strong>${escapeHtml(app.title)}</strong><small>${escapeHtml(app.group)} · ${escapeHtml(STATUS_LABELS[app.status])}</small></span><span>→</span></a>`).join("")||"<small>No repository page matched.</small>"}</div>
+    <div class="menu-list">${apps.map(app=>`<a class="menu-link" href="${app.status==="planned"?"#apps":relativeUrl(app.path)}"><i>${escapeHtml(app.icon)}</i><span><strong>${escapeHtml(app.title)}</strong><small>${escapeHtml(app.group)} · ${escapeHtml(STATUS_LABELS[app.status])}</small></span><span>→</span></a>`).join("")||"<small>No repository page matched.</small>"}</div>
     <p class="menu-group">Connected Network · ${sites.length}</p>
     <div class="menu-list">${sites.map(site=>`<a class="menu-link" href="${escapeHtml(site.url)}" target="_blank" rel="noopener noreferrer"><i>${escapeHtml(site.icon)}</i><span><strong>${escapeHtml(site.title)}</strong><small>${escapeHtml(site.repo)} · ${escapeHtml(site.status||"Live")}</small></span><span>↗</span></a>`).join("")||"<small>No network destination matched.</small>"}</div>`;
 }
@@ -1462,11 +1597,26 @@ function auditRegistry(){
   duplicateValues(APPS,"path").forEach(value=>issues.push(`Duplicate app path: ${value}`));
   duplicateValues(SITES,"repo").forEach(value=>issues.push(`Duplicate site repository: ${value}`));
   duplicateValues(SITES,"url").forEach(value=>issues.push(`Duplicate site URL: ${value}`));
-  [...APPS.map(item=>item.path),...SITES.map(item=>item.url)].forEach(value=>{
+  duplicateValues(OFFICIAL_RESOURCES,"url").forEach(value=>issues.push(`Duplicate official URL: ${value}`));
+  [...APPS.map(item=>item.path),...SITES.map(item=>item.url),...OFFICIAL_RESOURCES.map(item=>item.url)].forEach(value=>{
     if(!value||value==="#"||String(value).startsWith("javascript:"))issues.push(`Unsafe or empty route: ${value}`);
   });
+  const staleRoutePatterns=[
+    ["firmamentlaw",".github.io"].join(""),
+    ["homeless",".github.io"].join(""),
+    ["arshif",".github.io"].join(""),
+    ["khaemenesacademy",".github.io"].join("")
+  ];
+  const routedHrefs=[...document.querySelectorAll("a[href]")].map(link=>link.getAttribute("href")||"");
+  staleRoutePatterns.forEach(pattern=>{
+    if(routedHrefs.some(href=>href.includes(pattern)))issues.push(`Stale repository route remains: ${pattern}`);
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(link=>{
+    const target=link.getAttribute("href");
+    if(target.length>1&&!document.querySelector(target))issues.push(`Missing fragment target: ${target}`);
+  });
   if(issues.length)console.warn("One Nation For All directory audit:",issues);
-  else console.info(`One Nation For All directory audit passed: ${APPS.length} app records and ${SITES.length} network destinations.`);
+  else console.info(`One Nation For All directory audit passed: ${APPS.length} civic records, ${OFFICIAL_RESOURCES.length} official resources, and ${SITES.length} network destinations.`);
 }
 function initializePage(){
   try{
