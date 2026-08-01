@@ -1,676 +1,667 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>USA Voter Ready Hub — Official Links</title>
-  <meta name="description" content="Choose your state or territory and open official voter resources (Vote.gov, state election offices, and trusted nonpartisan directories).">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="USA Civic Participation Hub — official government resources, founding documents, state government directories, public information, and connected civic education.">
+  <meta name="theme-color" content="#0b1d34">
+  <meta name="color-scheme" content="light dark">
+  <title>USA Civic Participation Hub</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg0:#033052;
-      --bg1:#0B1226;
-      --card:rgba(255,255,255,0.06);
-      --card2:rgba(255,255,255,0.08);
-      --ink:#F4F7FF;
-      --mut:#B9C3DA;
-      --line:rgba(255,255,255,0.12);
-      --gold:#D8B24C;
-      --good:#7CFFB2;
-      --warn:#FFD27A;
-
-      --r-lg:22px;
-      --r-md:16px;
-      --r-sm:12px;
-      --shadow:0 18px 60px rgba(0,0,0,0.45);
-
-      --pad:18px;
-      --pad2:22px;
-      --max:980px;
-      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --navy:#0b1d34;
+      --navy-2:#142f50;
+      --red:#8e1f2d;
+      --red-deep:#68151f;
+      --paper:#f5f2ea;
+      --paper-bright:#fffdf8;
+      --ink:#172231;
+      --muted:#637080;
+      --gold:#b89655;
+      --gold-soft:#e6d5ad;
+      --line:rgba(12,29,52,.15);
+      --line-light:rgba(255,255,255,.15);
+      --shadow:0 22px 55px rgba(13,29,48,.10);
+      --small:7px;
+      --radius:21px;
+      --max:1180px;
+      --serif:"Cormorant Garamond",Georgia,serif;
+      --ceremonial:"Cinzel","Times New Roman",serif;
+      --sans:"Montserrat","Avenir Next","Segoe UI",Arial,sans-serif;
     }
+
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:88px}
     body{
       margin:0;
-      font-family:var(--font);
+      min-width:300px;
       color:var(--ink);
-      background:
-        radial-gradient(1200px 600px at 10% 10%, rgba(216,178,76,0.18), transparent 55%),
-        radial-gradient(900px 500px at 90% 20%, rgba(96,165,250,0.16), transparent 55%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
-      min-height:100vh;
-      padding:28px 14px 44px;
-      display:flex;
-      justify-content:center;
+      background:var(--paper);
+      font-family:var(--sans);
+      font-size:16px;
+      line-height:1.68;
+      font-weight:400;
+      text-align:center;
+      -webkit-font-smoothing:antialiased;
     }
-    .wrap{width:100%; max-width:var(--max);}
-    header{
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
-      border-radius:var(--r-lg);
-      box-shadow:var(--shadow);
-      padding:22px;
-      position:relative;
-      overflow:hidden;
+    a{color:inherit;text-decoration:none}
+    button,select,input{font:inherit}
+    button{cursor:pointer}
+    :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+    .shell{width:min(calc(100% - 2rem),var(--max));margin:auto}
+
+    .skip{
+      position:fixed;left:11px;top:11px;z-index:3000;
+      transform:translateY(-170%);
+      padding:.7rem 1rem;border-radius:7px;
+      color:white;background:#111;
     }
-    .topbar{
-      display:flex;
-      gap:12px;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
+    .skip:focus{transform:none}
+
+    .utility{
+      color:#d9e2ea;background:#050d17;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .utility .shell{
+      min-height:38px;
+      display:flex;align-items:center;justify-content:space-between;gap:1rem;
+      font-size:.72rem;
+    }
+    .utility-links{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+
+    .header{
+      position:sticky;top:0;z-index:1000;
+      background:rgba(11,29,52,.96);
+      border-bottom:1px solid rgba(255,255,255,.10);
+      backdrop-filter:blur(15px);
+    }
+    .nav{
+      min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem;
     }
     .brand{
-      display:flex; gap:12px; align-items:center;
+      display:flex;align-items:center;gap:.8rem;text-align:left;color:white;
     }
     .seal{
-      width:44px; height:44px; border-radius:14px;
-      background:conic-gradient(from 220deg, rgba(216,178,76,0.95), rgba(255,255,255,0.12), rgba(96,165,250,0.55), rgba(216,178,76,0.95));
-      border:1px solid rgba(255,255,255,0.18);
-      box-shadow:0 10px 26px rgba(0,0,0,0.25);
-      flex:none;
+      width:44px;height:44px;display:grid;place-items:center;
+      border-radius:7px;color:var(--navy);
+      background:linear-gradient(145deg,var(--paper-bright),#bac6d1);
+      font:500 .65rem var(--ceremonial);
     }
+    .brand strong{
+      display:block;font:500 1rem var(--ceremonial);
+      letter-spacing:.06em;text-transform:uppercase;
+    }
+    .brand small{
+      display:block;margin-top:.15rem;color:rgba(255,255,255,.58);
+      font-size:.57rem;letter-spacing:.11em;text-transform:uppercase;
+    }
+    .nav-links{display:flex;gap:.25rem}
+    .nav-links a{
+      min-height:42px;display:flex;align-items:center;
+      padding:.58rem .7rem;border-radius:7px;color:#edf2f6;
+      font-size:.7rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
+    }
+    .nav-links a:hover{background:rgba(255,255,255,.07)}
+    .menu-button{
+      display:none;width:44px;height:44px;border:1px solid rgba(255,255,255,.25);
+      border-radius:7px;color:white;background:transparent;font-size:1.15rem;
+    }
+    .mobile-menu{
+      position:fixed;inset:72px 0 auto;z-index:900;
+      display:none;padding:1rem;background:var(--navy);color:white;
+      border-bottom:1px solid rgba(255,255,255,.12);box-shadow:var(--shadow);
+    }
+    .mobile-menu.open{display:grid;gap:.35rem}
+    .mobile-menu a{padding:.7rem;border-radius:7px}
+
+    .hero{
+      min-height:680px;display:grid;align-items:center;
+      padding:88px 0;
+      color:white;
+      background:
+        radial-gradient(circle at 50% 0,rgba(230,213,173,.13),transparent 32rem),
+        linear-gradient(145deg,#173858,#0b1d34 58%,#07111f);
+      border-bottom:1px solid var(--line-light);
+    }
+    .hero-copy{max-width:980px;margin:auto}
+    .eyebrow,.kicker{
+      margin:0;color:var(--gold-soft);font-family:var(--ceremonial);
+      font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+    }
+    h1,h2,h3{margin:0;font-family:var(--serif);font-weight:500;letter-spacing:.01em;text-wrap:balance}
     h1{
-      margin:0;
-      font-size:clamp(22px, 2.6vw, 34px);
-      letter-spacing:0.2px;
+      margin-top:1rem;font-size:clamp(4rem,8vw,7.6rem);line-height:.91;
     }
-    .sub{
-      margin:6px 0 0;
-      color:var(--mut);
-      max-width:72ch;
-      line-height:1.5;
-      font-size:15px;
+    .hero-lead{
+      max-width:780px;margin:1.4rem auto 0;
+      color:#d7e0e8;font-family:var(--serif);
+      font-size:clamp(1.12rem,2.2vw,1.55rem);line-height:1.5;
     }
-    .controls{
-      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+    .hero-note{
+      max-width:700px;margin:1rem auto 0;color:#afbcc8;font-size:.9rem;
     }
-    .pill{
-      border:1px solid var(--line);
-      background:rgba(0,0,0,0.22);
-      border-radius:999px;
-      padding:8px 10px;
-      display:flex; gap:8px; align-items:center;
+    .actions{
+      display:flex;justify-content:center;flex-wrap:wrap;gap:.7rem;margin-top:2rem;
     }
-    .pill label{color:var(--mut); font-size:13px;}
-    .pill select, .pill input{
-      border:0;
-      outline:none;
-      background:transparent;
-      color:var(--ink);
-      font-size:13px;
-    }
-    .pill input{width:170px;}
-    .pill select{cursor:pointer;}
     .btn{
-      border:1px solid rgba(255,255,255,0.18);
-      background:rgba(255,255,255,0.07);
-      color:var(--ink);
-      padding:10px 12px;
-      border-radius:14px;
-      cursor:pointer;
-      font-weight:650;
-      letter-spacing:0.2px;
-      transition:transform .06s ease, background .15s ease, border-color .15s ease;
-      user-select:none;
-      font-size:14px;
+      min-height:46px;display:inline-flex;align-items:center;justify-content:center;
+      padding:.72rem 1rem;border:1px solid transparent;border-radius:7px;
+      font-size:.71rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+      transition:.18s;
     }
-    .btn:hover{background:rgba(255,255,255,0.10); border-color:rgba(255,255,255,0.26);}
-    .btn:active{transform:translateY(1px);}
-    .btn.primary{
-      background:rgba(216,178,76,0.16);
-      border-color:rgba(216,178,76,0.35);
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{color:white;background:var(--red)}
+    .btn-primary:hover{background:var(--red-deep)}
+    .btn-secondary{color:white;border-color:rgba(255,255,255,.34);background:transparent}
+    .btn-secondary:hover{background:rgba(255,255,255,.06)}
+
+    .section{padding:88px 18px}
+    .section-alt{background:var(--paper-bright);border-block:1px solid var(--line)}
+    .section-dark{color:white;background:var(--navy)}
+    .section-inner{width:min(100%,var(--max));margin:auto}
+    .section-heading{max-width:840px;margin:0 auto 42px}
+    .section-heading .kicker{color:var(--gold)}
+    .section h2{margin-top:.7rem;font-size:clamp(2.8rem,5.5vw,5.2rem);line-height:.98}
+    .section-heading p{max-width:700px;margin:1.1rem auto 0;color:var(--muted)}
+    .section-dark .section-heading p{color:#b7c3cf}
+
+    .state-finder{
+      max-width:960px;margin:auto;
+      padding:clamp(1.5rem,4vw,2.4rem);
+      border:1px solid var(--line);border-radius:21px;
+      background:white;box-shadow:var(--shadow);
     }
-    .btn.primary:hover{
-      background:rgba(216,178,76,0.22);
-      border-color:rgba(216,178,76,0.48);
+    .state-finder h3{color:var(--navy);font-size:2rem}
+    .state-finder p{max-width:720px;margin:.8rem auto;color:var(--muted)}
+    .state-controls{
+      display:grid;grid-template-columns:minmax(220px,1fr) auto;
+      gap:.7rem;max-width:760px;margin:1.4rem auto 0;
     }
-    .grid{
-      margin-top:16px;
-      display:grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap:14px;
+    .field{
+      width:100%;min-height:46px;padding:0 .8rem;
+      border:1px solid var(--line);border-radius:7px;
+      color:var(--ink);background:var(--paper-bright);
     }
-    @media (max-width: 920px){
-      .grid{grid-template-columns:1fr;}
-      .pill input{width:100%;}
+    .state-result{
+      margin-top:1rem;color:var(--muted);font-size:.85rem;
     }
-    .card{
-      border:1px solid var(--line);
-      background:rgba(255,255,255,0.05);
-      border-radius:var(--r-lg);
-      padding:var(--pad2);
-      box-shadow:0 16px 48px rgba(0,0,0,0.28);
+
+    .resource-grid{
+      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;
     }
-    .card h2{
-      margin:0 0 10px;
-      font-size:18px;
-      letter-spacing:0.2px;
+    .resource-card{
+      min-height:270px;display:flex;flex-direction:column;align-items:center;
+      padding:1.5rem;border:1px solid var(--line);border-radius:21px;
+      background:white;box-shadow:0 12px 32px rgba(13,29,48,.07);
+      transition:.18s;
     }
-    .card p{
-      margin:0 0 12px;
-      color:var(--mut);
-      line-height:1.55;
-      font-size:14px;
+    .resource-card:hover{transform:translateY(-3px);border-color:var(--red);box-shadow:var(--shadow)}
+    .resource-icon{
+      width:52px;height:44px;display:grid;place-items:center;border-radius:7px;
+      color:white;background:var(--navy);font:500 .65rem var(--ceremonial);
     }
-    .row{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:stretch;
-      margin-top:10px;
+    .resource-card h3{margin-top:1rem;color:var(--navy);font-size:1.55rem}
+    .resource-card p{color:var(--muted);font-size:.84rem}
+    .resource-card a{
+      width:100%;min-height:42px;display:flex;align-items:center;justify-content:center;
+      margin-top:auto;border-radius:7px;color:white;background:var(--navy);
+      font-size:.7rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
     }
-    .linkbtn{
-      flex:1 1 220px;
-      display:flex;
-      flex-direction:column;
-      gap:6px;
-      text-align:left;
-      padding:14px;
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,0.14);
-      background:rgba(0,0,0,0.22);
-      cursor:pointer;
-      transition:transform .06s ease, background .15s ease, border-color .15s ease;
-      min-height:74px;
+
+    .steps{
+      display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;
     }
-    .linkbtn:hover{background:rgba(0,0,0,0.30); border-color:rgba(255,255,255,0.22);}
-    .linkbtn:active{transform:translateY(1px);}
-    .linkbtn .t{font-weight:800; letter-spacing:0.2px;}
-    .linkbtn .d{color:var(--mut); font-size:13px; line-height:1.35;}
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      font-size:12px;
-      color:rgba(255,255,255,0.86);
-      border:1px solid rgba(255,255,255,0.16);
-      background:rgba(255,255,255,0.06);
-      padding:7px 10px;
-      border-radius:999px;
-      margin:10px 0 0;
-      width:max-content;
+    .step{
+      min-height:220px;padding:1.4rem;border:1px solid var(--line-light);
+      border-radius:21px;background:rgba(255,255,255,.04);
     }
-    .tag .dot{
-      width:8px; height:8px; border-radius:99px; background:var(--good);
-      box-shadow:0 0 14px rgba(124,255,178,0.45);
+    .step-number{
+      color:var(--gold-soft);font:500 .7rem var(--ceremonial);letter-spacing:.15em;
     }
-    .mini{
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,0.12);
-      background:rgba(0,0,0,0.18);
-      padding:14px;
-      margin-top:12px;
+    .step h3{margin-top:.8rem;font-size:1.45rem}
+    .step p{color:#b7c3cf;font-size:.83rem}
+
+    .connected-grid{
+      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;
+      max-width:900px;margin:auto;
     }
-    .mini h3{margin:0 0 8px; font-size:14px;}
-    .mini ul{margin:0; padding-left:18px; color:var(--mut); font-size:13px; line-height:1.5;}
-    .foot{
-      margin-top:14px;
-      color:rgba(255,255,255,0.72);
-      font-size:12px;
-      line-height:1.5;
-      border-top:1px solid rgba(255,255,255,0.10);
-      padding-top:12px;
+    .connected-card{
+      min-height:250px;display:flex;flex-direction:column;align-items:center;
+      padding:1.6rem;border:1px solid var(--line);border-radius:21px;
+      background:white;box-shadow:var(--shadow);
     }
-    .kbd{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      font-size:12px;
-      padding:2px 6px;
-      border-radius:8px;
-      border:1px solid rgba(255,255,255,0.16);
-      background:rgba(255,255,255,0.06);
+    .connected-card h3{color:var(--navy);font-size:1.8rem}
+    .connected-card p{color:var(--muted);font-size:.87rem}
+    .connected-card a{
+      width:100%;min-height:42px;display:flex;align-items:center;justify-content:center;
+      margin-top:auto;border-radius:7px;color:white;background:var(--red);
+      font-size:.7rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
     }
-    a.inline{
-      color:var(--gold);
-      text-decoration:none;
-      border-bottom:1px solid rgba(216,178,76,0.35);
+
+    .notice{
+      max-width:960px;margin:auto;padding:1.5rem;border:1px solid var(--line-light);
+      border-radius:21px;background:rgba(255,255,255,.04);
     }
-    a.inline:hover{border-bottom-color:rgba(216,178,76,0.65);}
+    .notice p{margin:0;color:#c4cdd6}
+
+    footer{
+      padding:44px 18px;color:rgba(255,255,255,.68);background:#050d17;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .footer-links{display:flex;gap:1rem;flex-wrap:wrap}
+
     .toast{
-      position:fixed;
-      left:50%;
-      bottom:18px;
-      transform:translateX(-50%);
-      background:rgba(0,0,0,0.78);
-      border:1px solid rgba(255,255,255,0.18);
-      color:var(--ink);
-      padding:10px 12px;
-      border-radius:14px;
-      font-size:13px;
-      box-shadow:0 14px 40px rgba(0,0,0,0.35);
-      opacity:0;
-      pointer-events:none;
-      transition:opacity .2s ease, transform .2s ease;
-      max-width:min(560px, calc(100% - 28px));
+      position:fixed;left:50%;bottom:20px;z-index:2000;
+      transform:translate(-50%,120px);padding:.75rem 1rem;
+      border-radius:7px;color:white;background:#111d2c;box-shadow:var(--shadow);transition:.2s;
     }
-    .toast.show{
-      opacity:1;
-      transform:translateX(-50%) translateY(-4px);
+    .toast.show{transform:translate(-50%,0)}
+
+    @media(max-width:1000px){
+      .resource-grid{grid-template-columns:repeat(2,1fr)}
+      .steps{grid-template-columns:repeat(2,1fr)}
+      .nav-links{display:none}
+      .menu-button{display:grid;place-items:center}
+    }
+    @media(max-width:700px){
+      .state-controls{grid-template-columns:1fr}
+      .connected-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:560px){
+      .utility .shell{flex-direction:column;padding:.5rem 0}
+      .resource-grid,.steps{grid-template-columns:1fr}
+      .actions{display:grid}
+      .btn{width:100%}
+      .brand small{display:none}
+      .footer-inner{justify-content:center}
+    }
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
     }
   </style>
 </head>
-<body>
-  <div class="wrap">
-    <header>
-      <div class="topbar">
-        <div class="brand">
-          <div class="seal" aria-hidden="true"></div>
-          <div>
-            <h1 id="hTitle">USA Voter Ready Hub</h1>
-            <p class="sub" id="hSub">
-              Choose your state or territory and open official voter resources—registration, status checks, and election office contact links.
-            </p>
-          </div>
-        </div>
 
-        <div class="controls">
-          <div class="pill" title="Language">
-            <label for="lang">Lang</label>
-            <select id="lang" aria-label="Language">
-              <option value="en" selected>English</option>
-              <option value="es">Español</option>
-            </select>
-          </div>
+<body id="top">
+  <a class="skip" href="#main">Skip to main content</a>
 
-          <div class="pill" title="Filter the state list">
-            <label for="q">Search</label>
-            <input id="q" placeholder="Type: Florida, Texas, PR…" autocomplete="off" />
-          </div>
-
-          <button class="btn" id="copyLink">Copy page link</button>
-          <button class="btn primary" id="shareText">Copy share text</button>
-        </div>
-      </div>
-    </header>
-
-    <div class="grid">
-      <section class="card">
-        <h2 id="pickTitle">Pick your state or territory</h2>
-        <p id="pickSub">We’ll generate quick buttons to official pages. This hub does not collect personal info.</p>
-
-        <div class="pill" style="width:100%; border-radius:18px; padding:12px 12px;">
-          <label for="state" style="min-width:92px;">Location</label>
-          <select id="state" style="width:100%; font-size:14px;"></select>
-        </div>
-
-        <div class="tag" id="statusTag"><span class="dot"></span><span id="statusText">Ready — choose a location.</span></div>
-
-        <div class="row" style="margin-top:14px;">
-          <button class="linkbtn" id="goVoteGov">
-            <div class="t" id="b1t">Vote.gov (Register / Update)</div>
-            <div class="d" id="b1d">Official federal gateway to state registration pages.</div>
-          </button>
-
-          <button class="linkbtn" id="goStateOffice">
-            <div class="t" id="b2t">State/Territory Election Office</div>
-            <div class="d" id="b2d">Direct link to your election authority’s main site.</div>
-          </button>
-
-          <button class="linkbtn" id="goEAC">
-            <div class="t" id="b3t">EAC: Register & Vote in Your State</div>
-            <div class="d" id="b3d">Official directory of voter info links by state.</div>
-          </button>
-
-          <button class="linkbtn" id="goNASS">
-            <div class="t" id="b4t">NASS “Can I Vote” Tools</div>
-            <div class="d" id="b4d">Trusted nonpartisan links from state election officials.</div>
-          </button>
-        </div>
-
-        <div class="mini">
-          <h3 id="miniTitle">More trusted tools (optional)</h3>
-          <div class="row" style="margin-top:8px;">
-            <button class="btn" id="nassStatus">Registration Status</button>
-            <button class="btn" id="nassPoll">Find Polling Place</button>
-            <button class="btn" id="nassId">Valid ID Info</button>
-            <button class="btn" id="nassAbs">Absentee / Early</button>
-          </div>
-          <p style="margin-top:10px; color:var(--mut); font-size:13px; line-height:1.5;" id="miniNote">
-            These NASS pages let you select your state and then route you to the correct official site.
-          </p>
-        </div>
-
-        <div class="foot" id="foot">
-          <strong>Note:</strong> This page is a “link hub” only. For the most current rules and details, always rely on the official pages opened by the buttons above.
-          <br><br>
-          Pro tip: press <span class="kbd">Ctrl</span> + <span class="kbd">F</span> on long pages to find keywords fast (e.g., “status”, “contact”, “ballot”).
-        </div>
-      </section>
-
-      <aside class="card">
-        <h2 id="whyTitle">Why this works</h2>
-        <p id="whySub">
-          It’s fast, simple, and keeps people on trusted sources instead of random search results.
-        </p>
-
-        <div class="mini">
-          <h3 id="feat1t">Official-first</h3>
-          <ul id="feat1">
-            <li>Vote.gov: official gateway to state/territory pages</li>
-            <li>USAGov: official links to election offices</li>
-            <li>EAC: official voter info link directory</li>
-          </ul>
-        </div>
-
-        <div class="mini">
-          <h3 id="feat2t">Nonpartisan + privacy-friendly</h3>
-          <ul id="feat2">
-            <li>No forms to submit here</li>
-            <li>No tracking built into this file</li>
-            <li>Just routes you to election administrators</li>
-          </ul>
-        </div>
-
-        <div class="mini">
-          <h3 id="feat3t">Share-ready</h3>
-          <ul id="feat3">
-            <li>Copy a clean share blurb in one click</li>
-            <li>Works as a standalone page on any site</li>
-          </ul>
-        </div>
-
-        <div class="foot">
-          If you want, we can also make a “USA” version for mobile micro-width (like your 255px builds) and a “Florida Featured” version that sits beside it.
-        </div>
-      </aside>
+  <div class="utility">
+    <div class="shell">
+      <span>USA Civic Participation Hub · Official Sources First</span>
+      <nav class="utility-links" aria-label="Utility navigation">
+        <a href="#states">State Governments</a>
+        <a href="#resources">Federal Resources</a>
+        <a href="#connected">Connected Civic Pages</a>
+      </nav>
     </div>
   </div>
 
+  <header class="header">
+    <div class="shell nav">
+      <a class="brand" href="#top" aria-label="Civic Participation Hub home">
+        <span class="seal">USA</span>
+        <span>
+          <strong>USA Civic Participation Hub</strong>
+          <small>Public Information · Official Sources · Civic Learning</small>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#states">Find Your State</a>
+        <a href="#resources">Official Resources</a>
+        <a href="#documents">Founding Documents</a>
+        <a href="#connected">Connected Civic Pages</a>
+      </nav>
+
+      <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+    <a href="#states">Find Your State</a>
+    <a href="#resources">Official Resources</a>
+    <a href="#documents">Founding Documents</a>
+    <a href="#connected">Connected Civic Pages</a>
+  </nav>
+
+  <main id="main">
+    <section class="hero">
+      <div class="shell hero-copy">
+        <p class="eyebrow">Official Sources First</p>
+        <h1>USA Civic Participation Hub</h1>
+        <p class="hero-lead">
+          A clear, nonpartisan doorway to state government information,
+          federal public records, founding documents, legislative research,
+          and connected civic-learning resources.
+        </p>
+        <p class="hero-note">
+          This page does not collect personal information and does not replace
+          instructions from an authorized federal, state, territorial, or local government office.
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="#states">Find Your State Government</a>
+          <a class="btn btn-secondary" href="#resources">Open Official Resources</a>
+          <a class="btn btn-secondary" href="#connected">Explore Civic Pages</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="states">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="kicker">State & Territory Directory</p>
+          <h2>Begin with your own state government.</h2>
+          <p>
+            Select a location, then continue to the official USAGov state-government
+            directory to locate the governor, major agencies, and public contact information.
+          </p>
+        </div>
+
+        <article class="state-finder">
+          <h3>Choose your state or territory</h3>
+          <p>
+            The official directory opens in a new tab. Select the same location there
+            to view current government contacts and agency information.
+          </p>
+
+          <div class="state-controls">
+            <select class="field" id="stateSelect" aria-label="Choose state or territory">
+              <option value="">— Select a state or territory —</option>
+              <option value="Alabama">Alabama</option>
+<option value="Alaska">Alaska</option>
+<option value="American Samoa">American Samoa</option>
+<option value="Arizona">Arizona</option>
+<option value="Arkansas">Arkansas</option>
+<option value="California">California</option>
+<option value="Colorado">Colorado</option>
+<option value="Connecticut">Connecticut</option>
+<option value="Delaware">Delaware</option>
+<option value="District of Columbia">District of Columbia</option>
+<option value="Florida">Florida</option>
+<option value="Georgia">Georgia</option>
+<option value="Guam">Guam</option>
+<option value="Hawaii">Hawaii</option>
+<option value="Idaho">Idaho</option>
+<option value="Illinois">Illinois</option>
+<option value="Indiana">Indiana</option>
+<option value="Iowa">Iowa</option>
+<option value="Kansas">Kansas</option>
+<option value="Kentucky">Kentucky</option>
+<option value="Louisiana">Louisiana</option>
+<option value="Maine">Maine</option>
+<option value="Maryland">Maryland</option>
+<option value="Massachusetts">Massachusetts</option>
+<option value="Michigan">Michigan</option>
+<option value="Minnesota">Minnesota</option>
+<option value="Mississippi">Mississippi</option>
+<option value="Missouri">Missouri</option>
+<option value="Montana">Montana</option>
+<option value="Nebraska">Nebraska</option>
+<option value="Nevada">Nevada</option>
+<option value="New Hampshire">New Hampshire</option>
+<option value="New Jersey">New Jersey</option>
+<option value="New Mexico">New Mexico</option>
+<option value="New York">New York</option>
+<option value="North Carolina">North Carolina</option>
+<option value="North Dakota">North Dakota</option>
+<option value="Northern Mariana Islands">Northern Mariana Islands</option>
+<option value="Ohio">Ohio</option>
+<option value="Oklahoma">Oklahoma</option>
+<option value="Oregon">Oregon</option>
+<option value="Pennsylvania">Pennsylvania</option>
+<option value="Puerto Rico">Puerto Rico</option>
+<option value="Rhode Island">Rhode Island</option>
+<option value="South Carolina">South Carolina</option>
+<option value="South Dakota">South Dakota</option>
+<option value="Tennessee">Tennessee</option>
+<option value="Texas">Texas</option>
+<option value="U.S. Virgin Islands">U.S. Virgin Islands</option>
+<option value="Utah">Utah</option>
+<option value="Vermont">Vermont</option>
+<option value="Virginia">Virginia</option>
+<option value="Washington">Washington</option>
+<option value="West Virginia">West Virginia</option>
+<option value="Wisconsin">Wisconsin</option>
+<option value="Wyoming">Wyoming</option>
+            </select>
+            <button class="btn btn-primary" id="stateButton" type="button">Open Official State Directory</button>
+          </div>
+
+          <p class="state-result" id="stateResult" aria-live="polite">No location selected.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-light" id="resources">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="kicker">Official Federal Resources</p>
+          <h2>Research government through primary public sources.</h2>
+          <p>
+            These links lead to official government records, public institutions,
+            legislative information, and foundational documents.
+          </p>
+        </div>
+
+        <div class="resource-grid">
+          <article class="resource-card">
+            <span class="resource-icon">USA</span>
+            <h3>USAGov</h3>
+            <p>Find federal programs, agencies, services, benefits, forms, contact information, and state-government directories.</p>
+            <a href="https://www.usa.gov/" target="_blank" rel="noopener noreferrer">Open USAGov</a>
+          </article>
+
+          <article class="resource-card">
+            <span class="resource-icon">CON</span>
+            <h3>Congress.gov</h3>
+            <p>Search official federal legislation, bills, resolutions, committee information, members, and the Congressional Record.</p>
+            <a href="https://www.congress.gov/" target="_blank" rel="noopener noreferrer">Open Congress.gov</a>
+          </article>
+
+          <article class="resource-card">
+            <span class="resource-icon">FR</span>
+            <h3>Federal Register</h3>
+            <p>Review proposed rules, final rules, notices, presidential documents, and opportunities for public comment.</p>
+            <a href="https://www.federalregister.gov/" target="_blank" rel="noopener noreferrer">Open Federal Register</a>
+          </article>
+
+          <article class="resource-card">
+            <span class="resource-icon">NAR</span>
+            <h3>National Archives</h3>
+            <p>Explore founding documents, milestone records, public archives, educational material, and historical evidence.</p>
+            <a href="https://www.archives.gov/" target="_blank" rel="noopener noreferrer">Open National Archives</a>
+          </article>
+
+          <article class="resource-card">
+            <span class="resource-icon">GPO</span>
+            <h3>GovInfo</h3>
+            <p>Search authenticated publications from all three branches of the United States government.</p>
+            <a href="https://www.govinfo.gov/" target="_blank" rel="noopener noreferrer">Open GovInfo</a>
+          </article>
+
+          <article class="resource-card">
+            <span class="resource-icon">LOC</span>
+            <h3>Library of Congress</h3>
+            <p>Research American history, law, culture, manuscripts, public collections, and educational primary sources.</p>
+            <a href="https://www.loc.gov/" target="_blank" rel="noopener noreferrer">Open Library of Congress</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="documents">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="kicker">Founding Documents</p>
+          <h2>Read the documents that define the Republic.</h2>
+          <p>
+            The National Archives preserves and presents the Declaration of Independence,
+            Constitution of the United States, and Bill of Rights.
+          </p>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <span class="step-number">01 · DECLARATION</span>
+            <h3>Declaration of Independence</h3>
+            <p>Read the ideals and grievances expressed at the founding of the United States.</p>
+          </article>
+
+          <article class="step">
+            <span class="step-number">02 · CONSTITUTION</span>
+            <h3>Constitution</h3>
+            <p>Study the structure, powers, limits, and responsibilities of the federal government.</p>
+          </article>
+
+          <article class="step">
+            <span class="step-number">03 · RIGHTS</span>
+            <h3>Bill of Rights</h3>
+            <p>Review the first ten amendments and their relationship to individual and state rights.</p>
+          </article>
+
+          <article class="step">
+            <span class="step-number">04 · PRIMARY SOURCES</span>
+            <h3>Milestone Documents</h3>
+            <p>Explore public records that illuminate major events, institutions, and changes in American history.</p>
+          </article>
+        </div>
+
+        <div class="actions">
+          <a class="btn btn-secondary" href="https://www.archives.gov/founding-docs" target="_blank" rel="noopener noreferrer">Read America’s Founding Documents</a>
+          <a class="btn btn-secondary" href="https://www.archives.gov/founding-docs/constitution" target="_blank" rel="noopener noreferrer">Read the Constitution</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="connected">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="kicker">Connected Civic Pages</p>
+          <h2>Continue into public policy and campaign information.</h2>
+          <p>
+            These pages are independently published civic and campaign destinations.
+            They are not government websites and should remain clearly separate from official sources.
+          </p>
+        </div>
+
+        <div class="connected-grid">
+          <article class="connected-card">
+            <span class="resource-icon">ON</span>
+            <h3>One Nation for All</h3>
+            <p>
+              Civic learning, constitutional resources, public-service halls,
+              veterans support, legal information, national issues, and community solutions.
+            </p>
+            <a href="https://vervenveda.github.io/onenationforall.github.io/">Open One Nation for All</a>
+          </article>
+
+          <article class="connected-card">
+            <span class="resource-icon">JP</span>
+            <h3>Jennifer Pearl 2028</h3>
+            <p>
+              Campaign introduction, public priorities, citizen-campaign information,
+              policy perspectives, editorials, and ways to participate.
+            </p>
+            <a href="https://jenniferpearl2028.github.io/">Open Jennifer Pearl 2028</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark">
+      <div class="section-inner">
+        <article class="notice">
+          <p>
+            <strong>Public-information notice:</strong> This hub is an educational directory.
+            Laws, procedures, deadlines, officeholders, agency addresses, and government
+            instructions may change. Confirm important information directly with the
+            responsible official government office before relying on it.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <span><strong>USA Civic Participation Hub</strong> · Official Sources First</span>
+      <nav class="footer-links">
+        <a href="#states">State Directory</a>
+        <a href="#resources">Federal Resources</a>
+        <a href="#documents">Founding Documents</a>
+        <a href="#top">Back to Top</a>
+      </nav>
+    </div>
+  </footer>
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script>
-(function(){
-  "use strict";
+  <script>
+    (() => {
+      "use strict";
 
-  // State + territory election office links sourced from USAGov (we add https://)
-  // Vote.gov slugs follow the pattern visible on vote.gov/register pages.
-  const LOCATIONS = [
-    {name:"Alabama", abbr:"AL", slug:"alabama", office:"https://www.sos.alabama.gov"},
-    {name:"Alaska", abbr:"AK", slug:"alaska", office:"https://www.elections.alaska.gov"},
-    {name:"American Samoa", abbr:"AS", slug:"american-samoa", office:"https://aselectionoffice.gov"},
-    {name:"Arizona", abbr:"AZ", slug:"arizona", office:"https://azsos.gov"},
-    {name:"Arkansas", abbr:"AR", slug:"arkansas", office:"https://www.sos.arkansas.gov"},
-    {name:"California", abbr:"CA", slug:"california", office:"https://www.sos.ca.gov"},
-    {name:"Colorado", abbr:"CO", slug:"colorado", office:"https://www.sos.state.co.us"},
-    {name:"Connecticut", abbr:"CT", slug:"connecticut", office:"https://portal.ct.gov"},
-    {name:"Delaware", abbr:"DE", slug:"delaware", office:"https://elections.delaware.gov"},
-    {name:"District of Columbia", abbr:"DC", slug:"district-of-columbia", office:"https://dcboe.org"},
-    {name:"Florida", abbr:"FL", slug:"florida", office:"https://www.dos.myflorida.com"},
-    {name:"Georgia", abbr:"GA", slug:"georgia", office:"https://sos.ga.gov"},
-    {name:"Guam", abbr:"GU", slug:"guam", office:"https://gec.guam.gov"},
-    {name:"Hawaii", abbr:"HI", slug:"hawaii", office:"https://elections.hawaii.gov"},
-    {name:"Idaho", abbr:"ID", slug:"idaho", office:"https://voteidaho.gov"},
-    {name:"Illinois", abbr:"IL", slug:"illinois", office:"https://www.elections.il.gov"},
-    {name:"Indiana", abbr:"IN", slug:"indiana", office:"https://indianavoters.in.gov"},
-    {name:"Iowa", abbr:"IA", slug:"iowa", office:"https://sos.iowa.gov"},
-    {name:"Kansas", abbr:"KS", slug:"kansas", office:"https://sos.ks.gov"},
-    {name:"Kentucky", abbr:"KY", slug:"kentucky", office:"https://elect.ky.gov"},
-    {name:"Louisiana", abbr:"LA", slug:"louisiana", office:"https://www.sos.la.gov"},
-    {name:"Maine", abbr:"ME", slug:"maine", office:"https://www.maine.gov"},
-    {name:"Maryland", abbr:"MD", slug:"maryland", office:"https://elections.maryland.gov"},
-    {name:"Massachusetts", abbr:"MA", slug:"massachusetts", office:"https://www.sec.state.ma.us"},
-    {name:"Michigan", abbr:"MI", slug:"michigan", office:"https://www.michigan.gov"},
-    {name:"Minnesota", abbr:"MN", slug:"minnesota", office:"https://www.sos.state.mn.us"},
-    {name:"Mississippi", abbr:"MS", slug:"mississippi", office:"https://www.sos.ms.gov"},
-    {name:"Missouri", abbr:"MO", slug:"missouri", office:"https://www.sos.mo.gov"},
-    {name:"Montana", abbr:"MT", slug:"montana", office:"https://sosmt.gov"},
-    {name:"Nebraska", abbr:"NE", slug:"nebraska", office:"https://www.nebraska.gov"},
-    {name:"Nevada", abbr:"NV", slug:"nevada", office:"https://www.nvsos.gov"},
-    {name:"New Hampshire", abbr:"NH", slug:"new-hampshire", office:"https://www.sos.nh.gov"},
-    {name:"New Jersey", abbr:"NJ", slug:"new-jersey", office:"https://www.nj.gov"},
-    {name:"New Mexico", abbr:"NM", slug:"new-mexico", office:"https://www.sos.nm.gov"},
-    {name:"New York", abbr:"NY", slug:"new-york", office:"https://www.elections.ny.gov"},
-    {name:"North Carolina", abbr:"NC", slug:"north-carolina", office:"https://www.ncsbe.gov"},
-    {name:"North Dakota", abbr:"ND", slug:"north-dakota", office:"https://vip.sos.nd.gov"},
-    {name:"Northern Mariana Islands", abbr:"MP", slug:"northern-mariana-islands", office:"https://www.votecnmi.gov.mp"},
-    {name:"Ohio", abbr:"OH", slug:"ohio", office:"https://www.sos.state.oh.us"},
-    {name:"Oklahoma", abbr:"OK", slug:"oklahoma", office:"https://oklahoma.gov"},
-    {name:"Oregon", abbr:"OR", slug:"oregon", office:"https://sos.oregon.gov"},
-    {name:"Pennsylvania", abbr:"PA", slug:"pennsylvania", office:"https://www.dos.pa.gov"},
-    {name:"Puerto Rico", abbr:"PR", slug:"puerto-rico", office:"https://ww2.ceepur.org"},
-    {name:"Rhode Island", abbr:"RI", slug:"rhode-island", office:"https://vote.sos.ri.gov"},
-    {name:"South Carolina", abbr:"SC", slug:"south-carolina", office:"https://www.scvotes.org"},
-    {name:"South Dakota", abbr:"SD", slug:"south-dakota", office:"https://sdsos.gov"},
-    {name:"Tennessee", abbr:"TN", slug:"tennessee", office:"https://sos.tn.gov"},
-    {name:"Texas", abbr:"TX", slug:"texas", office:"https://www.sos.state.tx.us"},
-    {name:"U.S. Virgin Islands", abbr:"VI", slug:"us-virgin-islands", office:"https://vivote.gov"},
-    {name:"Utah", abbr:"UT", slug:"utah", office:"https://vote.utah.gov"},
-    {name:"Vermont", abbr:"VT", slug:"vermont", office:"https://sos.vermont.gov"},
-    {name:"Virginia", abbr:"VA", slug:"virginia", office:"https://www.elections.virginia.gov"},
-    {name:"Washington", abbr:"WA", slug:"washington", office:"https://www.sos.wa.gov"},
-    {name:"West Virginia", abbr:"WV", slug:"west-virginia", office:"https://sos.wv.gov"},
-    {name:"Wisconsin", abbr:"WI", slug:"wisconsin", office:"https://myvote.wi.gov"},
-    {name:"Wyoming", abbr:"WY", slug:"wyoming", office:"https://sos.wyo.gov"}
-  ];
+      const stateSelect = document.getElementById("stateSelect");
+      const stateButton = document.getElementById("stateButton");
+      const stateResult = document.getElementById("stateResult");
+      const menuButton = document.getElementById("menuButton");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const toast = document.getElementById("toast");
 
-  const OFFICIAL = {
-    voteGovRoot: "https://vote.gov/register/",
-    eacDirectory: "https://www.eac.gov/voters/register-and-vote-in-your-state",
-    nassRoot: "https://www.nass.org/can-I-vote",
-    nassStatus: "https://www.nass.org/can-I-vote/voter-registration-status",
-    nassPoll: "https://www.nass.org/can-i-vote/find-your-polling-place",
-    nassId: "https://www.nass.org/can-i-vote/valid-forms-id",
-    nassAbs: "https://www.nass.org/can-i-vote/absentee-early-voting"
-  };
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        clearTimeout(showToast.timer);
+        showToast.timer = setTimeout(() => toast.classList.remove("show"), 1900);
+      }
 
-  const el = (id)=>document.getElementById(id);
-  const langSel = el("lang");
-  const q = el("q");
-  const stateSel = el("state");
+      stateSelect.addEventListener("change", () => {
+        stateResult.textContent = stateSelect.value
+          ? `Selected: ${stateSelect.value}. Continue to the official USAGov directory.`
+          : "No location selected.";
+      });
 
-  const toast = el("toast");
-  let toastTimer = null;
-
-  function showToast(msg){
-    toast.textContent = msg;
-    toast.classList.add("show");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(()=>toast.classList.remove("show"), 2400);
-  }
-
-  const i18n = {
-    en: {
-      title: "USA Voter Ready Hub",
-      sub: "Choose your state or territory and open official voter resources—registration, status checks, and election office contact links.",
-      pickTitle: "Pick your state or territory",
-      pickSub: "We’ll generate quick buttons to official pages. This hub does not collect personal info.",
-      ready: "Ready — choose a location.",
-      chosen: (x)=>`Selected: ${x.name} (${x.abbr})`,
-      b1t: "Vote.gov (Register / Update)",
-      b1d: "Official federal gateway to state registration pages.",
-      b2t: "State/Territory Election Office",
-      b2d: "Direct link to your election authority’s main site.",
-      b3t: "EAC: Register & Vote in Your State",
-      b3d: "Official directory of voter info links by state.",
-      b4t: "NASS “Can I Vote” Tools",
-      b4d: "Trusted nonpartisan links from state election officials.",
-      miniTitle: "More trusted tools (optional)",
-      miniNote: "These NASS pages let you select your state and then route you to the correct official site.",
-      whyTitle: "Why this works",
-      whySub: "It’s fast, simple, and keeps people on trusted sources instead of random search results.",
-      feat1t: "Official-first",
-      feat2t: "Nonpartisan + privacy-friendly",
-      feat3t: "Share-ready",
-      shareText: (loc)=>`USA Voter Ready Hub — official links only. Pick your state/territory and jump to trusted voter resources.\n\n${location.href}${loc ? ("\n\nSuggested start: " + loc.name + " (" + loc.abbr + ")") : ""}`,
-      copyLinkOk: "Page link copied.",
-      copyTextOk: "Share text copied.",
-      openWarn: "Choose a state/territory first."
-    },
-    es: {
-      title: "Centro Nacional de Votación (EE. UU.)",
-      sub: "Elige tu estado o territorio y abre recursos oficiales—registro, verificación de estatus y enlaces a tu oficina electoral.",
-      pickTitle: "Elige tu estado o territorio",
-      pickSub: "Generamos botones directos a páginas oficiales. Este centro no recopila datos personales.",
-      ready: "Listo — elige una ubicación.",
-      chosen: (x)=>`Seleccionado: ${x.name} (${x.abbr})`,
-      b1t: "Vote.gov (Registrarse / Actualizar)",
-      b1d: "Puerta oficial federal a páginas estatales/territoriales.",
-      b2t: "Oficina Electoral (Estado/Territorio)",
-      b2d: "Enlace directo al sitio de tu autoridad electoral.",
-      b3t: "EAC: Registrarse y Votar en tu Estado",
-      b3d: "Directorio oficial de enlaces por estado.",
-      b4t: "NASS “Can I Vote” (Herramientas)",
-      b4d: "Enlaces confiables y no partidistas de autoridades electorales.",
-      miniTitle: "Más herramientas confiables (opcional)",
-      miniNote: "Estas páginas de NASS permiten elegir el estado y te redirigen al sitio oficial correcto.",
-      whyTitle: "Por qué funciona",
-      whySub: "Es rápido, simple y te mantiene en fuentes confiables (no resultados aleatorios).",
-      feat1t: "Enlaces oficiales primero",
-      feat2t: "No partidista + privacidad",
-      feat3t: "Listo para compartir",
-      shareText: (loc)=>`Centro Nacional de Votación (EE. UU.) — solo enlaces oficiales. Elige tu estado/territorio y abre recursos confiables.\n\n${location.href}${loc ? ("\n\nInicio sugerido: " + loc.name + " (" + loc.abbr + ")") : ""}`,
-      copyLinkOk: "Enlace copiado.",
-      copyTextOk: "Texto para compartir copiado.",
-      openWarn: "Primero elige un estado/territorio."
-    }
-  };
-
-  function currentLoc(){
-    const idx = Number(stateSel.value || -1);
-    if(Number.isFinite(idx) && idx >= 0 && idx < LOCATIONS.length) return LOCATIONS[idx];
-    return null;
-  }
-
-  function voteGovUrl(loc){
-    return OFFICIAL.voteGovRoot + loc.slug;
-  }
-
-  function openUrl(url){
-    window.open(url, "_blank", "noopener,noreferrer");
-  }
-
-  function applyLang(){
-    const L = i18n[langSel.value] || i18n.en;
-    el("hTitle").textContent = L.title;
-    el("hSub").textContent = L.sub;
-    el("pickTitle").textContent = L.pickTitle;
-    el("pickSub").textContent = L.pickSub;
-    el("b1t").textContent = L.b1t;
-    el("b1d").textContent = L.b1d;
-    el("b2t").textContent = L.b2t;
-    el("b2d").textContent = L.b2d;
-    el("b3t").textContent = L.b3t;
-    el("b3d").textContent = L.b3d;
-    el("b4t").textContent = L.b4t;
-    el("b4d").textContent = L.b4d;
-    el("miniTitle").textContent = L.miniTitle;
-    el("miniNote").textContent = L.miniNote;
-    el("whyTitle").textContent = L.whyTitle;
-    el("whySub").textContent = L.whySub;
-    el("feat1t").textContent = L.feat1t;
-    el("feat2t").textContent = L.feat2t;
-    el("feat3t").textContent = L.feat3t;
-
-    // Status line
-    const loc = currentLoc();
-    el("statusText").textContent = loc ? L.chosen(loc) : L.ready;
-  }
-
-  function rebuildOptions(filterText){
-    const keep = currentLoc();
-    const needle = (filterText || "").trim().toLowerCase();
-
-    stateSel.innerHTML = "";
-    const ph = document.createElement("option");
-    ph.value = "";
-    ph.textContent = (langSel.value === "es") ? "— Selecciona —" : "— Select —";
-    stateSel.appendChild(ph);
-
-    LOCATIONS.forEach((loc, i)=>{
-      const hay = (loc.name + " " + loc.abbr).toLowerCase();
-      if(needle && !hay.includes(needle)) return;
-      const opt = document.createElement("option");
-      opt.value = String(i);
-      opt.textContent = `${loc.name} (${loc.abbr})`;
-      stateSel.appendChild(opt);
-    });
-
-    // try restore previous selection if still visible
-    if(keep){
-      for(const opt of stateSel.options){
-        if(opt.textContent === `${keep.name} (${keep.abbr})`){
-          stateSel.value = opt.value;
-          break;
+      stateButton.addEventListener("click", () => {
+        if (!stateSelect.value) {
+          showToast("Choose a state or territory first.");
+          stateSelect.focus();
+          return;
         }
-      }
-    }else{
-      stateSel.value = "";
-    }
-    applyLang();
-  }
 
-  function init(){
-    rebuildOptions("");
-    applyLang();
+        window.open(
+          "https://www.usa.gov/state-governments/",
+          "_blank",
+          "noopener,noreferrer"
+        );
+      });
 
-    q.addEventListener("input", ()=>rebuildOptions(q.value));
+      menuButton.addEventListener("click", () => {
+        const open = mobileMenu.classList.toggle("open");
+        menuButton.setAttribute("aria-expanded", String(open));
+        menuButton.textContent = open ? "×" : "☰";
+      });
 
-    langSel.addEventListener("change", ()=>{
-      applyLang();
-      rebuildOptions(q.value);
-    });
+      mobileMenu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("open");
+          menuButton.setAttribute("aria-expanded","false");
+          menuButton.textContent = "☰";
+        });
+      });
 
-    stateSel.addEventListener("change", ()=>{
-      applyLang();
-    });
-
-    el("goVoteGov").addEventListener("click", ()=>{
-      const loc = currentLoc();
-      const L = i18n[langSel.value] || i18n.en;
-      if(!loc) return showToast(L.openWarn);
-      openUrl(voteGovUrl(loc));
-    });
-
-    el("goStateOffice").addEventListener("click", ()=>{
-      const loc = currentLoc();
-      const L = i18n[langSel.value] || i18n.en;
-      if(!loc) return showToast(L.openWarn);
-      openUrl(loc.office);
-    });
-
-    el("goEAC").addEventListener("click", ()=>openUrl(OFFICIAL.eacDirectory));
-    el("goNASS").addEventListener("click", ()=>openUrl(OFFICIAL.nassRoot));
-
-    el("nassStatus").addEventListener("click", ()=>openUrl(OFFICIAL.nassStatus));
-    el("nassPoll").addEventListener("click", ()=>openUrl(OFFICIAL.nassPoll));
-    el("nassId").addEventListener("click", ()=>openUrl(OFFICIAL.nassId));
-    el("nassAbs").addEventListener("click", ()=>openUrl(OFFICIAL.nassAbs));
-
-    el("copyLink").addEventListener("click", async ()=>{
-      const L = i18n[langSel.value] || i18n.en;
-      try{
-        await navigator.clipboard.writeText(location.href);
-        showToast(L.copyLinkOk);
-      }catch(e){
-        // fallback
-        const ta = document.createElement("textarea");
-        ta.value = location.href;
-        document.body.appendChild(ta);
-        ta.select(); document.execCommand("copy");
-        ta.remove();
-        showToast(L.copyLinkOk);
-      }
-    });
-
-    el("shareText").addEventListener("click", async ()=>{
-      const L = i18n[langSel.value] || i18n.en;
-      const loc = currentLoc();
-      const txt = L.shareText(loc);
-      try{
-        await navigator.clipboard.writeText(txt);
-        showToast(L.copyTextOk);
-      }catch(e){
-        const ta = document.createElement("textarea");
-        ta.value = txt;
-        document.body.appendChild(ta);
-        ta.select(); document.execCommand("copy");
-        ta.remove();
-        showToast(L.copyTextOk);
-      }
-    });
-  }
-
-  init();
-})();
-</script>
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape") {
+          mobileMenu.classList.remove("open");
+          menuButton.setAttribute("aria-expanded","false");
+          menuButton.textContent = "☰";
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
