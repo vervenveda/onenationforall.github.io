@@ -1,0 +1,241 @@
+{
+  "version": 1,
+  "sourceId": "verve.one-nation-for-all",
+  "name": "One Nation for All",
+  "classification": "civic",
+  "mentorSearchable": true,
+  "audiences": [
+    "elementary",
+    "middle",
+    "high",
+    "higher-learning",
+    "adult",
+    "parent"
+  ],
+  "roles": [
+    "student",
+    "parent",
+    "educator"
+  ],
+  "homepage": "https://vervenveda.com/onenationforall.github.io/",
+  "repository": "vervenveda/onenationforall.github.io",
+  "resources": [
+    {
+      "id": "one-nation-home",
+      "title": "One Nation for All",
+      "description": "",
+      "url": "https://vervenveda.com/onenationforall.github.io/",
+      "audiences": [
+        "middle",
+        "high",
+        "higher-learning",
+        "adult",
+        "parent"
+      ],
+      "roles": [
+        "student",
+        "parent",
+        "educator"
+      ],
+      "domains": [
+        "civics",
+        "public-life"
+      ],
+      "skills": [
+        "civic-literacy"
+      ],
+      "tags": [
+        "civics",
+        "public-life"
+      ],
+      "mentorEligible": true,
+      "featured": true,
+      "requiresFreshnessCheck": true
+    },
+    {
+      "id": "elementary-kids-vote",
+      "title": "Elementary Kids Vote",
+      "description": "",
+      "url": "https://vervenveda.com/onenationforall.github.io/apps/Elementary_Kids_Vote_index.html",
+      "audiences": [
+        "elementary"
+      ],
+      "roles": [
+        "student",
+        "parent",
+        "educator"
+      ],
+      "domains": [
+        "civics"
+      ],
+      "skills": [
+        "voting-basics",
+        "civic-literacy"
+      ],
+      "tags": [
+        "civics",
+        "voting",
+        "educational"
+      ],
+      "mentorEligible": true,
+      "minutes": 15,
+      "energy": "curious"
+    },
+    {
+      "id": "middle-voting-portal",
+      "title": "Middle School Voting Portal",
+      "description": "",
+      "url": "https://vervenveda.com/onenationforall.github.io/apps/MiddleSchool_Voting_Portal_index.html",
+      "audiences": [
+        "middle"
+      ],
+      "roles": [
+        "student",
+        "parent",
+        "educator"
+      ],
+      "domains": [
+        "civics"
+      ],
+      "skills": [
+        "voting",
+        "civic-literacy"
+      ],
+      "tags": [
+        "civics",
+        "voting"
+      ],
+      "mentorEligible": true,
+      "minutes": 20,
+      "energy": "curious",
+      "requiresFreshnessCheck": true
+    },
+    {
+      "id": "high-voter-portal",
+      "title": "High School Voter Portal",
+      "description": "",
+      "url": "https://vervenveda.com/onenationforall.github.io/apps/High_School_voter_portal_index.html",
+      "audiences": [
+        "high"
+      ],
+      "roles": [
+        "student",
+        "parent",
+        "educator"
+      ],
+      "domains": [
+        "civics"
+      ],
+      "skills": [
+        "voting",
+        "civic-literacy"
+      ],
+      "tags": [
+        "civics",
+        "voting"
+      ],
+      "mentorEligible": true,
+      "minutes": 20,
+      "energy": "curious",
+      "requiresFreshnessCheck": true
+    },
+    {
+      "id": "us-voter-hub",
+      "title": "U.S. Voter Hub",
+      "description": "",
+      "url": "https://vervenveda.com/onenationforall.github.io/apps/US_VOTER_HUB_index.html",
+      "audiences": [
+        "high",
+        "higher-learning",
+        "adult",
+        "parent"
+      ],
+      "roles": [
+        "student",
+        "parent",
+        "educator"
+      ],
+      "domains": [
+        "civics"
+      ],
+      "skills": [
+        "voting-information"
+      ],
+      "tags": [
+        "civics",
+        "voter-information",
+        "current-info"
+      ],
+      "mentorEligible": true,
+      "minutes": 15,
+      "energy": "steady",
+      "requiresFreshnessCheck": true
+    },
+    {
+      "id": "florida-citizen-connect",
+      "title": "Florida Citizen Connect",
+      "description": "",
+      "url": "https://vervenveda.com/onenationforall.github.io/apps/Florida_Citizen_connect_index.html",
+      "audiences": [
+        "high",
+        "higher-learning",
+        "adult",
+        "parent"
+      ],
+      "roles": [
+        "student",
+        "parent",
+        "educator"
+      ],
+      "domains": [
+        "civics"
+      ],
+      "skills": [
+        "government-navigation"
+      ],
+      "tags": [
+        "florida",
+        "civics",
+        "current-info"
+      ],
+      "mentorEligible": true,
+      "minutes": 15,
+      "energy": "steady",
+      "requiresFreshnessCheck": true
+    },
+    {
+      "id": "global-voter-portal",
+      "title": "Global Voter Portal",
+      "description": "",
+      "url": "https://vervenveda.com/onenationforall.github.io/apps/Global_Voter_Portal_index.html",
+      "audiences": [
+        "high",
+        "higher-learning",
+        "adult",
+        "parent"
+      ],
+      "roles": [
+        "student",
+        "parent",
+        "educator"
+      ],
+      "domains": [
+        "civics",
+        "global-studies"
+      ],
+      "skills": [
+        "comparative-civics"
+      ],
+      "tags": [
+        "global",
+        "voting",
+        "current-info"
+      ],
+      "mentorEligible": true,
+      "minutes": 20,
+      "energy": "curious",
+      "requiresFreshnessCheck": true
+    }
+  ],
+  "mentorNotes": "Campaign and candidate-specific pages are deliberately omitted from this educational/civic manifest. Time-sensitive voter resources are marked for freshness verification."
+}
