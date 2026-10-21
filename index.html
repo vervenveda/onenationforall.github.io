@@ -1064,6 +1064,40 @@ a,button,.status,.site-status{overflow-wrap:anywhere}
   .copy-link{width:100%}
 }
 
+
+/* Eiren visual QC · civic gateway typography and edge alignment.
+   Scoped overrides preserve the ceremonial theme, cards, and app logic. */
+body{min-width:0}
+.site-header .shell.compact-nav{
+  width:calc(100% - 22px);max-width:none;margin-inline:11px;
+  column-gap:12px;
+}
+.compact-wordmark{min-width:0}
+.compact-wordmark span{overflow-wrap:normal;word-break:normal}
+.compact-wordmark small{letter-spacing:.10em}
+.nav-links a,.landing-pill,.drawer-quick-links a,.crumbs a{
+  font-weight:400;
+}
+.eyebrow,.kicker{font-weight:400;letter-spacing:.12em}
+.section-heading .kicker{letter-spacing:.12em}
+@media(max-width:760px){
+  .site-header .shell.compact-nav{
+    width:calc(100% - 14px);margin-inline:7px;
+    grid-template-columns:46px minmax(0,1fr) 42px;gap:7px;
+  }
+  .compact-wordmark span{font-size:clamp(.69rem,3.2vw,.85rem);letter-spacing:.065em}
+}
+@media(max-width:330px){
+  .site-header .shell.compact-nav{
+    grid-template-columns:42px minmax(0,1fr) 42px;gap:5px;
+  }
+  .corner-flag .flag-mark{width:40px;height:26px}
+  .compact-wordmark span{font-size:.65rem;letter-spacing:.03em}
+  .compact-wordmark small{display:none}
+  .hero.hero-intro{padding-inline:10px}
+  .section{padding-inline:10px}
+}
+
 </style>
 </head>
 
