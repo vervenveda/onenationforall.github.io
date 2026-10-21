@@ -1616,6 +1616,7 @@ function openDrawer(){
   $("drawer").classList.add("open");
   $("drawer").setAttribute("aria-hidden","false");
   $("menuButton").setAttribute("aria-expanded","true");
+  $("menuButton").setAttribute("aria-label","Close complete directory");
   document.body.classList.add("drawer-open");
   setTimeout(()=>$("drawerSearch").focus(),80);
 }
@@ -1623,6 +1624,7 @@ function closeDrawer(){
   $("drawer").classList.remove("open");
   $("drawer").setAttribute("aria-hidden","true");
   $("menuButton").setAttribute("aria-expanded","false");
+  $("menuButton").setAttribute("aria-label","Open complete directory");
   document.body.classList.remove("drawer-open");
   $("drawerSearch").value="";
   buildDrawer();
