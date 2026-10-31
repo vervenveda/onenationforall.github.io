@@ -1249,8 +1249,8 @@ body{min-width:0}
     <div class="actions">
       <a class="btn primary" href="https://vervenveda.com/JenniferPearl2028.github.io/" target="_blank" rel="noopener noreferrer">Jennifer Pearl for President 2028</a>
       <a class="btn light" href="https://vote.gov/" target="_blank" rel="noopener noreferrer">Register to Vote</a>
-      <a class="btn outline" href="#veterans">Veterans Resources</a>
-      <a class="btn outline" href="#apps">Explore Civic Tools</a>
+      <a class="btn outline" href="#veterans" data-ticker>Veterans Resources</a>
+      <a class="btn outline" href="#apps" data-ticker data-ticker-label="Civic Tools">Explore Civic Tools</a>
     </div>
     <div class="hero-notes">
       <span class="hero-note">Independent civic learning</span>
@@ -1274,7 +1274,7 @@ body{min-width:0}
       <p>Reach benefits, health care, counseling, housing, employment, crisis support, and family resources.</p>
       <strong>Open veterans resources ↓</strong>
     </a>
-    <a class="doorway red" href="./apps/National_Policy_Proposals_index.html">
+    <a class="doorway red" href="./apps/National_Policy_Proposals_index.html" data-ticker data-ticker-label="National Policies">
       <span class="doorway-index">03 · EXAMINE</span>
       <h2>Public Policy Library</h2>
       <p>Explore national proposals, voter concerns, constitutional questions, and public-interest solutions.</p>
@@ -1764,6 +1764,8 @@ function initializePage(){
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",initializePage,{once:true});
 else initializePage();
 </script>
+<script src="https://vervenveda.com/assets/vnv-ticker-autopopulate.js" data-vnv-ticker-autopopulate></script>
+<script>VNV_TICKER.autoPopulate({label:"One Nation For All Quick Links",max:12});</script>
 <script src="https://vervenveda.com/assets/vnv-ecosystem-toolbar.js" defer data-vnv-ecosystem-toolbar="1"></script>
 </body>
 </html>
