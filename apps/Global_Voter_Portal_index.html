@@ -202,6 +202,8 @@ function onEachFeature(feature, layer){
 L.geoJSON(sampleDistricts, { onEachFeature:onEachFeature, style:{color:'#004080', weight:2, fillOpacity:0.1} }).addTo(map);
 </script>
 <script src="https://vervenveda.com/assets/vnv-support.js" defer></script>
+<script src="https://vervenveda.com/assets/vnv-ticker-autopopulate.js" data-vnv-ticker-autopopulate></script>
+<script>VNV_TICKER.autoPopulate({label:"Global Voter Portal Quick Links",max:14,cleanLegacy:false});</script>
 <script src="https://vervenveda.com/assets/vnv-ecosystem-toolbar.js" defer data-vnv-ecosystem-toolbar="1"></script>
 </body>
 </html>
