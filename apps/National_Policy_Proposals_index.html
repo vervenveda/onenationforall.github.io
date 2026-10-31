@@ -219,8 +219,8 @@
     <summary aria-label="Open Verve N Veda ecosystem menu"><span class="vnv-global-lines" aria-hidden="true"></span></summary>
     <div class="vnv-global-panel"><p>Ecosystem</p>
       <a href="https://vervenveda.com/">Verve N Veda Gateway</a>
-      <a href="https://vervenveda.com/#directory">Complete Ecosystem Directory</a>
-      <a href="https://vervenveda.com/onenationforall.github.io/">One Nation For All</a>
+      <a href="https://vervenveda.com/#directory" data-ticker>Ecosystem Directory</a>
+      <a href="https://vervenveda.com/onenationforall.github.io/" data-ticker>One Nation For All</a>
     </div>
   </details>
 </div>
@@ -731,6 +731,8 @@ filterComments();
 initDrag();
 </script>
 <script src="https://vervenveda.com/assets/vnv-support.js" defer></script>
+<script src="https://vervenveda.com/assets/vnv-ticker-autopopulate.js" data-vnv-ticker-autopopulate></script>
+<script>VNV_TICKER.autoPopulate({label:"Policy Proposals Quick Links",max:14});</script>
 <script src="https://vervenveda.com/assets/vnv-ecosystem-toolbar.js" defer data-vnv-ecosystem-toolbar="1"></script>
 </body>
 </html>
