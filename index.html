@@ -1252,6 +1252,21 @@ a,button,input,select,textarea,label,.btn,.tool-button,.field,
   .section h3,.primary-doorways h2,.primary-doorways h3{font-size:33px!important}
 }
 </style>
+<style id="one-nation-civic-learning-style">
+/* CIVIC LEARNING BY AGE · cross-listed references only */
+.civic-learning-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.civic-learning-card{min-height:250px;display:flex;flex-direction:column;padding:24px;border:3px solid var(--blue);border-radius:7px;background:#fff;color:var(--ink);text-decoration:none;box-shadow:var(--shadow-small);transition:transform .17s ease,background .17s ease,color .17s ease}
+.civic-learning-card:hover,.civic-learning-card:focus-visible{transform:translateY(-3px);background:var(--blue);color:#fff}
+.civic-learning-stage{font-family:Cinzel,Georgia,serif;font-size:16px;font-weight:444;color:var(--red);letter-spacing:.04em}
+.civic-learning-card h3{margin:16px 0 0;font-family:Cinzel,Georgia,serif;font-size:33px!important;font-weight:444!important;line-height:1.15;color:inherit}
+.civic-learning-card p{margin:14px 0 0;font-size:18px!important;line-height:1.6;color:var(--muted)}
+.civic-learning-card:hover p,.civic-learning-card:focus-visible p{color:rgba(255,255,255,.86)}
+.civic-learning-card strong{margin-top:auto;padding-top:18px;font-size:16px!important;font-weight:444;color:var(--red)}
+.civic-learning-card:hover strong,.civic-learning-card:focus-visible strong{color:var(--gold-pale)}
+.civic-learning-explore{background:var(--blue);color:#fff}.civic-learning-explore p,.civic-learning-explore strong,.civic-learning-explore .civic-learning-stage{color:#fff}
+@media(max-width:900px){.civic-learning-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.civic-learning-grid{grid-template-columns:1fr}}
+</style>
 </head>
 
 <body id="top">
@@ -1416,6 +1431,72 @@ a,button,input,select,textarea,label,.btn,.tool-button,.field,
       <a class="civic-need-card" href="https://vervenveda.com/theverifier.github.io/"><span>07</span><h3>I want reliable news and evidence</h3><p>Compare sources, follow public-interest news, research evidence, and strengthen information literacy.</p><strong>Open The Verifier →</strong></a>
       <a class="civic-need-card" href="https://vervenveda.com/river_to_road.github.io/"><span>08</span><h3>I want to help my community</h3><p>Find environmental action, cleanups, restoration, civic participation, service, and community projects.</p><strong>Find ways to help →</strong></a>
       <a class="civic-need-card civic-need-explore" href="#featuredHalls"><span>09</span><h3>I’m just exploring</h3><p>Browse the connected civic halls and discover what One Nation for All and the wider Verve N Veda network offer.</p><strong>Explore the civic network ↓</strong></a>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="civicLearningByAge" aria-labelledby="civicLearningTitle">
+  <div class="section-inner">
+    <div class="section-heading">
+      <p class="kicker">Civic learning by age</p>
+      <h2 id="civicLearningTitle">Learn how participation works</h2>
+      <p class="section-intro">These resources stay in their original repositories. One Nation simply connects learners to the right civic doorway.</p>
+    </div>
+    <div class="civic-learning-grid">
+      <a class="civic-learning-card" href="./apps/Elementary_Kids_Vote_index.html">
+        <span class="civic-learning-stage">Elementary</span>
+        <h3>Elementary Kids Vote</h3>
+        <p>Practice civic choice, voting steps, and participation in an age-appropriate setting.</p>
+        <strong>Open Kids Vote →</strong>
+      </a>
+      <a class="civic-learning-card" href="https://vervenveda.com/Khaemenes_Elementary.github.io/games/jr-city-council/">
+        <span class="civic-learning-stage">Elementary</span>
+        <h3>Junior City Council</h3>
+        <p>Explore local government, viewpoints, reasoning, and civic decision-making.</p>
+        <strong>Open Junior City Council →</strong>
+      </a>
+      <a class="civic-learning-card" href="https://vervenveda.com/Khaemenes_Elementary.github.io/games/kids-voting-app/">
+        <span class="civic-learning-stage">Elementary</span>
+        <h3>Kids Voting App</h3>
+        <p>Learn how voting, choice, and citizenship connect in a simple practice environment.</p>
+        <strong>Open Kids Voting →</strong>
+      </a>
+      <a class="civic-learning-card" href="https://vervenveda.com/Khaemenes_Elementary.github.io/games/kindness_quest/">
+        <span class="civic-learning-stage">Elementary</span>
+        <h3>Kindness Quest Academy</h3>
+        <p>Practice service, empathy, reflection, and community responsibility.</p>
+        <strong>Open Kindness Quest →</strong>
+      </a>
+      <a class="civic-learning-card" href="./apps/MiddleSchool_Voting_Portal_index.html">
+        <span class="civic-learning-stage">Middle School</span>
+        <h3>Middle School Voting Portal</h3>
+        <p>Build civic vocabulary, election awareness, and participation skills.</p>
+        <strong>Open Middle School Portal →</strong>
+      </a>
+      <a class="civic-learning-card" href="./apps/High_School_voter_portal_index.html">
+        <span class="civic-learning-stage">High School</span>
+        <h3>High School Voter Portal</h3>
+        <p>Study voter participation, election systems, public issues, and informed civic action.</p>
+        <strong>Open High School Portal →</strong>
+      </a>
+      <a class="civic-learning-card" href="./apps/we_the_people_2_index.html">
+        <span class="civic-learning-stage">All Learners</span>
+        <h3>We the People Learning Lab</h3>
+        <p>Explore constitutional structure, public institutions, rights, and civic responsibility.</p>
+        <strong>Open Learning Lab →</strong>
+      </a>
+      <a class="civic-learning-card" href="./apps/voter_concerns_compass_index.html">
+        <span class="civic-learning-stage">Older Learners</span>
+        <h3>Voter Concerns Compass</h3>
+        <p>Compare public concerns through a structured civic and policy lens.</p>
+        <strong>Open the Compass →</strong>
+      </a>
+      <a class="civic-learning-card civic-learning-explore" href="#apps">
+        <span class="civic-learning-stage">Explore</span>
+        <h3>All Civic Tools</h3>
+        <p>Browse the complete One Nation civic application and learning directory.</p>
+        <strong>Explore all tools ↓</strong>
+      </a>
     </div>
   </div>
 </section>
