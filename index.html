@@ -1140,6 +1140,12 @@ button,input,select,textarea,.btn,.tool-button,.open-app,.copy-link{font-size:16
 .civic-need-card p{margin:12px 0 0;color:var(--muted);font-size:16px;line-height:1.65}.civic-need-card:hover p,.civic-need-card:focus-visible p{color:rgba(255,255,255,.8)}
 @media(max-width:900px){.civic-needs-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.civic-needs-grid{grid-template-columns:1fr}.civic-need-card{min-height:0}}
+
+.civic-need-card strong{margin-top:auto;padding-top:18px;color:var(--red);font-size:16px;font-weight:444;line-height:1.35}
+.civic-need-card:hover strong,.civic-need-card:focus-visible strong{color:#fff}
+.civic-need-explore{background:var(--blue);color:#fff;border-color:var(--blue)}
+.civic-need-explore h3,.civic-need-explore p,.civic-need-explore strong{color:#fff!important}
+.civic-need-explore>span{color:var(--gold-pale)}
 </style>
 <style id="vnv-global-ecosystem-shell">
 .vnv-global-strip{position:relative;z-index:2147482000;min-height:38px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:12px;padding:5px 12px;border-bottom:1px solid rgba(160,140,100,.28);background:#121918;color:#eee8dc;font:400 12px/1.2 "Avenir Next",Avenir,"Segoe UI",Arial,sans-serif}
@@ -1313,20 +1319,20 @@ body{font-size:18px;font-weight:400}
 <section class="section civic-needs" id="needToday" aria-labelledby="needTodayTitle">
   <div class="section-inner">
     <div class="section-heading">
-      <p class="kicker">Start with your need</p>
-      <h2 id="needTodayTitle">What do you need today?</h2>
-      <p class="section-intro">Choose a practical doorway. Each path connects to free civic, public-service, educational, or official resources without requiring a political affiliation.</p>
+      <p class="kicker">Start Here</p>
+      <h2 id="needTodayTitle">What brought you here today?</h2>
+      <p class="section-intro">You do not need to know the Verve N Veda ecosystem first. Choose the reason you came, and we will take you to the most useful free civic, public-service, educational, or official resources.</p>
     </div>
-    <div class="civic-needs-grid">
-      <a class="civic-need-card" href="https://vote.gov/" target="_blank" rel="noopener noreferrer"><span>01</span><h3>Vote &amp; Participate</h3><p>Registration, election information, civic participation, and voter learning.</p></a>
-      <a class="civic-need-card" href="./apps/we_the_people_2_index.html"><span>02</span><h3>Understand Government</h3><p>Constitutional learning, branches of government, public institutions, and civic structure.</p></a>
-      <a class="civic-need-card" href="https://vervenveda.com/firmament.github.io/"><span>03</span><h3>Legal &amp; Rights</h3><p>Legal information, rights, courts, records, and public-resource pathways.</p></a>
-      <a class="civic-need-card" href="#veterans"><span>04</span><h3>Veterans</h3><p>Benefits, records, employment, housing, family, health, and crisis resources.</p></a>
-      <a class="civic-need-card" href="https://vervenveda.com/firmament.github.io/apps/Family_Hub_index.html"><span>05</span><h3>Family &amp; Community</h3><p>Family, caregiver, senior, community-support, and supplemental public resources.</p></a>
-      <a class="civic-need-card" href="https://vervenveda.com/Homeless.github.io/"><span>06</span><h3>Housing &amp; Stability</h3><p>Shelter, food, housing, local assistance, benefits, and coordinated support.</p></a>
-      <a class="civic-need-card" href="https://vervenveda.com/medicament-hub.github.io/"><span>07</span><h3>Health &amp; Wellness</h3><p>Health education, prevention, wellness tools, and official care pathways.</p></a>
-      <a class="civic-need-card" href="https://vervenveda.com/theverifier.github.io/"><span>08</span><h3>News &amp; Evidence</h3><p>Source comparison, public-interest news, research navigation, and information literacy.</p></a>
-      <a class="civic-need-card" href="https://vervenveda.com/river_to_road.github.io/"><span>09</span><h3>Environment &amp; Service</h3><p>Cleanups, restoration, environmental learning, public reporting, and community action.</p></a>
+    <div class="civic-needs-grid" aria-label="Start here civic pathways">
+      <a class="civic-need-card" href="https://vote.gov/" target="_blank" rel="noopener noreferrer"><span>01</span><h3>I want to vote or understand elections</h3><p>Start with voter registration, election information, participation tools, and civic-learning resources.</p><strong>Start here ↗</strong></a>
+      <a class="civic-need-card" href="./apps/we_the_people_2_index.html"><span>02</span><h3>I want to understand government or public policy</h3><p>Explore constitutional structure, public institutions, policy proposals, and civic processes.</p><strong>Explore government →</strong></a>
+      <a class="civic-need-card" href="https://vervenveda.com/firmament.github.io/"><span>03</span><h3>I need legal or rights information</h3><p>Find legal information, rights, courts, records, family law, housing law, and public-resource pathways.</p><strong>Open legal resources →</strong></a>
+      <a class="civic-need-card" href="https://vervenveda.com/Homeless.github.io/"><span>04</span><h3>I need help with housing, family, or community resources</h3><p>Reach housing, food, family support, local assistance, benefits, and coordinated community resources.</p><strong>Find support →</strong></a>
+      <a class="civic-need-card" href="#veterans"><span>05</span><h3>I am a veteran or military family member</h3><p>Find benefits, records, health care, employment, housing, family support, and crisis resources.</p><strong>Open veterans resources ↓</strong></a>
+      <a class="civic-need-card" href="https://vervenveda.com/medicament-hub.github.io/"><span>06</span><h3>I need health or wellness resources</h3><p>Explore health education, prevention, wellness tools, family resources, and official care pathways.</p><strong>Explore health resources →</strong></a>
+      <a class="civic-need-card" href="https://vervenveda.com/theverifier.github.io/"><span>07</span><h3>I want reliable news and evidence</h3><p>Compare sources, follow public-interest news, research evidence, and strengthen information literacy.</p><strong>Open The Verifier →</strong></a>
+      <a class="civic-need-card" href="https://vervenveda.com/river_to_road.github.io/"><span>08</span><h3>I want to help my community</h3><p>Find environmental action, cleanups, restoration, civic participation, service, and community projects.</p><strong>Find ways to help →</strong></a>
+      <a class="civic-need-card civic-need-explore" href="#featuredHalls"><span>09</span><h3>I’m just exploring</h3><p>Browse the connected civic halls and discover what One Nation for All and the wider Verve N Veda network offer.</p><strong>Explore the civic network ↓</strong></a>
     </div>
   </div>
 </section>
